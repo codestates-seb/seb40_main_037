@@ -3,6 +3,7 @@ package server.beerfactory.entity.mix;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import server.beerfactory.entity.beer.BeerVote;
 import server.beerfactory.entity.user.User;
 
 import javax.persistence.*;
@@ -20,10 +21,19 @@ public class Mix {
     private long id;
 
     @Column(nullable = false)
-    private String mixname;
+    private String title;
 
     @Column
     private String image;
+
+    @Column(nullable = false)
+    private String content;
+
+    @Column
+    private int likeCount;
+
+    @Column
+    private int dislikeCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
@@ -34,5 +44,8 @@ public class Mix {
 
     @OneToMany(mappedBy = "mix", cascade = CascadeType.ALL)
     private final List<MixJoinTag> mixJoinTags = new ArrayList<>();
+
+    @OneToMany(mappedBy = "mix", cascade = CascadeType.ALL)
+    private final List<MixVote> mixVotes = new ArrayList<>();
 
 }
