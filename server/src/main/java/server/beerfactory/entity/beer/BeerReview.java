@@ -31,6 +31,12 @@ public class BeerReview {
     @Column(nullable = false)
     private double score;
 
+    @Column
+    private int likeCount;
+
+    @Column
+    private int dislikeCount;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
