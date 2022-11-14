@@ -1,0 +1,35 @@
+{
+    "users":[],
+    "items":[
+        {
+            "id":1,
+            "name":"Hite",
+            "rating":4
+        }
+    ],
+    "reviews":[
+        {
+            "id":1,
+            "img":"img",
+            "name":"홍길동",
+            "rating":4,
+            "comment":"good"
+        },
+        {
+            "id":2,
+            "img":"img",
+            "name":"고길동",
+            "rating":1,
+            "comment":"bad",
+            "url":"../src/assets/food/pizza.jpg"    
+        },
+        {
+            "id":3,
+            "img":"img",
+            "name":"김길동",
+            "rating":3,
+            "comment":"SoSo"    
+        }
+        
+    ]
+}
