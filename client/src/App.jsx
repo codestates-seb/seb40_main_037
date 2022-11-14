@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import Main from './pages/Main';
+import GlobalStyle from './styles/globalStyle';
 
 const queryClient = new QueryClient();
 
@@ -22,6 +22,7 @@ function App() {
 
   return (
     <>
+      <GlobalStyle />
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
