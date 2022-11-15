@@ -3,6 +3,7 @@ package server.beerfactory.entity.beer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import server.beerfactory.entity.user.User;
 
@@ -18,10 +19,10 @@ public class Beer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BEER_ID")
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
-    private String beername;
+    private String name;
 
     @Column
     private String image;
@@ -29,8 +30,8 @@ public class Beer {
     @Column(nullable = false)
     private double score;
 
-    @Column(nullable = false)
-    private String beertype;
+    @Column
+    private BeerType beerType;
 
     @Column(nullable = false)
     private String country;
@@ -65,5 +66,22 @@ public class Beer {
 
     @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL)
     private final List<BeerJoinTag> beerJoinTags = new ArrayList<>();
+
+    public enum BeerType {
+        ALE("에일"),
+        WHEAT_ALE("위트 에일"),
+        LAGER("라거"),
+        IPA("IPA"),
+        STOUT("스타우트"),
+        BOCK("복"),
+        SOUR("사워");
+
+        @Getter
+        private String type;
+
+        BeerType(String type) {
+            this.type = type;
+        }
+    }
 
 }

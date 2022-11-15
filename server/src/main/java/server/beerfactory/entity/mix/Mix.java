@@ -18,7 +18,7 @@ public class Mix {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MIX_ID")
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private String title;
