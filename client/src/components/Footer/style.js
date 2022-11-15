@@ -1,14 +1,12 @@
 import styled from 'styled-components';
+import { container } from '../../styles';
 
 export const Wrapper = styled.footer`
   padding: 32px 12px;
-  background-color: var(--orange);
+  background-color: var(--footer-background-color);
 `;
 export const Container = styled.div`
-  max-width: 1264px;
-  width: 100%;
-  display: flex;
-  margin: 0 auto;
+  ${container}
   justify-content: normal;
   @media ${props => props.theme.mobile} {
     flex-direction: column;
@@ -17,6 +15,35 @@ export const Container = styled.div`
 
 export const InnerBox = styled.div`
   display: flex;
+  flex-direction: ${props => props.direction};
+  .logo span {
+    display: block;
+    width: 28px;
+    height: 30px;
+    background-size: auto;
+    background-position-y: bottom;
+    font-size: 0;
+    text-indent: -9999px;
+  }
+  &.logo {
+    flex: 0 0 64px;
+    @media ${props => props.theme.mobile} {
+      display: none;
+    }
+  }
+  &.sitemap {
+    flex: 2 1 auto;
+    @media ${props => props.theme.mobile} {
+      flex-direction: column;
+    }
+  }
+  &.sns {
+    justify-content: space-between;
+    flex: 1 1;
+    @media ${props => props.theme.mobile} {
+      flex: 1 1;
+    }
+  }
 `;
 
 export const ListWrap = styled.ul`
@@ -47,7 +74,7 @@ export const ListWrap = styled.ul`
 `;
 
 export const List = styled.li`
-  &:first-child {
+  .title {
     margin-bottom: 3px;
     color: hsl(210, 8%, 75%);
     font-size: 0.85rem;
