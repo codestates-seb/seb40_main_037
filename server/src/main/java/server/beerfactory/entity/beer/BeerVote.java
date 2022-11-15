@@ -14,15 +14,15 @@ public class BeerVote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BEER_VOTE_ID")
-    private long id;
+    private Long id;
 
     // 추천 여부
     @Column
-    private boolean beerVoteLike;
+    private boolean voteLike;
 
     // 비추천 여부
     @Column
-    private boolean beerVoteDislike;
+    private boolean voteDislike;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BEER_REVIEW_ID")

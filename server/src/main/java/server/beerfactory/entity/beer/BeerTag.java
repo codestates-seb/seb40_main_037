@@ -16,7 +16,7 @@ public class BeerTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BEER_TAG_ID")
-    private long id;
+    private Long id;
 
     @Column
     private String aroma;
@@ -30,7 +30,7 @@ public class BeerTag {
     @Column
     private int soda;
 
-    @OneToMany(mappedBy = "beer_tag", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "beerTag", cascade = CascadeType.ALL)
     private final List<BeerJoinTag> beerJoinTags = new ArrayList<>();
 
 }
