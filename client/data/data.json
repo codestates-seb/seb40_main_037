@@ -1,5 +1,9 @@
 {
-    "users":[],
+    "users":[{
+        "id":1,
+        "name":"홍길동",
+        "avatar":"../src/assets/avatar/1.jpg"    
+}],
     "items":[
         {
             "id":1,
@@ -10,23 +14,42 @@
     "reviews":[
         {
             "id":1,
-            "img":"img",
             "name":"홍길동",
             "rating":4,
-            "comment":"good"
+            "comment":"good",
+            "avatar":"../src/assets/avatar/1.jpg",
+            "photo" : [
+                {
+                    "img":"../src/assets/food/ramen.jpg",
+                    "title":"ramen"
+                },
+                {
+                    "img":"../src/assets/food/pizza.jpg",
+                    "title":"pizza"
+                }
+            ]
         },
         {
             "id":2,
-            "img":"img",
             "name":"고길동",
             "rating":1,
             "comment":"bad",
-            "url":"../src/assets/food/pizza.jpg"    
+            "avatar":"../src/assets/avatar/1.jpg",
+            "photo" : [
+                {
+                    "img":"../src/assets/food/ramen.jpg",
+                    "title":"ramen"
+                },
+                {
+                    "img":"../src/assets/food/pizza.jpg",
+                    "title":"pizza"
+                }
+            ]
         },
         {
             "id":3,
-            "img":"img",
             "name":"김길동",
+            "avatar":"../src/assets/avatar/1.jpg",
             "rating":3,
             "comment":"SoSo"    
         }

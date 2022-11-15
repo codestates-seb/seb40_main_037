@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Wrapper, Container, InnerBox, ListWrap, List } from './style';
+import { FOOTER_LIST, SITE_LIST } from '../../constants/footer';
+
+const { FE_MEMBERS, BE_MEMBERS, FE_TOOLS, BE_TOOLS } = FOOTER_LIST;
 
 const Footer = () => {
   return (
@@ -8,17 +11,43 @@ const Footer = () => {
       <Container>
         <InnerBox className="logo">
           <Link className="logo" to="/">
-            <span>Beer House</span>
+            <span>House Beer</span>
           </Link>
         </InnerBox>
-        <InnerBox className="sitemap"></InnerBox>
+        <InnerBox className="sitemap">
+          {[FE_MEMBERS, BE_MEMBERS, FE_TOOLS, BE_TOOLS].map((list, i) => {
+            return (
+              <ListWrap key={i}>
+                {list.map((list, i) => {
+                  return list.href !== undefined ? (
+                    <List key={i} className="title">
+                      <a href={list.href}>{list.name}</a>
+                    </List>
+                  ) : (
+                    <List key={i} className="title">
+                      {list.name}
+                    </List>
+                  );
+                })}
+              </ListWrap>
+            );
+          })}
+        </InnerBox>
         <InnerBox direction="column" className="sns">
-          <ListWrap className="sns"></ListWrap>
+          <ListWrap className="sns">
+            {SITE_LIST.map((site, i) => {
+              return (
+                <a href={site.href} key={i}>
+                  <List>{site.name}</List>
+                </a>
+              );
+            })}
+          </ListWrap>
           <ListWrap className="sns">
             <List>
-              Site design / logo © 2022
+              Site design / logo
               <br />
-              2022.11.14
+              rev 2022.11.11
             </List>
           </ListWrap>
         </InnerBox>

@@ -63,6 +63,7 @@ const GlobalStyle = createGlobalStyle`
     --textLink: blue;
     --hr: hsla(0, 0%, 0%, 0.2);
     --hoverColor: #efefef; 
+    --footer-background-color: hsl(210,8%,15%);
     --orange: hsl(27,90%,55%);
     --lightblue:hsl(205, 46%, 92%);
     --darkblue: hsl(205, 47%, 42%);
