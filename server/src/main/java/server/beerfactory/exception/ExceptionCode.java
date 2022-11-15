@@ -4,7 +4,7 @@ import lombok.Getter;
 
 public enum ExceptionCode {
 
-    MIX_REPLY_NOT_FOUND(404, "회원을 조회할 수 없습니다.");
+    MIX_NOT_FOUND(404, "조합을 찾을 수 없습니다.");
 
     @Getter
     private int code;
