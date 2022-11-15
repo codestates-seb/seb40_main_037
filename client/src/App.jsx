@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ThemeProvider } from 'styled-components';
+
+import { GlobalStyle, theme } from './styles';
 
 import Main from './pages/Main';
-import GlobalStyle from './styles/globalStyle';
 
 const queryClient = new QueryClient();
 
@@ -21,7 +23,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
@@ -30,7 +32,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
-    </>
+    </ThemeProvider>
   );
 }
 
