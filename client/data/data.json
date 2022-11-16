@@ -19,13 +19,19 @@
             "comment":"good",
             "avatar":"../src/assets/avatar/1.jpg",
             "photo" : [
-                {
+                {   
+                    
                     "img":"../src/assets/food/ramen.jpg",
                     "title":"ramen"
                 },
                 {
                     "img":"../src/assets/food/pizza.jpg",
                     "title":"pizza"
+                },
+                {   
+                    
+                    "img":"../src/assets/food/chicken.jpg",
+                    "title":"ramen"
                 }
             ]
         },
@@ -36,13 +42,19 @@
             "comment":"bad",
             "avatar":"../src/assets/avatar/1.jpg",
             "photo" : [
-                {
+                {   
                     "img":"../src/assets/food/ramen.jpg",
                     "title":"ramen"
                 },
                 {
+
                     "img":"../src/assets/food/pizza.jpg",
                     "title":"pizza"
+                },
+                {   
+                    
+                    "img":"../src/assets/food/chicken.jpg",
+                    "title":"ramen"
                 }
             ]
         },
