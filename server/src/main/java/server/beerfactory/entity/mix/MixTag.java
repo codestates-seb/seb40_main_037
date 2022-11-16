@@ -16,7 +16,7 @@ public class MixTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MIX_TAG_ID")
-    private long id;
+    private Long id;
 
     @Column
     private String food;
@@ -24,7 +24,7 @@ public class MixTag {
     @Column
     private String movie;
 
-    @OneToMany(mappedBy = "mix_tag", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mixTag", cascade = CascadeType.ALL)
     private final List<MixJoinTag> mixJoinTags = new ArrayList<>();
 
 }

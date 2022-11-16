@@ -15,7 +15,7 @@ public class BeerJoinTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BEER_JOIN_TAG_ID")
-    private long id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BEER_ID")

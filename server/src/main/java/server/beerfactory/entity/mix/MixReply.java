@@ -18,7 +18,7 @@ public class MixReply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MIX_REPLY_ID")
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private String content;

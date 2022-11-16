@@ -17,7 +17,7 @@ public class BeerReview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BEER_REVIEW_ID")
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private String title;
@@ -45,7 +45,7 @@ public class BeerReview {
     @JoinColumn(name = "BEER_ID")
     private Beer beer;
 
-    @OneToMany(mappedBy = "beer_review", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "beerReview", cascade = CascadeType.ALL)
     private final List<BeerVote> beerVotes = new ArrayList<>();
 
 }

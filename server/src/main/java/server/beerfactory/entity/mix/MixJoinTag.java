@@ -14,7 +14,7 @@ public class MixJoinTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MIX_JOIN_TAG_ID")
-    private long id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MIX_ID")
