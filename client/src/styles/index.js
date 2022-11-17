@@ -36,5 +36,5 @@ export const container = css`
   margin: 0 auto;
 `;
 
-export { default as GlobalStyle } from './globalStyle';
+export { default as GlobalStyle } from './GlobalStyle';
 export { default as theme } from './theme';
