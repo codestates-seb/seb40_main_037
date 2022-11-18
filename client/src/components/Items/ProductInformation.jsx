@@ -26,13 +26,13 @@ export default function ProductInformation() {
   const [value, setValue] = React.useState(0);
   return (
     <ProductInfoBox>
-      <Rating className="rating-star" value={value.toString()} size="large" defaultValue={3} />
+      <Rating className="rating-star" value={value} size="large" defaultValue={3} />
       <ProductionButton bgColor="pink">복숭아향</ProductionButton>
       <ProductionButton bgColor="red">BITTER</ProductionButton>
       <ProductionButton bgColor="skyblue">4.5도</ProductionButton>
       <Rating
         className="heartIcon"
-        value={value.toString()}
+        value={value}
         max={1}
         icon={<FavoriteIcon fontSize="inherit" />}
         emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
