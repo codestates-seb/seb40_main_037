@@ -29,7 +29,7 @@ public class MixService {
         return mixRepository.save(mix);
     }
 
-    public Mix findMix(long id) {
+    public Mix findMix(Long id) {
         return findVerifiedMix(id);
     }
 
@@ -38,16 +38,16 @@ public class MixService {
         Mix findMix = findVerifiedMix(mix.getId());
 
         Optional.ofNullable(mix.getTitle())
-                .ifPresent(title -> findMix.setTitle(title));
+                .ifPresent(findMix::setTitle);
         Optional.ofNullable(mix.getContent())
-                .ifPresent(content -> findMix.setContent(content));
+                .ifPresent(findMix::setContent);
         Optional.of(mix.getImage())
-                .ifPresent(image -> findMix.setImage(image));
+                .ifPresent(findMix::setImage);
 
         return mixRepository.save(findMix);
     }
 
-    public void deleteMix(long id) {
+    public void deleteMix(Long id) {
         Mix mix = findVerifiedMix(id);
         mixRepository.delete(mix);
     }
@@ -57,7 +57,7 @@ public class MixService {
                 Sort.by("mixId").descending()));
     }
 
-    public Mix findVerifiedMix(long id) {
+    public Mix findVerifiedMix(Long id) {
         Optional<Mix> optionalMix = mixRepository.findById(id);
         return optionalMix.orElseThrow(() ->
                 new BusinessLogicException(ExceptionCode.MIX_NOT_FOUND));
