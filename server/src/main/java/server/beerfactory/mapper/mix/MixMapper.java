@@ -10,10 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface MixMapper {
     Mix mixPostDtoToMix(MixDto.Post requestBody);
-
     Mix mixPatchDtoToMix(MixDto.Patch requestBody);
-
     MixDto.Response mixToMixResponse(Mix mix);
-
-    List<MixDto.Response> mixesToMixResponse(List<Mix> mixes);
+    List<MixDto.Response> mixesToMixResponseDto(List<Mix> mixes);
 }
