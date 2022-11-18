@@ -1,10 +1,8 @@
 package server.beerfactory.entity.beer;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import server.beerfactory.audit.Auditable;
 import server.beerfactory.entity.user.User;
 
 import javax.persistence.*;
@@ -15,7 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
-public class Beer {
+@Builder
+public class Beer extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BEER_ID")
@@ -57,15 +56,24 @@ public class Beer {
     @Column
     private int count;
 
+    @Column
+    private String aroma;
+
+    @Column
+    private int soda;
+
+    @Column
+    private int sweet;
+
+    @Column
+    private int afterTaste;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
 
     @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL)
     private final List<BeerReview> beerReviews = new ArrayList<>();
-
-    @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL)
-    private final List<BeerJoinTag> beerJoinTags = new ArrayList<>();
 
     public enum BeerType {
         ALE("에일"),
@@ -77,11 +85,10 @@ public class Beer {
         SOUR("사워");
 
         @Getter
-        private String type;
+        private final String type;
 
         BeerType(String type) {
             this.type = type;
         }
     }
-
 }
