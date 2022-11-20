@@ -6,7 +6,7 @@ import Items from './pages/Items';
 import { ThemeProvider } from 'styled-components';
 
 import { GlobalStyle, theme } from './styles';
-
+import Mypage from './pages/MyPage';
 
 const queryClient = new QueryClient();
 
@@ -28,10 +28,11 @@ function App() {
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-        <GlobalStyle />
+          <GlobalStyle />
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/items" element={<Items />} />
+            <Route path="/MyPage" element={<Mypage />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

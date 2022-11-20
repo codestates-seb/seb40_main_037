@@ -4,7 +4,15 @@
       "id": 1,
       "name": "홍길동",
       "avatar": "../src/assets/avatar/1.jpg",
-      "comment": "hi"
+      "comment": "hi",
+      "items": [
+        {
+          "id": 1,
+          "name": "Hite",
+          "img": "img"
+        }
+      ],
+      "reviews": []
     }
   ],
   "items": [
