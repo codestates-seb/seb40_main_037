@@ -29,12 +29,12 @@ public class MixReplyDto {
     @AllArgsConstructor
     @Getter
     public static class Patch {
-        private long userId;
+        private long mixReplyId;
         @NotBlank(message = "댓글 내용을 입력해 주세요.")
         private String content;
 
-        public void setUserId(long userId) {
-            this.userId = userId;
+        public void setMixReplyId(long mixReplyId) {
+            this.mixReplyId = mixReplyId;
         }
     }
 
