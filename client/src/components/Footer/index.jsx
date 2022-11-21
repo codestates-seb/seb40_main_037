@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Wrapper, Container, InnerBox, ListWrap, List } from './style';
-import { FOOTER_LIST, SITE_LIST } from '../../constants/footer';
+import { FOOTER_LIST, SITE_LIST } from '../../constants/header_footer';
 
 const { FE_MEMBERS, BE_MEMBERS, FE_TOOLS, BE_TOOLS } = FOOTER_LIST;
 

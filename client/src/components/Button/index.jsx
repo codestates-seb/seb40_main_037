@@ -2,17 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Btn from './style';
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+export const Button = ({
+  primary,
+  backgroundColor,
+  size,
+  label,
+  Selected,
+  color,
+  Choosed,
+  link,
+  ...props
+}) => {
   return (
     <Btn
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={backgroundColor && { backgroundColor }}
+      className={[`${primary}`, `${size}`, `${Choosed}`, `${Selected}`].join(' ')}
+      style={(backgroundColor && { backgroundColor }, color && { color })}
       {...props}
+      value={label}
     >
       {label}
     </Btn>
@@ -20,31 +27,19 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
 };
 
 Button.propTypes = {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary: PropTypes.bool,
-  /**
-   * What background color to use
-   */
+  primary: PropTypes.oneOf(['Normalbutton', 'Linkbutton', 'Mypagebutton', 'Pagingbutton']),
   backgroundColor: PropTypes.string,
-  /**
-   * How large should the button be?
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * Button contents
-   */
+  color: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'header-size']),
   label: PropTypes.string.isRequired,
-  /**
-   * Optional click handler
-   */
   onClick: PropTypes.func,
+  Choosed: PropTypes.oneOf(['Choosed']),
+  Selected: PropTypes.oneOf(['Selected']),
 };
 
 Button.defaultProps = {
+  primary: 'Normalbutton',
   backgroundColor: null,
-  primary: false,
   size: 'medium',
   onClick: undefined,
 };
