@@ -1,6 +1,4 @@
-import MixFoodCard from '../components/MixFoodCard';
-
 const MixDetail = () => {
-  return <MixFoodCard />;
+  return;
 };
 export default MixDetail;
