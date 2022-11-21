@@ -1,20 +1,19 @@
 package server.beerfactory.entity.mix;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import server.beerfactory.entity.beer.Beer;
+import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import server.beerfactory.audit.Auditable;
 import server.beerfactory.entity.user.User;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
-public class MixReply {
+@Builder
+@DynamicInsert
+public class MixReply extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MIX_REPLY_ID")
