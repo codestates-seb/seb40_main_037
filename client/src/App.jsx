@@ -8,7 +8,9 @@ import Intro from './pages/Intro';
 import Main from './pages/Main';
 import Items from './pages/Items';
 import Mypage from './pages/MyPage';
+import MixList from './pages/MixList';
 import MixDetail from './pages/MixDetail';
+import MixCreate from './pages/MixCreate';
 
 const queryClient = new QueryClient();
 
@@ -36,7 +38,9 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route path="/items" element={<Items />} />
             <Route path="/MyPage" element={<Mypage />} />
-            <Route path="/MixDetail" element={<MixDetail />} />
+            <Route path="/MixList" element={<MixList />} />
+            <Route path="/MixDetail/:id" element={<MixDetail />} />
+            <Route path="/Mix/create" element={<MixCreate />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
