@@ -1,0 +1,30 @@
+{
+    "beerbox": [
+        {
+            "id": 1,
+            "title": "혼술이 땡긴다 나라면 이거 먹을듯",
+            "beer": "../src/assets/1.png"
+        },
+        {
+            "id": 2,
+            "title": "애인한테 술 잘사왔다고 칭찬받고 싶다면?",
+            "beer": "../src/assets/1.png"
+        },
+        {
+            "id": 3,
+            "title": "스포츠 경기는 이 맥주와 함께",
+            "beer": "../src/assets/1.png"
+        },
+        {
+            "id": 4,
+            "title": "운영자가 추천하는 이달의 맥주",
+            "beer": "../src/assets/1.png"
+        }
+    ],
+    "content": [
+        {
+            "id": 1,
+            "country": "CAYMAN ISLANDS"
+        }
+    ]
+}
