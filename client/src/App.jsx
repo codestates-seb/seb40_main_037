@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Main from './pages/Main';
-import Items from './pages/Items';
 import { ThemeProvider } from 'styled-components';
 
 import { GlobalStyle, theme } from './styles';
+import Intro from './pages/Intro';
+import Main from './pages/Main';
+import Items from './pages/Items';
 import Mypage from './pages/MyPage';
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ function App() {
         <BrowserRouter>
           <GlobalStyle />
           <Routes>
+            <Route path="/intro" element={<Intro />} />
             <Route path="/" element={<Main />} />
             <Route path="/items" element={<Items />} />
             <Route path="/MyPage" element={<Mypage />} />

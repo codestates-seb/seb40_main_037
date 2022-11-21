@@ -52,6 +52,9 @@ export const ListWrap = styled.ul`
     display: flex;
     flex-direction: row;
     flex: 0;
+    a {
+      margin-right: 10px;
+    }
     li {
       margin-right: 10px;
       line-height: 14px;
