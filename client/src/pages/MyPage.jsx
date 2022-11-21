@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import BeerCard from '../components/Mypage/BeerCards';
 import MyReviewBox from '../components/Mypage/MyReviewBox';
 import Profile from '../components/Mypage/Profile';
 
@@ -14,6 +15,7 @@ const Mypage = () => {
     <Wrapper>
       <Profile />
       <MyReviewBox />
+      <BeerCard />
     </Wrapper>
   );
 };

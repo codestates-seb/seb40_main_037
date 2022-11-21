@@ -8,7 +8,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
 // 기능 컴포넌트
-import '../../styles/muiStyle.css';
+import './itemStyle.css';
 import ProductInformation from './ProductInformation';
 import HeaertVoteButton from './HeaertVoteButton';
 import MyReviewForms from './MyReivewForms';
