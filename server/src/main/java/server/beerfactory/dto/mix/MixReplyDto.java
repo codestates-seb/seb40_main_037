@@ -28,7 +28,7 @@ public class MixReplyDto {
 
     @AllArgsConstructor
     @Getter
-    public static class patch {
+    public static class Patch {
         private long userId;
         @NotBlank(message = "댓글 내용을 입력해 주세요.")
         private String content;
