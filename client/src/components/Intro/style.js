@@ -1,35 +1,46 @@
-import styled, { css } from 'styled-components';
-import { flexCenter } from '../../styles/index';
+import styled from 'styled-components';
+import { blockCenter, flexCenter, flexColumnCenter } from '../../styles/index';
 
-export const Wrapper = styled.footer`
-  height: 80px;
+export const Wrapper = styled.section`
+  width: 100%;
+  height: 80vh;
   background-color: var(--bg);
-  box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05),
-    0 2px 8px hsla(0, 0%, 0%, 0.05);
-  ${flexCenter}
+  ${blockCenter};
+`;
 
-  position: absolute;
+export const AgeQuestion = styled.div`
+  width: 100%;
+  height: 30vh;
+  color: red;
+  font-size: 4vw;
+  ${flexCenter};
+  white-space: nowrap;
+`;
 
-  display: none;
-  @media ${props => props.theme.mobile} {
-    ${flexCenter}
-    position: sticky;
-    bottom: 0px;
-    z-index: 1;
-  }
+export const AgeAnswer = styled.div`
+  width: 100%;
+  height: 30vh;
+  ${flexCenter};
+
+  gap: 10vw;
+`;
+
+export const CautionMent = styled.ul`
+  width: 100%;
+  height: 20vh;
+  ${blockCenter};
+  text-align: center;
+  font-size: 1vw;
+  color: var(--gray);
 
   li {
-    padding: 5px;
-    margin: 10px 0;
-    cursor: pointer;
-    :hover {
-      background: #ddd;
-      border-radius: 5px;
-    }
-    span {
-      margin: 15px;
-      display: block;
-      font-size: 0.85rem;
+    margin-bottom: 5px;
+
+    :first-child {
+      color: red;
+      font-size: 8vw;
+      font-weight: bold;
+      margin: 10px;
     }
   }
 `;

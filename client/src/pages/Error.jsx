@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Introitem from '../components/Intro';
+import Errorpage from '../components/Error';
 import Layout from '../components/Layout';
 
-const Intro = () => {
+const Error = () => {
   return (
     <Layout isHeader={false}>
-      <Introitem />
+      <Errorpage />
     </Layout>
   );
 };
 
-export default Intro;
+export default Error;

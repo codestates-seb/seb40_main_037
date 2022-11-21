@@ -29,6 +29,12 @@ export const flexColumn = css`
   flex-direction: column;
 `;
 
+export const blockCenter = css`
+  display: block;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const container = css`
   max-width: 1264px;
   width: 100%;
