@@ -12,5 +12,5 @@ public interface MixReplyMapper {
     MixReply mixReplyPostDtoToMixReply(MixReplyDto.Post requestBody);
     MixReply mixReplyPatchDtoToMixReply(MixReplyDto.Patch requestBody);
     MixReplyDto.Response mixReplyToMixReplyResponse(MixReply mixReply);
-    List<MixReplyDto.Response> mixReplyToMixReplyResponseDto(List<MixReply> mixReplies);
+    List<MixReplyDto.Response> mixReplyToMixRepliesResponseDto(List<MixReply> mixReplies);
 }
