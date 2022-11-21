@@ -28,12 +28,16 @@ public class MixDto {
     @NoArgsConstructor
     public static class Patch {
 
-        private long id;
+        private long userId;
         @NotBlank(message = "제목을 입력해 주세요.")
         private String title;
         @NotBlank(message = "내용을 입력해 주세요.")
         private String content;
         private String image;
+
+        public void setUserId(long userId) {
+            this.userId = userId;
+        }
 //        private Boolean mix_vote; 좋아요 미설정
     }
 
