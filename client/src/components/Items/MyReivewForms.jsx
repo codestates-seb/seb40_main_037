@@ -49,7 +49,7 @@ export default function MyReviewForms() {
               }}
             />
             <UploadButtons />
-            <div className="commentBox">{user.comment}</div>
+            <input className="commentBox"></input>
           </div>
         );
       })}

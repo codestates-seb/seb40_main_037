@@ -42,6 +42,47 @@ export const FOOTER_LIST = {
   ],
 };
 
+export const Dropbox_item = [
+  { title: 'Log in', detail: 'have account', link: '' },
+  {
+    title: 'Sign up',
+    detail: 'new account',
+    link: '',
+  },
+  { title: 'My page', detail: 'your account', link: '' },
+  {
+    title: 'Beer',
+    detail: 'Beers',
+    link: '',
+  },
+  {
+    title: 'snack',
+    detail: 'snack with',
+    link: '',
+  },
+];
+
+export const Underbox_item = [
+  { title: 'Log in', image: '', link: '' },
+  {
+    title: 'Sign up',
+    image: '',
+    link: '',
+  },
+  { title: 'My page', image: '', link: '' },
+  { title: 'Home', image: '', link: '' },
+  {
+    title: 'Beer',
+    image: 'Beers',
+    link: '',
+  },
+  {
+    title: 'snack',
+    image: '',
+    link: '',
+  },
+];
+
 export const SITE_LIST = [
   { name: 'Git', href: 'https://github.com/codestates-seb/seb40_main_037' },
   {

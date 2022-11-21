@@ -70,6 +70,8 @@ const GlobalStyle = createGlobalStyle`
     --blue: hsl(206,90%,69.5%);
     --gray: hsl(210,8%,45%);
     --lightgray: hsl(210,8%,75%);
+    --buttonblue: hsl(206,100%,52%);
+    
     background-color: var(--bg);
     a, a.logo {
       color: hsl(210deg 8% 35%);

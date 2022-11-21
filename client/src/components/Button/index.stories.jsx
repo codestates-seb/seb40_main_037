@@ -1,28 +1,19 @@
 import React from 'react';
+
 import { Button } from '.';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Example/Button',
   component: Button,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     backgroundColor: { control: 'color' },
   },
 };
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = args => <Button {...args} />;
 
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  primary: true,
-  label: 'Button',
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
+export const Normalbutton = Template.bind({});
+Normalbutton.args = {
   label: 'Button',
 };
 
@@ -36,4 +27,43 @@ export const Small = Template.bind({});
 Small.args = {
   size: 'small',
   label: 'Button',
+};
+
+export const Linkbutton = Template.bind({});
+Linkbutton.args = {
+  primary: 'Linkbutton',
+  label: 'Sorting',
+};
+
+export const Choosed = Template.bind({});
+Choosed.args = {
+  primary: 'Linkbutton',
+  label: 'Sorting',
+  Choosed: 'Choosed',
+};
+
+export const Mypagebutton = Template.bind({});
+Mypagebutton.args = {
+  primary: 'Mypagebutton',
+  label: 'Sorting',
+};
+
+export const MypageSelected = Template.bind({});
+MypageSelected.args = {
+  primary: 'Mypagebutton',
+  label: 'Sorting',
+  Selected: 'Selected',
+};
+
+export const Paging = Template.bind({});
+Paging.args = {
+  primary: 'Pagingbutton',
+  label: 'Sorting',
+};
+
+export const PagingSelected = Template.bind({});
+PagingSelected.args = {
+  primary: 'Pagingbutton',
+  label: 'Sorting',
+  Selected: 'Selected',
 };
