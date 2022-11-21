@@ -1,5 +1,6 @@
 package server.beerfactory.controller.mix;
 
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +20,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/mixes")
 @Validated
+@AllArgsConstructor
 public class MixController {
     private final MixService mixService;
     private final MixMapper mixMapper;
-
-    public MixController(MixService mixService, MixMapper mixMapper) {
-        this.mixService = mixService;
-        this.mixMapper = mixMapper;
-    }
 
 
     @PostMapping
@@ -56,29 +53,29 @@ public class MixController {
     @GetMapping("/{mix-id}")
     public ResponseEntity getMix(@PathVariable("mix-id") Long mixId) {
         Mix mix = mixService.findMix(mixId);
-        
+
         return new ResponseEntity(
                 new SingleResponseDto<>(mixMapper.mixToMixResponse(mix)),
                 HttpStatus.OK
         );
     }
-    
+
     @GetMapping
     public ResponseEntity getMixes(@Positive @RequestBody int page,
                                    @Positive @RequestBody int size) {
         Page<Mix> pageMixes = mixService.findMixes(page - 1, size);
         List<Mix> mixes = pageMixes.getContent();
-        
+
         return new ResponseEntity<>(
                 new MultiResponseDto<>(mixMapper.mixesToMixResponseDto(mixes),
                         pageMixes),
                 HttpStatus.OK);
     }
-    
+
     @DeleteMapping("/{mix-id}")
-    public ResponseEntity deleteMix(@PathVariable("mix-id") Long id) {
+    public ResponseEntity deleteMix(@PathVariable("mix-id") long id) {
         mixService.deleteMix(id);
-        
+
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -1,6 +1,7 @@
 package server.beerfactory.service.mix;
 
 
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -16,12 +17,9 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@AllArgsConstructor
 public class MixReplyService {
     private final MixReplyRepository mixReplyRepository;
-
-    public MixReplyService(MixReplyRepository mixReplyRepository) {
-        this.mixReplyRepository = mixReplyRepository;
-    }
 
 
     public MixReply createMixReply(MixReply mixReply) {
@@ -37,9 +35,16 @@ public class MixReplyService {
         return mixReplyRepository.save(findMixReply);
     }
 
+    public Page<MixReply> findMixReplies(int page, int size) {
+        return mixReplyRepository.findAll(PageRequest.of(page, size,
+                Sort.by("mixReplyId").descending()));
+    }
 
-    public Page<MixReply> findMixReplies(long mixId,int page, int size) {
-        return mixReplyRepository.findByMix_MixId(mixId, PageRequest.of(page, size, Sort.by("mixReplyId").descending()));
+
+    public List<MixReply> findMixReplies(long mixId) {
+        List<MixReply> mixReplies = mixReplyRepository.findAll();
+        mixReplies.removeIf(mixReply -> mixReply.getMix().getId() != mixId);
+        return mixReplies;
     }
 
     public void deleteMixReply(long id) {

@@ -51,7 +51,7 @@ public class MixReplyController {
         );
     }
 
-    @PatchMapping("/{mix-id}/{reply-id}")
+    @PatchMapping("/{reply-id}")
     public ResponseEntity patchMixReply(@PathVariable("mixReply-id") @Positive long id,
                                         @Valid @RequestBody MixReplyDto.Patch requestBody) {
         requestBody.setMixReplyId(id);
@@ -62,22 +62,21 @@ public class MixReplyController {
                 HttpStatus.OK);
     }
 
-    @GetMapping("/{mix-id}/{reply-id}")
-    public ResponseEntity getMixReplies(@PathVariable("mixReply-id") @Positive long id,
-                                        @RequestParam @Positive int page,
-                                        @RequestParam(required = false, defaultValue = "15") @Positive int size) {
-        Page<MixReply> pageMixReplies = mixReplyService.findMixReplies(id,page - 1,size);
-        List<MixReply> replies = pageMixReplies.getContent();
-        List<MixReplyDto.Response> responses = mapper.mixReplyToMixRepliesResponseDto(replies);
+    @GetMapping
+    public ResponseEntity getMixReplies(@Positive @RequestParam(defaultValue = "1")int page,
+                                        @Positive @RequestParam(defaultValue = "15")int size) {
+        Page<MixReply> mixReplyPage = mixReplyService.findMixReplies(page - 1, size);
+        List<MixReply> mixReplies = mixReplyPage.getContent();
 
-        return new ResponseEntity(
-                new MultiResponseDto<>(responses,pageMixReplies),HttpStatus.OK
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(mapper.mixReplyToMixRepliesResponseDto(mixReplies), mixReplyPage),
+                HttpStatus.OK
         );
     }
 
-    @DeleteMapping("/{mix-id}/{reply-id}")
+    @DeleteMapping("/{reply-id}")
     public ResponseEntity deleteMixReply(@PathVariable("mixReply-id") long id) {
-        mixService.deleteMix(id);
+        mixReplyService.deleteMixReply(id);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

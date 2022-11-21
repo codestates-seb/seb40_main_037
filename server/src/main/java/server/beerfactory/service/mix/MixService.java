@@ -1,5 +1,6 @@
 package server.beerfactory.service.mix;
 
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -12,17 +13,13 @@ import server.beerfactory.exception.BusinessLogicException;
 import server.beerfactory.exception.ExceptionCode;
 import server.beerfactory.repository.mix.MixRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
 @Transactional
+@AllArgsConstructor
 public class MixService {
     private final MixRepository mixRepository;
-
-    public MixService(MixRepository mixRepository) {
-        this.mixRepository = mixRepository;
-    }
 
 
     public Mix createMix(Mix mix) {

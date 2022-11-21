@@ -11,8 +11,9 @@ import java.time.LocalDateTime;
 
 public class MixReplyDto {
 
-    @AllArgsConstructor
     @Getter
+    @Setter
+    @AllArgsConstructor
     @NoArgsConstructor
     public static class Post {
 
@@ -26,8 +27,10 @@ public class MixReplyDto {
 
     }
 
-    @AllArgsConstructor
     @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class Patch {
         private long mixReplyId;
         @NotBlank(message = "댓글 내용을 입력해 주세요.")
@@ -38,15 +41,18 @@ public class MixReplyDto {
         }
     }
 
-    @AllArgsConstructor
+
     @Getter
     @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class Response {
         private long userId;
         private String nickName;
         private String content;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
+
     }
 
 
