@@ -26,6 +26,9 @@ public class MixService {
 
 
     public Mix createMix(Mix mix) {
+        mix.setLikeCount(0);
+        mix.setDislikeCount(0);
+
         return mixRepository.save(mix);
     }
 
