@@ -1,6 +1,9 @@
 package server.beerfactory.service.mix;
 
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import server.beerfactory.entity.mix.MixReply;
@@ -34,12 +37,9 @@ public class MixReplyService {
         return mixReplyRepository.save(findMixReply);
     }
 
-    public MixReply findMixReply(long id) {
-        return findVerifiedMixReply(id);
-    }
 
-    public List<MixReply> findMixReplies(long id) {
-        return mixReplyRepository.findAll();
+    public Page<MixReply> findMixReplies(long mixId,int page, int size) {
+        return mixReplyRepository.findByMix_MixId(mixId, PageRequest.of(page, size, Sort.by("mixReplyId").descending()));
     }
 
     public void deleteMixReply(long id) {
