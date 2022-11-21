@@ -7,6 +7,7 @@ import { GlobalStyle, theme } from './styles';
 import Intro from './pages/Intro';
 import Main from './pages/Main';
 import Items from './pages/Items';
+import Mypage from './pages/MyPage';
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ function App() {
             <Route path="/intro" element={<Intro />} />
             <Route path="/" element={<Main />} />
             <Route path="/items" element={<Items />} />
+            <Route path="/MyPage" element={<Mypage />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
