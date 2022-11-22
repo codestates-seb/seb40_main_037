@@ -45,9 +45,9 @@ const Footer = () => {
           </ListWrap>
           <ListWrap className="sns">
             <List>
-              Site design / logo
+              Site design / logo rev 2022.11.11
               <br />
-              rev 2022.11.11
+              Error page background img 작가 dgim-studio 출처 Freepik
             </List>
           </ListWrap>
         </InnerBox>

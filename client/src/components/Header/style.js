@@ -122,13 +122,6 @@ export const UserDropBox = styled.ul`
   margin-left: -50px;
   min-width: 160px;
 
-  ::after {
-    top: -8px;
-    border-bottom: 10px solid #fff;
-  }
-  ::before {
-    top: -9px;
-  }
   li {
     padding: 5px;
     margin: 10px 0;
@@ -149,5 +142,9 @@ export const UserDropBox = styled.ul`
         color: var(--gray);
       }
     }
+  }
+
+  @media ${props => props.theme.mobile} {
+    display: none;
   }
 `;
