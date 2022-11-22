@@ -3,6 +3,7 @@ import { blockCenter, flexCenter, flexColumnCenter } from '../../styles/index';
 
 export const Wrapper = styled.section`
   width: 100%;
+  min-height: 600px;
   height: 80vh;
   background-color: var(--bg);
   ${blockCenter};
@@ -10,7 +11,7 @@ export const Wrapper = styled.section`
 
 export const AgeQuestion = styled.div`
   width: 100%;
-  height: 30vh;
+  height: 30%;
   color: red;
   font-size: 4vw;
   ${flexCenter};
@@ -19,7 +20,7 @@ export const AgeQuestion = styled.div`
 
 export const AgeAnswer = styled.div`
   width: 100%;
-  height: 30vh;
+  height: 30%;
   ${flexCenter};
 
   gap: 10vw;
@@ -27,10 +28,10 @@ export const AgeAnswer = styled.div`
 
 export const CautionMent = styled.ul`
   width: 100%;
-  height: 20vh;
+  height: 30%;
   ${blockCenter};
   text-align: center;
-  font-size: 1vw;
+  font-size: 1rem;
   color: var(--gray);
 
   li {
@@ -38,7 +39,7 @@ export const CautionMent = styled.ul`
 
     :first-child {
       color: red;
-      font-size: 8vw;
+      font-size: 6rem;
       font-weight: bold;
       margin: 10px;
     }

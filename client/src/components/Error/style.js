@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { blockCenter, flexCenter } from '../../styles/index';
+import { flexColumnCenter, flexCenter } from '../../styles/index';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -9,12 +9,31 @@ export const Wrapper = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  ${flexCenter};
-  display: inline-block;
-  font-size: 1vw;
+  ${flexColumnCenter};
+`;
 
-  .Errortitle {
-    font-size: 15vw;
+const ErrorMessage = styled.div`
+  margin-bottom: 15px;
+
+  &.title {
+    font-size: 2rem;
+    margin-bottom: 15px;
     font-weight: bolder;
+    @media ${props => props.theme.mobile} {
+      font-size: 2rem;
+    }
+  }
+
+  &:link {
+    color: violet;
+  }
+
+  a {
+    color: hsl(206deg 100% 40%);
+    &:hover {
+      color: hsl(206deg 100% 52%);
+    }
   }
 `;
+
+export { ErrorMessage };

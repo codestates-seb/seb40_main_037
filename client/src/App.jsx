@@ -39,7 +39,10 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route path="/items" element={<Items />} />
             <Route path="/MyPage" element={<Mypage />} />
-            <Route path="/MixDetail" element={<MixDetail />} />
+            <Route path="/MixList" element={<MixList />} />
+            <Route path="/MixDetail/:id" element={<MixDetail />} />
+            <Route path="/Mix/create" element={<MixCreate />} />
+            <Route path="/error" element={<Error />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
