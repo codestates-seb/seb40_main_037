@@ -50,15 +50,15 @@ public class MixController {
 
     }
 
-//    @GetMapping("/{mix-id}")
-//    public ResponseEntity getMix(@PathVariable("mix-id") long id) {
-//        Mix mix = mixService.findMix(id);
-//
-//        return new ResponseEntity(
-//                new SingleResponseDto<>(mixMapper.mixToMixResponse(mix)),
-//                HttpStatus.OK
-//        );
-//    }
+    @GetMapping("/{mix-id}")
+    public ResponseEntity getMix(@PathVariable("mix-id") long id) {
+        Mix mix = mixService.findMix(id);
+
+        return new ResponseEntity(
+                new SingleResponseDto<>(mixMapper.mixToMixResponse(mix)),
+                HttpStatus.OK
+        );
+    }
 
     @GetMapping
     public ResponseEntity getMixes(@Positive @RequestBody int page,
