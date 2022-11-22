@@ -16,7 +16,9 @@ import MixdummydataDetail from '../../../data/MixdummydataDetail.json';
 import { relTimeFormat } from '../../util/convertor';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-
+import MixDetailReviewForms from './MixDetailReviewForms';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 // const showModalDelete = () => {
 //   setIsModalOpen(true);
 // };
@@ -45,7 +47,12 @@ import ImageListItem from '@mui/material/ImageListItem';
 const par = MixdummydataDetail.card[0];
 console.log(MixdummydataDetail.reviews);
 console.log(par.title);
-
+const onClickUpVote = (
+  <Stack sx={{ width: '100%' }} spacing={2}>
+    <Alert severity="error">This is an error alert — check it out!</Alert>
+  </Stack>
+);
+console.log(onClickUpVote);
 const MixDetailComponents = () => {
   return (
     <Wrapper>
@@ -68,6 +75,8 @@ const MixDetailComponents = () => {
         <MixContent>{par.content}</MixContent>
       </MixContentBox>
       <VoteBox>
+        <UDbutton onClick={() => onClickUpVote}>DOWN</UDbutton>
+        <UDbutton>UP</UDbutton>
         <Vote>추천수 {par.votes}</Vote>
       </VoteBox>
       <ReviewsBox>
@@ -106,6 +115,7 @@ const MixDetailComponents = () => {
           })}
         </ul>
       </ReviewsBox>
+      <MixDetailReviewForms />
     </Wrapper>
   );
 };
