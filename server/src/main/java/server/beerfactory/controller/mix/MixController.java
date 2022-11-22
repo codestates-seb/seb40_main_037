@@ -39,7 +39,7 @@ public class MixController {
     @PatchMapping("/{mix-id}")
     public ResponseEntity patchMix(@PathVariable("mix-id") @Positive long id,
                                    @Valid @RequestBody MixDto.Patch requestBody) {
-        requestBody.setId(id);
+        requestBody.setMixId(id);
         Mix mix = mixMapper.mixPatchDtoToMix(requestBody);
         Mix updatedMix = mixService.updateMix(mix);
         MixDto.Response response = mixMapper.mixToMixResponse(updatedMix);
@@ -50,15 +50,15 @@ public class MixController {
 
     }
 
-    @GetMapping("/{mix-id}")
-    public ResponseEntity getMix(@PathVariable("mix-id") Long mixId) {
-        Mix mix = mixService.findMix(mixId);
-
-        return new ResponseEntity(
-                new SingleResponseDto<>(mixMapper.mixToMixResponse(mix)),
-                HttpStatus.OK
-        );
-    }
+//    @GetMapping("/{mix-id}")
+//    public ResponseEntity getMix(@PathVariable("mix-id") long id) {
+//        Mix mix = mixService.findMix(id);
+//
+//        return new ResponseEntity(
+//                new SingleResponseDto<>(mixMapper.mixToMixResponse(mix)),
+//                HttpStatus.OK
+//        );
+//    }
 
     @GetMapping
     public ResponseEntity getMixes(@Positive @RequestBody int page,

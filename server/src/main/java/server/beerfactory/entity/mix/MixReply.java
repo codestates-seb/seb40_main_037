@@ -9,10 +9,10 @@ import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Builder
-@DynamicInsert
 public class MixReply extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

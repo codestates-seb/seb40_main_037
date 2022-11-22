@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 public class MixDto {
 
     @Getter
-    @Setter
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Post {
@@ -23,7 +22,6 @@ public class MixDto {
     }
 
     @Getter
-    @Setter
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Patch {
@@ -35,6 +33,9 @@ public class MixDto {
         private String content;
         private String image;
 
+        public void setMixId(long id) {
+            this.id = id;
+        }
 //        private Boolean mix_vote; 좋아요 미설정
     }
 
