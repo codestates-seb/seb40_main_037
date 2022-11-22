@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { Wrapper } from './style';
 import { Underbox_item } from '../../constants/header_footer';
 
-const HeaderBottom = () => {
-  return (
+const HeaderBottom = ({ isHeaderBottom }) => {
+  return { isHeaderBottom } ? (
     <Wrapper>
       {Underbox_item.map((items, i) => {
         const { title, image, link } = items;
@@ -18,6 +18,8 @@ const HeaderBottom = () => {
         );
       })}
     </Wrapper>
+  ) : (
+    <></>
   );
 };
 

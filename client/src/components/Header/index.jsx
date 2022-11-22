@@ -8,14 +8,14 @@ import { Dropbox_item } from '../../constants/header_footer';
 import Userimg from '../../assets/User.gif';
 import Hamburger from '../../assets/Hamburger_icon.png';
 
-const Header = () => {
+const Header = ({ isHeader }) => {
   const [isMenuHamburger, setIsMenuHamburger] = useState(false);
 
   const handleToggle = () => {
     setIsMenuHamburger(!isMenuHamburger);
   };
 
-  return (
+  return isHeader ? (
     <Wrapper>
       <Headerbox>
         <UserBox>
@@ -49,6 +49,8 @@ const Header = () => {
         </UserBox>
       </Headerbox>
     </Wrapper>
+  ) : (
+    <></>
   );
 };
 

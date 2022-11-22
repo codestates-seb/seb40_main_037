@@ -4,13 +4,13 @@ import Header from '../Header';
 import HeaderBottom from '../Header-Bottom';
 import { Container } from './style';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, isHeader = true }) => {
   return (
     <>
-      <Header />
+      <Header isHeader={isHeader} />
       <Container>{children}</Container>
       <Footer />
-      <HeaderBottom />
+      <HeaderBottom isHeaderBottom={isHeader} />
     </>
   );
 };
