@@ -8,9 +8,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import SendIcon from '@mui/icons-material/Send';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
@@ -24,14 +21,19 @@ export default function MyReviewBox() {
 
   const ReviewBox = styled.div`
     width: 100%;
-    background-color: red;
   `;
 
   return (
     <ReviewBox>
       <List
         className="myReviewList"
-        sx={{ bgcolor: 'background.paper' }}
+        sx={{
+          bgcolor: 'background.white',
+          margin: '80px auto',
+          border: '1px solid gray',
+          borderRadius: '30px',
+          padding: '20px',
+        }}
         component="nav"
         aria-labelledby="nested-list-subheader"
         subheader={
@@ -42,19 +44,19 @@ export default function MyReviewBox() {
       >
         <ListItemButton>
           <ListItemIcon>
-            <SendIcon />
+            <img className="iconImg" src="../../src/assets/icon/beer.png" />
           </ListItemIcon>
           <ListItemText primary="CASS" />
         </ListItemButton>
         <ListItemButton>
           <ListItemIcon>
-            <DraftsIcon />
+            <img className="iconImg" src="../../src/assets/icon/chicken.png" />
           </ListItemIcon>
-          <ListItemText primary="TERA" />
+          <ListItemText primary="CHICKEN" />
         </ListItemButton>
         <ListItemButton onClick={handleClick}>
           <ListItemIcon>
-            <InboxIcon />
+            <img className="iconImg" src="../../src/assets/icon/beer.png" />
           </ListItemIcon>
           <ListItemText primary="HITE" />
           {open ? <ExpandLess /> : <ExpandMore />}
@@ -65,7 +67,7 @@ export default function MyReviewBox() {
               <ListItemIcon>
                 <StarBorder />
               </ListItemIcon>
-              <ListItemText primary="Starred" />
+              <ListItemText primary="작성한 코멘트 나올예정 / 클릭시 상세 제품페이지로 이동?" />
             </ListItemButton>
           </List>
         </Collapse>

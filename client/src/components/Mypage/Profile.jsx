@@ -4,14 +4,15 @@ import dummy from '../../../data/data.json';
 
 const Header = styled.div`
   width: 100%;
-  background-color: tomato;
   padding: 50px 0;
+  background: rgb(255, 89, 89);
+  background: linear-gradient(90deg, rgba(255, 89, 89, 1) 0%, rgba(255, 171, 0, 1) 100%);
 `;
 
 const UserName = styled.h1`
   text-align: center;
-  color: white;
   font-size: 30px;
+  color: white;
 `;
 
 const ProfileImgBox = styled.div`
@@ -26,11 +27,15 @@ const ProfileImgBox = styled.div`
 `;
 
 const TagBoxs = styled.div`
-  background-color: pink;
   text-align: center;
   width: 70%;
   padding: 20px;
   margin: 0 auto;
+
+  h2 {
+    color: white;
+    font-size: 36px;
+  }
 `;
 const TagButton = styled.button`
   background-color: ${props => props.bgColor};
@@ -51,7 +56,7 @@ function Profile() {
         <img src="../../src/assets/avatar/1.jpg" />
       </ProfileImgBox>
       <TagBoxs>
-        <h2>Selected Tags</h2>
+        <h2>interested Tags</h2>
         <TagButton bgColor="red">SWEET</TagButton>
         <TagButton bgColor="blue">BITTER</TagButton>
         <TagButton bgColor="green">ORANGE</TagButton>
