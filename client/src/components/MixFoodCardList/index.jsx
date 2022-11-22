@@ -13,7 +13,6 @@ import {
 import { Link } from 'react-router-dom';
 import Mixdummydata from '../../../data/Mixdummydata.json';
 import { relTimeFormat } from '../../util/convertor';
-console.log(Mixdummydata.card.title);
 
 const MixFoodCardList = () => {
   return (
