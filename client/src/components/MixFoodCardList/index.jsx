@@ -4,14 +4,13 @@ import {
   CardIDImage,
   CardIDTitle,
   CardImage,
-  CardTag,
   CardTitle,
   CardVote,
   CardBottom,
   CardImageBox,
   CardTime,
 } from './style';
-
+import { Link } from 'react-router-dom';
 import Mixdummydata from '../../../data/Mixdummydata.json';
 import { relTimeFormat } from '../../util/convertor';
 console.log(Mixdummydata.card.title);
@@ -30,15 +29,17 @@ const MixFoodCardList = () => {
                   </CardImageBox>
                   <CardBottom>
                     <CardIDImage src={card.avatar} alt="임시 사진입니다." />
-                    <CardIDTitle>{card.nickname}</CardIDTitle>
-                    <CardTag>null</CardTag>
+                    <Link to="/mypage">
+                      <CardIDTitle>{card.nickname}</CardIDTitle>
+                    </Link>
+                    <CardVote>추천 {card.votes}</CardVote>
                   </CardBottom>
                   <CardBottom>
-                    <CardTitle>
-                      {' '}
-                      {card.title && card.title.replace(/"/g, '').replace(/<[^>]*>?/g, '')}
-                    </CardTitle>
-                    <CardVote>추천 {card.votes}</CardVote>
+                    <Link to="/">
+                      <CardTitle>
+                        {card.title && card.title.replace(/"/g, '').replace(/<[^>]*>?/g, '')}
+                      </CardTitle>
+                    </Link>
                     <CardTime>
                       {card.modified !== null ? (
                         <h1>{relTimeFormat(card.modified)} 수정됨</h1>

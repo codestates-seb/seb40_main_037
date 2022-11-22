@@ -36,8 +36,8 @@ export const CardBottom = styled.div`
   flex-grow: 1;
   margin-top: 5px;
   padding-top: 15px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 export const CardIDImage = styled.img`
   height: 17px;
@@ -50,15 +50,11 @@ export const CardIDTitle = styled.div`
   display: inline-block;
   margin-right: 1rem;
 `;
-export const CardTag = styled.button`
-  float: right;
-`;
 export const CardVote = styled.div`
   float: right;
   color: white;
-  display: inline-block;
-  padding-top: 30px;
 `;
+
 export const CardTitle = styled.div`
   color: white;
   flex-wrap: wrap;
@@ -66,9 +62,12 @@ export const CardTitle = styled.div`
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  font-size: large;
 `;
 export const CardTime = styled.div`
   color: white;
-  float: left;
+  float: right;
   padding-top: 30px;
+  font-size: small;
+  padding-right: 5px;
 `;
