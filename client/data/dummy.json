@@ -1,30 +1,104 @@
 {
-    "beerbox": [
+    "beerlist": [
         {
             "id": 1,
-            "title": "혼술이 땡긴다 나라면 이거 먹을듯",
-            "beer": "../src/assets/1.png"
+            "title": "Hand & Malt",
+            "brand": "Cass",
+            "beer": "../../assets/beer/beer1.png",
+            "rating": 72,
+            "sweet": 66,
+            "bitter": 33,
+            "lv": 33
         },
         {
             "id": 2,
-            "title": "애인한테 술 잘사왔다고 칭찬받고 싶다면?",
-            "beer": "../src/assets/1.png"
+            "title": "Hand & Malt",
+            "brand": "Asahi",
+            "beer": "../../assets/beer/beer1.png",
+            "rating": 88,
+            "sweet": 33,
+            "bitter": 100,
+            "lv": 66
         },
         {
             "id": 3,
-            "title": "스포츠 경기는 이 맥주와 함께",
-            "beer": "../src/assets/1.png"
+            "title": "Hand & Malt",
+            "brand": "Heineken",
+            "beer": "../../assets/beer/beer1.png",
+            "rating": 100,
+            "sweet": 0,
+            "bitter": 100,
+            "lv": 33
         },
         {
             "id": 4,
-            "title": "운영자가 추천하는 이달의 맥주",
-            "beer": "../src/assets/1.png"
-        }
-    ],
-    "content": [
+            "title": "Hand & Malt",
+            "brand": "Corona",
+            "beer": "../../assets/beer/beer1.png",
+            "rating": 56,
+            "sweet": 33,
+            "bitter": 66,
+            "lv": 33
+        },
         {
-            "id": 1,
-            "country": "CAYMAN ISLANDS"
+            "id": 5,
+            "title": "Hand & Malt",
+            "brand": "Blanc",
+            "beer": "../../assets/beer/beer1.png",
+            "rating": 100,
+            "sweet": 66,
+            "bitter": 66,
+            "lv": 66
+        },
+        {
+            "id": 6,
+            "title": "Hand & Malt",
+            "brand": "Sapporo",
+            "beer": "../../assets/beer/beer1.png",
+            "rating": 88,
+            "sweet": 33,
+            "bitter": 33,
+            "lv": 66
+        },
+        {
+            "id": 7,
+            "title": "Hand & Malt",
+            "brand": "Paulaner",
+            "beer": "../../assets/beer/beer1.png",
+            "rating": 72,
+            "sweet": 66,
+            "bitter": 0,
+            "lv": 33
+        },
+        {
+            "id": 8,
+            "title": "Hand & Malt",
+            "brand": "Beck's",
+            "beer": "../../assets/beer/beer1.png",
+            "rating": 72,
+            "sweet": 33,
+            "bitter": 66,
+            "lv": 33
+        },
+        {
+            "id": 9,
+            "title": "Hand & Malt",
+            "brand": "Tsingtao",
+            "beer": "../../assets/beer/beer1.png",
+            "rating": 72,
+            "sweet": 33,
+            "bitter": 66,
+            "lv": 66
+        },
+        {
+            "id": 10,
+            "title": "Hand & Malt",
+            "brand": "Terra",
+            "beer": "../../assets/beer/beer1.png",
+            "rating": 58,
+            "sweet": 33,
+            "bitter": 66,
+            "lv": 66
         }
     ]
 }
