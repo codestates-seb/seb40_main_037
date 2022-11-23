@@ -12,7 +12,32 @@
           "img": "img"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": 1,
+          "type": "beer",
+          "name": "HITE",
+          "rating": 4,
+          "comment": "bad",
+          "photo": ""
+        },
+        {
+          "id": 2,
+          "type": "food",
+          "name": "CHICKEN",
+          "rating": 4,
+          "comment": "GOOD",
+          "photo": ""
+        },
+        {
+          "id": 3,
+          "type": "beer",
+          "name": "CASS",
+          "rating": 4,
+          "comment": "맛있어요 ~~",
+          "photo": ""
+        }
+      ]
     }
   ],
   "items": [

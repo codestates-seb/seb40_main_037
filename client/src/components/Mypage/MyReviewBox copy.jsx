@@ -44,43 +44,43 @@ export default function MyReviewBox() {
           </ListSubheader>
         }
       >
-        {dummy.users.map(review => {
-          return (
-            <div>
-              {review.reviews &&
-                review.reviews.map(item => (
-                  <div key={item.id}>
-                    <ListItemButton onClick={handleClick}>
+        <ul>
+          {dummy.reviews.map(review => {
+            return (
+              <div>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <img className="iconImg" src="../../src/assets/icon/beer.png" />
+                  </ListItemIcon>
+                  <ListItemText primary="CASS" />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <img className="iconImg" src="../../src/assets/icon/chicken.png" />
+                  </ListItemIcon>
+                  <ListItemText primary="CHICKEN" />
+                </ListItemButton>
+                <ListItemButton onClick={handleClick}>
+                  <ListItemIcon>
+                    <img className="iconImg" src="../../src/assets/icon/beer.png" />
+                  </ListItemIcon>
+                  <ListItemText primary="HITE" />
+                  {open ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    <ListItemButton sx={{ pl: 4 }}>
                       <ListItemIcon>
-                        {item.type === 'beer' ? (
-                          <img className="iconImg" src="../../src/assets/icon/beer.png" />
-                        ) : (
-                          <img className="iconImg" src="../../src/assets/icon/chicken.png" />
-                        )}
+                        <StarBorder />
                       </ListItemIcon>
-                      <ListItemText primary={item.name} />
-                      {open ? <ExpandMore /> : <ExpandLess />}
+                      <ListItemText primary="작성한 코멘트 나올예정 / 클릭시 상세 제품페이지로 이동?" />
                     </ListItemButton>
-                    <Collapse
-                      in={open}
-                      timeout="80000"
-                      easing="enter?: string, exit?: string"
-                      unmountOnExit
-                    >
-                      <List component="div" disablePadding>
-                        <ListItemButton sx={{ pl: 4 }}>
-                          <ListItemIcon>
-                            <StarBorder />
-                          </ListItemIcon>
-                          <ListItemText primary={item.comment} />
-                        </ListItemButton>
-                      </List>
-                    </Collapse>
-                  </div>
-                ))}
-            </div>
-          );
-        })}
+                  </List>
+                </Collapse>
+              </div>
+            );
+          })}
+        </ul>
       </List>
     </ReviewBox>
   );
