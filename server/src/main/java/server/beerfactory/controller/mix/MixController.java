@@ -2,6 +2,9 @@ package server.beerfactory.controller.mix;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -39,7 +42,7 @@ public class MixController {
     @PatchMapping("/{mix-id}")
     public ResponseEntity patchMix(@PathVariable("mix-id") @Positive long id,
                                    @Valid @RequestBody MixDto.Patch requestBody) {
-        requestBody.setMixId(id);
+        requestBody.setId(id);
         Mix mix = mixMapper.mixPatchDtoToMix(requestBody);
         Mix updatedMix = mixService.updateMix(mix);
         MixDto.Response response = mixMapper.mixToMixResponse(updatedMix);
@@ -61,10 +64,10 @@ public class MixController {
     }
 
     @GetMapping
-    public ResponseEntity getMixes(@Positive @RequestBody int page,
-                                   @Positive @RequestBody int size) {
-        Page<Mix> pageMixes = mixService.findMixes(page - 1, size);
+    public ResponseEntity getMixes(@PageableDefault(size = 20, sort = "createdAt",direction = Sort.Direction.DESC)Pageable pageable) {
+        Page<Mix> pageMixes = mixService.findMixes(pageable);
         List<Mix> mixes = pageMixes.getContent();
+        List<MixDto.Response> responses = mixMapper.mixesToMixResponseDto(mixes);
 
         return new ResponseEntity<>(
                 new MultiResponseDto<>(mixMapper.mixesToMixResponseDto(mixes),

@@ -8,7 +8,8 @@ import server.beerfactory.entity.user.User;
 
 
 import javax.persistence.*;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -33,14 +34,14 @@ public class Mix extends Auditable {
     private String content;
 
     @Column
-    private Integer likeCount;
-
-    @Column
-    private Integer dislikeCount;
+    private int likeCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
+
+    @OneToMany(mappedBy = "mix")
+    private final List<MixReply> mixReplies = new ArrayList<>();
 
 
 }

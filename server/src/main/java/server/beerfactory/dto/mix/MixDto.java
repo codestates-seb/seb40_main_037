@@ -22,6 +22,7 @@ public class MixDto {
     }
 
     @Getter
+    @Setter
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Patch {
@@ -32,10 +33,9 @@ public class MixDto {
         @NotBlank(message = "내용을 입력해 주세요.")
         private String content;
         private String image;
+        private int likeCount;
+        private int dislikeCount;
 
-        public void setMixId(long id) {
-            this.id = id;
-        }
 //        private Boolean mix_vote; 좋아요 미설정
     }
 
@@ -48,8 +48,8 @@ public class MixDto {
         private String title;
         private String content;
         private String image;
-        private Integer likeCount;
-        private Integer dislikeCount;
+        private int likeCount;
+        private int dislikeCount;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
 //        private Boolean mix_vote; 좋아요 미설정

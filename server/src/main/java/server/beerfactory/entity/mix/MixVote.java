@@ -3,6 +3,7 @@ package server.beerfactory.entity.mix;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import server.beerfactory.entity.user.User;
 
 import javax.persistence.*;
 
@@ -16,13 +17,9 @@ public class MixVote {
     @Column(name = "MIX_VOTE_ID")
     private Long id;
 
-    // 추천 여부
-    @Column
-    private boolean voteLike;
-
-    // 비추천 여부
-    @Column
-    private boolean voteDislike;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MIX_ID")
