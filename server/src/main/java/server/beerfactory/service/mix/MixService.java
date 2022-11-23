@@ -2,9 +2,7 @@ package server.beerfactory.service.mix;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -32,8 +30,8 @@ public class MixService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
-    public Mix updateMix(Mix mix) {
-        Mix findMix = findVerifiedMix(mix.getId());
+    public Mix updateMix(Long mixId, Mix mix) {
+        Mix findMix = findVerifiedMix(mixId);
 
         Optional.ofNullable(mix.getTitle())
                 .ifPresent(findMix::setTitle);
@@ -41,8 +39,6 @@ public class MixService {
                 .ifPresent(findMix::setContent);
         Optional.of(mix.getImage())
                 .ifPresent(findMix::setImage);
-        Optional.of(mix.getLikeCount())
-                .ifPresent(findMix::setLikeCount);
 
         return mixRepository.save(findMix);
     }

@@ -44,7 +44,7 @@ public class MixController {
                                    @Valid @RequestBody MixDto.Patch requestBody) {
         requestBody.setId(id);
         Mix mix = mixMapper.mixPatchDtoToMix(requestBody);
-        Mix updatedMix = mixService.updateMix(mix);
+        Mix updatedMix = mixService.updateMix(id, mix);
         MixDto.Response response = mixMapper.mixToMixResponse(updatedMix);
 
         return new ResponseEntity<>(
