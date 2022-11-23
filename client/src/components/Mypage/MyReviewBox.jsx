@@ -61,12 +61,7 @@ export default function MyReviewBox() {
                       <ListItemText primary={item.name} />
                       {open ? <ExpandMore /> : <ExpandLess />}
                     </ListItemButton>
-                    <Collapse
-                      in={open}
-                      timeout="80000"
-                      easing="enter?: string, exit?: string"
-                      unmountOnExit
-                    >
+                    <Collapse in={open} timeout="auto" unmountOnEnter={true}>
                       <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                           <ListItemIcon>

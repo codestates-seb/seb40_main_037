@@ -6,11 +6,12 @@ import subBanner from '../../assets/subpage/subbanner1.png';
 import Rating from '@mui/material/Rating';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ToggleButton from '@mui/material/ToggleButton';
 
 // 기능 컴포넌트
 import './itemStyle.css';
 import ProductInformation from './ProductInformation';
-import HeaertVoteButton from './HeaertVoteButton';
 import MyReviewForms from './MyReivewForms';
 import FiliterButtons from './FilterButtons';
 // 스타일 컴포넌트
@@ -62,6 +63,7 @@ const ReviewsBox = styled.div`
 
 function Item() {
   const [value, setValue] = useState(3);
+  const [selected, setSelected] = React.useState(false);
 
   return (
     <Wrapper>
@@ -79,7 +81,19 @@ function Item() {
                 </div>
                 <Rating className="rating-star" value={review.value} size="large" readOnly />
                 <p>{review.createdAt}</p>
-                <HeaertVoteButton />
+                <ToggleButton
+                  key={review.id}
+                  className="goodVoteButton"
+                  value="check"
+                  color="error"
+                  selected={selected}
+                  onChange={() => {
+                    setSelected(!selected);
+                  }}
+                >
+                  <FavoriteIcon />
+                  <h2>{review.good}</h2>
+                </ToggleButton>
                 <ImageList
                   sx={{ width: 500, height: 500 }}
                   cols={5}
