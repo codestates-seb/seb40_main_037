@@ -1,8 +1,6 @@
 package server.beerfactory.entity.mix;
 
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.DynamicInsert;
 import server.beerfactory.audit.Auditable;
 import server.beerfactory.entity.user.User;
 
@@ -35,6 +33,10 @@ public class Mix extends Auditable {
 
     @Column
     private int likeCount;
+
+    public void setVoteCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
