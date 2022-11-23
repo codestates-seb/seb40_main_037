@@ -1,8 +1,6 @@
 package server.beerfactory.entity.mix;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import server.beerfactory.entity.user.User;
 
 import javax.persistence.*;
@@ -11,6 +9,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 @Entity
+@Builder
 public class MixVote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +23,9 @@ public class MixVote {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MIX_ID")
     private Mix mix;
+
+    @Column
+    private boolean vote;
+
+
 }
