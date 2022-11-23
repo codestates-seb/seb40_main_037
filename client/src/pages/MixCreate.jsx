@@ -1,4 +1,11 @@
+import MixCreateBox from '../components/MixCreate/MixCreatebox';
+import Layout from '../components/Layout';
+
 const MixCreate = () => {
-  return <div>글작성 페이지 입니다.</div>;
+  return (
+    <Layout>
+      <MixCreateBox></MixCreateBox>
+    </Layout>
+  );
 };
 export default MixCreate;
