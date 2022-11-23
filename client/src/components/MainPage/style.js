@@ -14,69 +14,37 @@ export const Banner = styled.div`
 `
 
 export const BeerBox = styled.div`
-    width: 90%;    
+    width: 100%;    
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     margin: 0 auto;
     margin-top: 50px;
-    div {
-        width: 50%;
-        height: 250px;
-        div {
-            width: 50%;
-            text-align: left;
-            float: left;
-            span {
-                font-size: 26px;
-            }       
-            div {
-                width: 100%;
-                height: 50px;                
-                border: 1px solid black;
-                text-align: center;
-                background-color: hsl(205, 46%, 92%);
-                border: none;
-                button {
-                    float: left;
-                    width: 25%;
-                    height: 30px;
-                    line-height: 30px;
-                    margin: 10px;
-                    border-radius: 15px;
-                }
-            }            
-        }        
+    .title {
+        height: 60px;
+        line-height: 60px;
+        text-align: left;
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .title_info {
+        height: 60px;
+        line-height: 60px;
+        text-align: left;
+        margin-left: 0.7rem;
+        color: #c0c0c0
     }
 `
 
-export const BeerTmi = styled.div`
-    width: 90%;
-    height: 200px;
-    background-color: hsl(205, 47%, 42%);
-    margin: 0 auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    div {
-        height: 200px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    span {
-        text-align: center;
-        line-height: 90px;
-        &.top_text {
-            font-size: 80px;
-        }
-        &.bottom_text {
-            font-size: 30px;
-        }
-    }
+export const CardBox = styled.div`
+    width: 100%;
+    height: 450px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `
 
 export const BeerContent = styled.div`
-    width: 90%;
+    width: 100%;
     height: 300px;    
     background-color: rgba(255, 255, 255, 0.2);
     margin: 0 auto;
@@ -110,4 +78,13 @@ export const BeerContent = styled.div`
             }            
         }
     }
+`
+
+export const ProgressBarBox = styled.div`
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;;
+    align-items: center;
+    margin: 0 auto;
 `

@@ -2,6 +2,7 @@ import MixFoodCardList from '../components/MixFoodCardList';
 import ListdummyImg from '../assets/ListdummyImg.png';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -14,7 +15,10 @@ const Banner = styled.div`
   background-size: 100% 100%;
 `;
 const FoodAndWrite = styled.div`
-  padding: 40px;
+  padding-top: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+  padding-left: 20px;
 `;
 const Food = styled.div`
   font-size: x-large;
@@ -24,11 +28,10 @@ const Food = styled.div`
 const WriteFood = styled.button`
   width: 75px;
   height: 25px;
-  background: gray;
-  color: white;
   float: right;
   border-radius: 5px;
 `;
+
 const MixList = () => {
   return (
     <Layout>
@@ -36,7 +39,9 @@ const MixList = () => {
         <Banner />
         <FoodAndWrite>
           <Food>Recomened Food</Food>
-          <WriteFood>글 작성</WriteFood>
+          <WriteFood>
+            <Link to={`/MixCreate`}>글 작성</Link>
+          </WriteFood>
         </FoodAndWrite>
         <MixFoodCardList />
       </Wrapper>
