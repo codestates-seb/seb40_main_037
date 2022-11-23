@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import dummy from "../../../data/dummy.json";
 
-function StarRate() {
-    const AVR_RATE = 58;
+function StarRate() {    
+    const AVR_RATE = 72;
     const STAR_IDX_ARR = ['first', 'second', 'third', 'fourth', 'last'];
     const [ratesResArr, setRatesResArr] = useState([0, 0, 0, 0, 0]);
     const calcStarRates = () => {

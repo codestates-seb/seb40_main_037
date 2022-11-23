@@ -4,34 +4,41 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import StarRate from './StarRate';
 import ProgressBar from './ProgressBar';
-import { ProgressBarBox } from './style';
+import { Wrapper, ProgressBarBox } from './style';
 import Beer1 from '../../assets/beer/beer1.png';
 import dummy from "../../../data/dummy.json";
-
 
 
 export default function TrandingBeer() {
 
   return (
-    <Card sx={{ maxWidth: 300, borderRadius: 10 }}>
-      <CardHeader
-        title="Hand & Malt"
-        subheader="브랜드"
-      />
-      <CardMedia
-        component="img"
-        height="250"
-        alt="Beer1"
-        img src={Beer1}
-      />
-      <div>
+    <Wrapper>
+      {dummy.beerlist.map((beerlist) => (      
+      <Card sx={{
+        maxWidth: 300,
+        borderRadius: 10,
+        marginBottom: 5,
+        marginRight: 2,
+        boxShadow: '2px 4px 4px rgba(0, 0, 0, 0.25)',
+        background: "linear-gradient(#ffecd2, #fcb69f);"
+        }}>
+        <CardHeader
+          title={beerlist.title}
+          subheader={beerlist.brand}
+        />
+        <CardMedia
+          component="img"
+          height="250"
+          alt="Beer1"
+          img src={Beer1}
+          style={{borderRadius: 125}}
+        />
         <StarRate />
-      </div>
-      <ProgressBarBox>
-        <ProgressBar />
-        <ProgressBar />
-        <ProgressBar />
-      </ProgressBarBox>
-    </Card>
+        <ProgressBarBox>
+          <ProgressBar />
+        </ProgressBarBox>
+      </Card>
+      ))};
+    </Wrapper>    
   );
 }
