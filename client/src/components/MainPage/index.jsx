@@ -3,7 +3,9 @@ import { Container, Banner, BeerBox, CardBox, BeerContent } from './style';
 import "../../styles/globalStyle";
 
 import TrandingBeer from "./TrandingBeer";
+import dummy from "../../../data/dummy.json";
 import MixFoodCardList from '../MixFoodCardList';
+
 
 
 const MainPage = () => {
@@ -18,16 +20,11 @@ const MainPage = () => {
                 <div className='title_info'>LOREM IPU DIMAI AMDHAI AMIDIADMID</div>
                 <CardBox>
                     <TrandingBeer />
-                    <TrandingBeer />
-                    <TrandingBeer />
-                    <TrandingBeer />
-                    <TrandingBeer />
                 </CardBox>
             </BeerBox>
 
             {/* Content */}
-            <BeerContent>                
-                <MixFoodCardList />
+            <BeerContent>
             </BeerContent>
         </Container>
     </>
