@@ -5,7 +5,7 @@ import { Wrapper } from './style';
 import { Underbox_item } from '../../constants/header_footer';
 
 const HeaderBottom = ({ isHeaderBottom }) => {
-  return { isHeaderBottom } ? (
+  return isHeaderBottom ? (
     <Wrapper>
       {Underbox_item.map((items, i) => {
         const { title, image, link } = items;

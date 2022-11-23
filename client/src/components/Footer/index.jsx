@@ -47,7 +47,7 @@ const Footer = () => {
             <List>
               Site design / logo rev 2022.11.11
               <br />
-              Error page background img 작가 dgim-studio 출처 Freepik
+              Error/ Login/ Signup img 작가 dgim-studio 출처 Freepik
             </List>
           </ListWrap>
         </InnerBox>

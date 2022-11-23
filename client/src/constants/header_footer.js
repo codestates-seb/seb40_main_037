@@ -43,11 +43,11 @@ export const FOOTER_LIST = {
 };
 
 export const Dropbox_item = [
-  { title: 'Log in', detail: 'have account', link: '' },
+  { title: 'Log in', detail: 'have account', link: '/Login' },
   {
     title: 'Sign up',
     detail: 'new account',
-    link: '',
+    link: '/join',
   },
   { title: 'My page', detail: 'your account', link: '' },
   { title: 'Log out', detail: 'Log off from account', link: '' },
@@ -64,15 +64,15 @@ export const Dropbox_item = [
 ];
 
 export const Underbox_item = [
-  { title: 'Log in', image: '', link: '' },
+  { title: 'Log in', image: '', link: '/Login' },
   {
     title: 'Sign up',
     image: '',
-    link: '',
+    link: '/join',
   },
   { title: 'My page', image: '', link: '' },
   { title: 'Log out', image: '', link: '' },
-  { title: 'Home', image: '', link: '' },
+  { title: 'Home', image: '', link: '/' },
   {
     title: 'Beer',
     image: 'Beers',
@@ -89,6 +89,6 @@ export const SITE_LIST = [
   { name: 'Git', href: 'https://github.com/codestates-seb/seb40_main_037' },
   {
     name: 'Notion',
-    href: 'https://www.notion.so/codestates/d959f0476eed4949aae79545297f90f2?p=562bf7a19782479da1173bc265e7d28f&pm=s',
+    href: 'https://www.notion.so/codestates/d959f0476eed4949aae79545297f90f2',
   },
 ];
