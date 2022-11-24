@@ -29,3 +29,8 @@
 .goodVoteButton svg {
   aria-pressed: red;
 }
+
+/* 상세 페이지 프리뷰 이미지 박스*/
+.uploadButtons {
+  margin-bottom: 50px;
+}

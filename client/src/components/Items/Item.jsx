@@ -62,7 +62,6 @@ const ReviewsBox = styled.div`
 `;
 
 function Item() {
-  const [value, setValue] = useState(3);
   const [selected, setSelected] = React.useState(false);
 
   return (
