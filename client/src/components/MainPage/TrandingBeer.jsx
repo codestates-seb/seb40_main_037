@@ -30,7 +30,7 @@ export default function TrandingBeer() {
           component="img"
           height="250"
           alt="Beer1"
-          img src={Beer1}
+          src={beerlist.img}
           style={{borderRadius: 125}}
         />
         <StarRate />
