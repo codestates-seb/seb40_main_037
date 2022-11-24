@@ -4,6 +4,7 @@ package server.beerfactory.service.mix;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,6 +43,7 @@ public class MixReplyService {
                 Sort.by("mixReplyId").descending()));
     }
 
+
     public List<MixReply> findMixReplies(long id) {
         List<MixReply> mixReplies = mixReplyRepository.findAll();
         mixReplies.removeIf(mixReply -> mixReply.getMix().getId() != id);
@@ -53,9 +55,13 @@ public class MixReplyService {
         mixReplyRepository.delete(findMixReply);
     }
 
+    public Page<MixReply> findMixReplies(Pageable pageable) {
+        return mixReplyRepository.findAll(pageable);
+    }
+
     public MixReply findVerifiedMixReply(long id) {
         Optional<MixReply> optionalMixReply = mixReplyRepository.findById(id);
         return optionalMixReply.orElseThrow(() ->
-                new BusinessLogicException(ExceptionCode.MIX_REPLY_NOT_FOUND));
+                new BusinessLogicException(ExceptionCode.MIX_NOT_FOUND));
     }
 }

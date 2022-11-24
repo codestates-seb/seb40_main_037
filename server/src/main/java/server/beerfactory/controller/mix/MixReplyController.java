@@ -2,6 +2,9 @@ package server.beerfactory.controller.mix;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -63,15 +66,15 @@ public class MixReplyController {
     }
 
     @GetMapping
-    public ResponseEntity getMixReplies(@Positive @RequestParam(defaultValue = "1")int page,
-                                        @Positive @RequestParam(defaultValue = "15")int size) {
-        Page<MixReply> mixReplyPage = mixReplyService.findMixReplies(page - 1, size);
-        List<MixReply> mixReplies = mixReplyPage.getContent();
+    public ResponseEntity getMixReplies(@PageableDefault(size = 20, sort = "id",direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<MixReply> pageMixReply = mixReplyService.findMixReplies(pageable);
+        List<MixReply> mixReplies = pageMixReply.getContent();
+        List<MixReplyDto.Response> responses = mapper.mixReplyToMixRepliesResponseDto(mixReplies);
 
         return new ResponseEntity<>(
-                new MultiResponseDto<>(mapper.mixReplyToMixRepliesResponseDto(mixReplies), mixReplyPage),
-                HttpStatus.OK
-        );
+                new MultiResponseDto<>(mapper.mixReplyToMixRepliesResponseDto(mixReplies),
+                        pageMixReply),
+                HttpStatus.OK);
     }
 
     @DeleteMapping("/{reply-id}")

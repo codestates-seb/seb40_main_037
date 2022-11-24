@@ -64,7 +64,7 @@ public class MixController {
     }
 
     @GetMapping
-    public ResponseEntity getMixes(@PageableDefault(size = 20, sort = "createdAt",direction = Sort.Direction.DESC)Pageable pageable) {
+    public ResponseEntity getMixes(@PageableDefault(size = 20, sort = "id",direction = Sort.Direction.DESC)Pageable pageable) {
         Page<Mix> pageMixes = mixService.findMixes(pageable);
         List<Mix> mixes = pageMixes.getContent();
         List<MixDto.Response> responses = mixMapper.mixesToMixResponseDto(mixes);
