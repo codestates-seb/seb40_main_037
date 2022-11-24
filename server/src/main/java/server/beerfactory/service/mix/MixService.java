@@ -30,15 +30,13 @@ public class MixService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
-    public Mix updateMix(Long mixId, Mix mix) {
-        Mix findMix = findVerifiedMix(mixId);
+    public Mix updateMix(Mix mix) {
+        Mix findMix = findVerifiedMix(mix.getId());
 
-        Optional.ofNullable(mix.getTitle())
-                .ifPresent(findMix::setTitle);
-        Optional.ofNullable(mix.getContent())
-                .ifPresent(findMix::setContent);
-        Optional.of(mix.getImage())
-                .ifPresent(findMix::setImage);
+        findMix.setTitle(mix.getTitle());
+        findMix.setContent(mix.getContent());
+        findMix.setImage(mix.getImage());
+        findMix.setLikeCount(mix.getLikeCount());
 
         return mixRepository.save(findMix);
     }

@@ -32,12 +32,12 @@ public class MixReplyDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Patch {
-        private long mixReplyId;
+        private long id;
         @NotBlank(message = "댓글 내용을 입력해 주세요.")
         private String content;
 
-        public void setMixReplyId(long mixReplyId) {
-            this.mixReplyId = mixReplyId;
+        public void setMixReplyId(long id) {
+            this.id = id;
         }
     }
 
@@ -47,7 +47,8 @@ public class MixReplyDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Response {
-        private long userId;
+        private long id;
+        private Long userId;
         private String nickName;
         private String content;
         private LocalDateTime createdAt;

@@ -42,13 +42,12 @@ public class MixController {
     @PatchMapping("/{mix-id}")
     public ResponseEntity patchMix(@PathVariable("mix-id") @Positive long id,
                                    @Valid @RequestBody MixDto.Patch requestBody) {
-        requestBody.setId(id);
-        Mix mix = mixMapper.mixPatchDtoToMix(requestBody);
-        Mix updatedMix = mixService.updateMix(id, mix);
-        MixDto.Response response = mixMapper.mixToMixResponse(updatedMix);
+        requestBody.setMix(id);
+        Mix  mix = mixMapper.mixPatchDtoToMix(requestBody);
+        Mix updateMix = mixService.updateMix(mixMapper.mixPatchDtoToMix(requestBody));
 
         return new ResponseEntity<>(
-                new SingleResponseDto<>(response),HttpStatus.OK
+                new SingleResponseDto<>(mixMapper.mixToMixResponse(updateMix)), HttpStatus.OK
         );
 
     }
@@ -64,7 +63,7 @@ public class MixController {
     }
 
     @GetMapping
-    public ResponseEntity getMixes(@PageableDefault(size = 20, sort = "id",direction = Sort.Direction.DESC)Pageable pageable) {
+    public ResponseEntity getMixes(@PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<Mix> pageMixes = mixService.findMixes(pageable);
         List<Mix> mixes = pageMixes.getContent();
         List<MixDto.Response> responses = mixMapper.mixesToMixResponseDto(mixes);

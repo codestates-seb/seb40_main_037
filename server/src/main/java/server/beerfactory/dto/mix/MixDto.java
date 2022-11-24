@@ -35,6 +35,10 @@ public class MixDto {
         private String image;
         private int likeCount;
 
+        public void setMix(long id) {
+            this.id = id;
+        }
+
 //        private Boolean mix_vote; 좋아요 미설정
     }
 
