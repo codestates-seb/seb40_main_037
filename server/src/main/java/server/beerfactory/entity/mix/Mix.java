@@ -3,7 +3,6 @@ package server.beerfactory.entity.mix;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import server.beerfactory.entity.beer.BeerVote;
 import server.beerfactory.entity.user.User;
 
 import javax.persistence.*;

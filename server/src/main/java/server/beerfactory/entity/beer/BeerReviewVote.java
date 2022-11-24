@@ -1,17 +1,18 @@
 package server.beerfactory.entity.beer;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import server.beerfactory.audit.Auditable;
+import server.beerfactory.entity.user.User;
 
 import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
+@Builder
 @Entity
-public class BeerVote extends Auditable {
+public class BeerReviewVote extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BEER_VOTE_ID")
@@ -19,14 +20,17 @@ public class BeerVote extends Auditable {
 
     // 추천 여부
     @Column
-    private boolean voteLike;
+    private boolean good;
 
     // 비추천 여부
     @Column
-    private boolean voteDislike;
+    private boolean bad;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BEER_REVIEW_ID")
     private BeerReview beerReview;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    private User user;
 }

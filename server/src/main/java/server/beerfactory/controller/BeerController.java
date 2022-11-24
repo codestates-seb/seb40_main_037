@@ -30,10 +30,8 @@ public class BeerController {
     private final BeerMapper beerMapper;
 
     @PostMapping
-    public String postBeer( @Valid BeerDto.Request request){
-        //request.setUser();
+    public String postBeer(@RequestBody @Valid BeerDto.Request request){
         Beer beer = beerMapper.beerRequestToBeer(request);
-        System.out.println("===============");
         Beer created = beerService.createBeer(beer);
         return String.valueOf(created.getId());
     }
