@@ -45,5 +45,12 @@ public class Mix extends Auditable {
     @OneToMany(mappedBy = "mix")
     private final List<MixReply> mixReplies = new ArrayList<>();
 
+    public void addMixReply(MixReply mixReply) {
+        this.mixReplies.add(mixReply);
+        if(mixReply.getMix() != this) {
+            mixReply.addMix(this);
+        }
+    }
+
 
 }

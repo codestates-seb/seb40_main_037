@@ -34,7 +34,6 @@ public class MixDto {
         private String content;
         private String image;
         private int likeCount;
-        private int dislikeCount;
 
 //        private Boolean mix_vote; 좋아요 미설정
     }
@@ -49,7 +48,6 @@ public class MixDto {
         private String content;
         private String image;
         private int likeCount;
-        private int dislikeCount;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
 //        private Boolean mix_vote; 좋아요 미설정
