@@ -1,21 +1,21 @@
 package server.beerfactory.entity.mix;
 
 import lombok.*;
-import org.hibernate.annotations.DynamicInsert;
 import server.beerfactory.audit.Auditable;
 import server.beerfactory.entity.user.User;
 
 
 import javax.persistence.*;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Builder
-@DynamicInsert
 public class Mix extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,14 +32,25 @@ public class Mix extends Auditable {
     private String content;
 
     @Column
-    private Integer likeCount;
+    private int likeCount;
 
-    @Column
-    private Integer dislikeCount;
+    public void setVoteCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
+
+    @OneToMany(mappedBy = "mix")
+    private final List<MixReply> mixReplies = new ArrayList<>();
+
+    public void addMixReply(MixReply mixReply) {
+        this.mixReplies.add(mixReply);
+        if(mixReply.getMix() != this) {
+            mixReply.addMix(this);
+        }
+    }
 
 
 }

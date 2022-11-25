@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 public class MixDto {
 
     @Getter
-    @Setter
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Post {
@@ -34,6 +33,11 @@ public class MixDto {
         @NotBlank(message = "내용을 입력해 주세요.")
         private String content;
         private String image;
+        private int likeCount;
+
+        public void setMix(long id) {
+            this.id = id;
+        }
 
 //        private Boolean mix_vote; 좋아요 미설정
     }
@@ -47,8 +51,7 @@ public class MixDto {
         private String title;
         private String content;
         private String image;
-        private Integer likeCount;
-        private Integer dislikeCount;
+        private int likeCount;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
 //        private Boolean mix_vote; 좋아요 미설정

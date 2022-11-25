@@ -4,9 +4,11 @@ package server.beerfactory.service.mix;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import server.beerfactory.entity.mix.Mix;
 import server.beerfactory.entity.mix.MixReply;
 import server.beerfactory.exception.BusinessLogicException;
 import server.beerfactory.exception.ExceptionCode;
@@ -20,6 +22,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class MixReplyService {
     private final MixReplyRepository mixReplyRepository;
+    private final MixService mixService;
 
 
     public MixReply createMixReply(MixReply mixReply) {
@@ -41,9 +44,9 @@ public class MixReplyService {
     }
 
 
-    public List<MixReply> findMixReplies(long mixId) {
+    public List<MixReply> findMixReplies(long id) {
         List<MixReply> mixReplies = mixReplyRepository.findAll();
-        mixReplies.removeIf(mixReply -> mixReply.getMix().getId() != mixId);
+        mixReplies.removeIf(mixReply -> mixReply.getMix().getId() != id);
         return mixReplies;
     }
 
@@ -52,9 +55,13 @@ public class MixReplyService {
         mixReplyRepository.delete(findMixReply);
     }
 
+    public Page<MixReply> findMixReplies(Pageable pageable) {
+        return mixReplyRepository.findAll(pageable);
+    }
+
     public MixReply findVerifiedMixReply(long id) {
         Optional<MixReply> optionalMixReply = mixReplyRepository.findById(id);
         return optionalMixReply.orElseThrow(() ->
-                new BusinessLogicException(ExceptionCode.MIX_REPLY_NOT_FOUND));
+                new BusinessLogicException(ExceptionCode.MIX_NOT_FOUND));
     }
 }

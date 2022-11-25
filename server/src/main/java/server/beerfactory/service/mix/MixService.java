@@ -2,8 +2,7 @@ package server.beerfactory.service.mix;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -23,13 +22,10 @@ public class MixService {
 
 
     public Mix createMix(Mix mix) {
-        mix.setLikeCount(0);
-        mix.setDislikeCount(0);
-
         return mixRepository.save(mix);
     }
 
-    public Mix findMix(Long id) {
+    public Mix findMix(long id) {
         return findVerifiedMix(id);
     }
 
@@ -37,27 +33,24 @@ public class MixService {
     public Mix updateMix(Mix mix) {
         Mix findMix = findVerifiedMix(mix.getId());
 
-        Optional.ofNullable(mix.getTitle())
-                .ifPresent(findMix::setTitle);
-        Optional.ofNullable(mix.getContent())
-                .ifPresent(findMix::setContent);
-        Optional.of(mix.getImage())
-                .ifPresent(findMix::setImage);
+        findMix.setTitle(mix.getTitle());
+        findMix.setContent(mix.getContent());
+        findMix.setImage(mix.getImage());
+        findMix.setLikeCount(mix.getLikeCount());
 
         return mixRepository.save(findMix);
     }
 
-    public void deleteMix(Long id) {
+    public void deleteMix(long id) {
         Mix mix = findVerifiedMix(id);
         mixRepository.delete(mix);
     }
 
-    public Page<Mix> findMixes(int page, int size) {
-        return mixRepository.findAll(PageRequest.of(page, size,
-                Sort.by("mixId").descending()));
+    public Page<Mix> findMixes(Pageable pageable) {
+        return mixRepository.findAll(pageable);
     }
 
-    public Mix findVerifiedMix(Long id) {
+    public Mix findVerifiedMix(long id) {
         Optional<Mix> optionalMix = mixRepository.findById(id);
         return optionalMix.orElseThrow(() ->
                 new BusinessLogicException(ExceptionCode.MIX_NOT_FOUND));

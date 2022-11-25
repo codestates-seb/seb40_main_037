@@ -9,10 +9,10 @@ import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Builder
-@DynamicInsert
 public class MixReply extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,5 +29,12 @@ public class MixReply extends Auditable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MIX_ID")
     private Mix mix;
+
+    public void addMix(Mix mix) {
+        this.mix = mix;
+        if(!this.mix.getMixReplies().contains(this)) {
+            this.mix.addMixReply(this);
+        }
+    }
 
 }
