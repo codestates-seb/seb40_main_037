@@ -1,0 +1,82 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "홍길동",
+      "avatar": "../src/assets/avatar/1.jpg",
+      "comment": "hi",
+      "items": [
+        {
+          "id": 1,
+          "name": "Hite",
+          "img": "img"
+        }
+      ],
+      "reviews": []
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "Hite",
+      "rating": 4
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "name": "홍길동",
+      "comment": "good",
+      "avatar": "../src/assets/avatar/1.jpg",
+      "value": 3,
+      "Good": 5,
+      "createdAt": "2022. 11. 18. AM 10:40",
+      "photo": [
+        {
+          "img": "../src/assets/food/ramen.jpg",
+          "title": "ramen"
+        },
+        {
+          "img": "../src/assets/food/pizza.jpg",
+          "title": "pizza"
+        },
+        {
+          "img": "../src/assets/food/chicken.jpg",
+          "title": "ramen"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "고길동",
+      "comment": "bad",
+      "avatar": "../src/assets/avatar/1.jpg",
+      "value": 4,
+      "Good": 3,
+      "createdAt": "2022. 11. 19. AM 12:40",
+      "photo": [
+        {
+          "img": "../src/assets/food/ramen.jpg",
+          "title": "ramen"
+        },
+        {
+          "img": "../src/assets/food/pizza.jpg",
+          "title": "pizza"
+        },
+        {
+          "img": "../src/assets/food/chicken.jpg",
+          "title": "ramen"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "김길동",
+      "avatar": "../src/assets/avatar/1.jpg",
+      "value": 2,
+      "Good": 1,
+      "createdAt": "2022. 11. 20. AM 12:34",
+      "comment": "SoSo"
+    }
+  ]
+}

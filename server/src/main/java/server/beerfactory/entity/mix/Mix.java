@@ -1,5 +1,6 @@
 package server.beerfactory.entity.mix;
 
+
 import lombok.*;
 import server.beerfactory.audit.Auditable;
 import server.beerfactory.entity.user.User;

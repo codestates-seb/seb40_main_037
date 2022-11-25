@@ -1,0 +1,104 @@
+{
+    "beerlist": [
+        {
+            "id": 1,
+            "title": "Hand & Malt",
+            "brand": "Cass",
+            "img": "../../assets/beer/beer1.png",
+            "rating": 72,
+            "sweet": 66,
+            "bitter": 33,
+            "lv": 33
+        },
+        {
+            "id": 2,
+            "title": "Hand & Malt",
+            "brand": "Asahi",
+            "img": "../../assets/beer/beer1.png",
+            "rating": 88,
+            "sweet": 33,
+            "bitter": 100,
+            "lv": 66
+        },
+        {
+            "id": 3,
+            "title": "Hand & Malt",
+            "brand": "Heineken",
+            "img": "../../assets/beer/beer1.png",
+            "rating": 100,
+            "sweet": 0,
+            "bitter": 100,
+            "lv": 33
+        },
+        {
+            "id": 4,
+            "title": "Hand & Malt",
+            "brand": "Corona",
+            "img": "../../assets/beer/beer1.png",
+            "rating": 56,
+            "sweet": 33,
+            "bitter": 66,
+            "lv": 33
+        },
+        {
+            "id": 5,
+            "title": "Hand & Malt",
+            "brand": "Blanc",
+            "img": "../../assets/beer/beer1.png",
+            "rating": 100,
+            "sweet": 66,
+            "bitter": 66,
+            "lv": 66
+        },
+        {
+            "id": 6,
+            "title": "Hand & Malt",
+            "brand": "Sapporo",
+            "img": "../../assets/beer/beer1.png",
+            "rating": 88,
+            "sweet": 33,
+            "bitter": 33,
+            "lv": 66
+        },
+        {
+            "id": 7,
+            "title": "Hand & Malt",
+            "brand": "Paulaner",
+            "img": "../../assets/beer/beer1.png",
+            "rating": 72,
+            "sweet": 66,
+            "bitter": 0,
+            "lv": 33
+        },
+        {
+            "id": 8,
+            "title": "Hand & Malt",
+            "brand": "Beck's",
+            "img": "../../assets/beer/beer1.png",
+            "rating": 72,
+            "sweet": 33,
+            "bitter": 66,
+            "lv": 33
+        },
+        {
+            "id": 9,
+            "title": "Hand & Malt",
+            "brand": "Tsingtao",
+            "img": "../../assets/beer/beer1.png",
+            "rating": 72,
+            "sweet": 33,
+            "bitter": 66,
+            "lv": 66
+        },
+        {
+            "id": 10,
+            "title": "Hand & Malt",
+            "brand": "Terra",
+            "img": "../../assets/beer/beer1.png",
+            "rating": 58,
+            "sweet": 33,
+            "bitter": 66,
+            "lv": 66
+        }
+    ]
+}
