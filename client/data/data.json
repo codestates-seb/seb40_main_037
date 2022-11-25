@@ -102,6 +102,15 @@
       "good": 1,
       "createdAt": "2022. 11. 20. AM 12:34",
       "comment": "SoSo"
+    },
+    {
+      "id": 4,
+      "name": "테스트4",
+      "avatar": "../src/assets/avatar/1.jpg",
+      "value": 4,
+      "good": 4,
+      "createdAt": "2022. 11. 22. AM 12:34",
+      "comment": "TEST"
     }
   ]
 }
