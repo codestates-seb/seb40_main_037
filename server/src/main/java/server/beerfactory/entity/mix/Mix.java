@@ -1,50 +1,57 @@
 package server.beerfactory.entity.mix;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
+import server.beerfactory.audit.Auditable;
 import server.beerfactory.entity.user.User;
+
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
-@Data
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
-public class Mix {
+@Builder
+public class Mix extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MIX_ID")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(length = 25, nullable = false)
     private String title;
 
     @Column
     private String image;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT",nullable = false)
     private String content;
 
     @Column
     private int likeCount;
 
-    @Column
-    private int dislikeCount;
+    public void setVoteCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @OneToMany(mappedBy = "mix", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mix")
     private final List<MixReply> mixReplies = new ArrayList<>();
 
-    @OneToMany(mappedBy = "mix", cascade = CascadeType.ALL)
-    private final List<MixJoinTag> mixJoinTags = new ArrayList<>();
+    public void addMixReply(MixReply mixReply) {
+        this.mixReplies.add(mixReply);
+        if(mixReply.getMix() != this) {
+            mixReply.addMix(this);
+        }
+    }
 
-    @OneToMany(mappedBy = "mix", cascade = CascadeType.ALL)
-    private final List<MixVote> mixVotes = new ArrayList<>();
 
 }
