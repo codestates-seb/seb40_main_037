@@ -8,6 +8,7 @@ import server.beerfactory.entity.user.User;
 import server.beerfactory.repository.beer.BeerRepository;
 import server.beerfactory.repository.beer.BeerReviewRepository;
 import server.beerfactory.repository.beer.BeerReviewVoteRepository;
+import server.beerfactory.repository.user.UserRepository;
 
 import javax.transaction.Transactional;
 import java.lang.module.FindException;
