@@ -1,4 +1,4 @@
-/*package server.beerfactory.controller.mix;
+package server.beerfactory.controller.mix;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -21,8 +21,9 @@ public class MixVoteController {
 
     @PostMapping("/like")
     public int postMixVote(@PathVariable("mix-id") Long id,
-                           @Min(1) @Max(3) @PathVariable("num") int num) {
+                           @Min(1) @Max(3) @PathVariable("num") int num,
+                           User user) {
         return mixVoteService.mixVote(id, num, user);
     }
 
-}*/
+}
