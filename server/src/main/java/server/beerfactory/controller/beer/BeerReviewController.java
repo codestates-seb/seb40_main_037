@@ -1,4 +1,4 @@
-package server.beerfactory.controller;
+package server.beerfactory.controller.beer;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -9,10 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import server.beerfactory.dto.BeerDto.BeerReviewDto;
+import server.beerfactory.dto.beer.BeerReviewDto;
 import server.beerfactory.entity.beer.BeerReview;
-import server.beerfactory.mapper.BeerReviewMapper;
-import server.beerfactory.service.BeerReviewService;
+import server.beerfactory.mapper.beer.BeerReviewMapper;
+import server.beerfactory.service.beer.BeerReviewService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;

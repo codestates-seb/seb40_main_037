@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import server.beerfactory.dto.config.SingleResponseDto;
 import server.beerfactory.dto.user.UserDto;
 import server.beerfactory.entity.user.User;
-import server.beerfactory.mapper.User.UserMapper;
-import server.beerfactory.service.User.UserService;
+import server.beerfactory.mapper.user.UserMapper;
+import server.beerfactory.service.user.UserService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;

@@ -1,4 +1,4 @@
-package server.beerfactory.service.User;
+package server.beerfactory.service.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -6,9 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.exception.BusinessLogicException;
 import server.beerfactory.exception.ExceptionCode;
-import server.beerfactory.repository.User.UserRepository;
+import server.beerfactory.repository.user.UserRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
