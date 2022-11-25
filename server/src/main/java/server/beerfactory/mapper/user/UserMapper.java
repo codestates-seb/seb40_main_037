@@ -1,4 +1,4 @@
-package server.beerfactory.mapper.User;
+package server.beerfactory.mapper.user;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;

@@ -1,14 +1,13 @@
-package server.beerfactory.service;
+package server.beerfactory.service.beer;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import server.beerfactory.entity.beer.BeerReview;
 import server.beerfactory.entity.beer.BeerReviewVote;
 import server.beerfactory.entity.user.User;
-import server.beerfactory.repository.BeerRepository;
-import server.beerfactory.repository.BeerReviewRepository;
-import server.beerfactory.repository.BeerReviewVoteRepository;
-import server.beerfactory.repository.UserRepository;
+import server.beerfactory.repository.beer.BeerRepository;
+import server.beerfactory.repository.beer.BeerReviewRepository;
+import server.beerfactory.repository.beer.BeerReviewVoteRepository;
 
 import javax.transaction.Transactional;
 import java.lang.module.FindException;

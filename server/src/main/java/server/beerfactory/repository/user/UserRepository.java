@@ -1,4 +1,4 @@
-package server.beerfactory.repository.User;
+package server.beerfactory.repository.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import server.beerfactory.entity.user.User;

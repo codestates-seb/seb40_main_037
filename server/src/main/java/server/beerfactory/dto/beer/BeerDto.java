@@ -1,13 +1,10 @@
-package server.beerfactory.dto.BeerDto;
+package server.beerfactory.dto.beer;
 
 import lombok.*;
 import server.beerfactory.entity.beer.Beer;
-import server.beerfactory.entity.user.User;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class BeerDto {
 
