@@ -19,7 +19,7 @@ import javax.validation.constraints.Min;
 public class MixVoteController {
     private final MixVoteService mixVoteService;
 
-    @PostMapping("/like")
+    @PostMapping("/{mix-id}/like")
     public int postMixVote(@PathVariable("mix-id") Long id,
                            @Min(1) @Max(3) @PathVariable("num") int num,
                            User user) {
