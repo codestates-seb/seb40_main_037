@@ -2,6 +2,8 @@ package server.beerfactory.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import server.beerfactory.entity.beer.Beer;
@@ -42,5 +44,9 @@ public class BeerReviewService {
         BeerReview findBeerReview = find.orElseThrow(() -> new FindException());
 
         beerReviewRepository.delete(findBeerReview);
+    }
+
+    public Page<BeerReview> findBeerReviews(Pageable pageable) {
+        return beerReviewRepository.findAll(pageable);
     }
 }

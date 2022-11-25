@@ -29,9 +29,9 @@ public class BeerService {
     public Beer updateBeer(Long beerId, Beer beer) {
         Optional<Beer> findBeer = beerRepository.findById(beerId);
         Beer find = findBeer.orElseThrow(() -> new FindException());
-        if(!find.getUser().getId().equals(beer.getUser().getId())){
-            throw new FindException();
-        }
+//        if(!find.getUser().getId().equals(beer.getUser().getId())){
+//            throw new FindException();
+//        }
 
         find.setBeerType(beer.getBeerType());
         find.setDescription(beer.getDescription());
