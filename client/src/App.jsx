@@ -17,7 +17,7 @@ import Login from './pages/Login';
 import BeerRequest from './pages/BeerRequest';
 // redux store
 import { Provider } from 'react-redux ';
-import { store } from './store/redux/reviewStore';
+import { store } from './store/redux/store';
 
 const queryClient = new QueryClient();
 
@@ -35,12 +35,11 @@ function App() {
   }, []);
 
   return (
-    <Provider>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <GlobalStyle store={store} />
+        <GlobalStyle />
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
-            <GlobalStyle />
             <Routes>
               <Route path="/intro" element={<Intro />} />
               <Route path="/" element={<Main />} />

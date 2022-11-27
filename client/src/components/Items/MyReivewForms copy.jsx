@@ -7,9 +7,6 @@ import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
 
-// redux
-import { useSelector } from 'react-redux';
-
 const MyReivewForm = styled.form`
   width: 70%;
   margin: 20px auto;
@@ -64,6 +61,54 @@ export default function MyReviewForms() {
   };
 
   // 리뷰 작성 상태관리
+
+  const [reviews, setReviews] = useState({
+    name: '',
+    comment: '',
+    avatar: '',
+    value: '',
+    creadtedAt: 'test',
+    photo: [],
+  });
+
+  const onChangeAccount = e => {
+    setReviews({
+      ...reviews,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  async function getSignup() {
+    try {
+      await axios
+        .post('http://localhost:8000/reviews/', {
+          name: reviews.name,
+          avatar: reviews.avatar,
+          value: reviews.value,
+          comment: reviews.comment,
+          creadtedAt: reviews.creadtedAt,
+          good: 0,
+        })
+        .then(data => {
+          dispatch(postingActions.register());
+          localStorage.clear();
+          localStorage.setItem('accessToken', data.headers.authorization);
+          // navigate('/questions');
+          alert('회원가입 성공');
+          // console.log(data.headers.authorization);
+        });
+      // 일치하는 유저가 존재 X
+    } catch (error) {
+      if (error.response.status === 401) {
+        alert('이메일 혹은 비밀번호가 일치하지 않습니다.');
+        console.log(error);
+      } else {
+        alert(error.response.status);
+        console.log(error);
+      }
+    }
+  }
+  console.log('회원 가입 여부', isLogin);
   return (
     <MyReivewForm>
       {dummy.users.map(user => {
@@ -74,11 +119,16 @@ export default function MyReviewForms() {
               <Rating
                 className="rating-star"
                 value={Number(value)}
+                defaultValue={3}
                 precision={1}
                 min={1}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                }}
+                onChange={
+                  (event,
+                  newValue => {
+                    setValue(newValue);
+                    console.log(event);
+                  })
+                }
               />
             </div>
             {/* 업로드 버튼 코드 시작*/}
