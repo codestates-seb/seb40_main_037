@@ -1,0 +1,14 @@
+.myReviewList {
+  width: 70%;
+  padding: 50px;
+}
+
+#nested-list-subheader {
+  background-color: transparent;
+  font-size: 20px;
+  position: relative;
+}
+
+.iconImg {
+  width: 50px;
+}
