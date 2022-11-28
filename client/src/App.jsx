@@ -18,7 +18,7 @@ import BeerRequest from './pages/BeerRequest';
 // redux store
 import { Provider } from 'react-redux ';
 import { store } from './store/redux/store';
-
+// import { store } from './store/redux/upload';
 const queryClient = new QueryClient();
 
 function App() {

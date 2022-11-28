@@ -5,6 +5,7 @@
       "name": "홍길동",
       "avatar": "../src/assets/avatar/1.jpg",
       "comment": "hi",
+      "tags": ["sweet", "bitter", "apple"],
       "items": [
         {
           "id": 1,
@@ -111,6 +112,15 @@
       "good": 4,
       "createdAt": "2022. 11. 22. AM 12:34",
       "comment": "TEST"
+    },
+    {
+      "avatar": "",
+      "rating": "",
+      "comment": "124124",
+      "good": 0,
+      "name": "",
+      "createdAt": "",
+      "id": 5
     }
   ]
 }

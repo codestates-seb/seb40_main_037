@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Rating from '@mui/material/Rating';
-
+// redux
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, removeFavorite } from '../../store/redux/favorites';
 const ProductInfoBox = styled.div`
   width: 60%;
   margin: 0 auto;
@@ -23,13 +25,29 @@ const ProductionButton = styled.button`
 `;
 
 export default function ProductInformation() {
-  const [value, setValue] = React.useState(3);
+  const [value, setValue] = React.useState(0);
+  const favoriteMealIds = useSelector(state => state.favoriteMeal.ids);
+  const dispatch = useDispatch();
+  const mealIsFavorite = favoriteMealsCtx.ids.includes(mealId);
+
+  function changeFavoriteStatusHandler() {
+    if (mealIsFavorite) {
+      dispatch(removeFavorite({ id: mealId }));
+    } else {
+      dispatch(addFavorite({ id: mealId }));
+    }
+  }
   return (
     <ProductInfoBox>
-      <Rating className="rating-star" value={value} size="large" defaultValue={3} readOnly />
+      <Rating className="rating-star" value={value} size="large" defaultValue={3} />
       <ProductionButton bgColor="pink">복숭아향</ProductionButton>
       <ProductionButton bgColor="red">BITTER</ProductionButton>
       <ProductionButton bgColor="skyblue">4.5도</ProductionButton>
+      <IconButton
+        icon={mealIsFavorite ? 'star' : 'star-outline'}
+        color="white"
+        onPress={changeFavoriteStatusHandler}
+      />
       <Rating
         className="heartIcon"
         value={value}

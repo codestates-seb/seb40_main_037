@@ -8,7 +8,10 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
 
 // redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import axios from 'axios';
+import { uploadActions } from '../../store/redux/upload';
 
 const MyReivewForm = styled.form`
   width: 70%;
@@ -64,14 +67,62 @@ export default function MyReviewForms() {
   };
 
   // 리뷰 작성 상태관리
+  const dispatch = useDispatch();
+  const isUpload = useSelector(state => state.isUpload);
+
+  const [reviews, setReviews] = useState({
+    id: '',
+    avatar: '',
+    rating: '',
+    comment: '',
+    good: 0,
+    name: '',
+    createdAt: '',
+  });
+
+  const onChangeReview = e => {
+    setReviews({
+      ...reviews,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  async function getUpload() {
+    try {
+      await axios
+        .post('http://localhost:3001/reviews', {
+          avatar: reviews.avatar,
+          rating: reviews.rating,
+          comment: reviews.comment,
+          good: reviews.good,
+          name: reviews.name,
+          createdAt: reviews.createdAt,
+        })
+        .then(data => {
+          dispatch(uploadActions.upload());
+          alert('등록 성공');
+        });
+      // 일치하는 유저가 존재 X
+    } catch (error) {
+      if (error.response.status === 401) {
+        alert('이메일 혹은 비밀번호가 일치하지 않습니다.');
+        console.log(error);
+      } else {
+        alert(error.response.status);
+        console.log(error);
+      }
+    }
+  }
+  console.log('작동 여부', isUpload);
   return (
     <MyReivewForm>
       {dummy.users.map(user => {
         return (
-          <div className="formBox" key={user.name}>
+          <div className="formBox" key={user.name} name="name">
             <div className="itemMyProfile">
-              <img src={user.avatar} />
+              <img src={user.avatar} value={reviews.avatar} name="avatar" />
               <Rating
+                name="newValue"
                 className="rating-star"
                 value={Number(value)}
                 precision={1}
@@ -84,9 +135,15 @@ export default function MyReviewForms() {
             {/* 업로드 버튼 코드 시작*/}
             <Stack direction="row" alignItems="center" spacing={2} className="uploadButtons">
               {/* {selectedImages.length <= 5 ? 업로드 : 이상이면 업로드 불가} 작성할코드 */}
-              <Button variant="contained" component="label" color="warning">
+              <Button
+                variant="contained"
+                component="label"
+                color="warning"
+                type="submit"
+                onClick={getUpload}
+              >
                 Upload
-                <input hidden />
+                {/* <input hidden /> */}
               </Button>
               <IconButton color="warning" aria-label="upload picture" component="label">
                 <input hidden multiple onChange={onSelectFile} accept="image/*" type="file" />
@@ -108,7 +165,12 @@ export default function MyReviewForms() {
                   );
                 })}
             </PrviewImageBox>
-            <input className="commentBox"></input>
+            <input
+              className="commentBox"
+              value={reviews.comment}
+              name="comment"
+              onChange={onChangeReview}
+            ></input>
           </div>
         );
       })}

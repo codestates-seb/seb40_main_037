@@ -38,29 +38,34 @@ const TagBoxs = styled.div`
   }
 `;
 const TagButton = styled.button`
-  background-color: ${props => props.bgColor};
   border: none;
   border-radius: 20px;
   margin: 10px;
   padding: 10px 30px;
   box-shadow: 2px 2px 1px gray;
   font-weight: bold;
-  color: white;
 `;
 
 function Profile() {
   return (
     <Header>
-      <UserName>(랜덤칭호있어도좋을지도)userName</UserName>
-      <ProfileImgBox>
-        <img src="../../src/assets/avatar/1.jpg" />
-      </ProfileImgBox>
-      <TagBoxs>
-        <h2>interested Tags</h2>
-        <TagButton bgColor="red">SWEET</TagButton>
-        <TagButton bgColor="blue">BITTER</TagButton>
-        <TagButton bgColor="green">ORANGE</TagButton>
-      </TagBoxs>
+      {dummy.users.map(user => {
+        return (
+          <div>
+            <UserName>{user.name}</UserName>
+            <ProfileImgBox>
+              <img src={user.avatar} />
+            </ProfileImgBox>
+            <TagBoxs>
+              <h2>interested Tags</h2>
+              {user.tags &&
+                user.tags.map((item, i) => {
+                  return <TagButton key={item[i]}>{item}</TagButton>;
+                })}
+            </TagBoxs>
+          </div>
+        );
+      })}
     </Header>
   );
 }

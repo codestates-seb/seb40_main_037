@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Carousel from 'react-material-ui-carousel';
+import MixFoodCardList from '../MixFoodCardList';
 
 const CarouseBox = styled.div`
   width: 80%;
@@ -40,6 +41,8 @@ function BeerCard(props) {
           },
         }}
       >
+        <MixFoodCardList />
+
         {items.map((item, i) => (
           <div key={i} style={{ width: '100%', height: '300px' }}>
             <img src={item.img} style={{ width: '33%', height: 'auto' }} />

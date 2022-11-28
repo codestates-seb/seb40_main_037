@@ -1,9 +1,8 @@
-import {configureStore} from '@reduxjs/toolkit'
-
-import favoritesReducer from './favorites'
+import { configureStore } from '@reduxjs/toolkit'
+import uploadReducer from './upload'
 
 export const store = configureStore({
-    reducer: {
-        favoriteMeals: favoritesReducer
-    }
+  reducer: {
+    upload: uploadReducer
+  }
 })
