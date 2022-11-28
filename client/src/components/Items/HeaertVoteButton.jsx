@@ -1,10 +1,12 @@
 import * as React from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ToggleButton from '@mui/material/ToggleButton';
+import dummy from '../../../data/data.json';
 
 export default function HeaertVoteButton() {
   const [selected, setSelected] = React.useState(false);
-
+  const reviewHeart = dummy.reviews.map(review => review.good);
+  console.log(reviewHeart);
   return (
     <ToggleButton
       className="goodVoteButton"
@@ -16,6 +18,7 @@ export default function HeaertVoteButton() {
       }}
     >
       <FavoriteIcon />
+      <h2>{reviewHeart}</h2>
     </ToggleButton>
   );
 }

@@ -11,7 +11,8 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Builder
 public class Beer extends Auditable {
@@ -25,9 +26,6 @@ public class Beer extends Auditable {
 
     @Column
     private String image;
-
-    @Column(nullable = false)
-    private double score;
 
     @Column
     private BeerType beerType;

@@ -1,9 +1,6 @@
 package server.beerfactory.entity.beer;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import server.beerfactory.audit.Auditable;
 import server.beerfactory.entity.user.User;
 
@@ -13,9 +10,10 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-@Entity
+@Getter
+@Setter
 @Builder
+@Entity
 public class BeerReview extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +30,7 @@ public class BeerReview extends Auditable {
     private String content;
 
     @Column(nullable = false)
-    private double score;
+    private int score;
 
     @Column
     private int likeCount;
@@ -49,6 +47,6 @@ public class BeerReview extends Auditable {
     private Beer beer;
 
     @OneToMany(mappedBy = "beerReview", cascade = CascadeType.ALL)
-    private final List<BeerVote> beerVotes = new ArrayList<>();
+    private final List<BeerReviewVote> beerReviewVotes = new ArrayList<>();
 
 }

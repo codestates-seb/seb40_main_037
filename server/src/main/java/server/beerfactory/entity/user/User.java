@@ -39,11 +39,13 @@ public class User {
     @Column
     private String image;
 
+    @Enumerated(value = EnumType.STRING)
     @Column
-    private UserStatus userStatus;
+    private UserStatus userStatus = UserStatus.USER_ACTIVE;
 
-    @Column
-    private String role;
+    // 별도의 엔티티 클래스 생성하지 않고 간단하게 매핑 처리
+//    @ElementCollection(fetch = FetchType.EAGER)
+//    private List<String> roles = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private final List<Beer> beers = new ArrayList<>();
@@ -59,7 +61,8 @@ public class User {
 
     public enum UserStatus {
         USER_ACTIVE("활동중"),
-        USER_REMOVED("회원 탈퇴");
+        USER_SLEEP("휴면 상태"),
+        USER_QUIT("회원 탈퇴");
 
         @Getter
         private String status;

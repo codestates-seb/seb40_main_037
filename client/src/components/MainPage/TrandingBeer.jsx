@@ -5,9 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import StarRate from './StarRate';
 import ProgressBar from './ProgressBar';
 import { Wrapper, ProgressBarBox } from './style';
-import Beer1 from '../../assets/beer/beer1.png';
 import dummy from "../../../data/dummy.json";
-
 
 export default function TrandingBeer() {
 
@@ -30,7 +28,7 @@ export default function TrandingBeer() {
           component="img"
           height="250"
           alt="Beer1"
-          img src={Beer1}
+          src={beerlist.img}
           style={{borderRadius: 125}}
         />
         <StarRate />

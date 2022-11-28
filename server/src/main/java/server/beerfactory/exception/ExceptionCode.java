@@ -4,6 +4,8 @@ import lombok.Getter;
 
 public enum ExceptionCode {
 
+    USER_NOT_FOUND(404, "회원을 찾을 수 없습니다."),
+    USER_EXISTS(409, "회원이 이미 존재합니다."),
     MIX_NOT_FOUND(404, "조합을 찾을 수 없습니다.");
 
     @Getter
