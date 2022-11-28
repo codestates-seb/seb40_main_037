@@ -1,4 +1,4 @@
-package server.beerfactory.controller;
+package server.beerfactory.controller.beer;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -9,12 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import server.beerfactory.dto.BeerDto.BeerDto;
+import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.dto.config.MultiResponseDto;
-import server.beerfactory.dto.config.SingleResponseDto;
 import server.beerfactory.entity.beer.Beer;
-import server.beerfactory.mapper.BeerMapper;
-import server.beerfactory.service.BeerService;
+import server.beerfactory.mapper.beer.BeerMapper;
+import server.beerfactory.service.beer.BeerService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -30,10 +29,8 @@ public class BeerController {
     private final BeerMapper beerMapper;
 
     @PostMapping
-    public String postBeer( @Valid BeerDto.Request request){
-        //request.setUser();
+    public String postBeer(@RequestBody @Valid BeerDto.Request request){
         Beer beer = beerMapper.beerRequestToBeer(request);
-        System.out.println("===============");
         Beer created = beerService.createBeer(beer);
         return String.valueOf(created.getId());
     }

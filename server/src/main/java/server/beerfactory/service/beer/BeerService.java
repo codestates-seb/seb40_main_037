@@ -1,4 +1,4 @@
-package server.beerfactory.service;
+package server.beerfactory.service.beer;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import server.beerfactory.entity.beer.Beer;
-import server.beerfactory.repository.BeerRepository;
+import server.beerfactory.repository.beer.BeerRepository;
 
 import java.lang.module.FindException;
 import java.util.Optional;
@@ -29,9 +29,9 @@ public class BeerService {
     public Beer updateBeer(Long beerId, Beer beer) {
         Optional<Beer> findBeer = beerRepository.findById(beerId);
         Beer find = findBeer.orElseThrow(() -> new FindException());
-        if(!find.getUser().getId().equals(beer.getUser().getId())){
-            throw new FindException();
-        }
+//        if(!find.getUser().getId().equals(beer.getUser().getId())){
+//            throw new FindException();
+//        }
 
         find.setBeerType(beer.getBeerType());
         find.setDescription(beer.getDescription());

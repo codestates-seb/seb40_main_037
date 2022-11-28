@@ -1,13 +1,10 @@
-package server.beerfactory.dto.BeerDto;
+package server.beerfactory.dto.beer;
 
 import lombok.*;
 import server.beerfactory.entity.beer.Beer;
-import server.beerfactory.entity.user.User;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class BeerDto {
 
@@ -21,7 +18,6 @@ public class BeerDto {
         private String description;
         private String brand;
         private String country;
-        private double score;
         private Beer.BeerType beerType;
         private double alcohol;
         private String aroma;
@@ -34,16 +30,19 @@ public class BeerDto {
     @Getter
     @Builder
     public static class Response{
-        private Long beerId;
+        private Long id;
         private String name;
         private String description;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
         private String image;
-        private double score;
         private double alcohol;
         private String brand;
         private String country;
+        private String aroma;
+        private int soda;
+        private int sweet;
+        private int afterTaste;
         private int sum;
         private int count;
     }

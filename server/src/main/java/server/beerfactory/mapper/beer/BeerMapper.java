@@ -1,7 +1,7 @@
-package server.beerfactory.mapper;
+package server.beerfactory.mapper.beer;
 
 import org.mapstruct.Mapper;
-import server.beerfactory.dto.BeerDto.BeerDto;
+import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.entity.beer.Beer;
 
 import java.util.List;
