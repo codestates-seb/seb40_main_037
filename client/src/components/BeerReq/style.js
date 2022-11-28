@@ -41,10 +41,18 @@ export const InputImg = styled.div`
   div {
     background-color: var(--gray);
     height: 100%;
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   span {
     ${flexCenter};
+
+    align-items: center;
   }
 
   @media ${props => props.theme.mobile} {

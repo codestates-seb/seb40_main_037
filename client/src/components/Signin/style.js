@@ -21,10 +21,18 @@ export const FormWrap = styled.div`
   border: 1px solid #ddd;
   box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05), 0 20px 48px hsla(0, 0%, 0%, 0.05),
     0 1px 4px hsla(0, 0%, 0%, 0.1);
+  text-align: center;
 
   input {
     ${flexColumnCenter};
     width: 100%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding-left: 10px;
+    text-align: center;
+  }
+
+  form {
     margin-bottom: 10px;
   }
 `;

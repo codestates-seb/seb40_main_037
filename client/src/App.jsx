@@ -15,6 +15,7 @@ import MixCreate from './pages/MixCreate';
 import Join from './pages/Join';
 import Login from './pages/Login';
 import BeerRequest from './pages/BeerRequest';
+import BeerList from './pages/BeerList';
 
 const queryClient = new QueryClient();
 
@@ -49,6 +50,7 @@ function App() {
             <Route path="/join" element={<Join />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/BeerRequest" element={<BeerRequest />} />
+            <Route path="/BeerList" element={<BeerList />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

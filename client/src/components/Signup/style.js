@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { flexColumnCenter } from '../../styles/index';
+import { flexCenter, flexColumnCenter } from '../../styles/index';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -21,7 +21,9 @@ export const FormWrap = styled.div`
   border: 1px solid #ddd;
   box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05), 0 20px 48px hsla(0, 0%, 0%, 0.05),
     0 1px 4px hsla(0, 0%, 0%, 0.1);
+
   button {
+    margin-top: 10px;
     width: 100%;
   }
 
@@ -29,6 +31,18 @@ export const FormWrap = styled.div`
     ${flexColumnCenter};
     width: 100%;
     margin-bottom: 10px;
+    border-radius: 10px;
+    text-align: center;
+  }
+`;
+
+export const Birth = styled.div`
+  ${flexCenter}
+  gap: 7px;
+
+  input {
+    width: 50px;
+    border-radius: 5px;
   }
 `;
 
@@ -36,6 +50,7 @@ export const Info = styled.ul`
   margin-top: 50px;
   font-size: 0.8rem;
   text-align: center;
+
   li {
     margin-bottom: 15px;
     a {
