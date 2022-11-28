@@ -5,9 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import StarRate from './StarRate';
 import ProgressBar from './ProgressBar';
 import { Wrapper, ProgressBarBox } from './style';
-import Beer1 from '../../assets/beer/beer1.png';
 import dummy from "../../../data/dummy.json";
-
 
 export default function TrandingBeer() {
 
