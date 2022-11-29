@@ -22,7 +22,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Validated
-@RequestMapping("/beer")
+@RequestMapping("/beers")
 public class BeerController {
 
     private final BeerService beerService;
