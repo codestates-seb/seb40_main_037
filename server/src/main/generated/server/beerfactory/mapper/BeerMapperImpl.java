@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
-import server.beerfactory.dto.BeerDto.BeerDto;
+import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.entity.beer.Beer;
 
 @Generated(
