@@ -20,7 +20,7 @@ export default function FiliterButtons() {
   return (
     <FilterButtonBox>
       <ToggleButtonGroup
-        color="primary"
+        color="warning"
         value={alignment}
         exclusive
         onChange={handleAlignment}

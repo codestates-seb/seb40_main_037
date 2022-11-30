@@ -5,7 +5,11 @@
       "name": "홍길동",
       "avatar": "../src/assets/avatar/1.jpg",
       "comment": "hi",
-      "tags": ["sweet", "bitter", "apple"],
+      "tags": [
+        "sweet",
+        "bitter",
+        "apple"
+      ],
       "items": [
         {
           "id": 1,
@@ -45,7 +49,12 @@
     {
       "id": 1,
       "name": "Hite",
-      "rating": 4
+      "rating": 4,
+      "tags": [
+        "복숭아향",
+        "BITTER",
+        "4.5도"
+      ]
     }
   ],
   "reviews": [
@@ -56,7 +65,8 @@
       "avatar": "../src/assets/avatar/1.jpg",
       "value": 3,
       "good": 5,
-      "createdAt": "2022. 11. 18. AM 10:40",
+      "createdAt": "2022-11-20 10:10:10",
+      "modified": null,
       "photo": [
         {
           "img": "../src/assets/food/ramen.jpg",
@@ -79,7 +89,8 @@
       "avatar": "../src/assets/avatar/1.jpg",
       "value": 4,
       "good": 3,
-      "createdAt": "2022. 11. 19. AM 12:40",
+      "createdAt": "2022-11-23 10:10:10",
+      "modified": null,
       "photo": [
         {
           "img": "../src/assets/food/ramen.jpg",
@@ -101,7 +112,8 @@
       "avatar": "../src/assets/avatar/1.jpg",
       "value": 2,
       "good": 1,
-      "createdAt": "2022. 11. 20. AM 12:34",
+      "createdAt": "2022-11-24 10:10:10",
+      "modified": null,
       "comment": "SoSo"
     },
     {
@@ -110,13 +122,14 @@
       "avatar": "../src/assets/avatar/1.jpg",
       "value": 4,
       "good": 4,
-      "createdAt": "2022. 11. 22. AM 12:34",
+      "createdAt": "2022-11-25 10:10:10",
+      "modified": null,
       "comment": "TEST"
     },
     {
       "avatar": "",
-      "rating": "",
-      "comment": "124124",
+      "rating": "4",
+      "comment": "hi",
       "good": 0,
       "name": "",
       "createdAt": "",

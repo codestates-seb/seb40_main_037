@@ -16,7 +16,8 @@ import { uploadActions } from '../../store/redux/upload';
 const MyReivewForm = styled.form`
   width: 70%;
   margin: 20px auto;
-  border: 1px solid blue;
+  padding: 10px 0;
+  background-color: #fff1db;
   border-radius: 20px;
   .formBox {
     margin: 20px;
@@ -36,7 +37,8 @@ const MyReivewForm = styled.form`
     vertical-align: top;
   }
   .commentBox {
-    background-color: gold;
+    border: none;
+    background-color: #ffbd9b;
     width: 100%;
     padding: 20px;
     font-weight: bold;
@@ -78,6 +80,7 @@ export default function MyReviewForms() {
     good: 0,
     name: '',
     createdAt: '',
+    modified: '',
   });
 
   const onChangeReview = e => {
@@ -97,6 +100,7 @@ export default function MyReviewForms() {
           good: reviews.good,
           name: reviews.name,
           createdAt: reviews.createdAt,
+          createdAt: reviews.modified,
         })
         .then(data => {
           dispatch(uploadActions.upload());
@@ -113,23 +117,30 @@ export default function MyReviewForms() {
       }
     }
   }
-  console.log('작동 여부', isUpload);
+  // console.log('작동 여부', isUpload);
   return (
     <MyReivewForm>
       {dummy.users.map(user => {
         return (
-          <div className="formBox" key={user.name} name="name">
+          <div className="formBox" key={user.id} name="name">
             <div className="itemMyProfile">
-              <img src={user.avatar} value={reviews.avatar} name="avatar" />
+              <img
+                src={user.avatar}
+                value={reviews.avatar}
+                name="avatar"
+                onChange={onChangeReview}
+              />
               <Rating
-                name="newValue"
+                name="rating"
                 className="rating-star"
                 value={Number(value)}
                 precision={1}
                 min={1}
                 onChange={(event, newValue) => {
                   setValue(newValue);
+                  console.log(newValue);
                 }}
+                onClick={onChangeReview}
               />
             </div>
             {/* 업로드 버튼 코드 시작*/}

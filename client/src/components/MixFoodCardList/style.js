@@ -65,9 +65,7 @@ export const CardTitle = styled.div`
   font-size: large;
 `;
 export const CardTime = styled.div`
-  color: white;
-  float: right;
-  padding-top: 30px;
-  font-size: small;
-  padding-right: 5px;
+  color: black;
+  margin: 15px;
+  
 `;

@@ -15,6 +15,9 @@ import ProductInformation from './ProductInformation';
 import MyReviewForms from './MyReivewForms';
 import FiliterButtons from './FilterButtons';
 // 스타일 컴포넌트
+import { CardTime } from '../MixFoodCardList/style';
+import { relTimeFormat } from '../../util/convertor';
+
 const Wrapper = styled.div`
   width: 100%;
 `;
@@ -33,22 +36,23 @@ const ReviewsBox = styled.div`
     height: auto;
   }
   .reviewList {
+    justify-content: space-between;
     width: 100%;
     margin: 30px 0;
-    border: 1px solid blue;
-    background-color: #f6f6f6;
+    background-color: #ffeedd;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
   }
   .profile {
-    border: 1px solid blue;
     width: 100px;
     height: 100px;
     margin-bottom: 30px;
     text-align: center;
     img {
+      border-radius: 10px;
       width: 100%;
     }
   }
@@ -61,6 +65,13 @@ const ReviewsBox = styled.div`
   }
 `;
 
+const LeftBox = styled.div`
+  display: flex;
+`;
+
+const RightBox = styled.div`
+  display: flex;
+`;
 function Item() {
   const [selected, setSelected] = React.useState(false);
 
@@ -74,25 +85,35 @@ function Item() {
           {dummy.reviews.map(review => {
             return (
               <li className="reviewList" key={review.id}>
-                <div className="profile">
-                  <img src={review.avatar} />
-                  <p className="userName">{review.name}</p>
-                </div>
-                <Rating className="rating-star" value={review.value} size="large" readOnly />
-                <p>{review.createdAt}</p>
-                <ToggleButton
-                  key={review.id}
-                  className="goodVoteButton"
-                  value="check"
-                  color="error"
-                  selected={selected}
-                  onChange={() => {
-                    setSelected(!selected);
-                  }}
-                >
-                  <FavoriteIcon />
-                  <h2>{review.good}</h2>
-                </ToggleButton>
+                <LeftBox>
+                  <div className="profile">
+                    <img src={review.avatar} />
+                    <p className="userName">{review.name}</p>
+                  </div>
+                  <Rating className="rating-star" value={review.value} size="large" readOnly />
+                </LeftBox>
+                <RightBox>
+                  <CardTime>
+                    {review.modified !== null ? (
+                      <h1>{relTimeFormat(review.modified)} 수정됨</h1>
+                    ) : (
+                      <h1>{relTimeFormat(review.createdAt)} 생성됨 </h1>
+                    )}
+                  </CardTime>
+                  <ToggleButton
+                    key={review.id}
+                    className="goodVoteButton"
+                    value="check"
+                    color="error"
+                    selected={selected}
+                    onChange={() => {
+                      setSelected(!selected);
+                    }}
+                  >
+                    <FavoriteIcon />
+                    <h2>{review.good}</h2>
+                  </ToggleButton>
+                </RightBox>
                 <ImageList
                   sx={{ width: 500, height: 500 }}
                   cols={5}
