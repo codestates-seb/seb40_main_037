@@ -31,7 +31,6 @@ import java.util.List;
 public class MixReplyController {
 
     private final MixReplyService mixReplyService;
-    //    private final UserService userService;
     private final MixService mixService;
     private final MixReplyMapper mapper;
     private final UserService userService;
@@ -68,7 +67,7 @@ public class MixReplyController {
     }
 
     @GetMapping
-    public ResponseEntity getMixReplies(@PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public ResponseEntity getMixReplies(@PageableDefault(size = 100, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<MixReply> pageMixReply = mixReplyService.findMixReplies(pageable);
         List<MixReply> mixReplies = pageMixReply.getContent();
         List<MixReplyDto.Response> responses = mapper.mixReplyToMixRepliesResponseDto(mixReplies);

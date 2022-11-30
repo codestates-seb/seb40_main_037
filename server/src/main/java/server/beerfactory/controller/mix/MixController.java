@@ -15,12 +15,13 @@ import server.beerfactory.dto.config.SingleResponseDto;
 import server.beerfactory.dto.mix.MixDto;
 import server.beerfactory.entity.mix.Mix;
 import server.beerfactory.entity.user.User;
+import server.beerfactory.image.S3Uploader;
 import server.beerfactory.mapper.mix.MixMapper;
 import server.beerfactory.service.mix.MixService;
 import server.beerfactory.service.user.UserService;
-import server.beerfactory.test.S3Service;
 
-import javax.validation.Valid;
+
+
 import javax.validation.constraints.Positive;
 import java.io.IOException;
 import java.util.List;
@@ -33,7 +34,7 @@ public class MixController {
     private final MixService mixService;
     private final MixMapper mixMapper;
     private final UserService userService;
-    private S3Service s3Service;
+    private S3Uploader s3Uploader;
 
 
     @PostMapping
@@ -42,7 +43,7 @@ public class MixController {
         User foundUser = userService.findUser(requestBody.getUserId());
         Mix mix = mixMapper.mixPostDtoToMix(requestBody);
         if (file != null) {
-            String imgPath = s3Service.upload(file);
+            String imgPath = s3Uploader.upload(file);
             mix.setImage(imgPath);
         }
         mix.setUser(foundUser);
@@ -60,6 +61,11 @@ public class MixController {
         requestBody.setMix(id);
         Mix  mix = mixMapper.mixPatchDtoToMix(requestBody);
         Mix updateMix = mixService.updateMix(mixMapper.mixPatchDtoToMix(requestBody));
+        if (file != null) {
+            updateMix.getImage();
+            String imgPath = s3Uploader.upload(file);
+            updateMix.setImage(imgPath);
+        }
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mixMapper.mixToMixResponse(updateMix)), HttpStatus.OK
