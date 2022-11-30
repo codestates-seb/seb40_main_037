@@ -8,6 +8,7 @@ import lombok.Getter;
 public class PageInfo {
     private int page;
     private int size;
+    private int pageNumber;
     private long totalElements;
     private int totalPages;
 }

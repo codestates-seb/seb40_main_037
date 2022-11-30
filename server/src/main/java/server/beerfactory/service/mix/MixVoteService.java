@@ -21,33 +21,33 @@ public class MixVoteService {
     private final MixVoteRepository mixVoteRepository;
 
 
-    public int mixVote(Long mixId, int num, User user) {
+    public int mixVote(Long mixId, int flag, User user) {
         Mix mix = mixRepository.findById(mixId)
                 .orElseThrow(() -> new BusinessLogicException(ExceptionCode.MIX_NOT_FOUND));
 
         Optional<MixVote> optionalVote = mixVoteRepository.findByUserAndMix(user, mix);
 
-        switch (num) {
+        switch (flag) {
             case 1:
                 if (optionalVote.isPresent()) {
                     MixVote mixVote = optionalVote.get();
-                    if (!mixVote.isVote()) {
-                        mixVote.setVote(true);
+                    if (!mixVote.isGood()) {
+                        mixVote.setGood(true);
                     }
                 } else {
                     mixVoteRepository.save(
-                            MixVote.builder().user(user).mix(mix).vote(true).build());
+                            MixVote.builder().user(user).mix(mix).good(true).build());
                 }
                 break;
             case 2:
                 if (optionalVote.isPresent()) {
                     MixVote mixVote = optionalVote.get();
-                    if (mixVote.isVote()) {
-                        mixVote.setVote(false);
+                    if (mixVote.isBad()) {
+                        mixVote.setBad(true);
                     }
                 } else {
                     mixVoteRepository.save(
-                            MixVote.builder().user(user).mix(mix).vote(false).build());
+                            MixVote.builder().user(user).mix(mix).bad(false).build());
                 }
                 break;
             case 3:
@@ -56,9 +56,10 @@ public class MixVoteService {
             default:
                 break;
         }
-        int up = mixVoteRepository.countByMixAndVote(mix, true);
-        int down = mixVoteRepository.countByMixAndVote(mix, false);
-        mix.setVoteCount(up - down);
+        int good = mixVoteRepository.countByMixAndGood(mix, true);
+        int bad = mixVoteRepository.countByMixAndBad(mix, true);
+        mix.setLikeCount(good);
+        mix.setDisLikeCount(bad);
         return mix.getLikeCount();
     }
 }
