@@ -8,10 +8,10 @@ const Errorpage = () => {
     <Wrapper>
       <ErrorMessage className="title">Page not found</ErrorMessage>
       <ErrorMessage>
-        Try <Link to="/">main page</Link>
+        Go to <Link to="/">main page</Link>
       </ErrorMessage>
       <ErrorMessage>
-        Try <Link to="/login">Login</Link> or <Link to="/join">Sign up</Link>
+        Try <Link to="/login">Log in</Link> or <Link to="/join">Sign up</Link>
       </ErrorMessage>
       <ErrorMessage>
         Browse your <Link to="/mypage">My page</Link>

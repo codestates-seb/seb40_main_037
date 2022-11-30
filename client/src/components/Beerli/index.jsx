@@ -3,7 +3,7 @@ import { Button } from '../button';
 
 import { Banner } from '../MainPage/style';
 
-import { Wrapper, Beercontainer, Beertagbox, Tags, BeerItems } from './style';
+import { Wrapper, BeerLiheader, Beercontainer, Beertagbox, Tags, BeerItems } from './style';
 import { Beer_type } from '../../constants/Beer';
 import TrandingBeer from '../MainPage/TrandingBeer';
 
@@ -11,11 +11,21 @@ const Beerli = () => {
   return (
     <Wrapper>
       <Banner />
+      <BeerLiheader>
+        <span>Beer List</span>
+        <Button
+          primary="pagingbutton"
+          label="Beer Request"
+          onClick={() => {
+            location = '/BeerRequest';
+          }}
+        />
+      </BeerLiheader>
       <Beercontainer>
         <Beertagbox>
           {Beer_type.map((item, i) => {
             return (
-              <Tags>
+              <Tags key={i}>
                 <div>{item.title}</div>
                 <ul>
                   {item.Kind.map((item, i) => {

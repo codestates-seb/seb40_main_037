@@ -37,7 +37,6 @@ function App() {
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <GlobalStyle />
           <Routes>
             <Route path="/intro" element={<Intro />} />
             <Route path="/" element={<Main />} />
@@ -46,7 +45,7 @@ function App() {
             <Route path="/MixList" element={<MixList />} />
             <Route path="/MixDetail/:id" element={<MixDetail />} />
             <Route path="/Mix/create" element={<MixCreate />} />
-            <Route path="/error" element={<Error />} />
+            <Route path="/*" element={<Error />} />
             <Route path="/join" element={<Join />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/BeerRequest" element={<BeerRequest />} />

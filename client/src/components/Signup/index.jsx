@@ -3,6 +3,8 @@ import { useMutation } from 'react-query';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { Button } from '../button';
 
+import { EMAIL_REGEX, PW_REGEX, BIRTH_YEAR, BIRTH_MD } from '../../constants/regex';
+
 import { Wrapper, FormWrap, Birth, Info } from './style';
 
 const Signup = () => {

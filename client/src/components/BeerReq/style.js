@@ -39,7 +39,7 @@ export const InputImg = styled.div`
   ${flexColumn};
   height: 300px;
   div {
-    background-color: var(--gray);
+    background-color: var(--lightgray);
     height: 100%;
     width: 100%;
 
