@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   width: 100%;
   margin-right: auto;
   margin-left: auto;
+  flex-direction: column;
 `;
 
 export const CardBox = styled.div`
