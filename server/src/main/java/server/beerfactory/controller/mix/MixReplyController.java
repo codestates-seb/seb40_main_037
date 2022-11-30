@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import server.beerfactory.dto.config.MultiResponseDto;
 import server.beerfactory.dto.config.SingleResponseDto;
 import server.beerfactory.dto.mix.MixReplyDto;
+import server.beerfactory.entity.mix.Mix;
 import server.beerfactory.entity.mix.MixReply;
+import server.beerfactory.entity.user.User;
 import server.beerfactory.mapper.mix.MixReplyMapper;
 import server.beerfactory.service.mix.MixReplyService;
 import server.beerfactory.service.mix.MixService;
+import server.beerfactory.service.user.UserService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -31,17 +34,10 @@ public class MixReplyController {
     //    private final UserService userService;
     private final MixService mixService;
     private final MixReplyMapper mapper;
+    private final UserService userService;
 
-    //Test 삭제예정
+
     @PostMapping
-    public ResponseEntity postMix(@Valid @RequestBody MixReplyDto.Post requestBody) {
-        MixReply mixReply = mapper.mixReplyPostDtoToMixReply(requestBody);
-        MixReply createdMix = mixReplyService.createMixReply(mixReply);
-        MixReplyDto.Response response = mapper.mixReplyToMixReplyResponse(createdMix);
-        return new ResponseEntity<>(new SingleResponseDto<>(response),
-                HttpStatus.CREATED);
-    }
-/*    @PostMapping
     public ResponseEntity postMixReply(@Valid @RequestBody MixReplyDto.Post requestBody) {
         User foundUser = userService.findUser(requestBody.getUserId());
         Mix foundMix = mixService.findMix(requestBody.getMixId());
@@ -58,7 +54,7 @@ public class MixReplyController {
                 new SingleResponseDto<>(response),
                 HttpStatus.CREATED
         );
-    }*/
+    }
 
     @PatchMapping("/{reply-id}")
     public ResponseEntity patchMixReply(@PathVariable("reply-id") @Positive long id,

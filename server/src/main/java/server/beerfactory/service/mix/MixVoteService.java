@@ -47,7 +47,7 @@ public class MixVoteService {
                     }
                 } else {
                     mixVoteRepository.save(
-                            MixVote.builder().user(user).mix(mix).bad(false).build());
+                            MixVote.builder().user(user).mix(mix).bad(true).build());
                 }
                 break;
             case 3:

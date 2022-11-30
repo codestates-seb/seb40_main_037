@@ -9,15 +9,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import server.beerfactory.dto.config.MultiResponseDto;
 import server.beerfactory.dto.config.SingleResponseDto;
 import server.beerfactory.dto.mix.MixDto;
 import server.beerfactory.entity.mix.Mix;
+import server.beerfactory.entity.user.User;
 import server.beerfactory.mapper.mix.MixMapper;
 import server.beerfactory.service.mix.MixService;
+import server.beerfactory.service.user.UserService;
+import server.beerfactory.test.S3Service;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -27,11 +32,20 @@ import java.util.List;
 public class MixController {
     private final MixService mixService;
     private final MixMapper mixMapper;
+    private final UserService userService;
+    private S3Service s3Service;
 
 
     @PostMapping
-    public ResponseEntity postMix(@Valid @RequestBody MixDto.Post requestBody) {
+    public ResponseEntity postMix(@RequestPart(value = "requestBody") MixDto.Post requestBody,
+                                  @RequestPart(value = "file", required = false) MultipartFile file) throws IOException {
+        User foundUser = userService.findUser(requestBody.getUserId());
         Mix mix = mixMapper.mixPostDtoToMix(requestBody);
+        if (file != null) {
+            String imgPath = s3Service.upload(file);
+            mix.setImage(imgPath);
+        }
+        mix.setUser(foundUser);
         Mix createdMix = mixService.createMix(mix);
         MixDto.Response response = mixMapper.mixToMixResponse(createdMix);
         return new ResponseEntity<>(new SingleResponseDto<>(response),
@@ -41,7 +55,8 @@ public class MixController {
 
     @PatchMapping("/{mix-id}")
     public ResponseEntity patchMix(@PathVariable("mix-id") @Positive long id,
-                                   @Valid @RequestBody MixDto.Patch requestBody) {
+                                   @RequestPart(value = "requestBody") MixDto.Patch requestBody,
+                                   @RequestPart(value = "file", required = false) MultipartFile file) throws IOException {
         requestBody.setMix(id);
         Mix  mix = mixMapper.mixPatchDtoToMix(requestBody);
         Mix updateMix = mixService.updateMix(mixMapper.mixPatchDtoToMix(requestBody));
