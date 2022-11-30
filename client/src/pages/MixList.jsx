@@ -3,7 +3,6 @@ import ListdummyImg from '../assets/ListdummyImg.png';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import { Link } from 'react-router-dom';
-
 const Wrapper = styled.div`
   width: 100%;
   padding-bottom: 50px;
@@ -40,7 +39,7 @@ const MixList = () => {
         <FoodAndWrite>
           <Food>Recomened Food</Food>
           <WriteFood>
-            <Link to={`/MixCreate`}>글 작성</Link>
+            <Link to={`/Mix/Create`}>글 작성</Link>
           </WriteFood>
         </FoodAndWrite>
         <MixFoodCardList />
