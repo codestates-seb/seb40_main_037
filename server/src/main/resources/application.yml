@@ -30,7 +30,7 @@ spring:
       ddl-auto: update
 mail:
   address:
-    admin: ${ADMIN_MAIL}
+    admin: ${ADMIN_ADDRESS}
 jwt:
 #  key: ${JWT_SECRET_KEY}
   key: ${JWT_SECRET_KEY}
