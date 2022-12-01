@@ -35,6 +35,9 @@ public class Mix extends Auditable {
     @Column
     private int likeCount;
 
+    @Column
+    private int disLikeCount;
+
     public void setVoteCount(int likeCount) {
         this.likeCount = likeCount;
     }
