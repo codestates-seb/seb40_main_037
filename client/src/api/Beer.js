@@ -1,4 +1,4 @@
-import Api from '.';
+import Api from './Account';
 
 export const getBeerList = async (page = 0) => {
   const result = await Api.get(`/beers?page=${page}`);

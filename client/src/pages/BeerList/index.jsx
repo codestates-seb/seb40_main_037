@@ -5,8 +5,11 @@ import { Wrapper, BeerLiheader, Beercontainer, Beertagbox, Tags, BeerItems } fro
 import { Button } from '../../components/button';
 import { Banner } from '../../components/MainPage/style';
 import { Beer_type } from '../../constants/Beer';
-import TrandingBeer from '../../components/MainPage/TrandingBeer';
 import Layout from '../../components/Layout';
+import BeerCard from '../../components/BeerCard';
+import Paging from '../../components/Pagenation';
+
+import dummy from '../../../data/dummy.json';
 
 const BeerList = () => {
   return (
@@ -16,7 +19,7 @@ const BeerList = () => {
         <BeerLiheader>
           <span>Beer List</span>
           <Button
-            primary="pagingbutton"
+            primary="Pagingbutton"
             label="Beer Request"
             onClick={() => {
               location = '/BeerRequest';
@@ -42,10 +45,9 @@ const BeerList = () => {
               );
             })}
           </Beertagbox>
-          <BeerItems>
-            <TrandingBeer />
-          </BeerItems>
+          <BeerCard dummy={dummy} />
         </Beercontainer>
+        <Paging />
       </Wrapper>
     </Layout>
   );
