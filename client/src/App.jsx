@@ -15,7 +15,7 @@ import MixCreate from './pages/MixCreate';
 import Join from './pages/Join';
 import Login from './pages/Login';
 import BeerRequest from './pages/BeerRequest';
-
+import MixUpdate from './pages/MixUpdate';
 const queryClient = new QueryClient();
 
 function App() {
@@ -45,6 +45,7 @@ function App() {
             <Route path="/MixList" element={<MixList />} />
             <Route path="/MixDetail/:id" element={<MixDetail />} />
             <Route path="/Mix/create" element={<MixCreate />} />
+            <Route path="MixDetail/update/:id" element={<MixUpdate />} />
             <Route path="/error" element={<Error />} />
             <Route path="/join" element={<Join />} />
             <Route path="/Login" element={<Login />} />
