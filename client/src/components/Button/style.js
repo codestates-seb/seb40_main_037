@@ -78,6 +78,7 @@ const Btn = styled.button`
     white-space: nowrap;
     color: hsl(210, 8%, 35%);
     background-color: white;
+    margin-bottom: 8px;
     &:hover {
       box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.35), 0 2px 8px hsla(0, 0%, 0%, 0.05),
         0 2px 8px hsla(0, 0%, 0%, 0.05);

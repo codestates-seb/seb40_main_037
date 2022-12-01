@@ -39,12 +39,20 @@ export const InputImg = styled.div`
   ${flexColumn};
   height: 300px;
   div {
-    background-color: var(--gray);
+    background-color: var(--lightgray);
     height: 100%;
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   span {
     ${flexCenter};
+
+    align-items: center;
   }
 
   @media ${props => props.theme.mobile} {

@@ -1,11 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Rating from '@mui/material/Rating';
 import dummy from '../../../data/data.json';
-import { red } from '@mui/material/colors';
-
+import HeartImg from '../../assets/icon/Heart.png';
+import EmptyHeartImg from '../../assets/icon/EmptyHeart.png';
 const ProductInfoBox = styled.div`
   width: 70%;
   margin: 30px auto;
@@ -26,8 +24,28 @@ const ProductionButton = styled.button`
   font-size: 20px;
 `;
 
+const HeartBuuton = styled.img`
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+`;
+
 export default function ProductInformation() {
-  const [value, setValue] = React.useState(0);
+  const [like, setLike] = React.useState(false);
+
+  // useEffect(async () => {
+  //   const fetchData = async () => {
+  //     const res = await axios.get('http://localhost:3001/users/');
+  //     if (res.data.type === 'liked') setLike(true);
+  //   };
+  //   fetchData();
+  // }, []);
+
+  const toggleLike = async e => {
+    // const res = await axios.post(...) // [POST] 사용자가 좋아요를 누름 -> DB 갱신
+    setLike(!like);
+  };
+
   return (
     <ProductInfoBox>
       {dummy.items.map(item => {
@@ -38,13 +56,7 @@ export default function ProductInformation() {
               item.tags.map((tag, i) => {
                 return <ProductionButton key={tag[i]}>{tag}</ProductionButton>;
               })}
-            <Rating
-              className="heartIcon"
-              value={value}
-              max={1}
-              icon={<FavoriteIcon fontSize="inherit" />}
-              emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-            />
+            <HeartBuuton like={like} onClick={toggleLike} src={like ? HeartImg : EmptyHeartImg} />
           </div>
         );
       })}

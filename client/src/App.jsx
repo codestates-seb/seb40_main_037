@@ -13,8 +13,10 @@ import MixDetail from './pages/MixDetail';
 import Error from './pages/Error';
 import MixCreate from './pages/MixCreate';
 import Join from './pages/Join';
-import Login from './pages/Login';
 import BeerRequest from './pages/BeerRequest';
+import BeerList from './pages/BeerList';
+import Login from './pages/Login';
+
 // redux store
 import { Provider } from 'react-redux ';
 import store from './store/redux/upload';
@@ -40,6 +42,7 @@ function App() {
         <GlobalStyle />
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
+            <GlobalStyle />
             <Routes>
               <Route path="/intro" element={<Intro />} />
               <Route path="/" element={<Main />} />

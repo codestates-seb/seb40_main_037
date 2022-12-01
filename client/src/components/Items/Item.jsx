@@ -74,7 +74,11 @@ const RightBox = styled.div`
 `;
 function Item() {
   const [selected, setSelected] = React.useState(false);
+  const [likes, setLikes] = useState(0);
 
+  const onIncrease = () => {
+    setLikes(prevLikes => prevLikes + 1);
+  };
   return (
     <Wrapper>
       <Banner />

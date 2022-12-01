@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexCenter, flexRowBetween, container } from '../../styles/index';
+import { flexCenter, container } from '../../styles/index';
 
 export const Wrapper = styled.header`
   z-index: 1;
@@ -17,41 +17,6 @@ export const Headerbox = styled.div`
   ${container};
   padding: 0px 50px;
   justify-content: space-between;
-
-  .menu {
-    ${flexRowBetween}
-    padding: 0 6px;
-    margin-right: 15px;
-    display: none;
-    border: 0 none;
-    background: transparent;
-    cursor: pointer;
-  }
-  .logo {
-    ${flexCenter}
-  }
-  .logo span {
-    display: block;
-    width: 150px;
-    height: 30px;
-    background-image: url(/sprites.svg);
-    background-size: cover;
-    background-position-y: -7px;
-    font-size: 0;
-    text-indent: -9999px;
-  }
-  .profile {
-    ${flexCenter}
-    span {
-      margin: 3px 0 0 5px;
-      font-size: 0.8rem;
-      font-weight: 900;
-    }
-    img {
-      width: 20px;
-      height: 20px;
-    }
-  }
 `;
 
 export const UserBox = styled.div`
@@ -74,7 +39,7 @@ export const UserBox = styled.div`
     border-radius: 1000px;
     border: 1px solid hsla(0, 0%, 0%, 0.25);
     white-space: nowrap;
-    background-color: white;
+    background-color: var(--bg);
     @media ${props => props.theme.mobile} {
       display: none;
     }
@@ -116,7 +81,7 @@ export const UserDropBox = styled.ul`
   min-width: 100px;
   border: 1px solid #ddd;
   box-shadow: hsla(0, 0%, 0%, 0.1);
-  background: #fff;
+  background-color: var(--bg);
   border-radius: 15px;
   padding: 10px 5px;
   margin-left: -50px;

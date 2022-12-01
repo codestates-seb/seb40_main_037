@@ -14,7 +14,8 @@
         {
           "id": 1,
           "name": "Hite",
-          "img": "img"
+          "img": "img",
+          "good": null
         }
       ],
       "reviews": [
@@ -134,6 +135,15 @@
       "name": "",
       "createdAt": "",
       "id": 5
+    },
+    {
+      "avatar": "",
+      "rating": "5",
+      "comment": "",
+      "good": 0,
+      "name": "",
+      "createdAt": "",
+      "id": 6
     }
   ]
 }
