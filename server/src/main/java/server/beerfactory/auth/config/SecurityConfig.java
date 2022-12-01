@@ -51,6 +51,10 @@ public class SecurityConfig {
                 .and()
                 .apply(new CustomFilterConfigurer())
                 .and()
+                .logout()
+                .logoutUrl("/auth/logout")
+                .logoutSuccessUrl("/mainpage")
+                .and()
                 .authorizeHttpRequests(authorize -> authorize
                         .antMatchers("/users/mypage").hasRole("USER")
                         .antMatchers(HttpMethod.GET, "/users/**").hasRole("USER")

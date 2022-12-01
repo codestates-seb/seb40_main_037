@@ -27,4 +27,6 @@ public class UserController {
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.userToUserResponseDto(user)), HttpStatus.OK);
     }
+
+
 }
