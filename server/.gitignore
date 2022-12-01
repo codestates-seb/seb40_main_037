@@ -77,3 +77,4 @@ target
 secrets.yml
 .gradletasknamecache
 .sts4-cache
+resources/application.yml
