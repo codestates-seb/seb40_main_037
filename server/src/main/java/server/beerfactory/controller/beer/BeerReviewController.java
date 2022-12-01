@@ -10,9 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import server.beerfactory.dto.beer.BeerReviewDto;
+import server.beerfactory.entity.beer.Beer;
 import server.beerfactory.entity.beer.BeerReview;
+import server.beerfactory.mapper.beer.BeerMapper;
 import server.beerfactory.mapper.beer.BeerReviewMapper;
 import server.beerfactory.service.beer.BeerReviewService;
+import server.beerfactory.service.beer.BeerService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -25,7 +28,8 @@ import java.util.List;
 public class BeerReviewController {
     private final BeerReviewService beerReviewService;
     private final BeerReviewMapper beerReviewMapper;
-
+    private final BeerService beerService;
+    private final BeerMapper beerMapper;
     @PostMapping("/{beer-id}")
     public ResponseEntity<?> postBeerReview(@PathVariable("beer-id") @Positive Long beerId,
                                             @RequestBody @Valid BeerReviewDto.Request request){
@@ -51,10 +55,10 @@ public class BeerReviewController {
     }
 
     @GetMapping("{beer-id}")
-    public ResponseEntity<?> getBeerReviews(@PageableDefault(size = 30, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
-        Page<BeerReview> beerReviews = beerReviewService.findBeerReviews(pageable);
-        List<BeerReview> reviews = beerReviews.getContent();
-        List<BeerReviewDto.Response> responses = beerReviewMapper.beerReviewToBeerReviewResponseDtos(reviews);
+    public ResponseEntity<?> getBeerReviews(@PathVariable("beer-id") @Positive Long beerId) {
+        Beer beer = beerService.findBeer(beerId);
+        List<BeerReview> beerReviews = beerReviewService.findBeerReviews(beer);
+        List<BeerReviewDto.Response> responses = beerReviewMapper.beerReviewToBeerReviewResponseDtos(beerReviews);
         return new ResponseEntity<>(responses, HttpStatus.OK);
     }
 

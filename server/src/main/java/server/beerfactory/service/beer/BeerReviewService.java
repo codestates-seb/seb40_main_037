@@ -2,15 +2,15 @@ package server.beerfactory.service.beer;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import server.beerfactory.entity.beer.Beer;
 import server.beerfactory.entity.beer.BeerReview;
+import server.beerfactory.repository.beer.BeerRepository;
 import server.beerfactory.repository.beer.BeerReviewRepository;
 
 import java.lang.module.FindException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,10 +20,15 @@ public class BeerReviewService {
 
     private final BeerReviewRepository beerReviewRepository;
     private final BeerService beerService;
+    private final BeerRepository beerRepository;
 
     @Transactional
     public BeerReview createBeerReview(Long beerId, BeerReview beerReview) {
         Beer beer = beerService.findBeer(beerId);
+        beer.setSum(beer.getSum() + beerReview.getScore());
+        beer.setCount(beer.getCount() + 1);
+        beer.setStar((double)beer.getSum() / beer.getCount());
+        beer.setStar(1.0);
         beerReview.setBeer(beer);
         return beerReviewRepository.save(beerReview);
     }
@@ -46,7 +51,8 @@ public class BeerReviewService {
         beerReviewRepository.delete(findBeerReview);
     }
 
-    public Page<BeerReview> findBeerReviews(Pageable pageable) {
-        return beerReviewRepository.findAll(pageable);
+    @Transactional(readOnly = true)
+    public List<BeerReview> findBeerReviews(Beer beer) {
+        return beerReviewRepository.findAllByBeer(beer);
     }
 }

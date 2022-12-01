@@ -1,12 +1,13 @@
 package server.beerfactory.mapper.beer;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.entity.beer.Beer;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface BeerMapper {
 
     BeerDto.Response beerToBeerResponse(Beer beer);
@@ -14,4 +15,6 @@ public interface BeerMapper {
     List<BeerDto.Response> beersToBeerResponseDtos(List<Beer> beers);
 
     Beer beerRequestToBeer(BeerDto.Request request);
+
+    List<BeerDto.Main> beerMainToBeers(List<Beer> lists);
 }

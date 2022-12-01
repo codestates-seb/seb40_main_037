@@ -12,10 +12,10 @@ import javax.persistence.*;
 @Setter
 @Builder
 @Entity
-public class BeerReviewVote extends Auditable {
+public class BeerReviewVote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BEER_VOTE_ID")
+    @Column(name = "BEER_REVIEW_VOTE_ID")
     private Long id;
 
     // 추천 여부
