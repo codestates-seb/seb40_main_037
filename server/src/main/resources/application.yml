@@ -19,3 +19,8 @@ spring:
 mail:
   address:
     admin: admin@gmail.com
+jwt:
+#  key: ${JWT_SECRET_KEY}
+  key: seb40_main_037$654$321$987$456$123$789$321$654$987$456$789$123
+  access-token-expiration-minutes: 30
+  refresh-token-expiration-minutes: 420
