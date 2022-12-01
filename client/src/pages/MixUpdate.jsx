@@ -1,11 +1,10 @@
-import MixupdateBox from '../components/MixUpdate';
+import MixUpdateBox from '../components/MixUpdate/MixUpdate';
 import Layout from '../components/Layout';
-import { MixUpdate } from '../util/fetchMix';
 
 const MixUpdate = () => {
   return (
     <Layout>
-      <MixupdateBox></MixupdateBox>
+      <MixUpdateBox></MixUpdateBox>
     </Layout>
   );
 };
