@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useMutation } from 'react-query';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
@@ -18,10 +18,12 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
+  const [pwcheck, setPwcheck] = useState('');
 
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [pwError, setPwError] = useState(false);
+  const [pwcheckError, setPwcheckError] = useState(false);
 
   const { mutate } = useMutation(userJoin, {
     retry: 0,
@@ -38,6 +40,7 @@ const Signup = () => {
       if (name === '') setNameError(true);
       if (!EMAIL_REGEX.test(email)) setEmailError(true);
       if (!PW_REGEX.test(pw)) setPwError(true);
+      if (pw !== pwcheck) setPwcheckError(true);
       return;
     }
     mutate({
@@ -61,6 +64,10 @@ const Signup = () => {
       if (id === 'pw') {
         setPwError(false);
         setPw(e.target.value);
+      }
+      if (id === 'pwcheck') {
+        setPwcheckError(false);
+        setPwcheck(e.target.value);
       }
     },
     [name, email, pw],
@@ -103,12 +110,22 @@ const Signup = () => {
               placeholder="Password"
             />
             Password check
-            <input type="password" placeholder="Password Again" />
+            <input
+              id="pwcheck"
+              type="password"
+              errorMsg="상단 password와 동일해야합니다."
+              isError={pwcheckError}
+              value={pwcheck}
+              onChange={handleChangeSign}
+              placeholder="Password Again"
+            />
             Birth
             <Birth>
               <input placeholder="year" /> <input placeholder="month" /> <input placeholder="day" />
             </Birth>
-            <Button label="Join">Join</Button>
+            <Button label="Join" onClick={handleSignUp}>
+              Join
+            </Button>
           </form>
         </FormWrap>
         <Info>

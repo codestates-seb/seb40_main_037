@@ -1,26 +1,4 @@
 import styled from 'styled-components';
-import subBanner from '../../assets/subpage/subBanner1.png';
-
-export const Container = styled.div`
-  width: 100%;
-`;
-
-export const Banner = styled.div`
-  width: 100%;
-  height: 500px;
-  background: url(${subBanner});
-  background-size: 100% 100%;
-  margin-top: 10px;
-`;
-
-export const Wrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-`;
 
 export const BeerBox = styled.div`
   width: 100%;
@@ -48,10 +26,18 @@ export const BeerBox = styled.div`
 
 export const CardBox = styled.div`
   width: 100%;
-  height: 1100px;
   display: flex;
   flex-direction: row;
   margin-bottom: 50px;
+`;
+
+export const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ProgressBarBox = styled.div`
