@@ -13,9 +13,9 @@ import MixDetail from './pages/MixDetail';
 import Error from './pages/Error';
 import MixCreate from './pages/MixCreate';
 import Join from './pages/Join';
-import Login from './pages/Login';
 import BeerRequest from './pages/BeerRequest';
 import BeerList from './pages/BeerList';
+import Login from './pages/Login';
 
 const queryClient = new QueryClient();
 

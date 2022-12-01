@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useMutation } from 'react-query';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { Button } from '../button';
 
-import { EMAIL_REGEX, PW_REGEX, BIRTH_YEAR, BIRTH_MD } from '../../constants/regex';
+import { EMAIL_REGEX, PW_REGEX } from '../../constants/regex';
+import { userLogin } from '../../api/Account';
+import Layout from '../../components/Layout';
 
-import { Wrapper, FormWrap, Birth, Info } from './style';
+import { Button } from '../../components/button';
 
-const Signup = () => {
+import { Wrapper, FormWrap, Info } from './style';
+
+const Login = () => {
   // const auth = localStorage.getItem('isLogin');
   // if (auth) return <Navigate to="/" />;
 
@@ -74,31 +77,46 @@ const Signup = () => {
   // };
 
   return (
-    <Wrapper>
-      <FormWrap>
-        <form>
-          Name
-          <input placeholder="NickName" />
-          Email
-          <input placeholder="ID" />
-          Password
-          <input type="password" placeholder="Password" />
-          Password check
-          <input type="password" placeholder="Password Again" />
-          Birth
-          <Birth>
-            <input placeholder="year" /> <input placeholder="month" /> <input placeholder="day" />
-          </Birth>
-          <Button label="Log in">Login</Button>
-        </form>
-      </FormWrap>
-      <Info>
-        <li>
-          Have an account? <Link to="/login">Log in</Link>
-        </li>
-      </Info>
-    </Wrapper>
+    <Layout>
+      <Wrapper>
+        <FormWrap>
+          <form>
+            ID
+            <input
+              id="email"
+              placeholder="Email"
+              // errorMsg="이메일 형식을 맞춰주세요."
+              // isError={emailError}
+              // value={email}
+              // onChange={handleChangeEmail}
+            />
+            Password
+            <input
+              id="pw"
+              type="password"
+              placeholder="Password"
+              // errorMsg="최소 8 자, 최소 하나의 문자,하나의 숫자 및 하나의 특수 문자"
+              // isError={pwError}
+              // link
+              // value={pw}
+              // onChange={handleChangePw}
+            />
+          </form>
+          <Button
+            label="Log in"
+            // onClick={handleSubmit}
+          >
+            Login
+          </Button>
+        </FormWrap>
+        <Info>
+          <li>
+            Don't have an account? <Link to="/join">Sign up</Link>
+          </li>
+        </Info>
+      </Wrapper>
+    </Layout>
   );
 };
 
-export default Signup;
+export default Login;
