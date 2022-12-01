@@ -19,9 +19,7 @@ const MixPagination = ({ pageInfo, currentPage, onClickPage }) => {
   return (
     <Wrapper>
       <ButtonBox>
-        <li>
-          <button onClick={() => onClickPage('Prev')}>이전</button>
-        </li>
+        <button onClick={() => onClickPage('Prev')}>이전</button>
       </ButtonBox>
       {Array.from({ length: +pageInfo.pageInfo.totalPages }).map((el, i) => {
         return (
@@ -33,9 +31,7 @@ const MixPagination = ({ pageInfo, currentPage, onClickPage }) => {
         );
       })}
       <ButtonBox>
-        <li>
-          <button onClick={() => onClickPage('Next')}>다음</button>
-        </li>
+        <button onClick={() => onClickPage('Next')}>다음</button>
       </ButtonBox>
     </Wrapper>
   );

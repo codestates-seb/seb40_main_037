@@ -58,8 +58,6 @@ function MixFoodCardList() {
     setIsUpdate(true);
   };
   console.log(MixList);
-  console.log(pageInfo);
-
   return (
     <Wrapper>
       <div>
@@ -80,7 +78,7 @@ function MixFoodCardList() {
                       <CardVote>좋아요 {MixList.likeCount}</CardVote>
                     </CardBottom>
                     <CardBottom>
-                      <Link to="/">
+                      <Link to={`/MixDetail/${MixList.id}`}>
                         <CardTitle>
                           {MixList.title &&
                             MixList.title.replace(/"/g, '').replace(/<[^>]*>?/g, '')}
