@@ -18,3 +18,4 @@ public interface BeerMapper {
 
     List<BeerDto.Main> beerMainToBeers(List<Beer> lists);
 }
+

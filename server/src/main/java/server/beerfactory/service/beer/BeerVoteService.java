@@ -114,3 +114,4 @@ public class BeerVoteService {
         return flag == 1 ? beer.getLikeCount() : beer.getDisLikeCount();
     }
 }
+

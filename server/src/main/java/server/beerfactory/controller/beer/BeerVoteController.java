@@ -35,3 +35,4 @@ public class BeerVoteController {
         return beerVoteService.beerIsLike(beerId, flag);
     }
 }
+

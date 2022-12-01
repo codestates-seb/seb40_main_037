@@ -14,3 +14,4 @@ public interface BeerVoteRepository extends JpaRepository<BeerVote, Long> {
 
     int countByBeerAndBad(Beer beer, boolean b);
 }
+
