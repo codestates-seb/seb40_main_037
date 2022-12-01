@@ -1,13 +1,17 @@
 package server.beerfactory.dto.user;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 public class UserDto {
     @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
     @Getter
     public static class Post {
         @NotBlank
@@ -26,8 +30,10 @@ public class UserDto {
 //        private String image;
     }
 
+    @NoArgsConstructor
     @AllArgsConstructor
     @Getter
+    @Builder
     public static class Response {
         private Long id;
         private String email;

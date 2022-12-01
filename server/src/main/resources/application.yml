@@ -1,4 +1,5 @@
 spring:
+  security:
   jpa:
     hibernate:
       ddl-auto: create

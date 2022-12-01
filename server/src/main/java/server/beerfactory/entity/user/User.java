@@ -1,9 +1,6 @@
 package server.beerfactory.entity.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import server.beerfactory.entity.beer.Beer;
 import server.beerfactory.entity.beer.BeerReview;
 import server.beerfactory.entity.mix.Mix;
@@ -15,7 +12,8 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "USERS")
 public class User {
@@ -35,6 +33,9 @@ public class User {
 
     @Column(nullable = false)
     private String birthday;
+
+    @Column(nullable = false)
+    private String role;
 
     @Column
     private String image;
