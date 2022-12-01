@@ -48,9 +48,10 @@ export const BeerBox = styled.div`
 
 export const CardBox = styled.div`
     width: 100%;
-    height: 900px;
+    height: 1100px;
     display: flex;
     flex-direction: row;  
+    margin-bottom: 50px;
 `
 
 export const ProgressBarBox = styled.div`
@@ -65,37 +66,23 @@ export const ProgressBarBox = styled.div`
 
 export const BeerContent = styled.div`
     width: 100%;
-    height: 300px;    
-    background-color: rgba(255, 255, 255, 0.2);
     margin: 0 auto;
-    div {
-        display: flex;
-        flex-direction: column;
-        span {
-            font-size: 20px;
-            &.title {
-                font-size: 30px;
-                font-weight: 600;
-            }
-        }
+    position: relative;
+    .title {
+        width: 90%;
+        height: 60px;
+        line-height: 60px;
+        text-align: left;
+        font-size: 30px;
+        font-weight: 600;
+        margin: 0 auto;
     }
-    ul {
-        margin: 20px 0;
-        width: 100%;
-        display: flex;        
-        justify-content: center;
-        align-item: center;
-        flex-direction: row;
-        text-align: center;
-        li {            
-            float: left;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;            
-            span {
-                padding: 5%;
-                text-align: left;
-            }            
-        }
+    .title_info {
+        width: 90%;
+        height: 60px;
+        line-height: 60px;
+        text-align: left;
+        margin: 0 auto;
+        color: #c0c0c0
     }
 `

@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   width: 100%;
   margin-right: auto;
   margin-left: auto;
+  flex-direction: column;
 `;
 
 export const CardBox = styled.div`
@@ -14,11 +15,12 @@ export const CardBox = styled.div`
   margin-left: 15px;
   padding: 5px;
   background: linear-gradient(45deg, red, yellow);
-  border-radius: 3%;
+  border-radius: 15%;
   display: inline-block;
   float: left;
   padding-left: 10px;
   padding-right: 10px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 export const CardImageBox = styled.div`
   padding-top: 15px;
@@ -26,7 +28,7 @@ export const CardImageBox = styled.div`
 export const CardImage = styled.img`
   height: 150px;
   width: 250px;
-  border-radius: 5%;
+  border-radius: 30px;
   margin: auto;
   display: flex;
   justify-content: center;

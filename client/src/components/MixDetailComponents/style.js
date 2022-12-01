@@ -43,11 +43,12 @@ export const MixDetailImg = styled.img`
   justify-content: center;
   padding: 10px;
 `;
-export const UDbutton = styled.button`
+export const UDbutton = styled.div`
   float: right;
   weight: 50px;
   margin-left: 10px;
   margin-top: 10px;
+  margin-buttom: 10px;
 `;
 export const MixContent = styled.div`
   margin-top: 30px;
@@ -67,8 +68,18 @@ export const VoteBox = styled.div`
   margin-left: auto;
   width: 1000px;
   border-bottom: solid 1px;
+  display: flex;
 `;
 export const Vote = styled.div`
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  display: inline-block;
+  flex: auto;
+`;
+export const ReviewBox = styled.div`
   margin-right: auto;
   margin-left: auto;
   width: 100px;
