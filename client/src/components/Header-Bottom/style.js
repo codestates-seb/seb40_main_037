@@ -3,7 +3,7 @@ import { flexCenter } from '../../styles/index';
 
 export const Wrapper = styled.footer`
   height: 80px;
-  background-color: var(--bg);
+  background-color: var(--beeryellow);
   box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05),
     0 2px 8px hsla(0, 0%, 0%, 0.05);
   ${flexCenter}
@@ -23,7 +23,7 @@ export const Wrapper = styled.footer`
     margin: 10px 0;
     cursor: pointer;
     :hover {
-      background: #ddd;
+      background-color: var(--orange);
       border-radius: 5px;
     }
     span {

@@ -49,17 +49,17 @@ export const Dropbox_item = [
     detail: 'new account',
     link: '/join',
   },
-  { title: 'My page', detail: 'your account', link: '' },
+  { title: 'My page', detail: 'your account', link: '/mypage' },
   { title: 'Log out', detail: 'Log off from account', link: '' },
   {
     title: 'Beer',
-    detail: 'Beers',
-    link: '',
+    detail: 'Beers list',
+    link: '/BeerList',
   },
   {
     title: 'snack',
     detail: 'snack with',
-    link: '',
+    link: '/MixList',
   },
 ];
 
@@ -70,18 +70,18 @@ export const Underbox_item = [
     image: '',
     link: '/join',
   },
-  { title: 'My page', image: '', link: '' },
+  { title: 'My page', image: '', link: '/mypage' },
   { title: 'Log out', image: '', link: '' },
   { title: 'Home', image: '', link: '/' },
   {
     title: 'Beer',
-    image: 'Beers',
-    link: '',
+    image: '',
+    link: '/BeerList',
   },
   {
     title: 'snack',
     image: '',
-    link: '',
+    link: '/MixList',
   },
 ];
 

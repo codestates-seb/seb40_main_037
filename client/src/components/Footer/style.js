@@ -3,8 +3,11 @@ import { container } from '../../styles';
 
 export const Wrapper = styled.footer`
   padding: 32px 12px;
-  background-color: var(--footer-background-color);
+  background-image: url('src/assets/Footer.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
+
 export const Container = styled.div`
   ${container}
   justify-content: normal;
@@ -27,9 +30,6 @@ export const InnerBox = styled.div`
   }
   &.logo {
     flex: 0 0 64px;
-    @media ${props => props.theme.mobile} {
-      display: none;
-    }
   }
   &.sitemap {
     flex: 2 1 auto;
@@ -60,7 +60,7 @@ export const ListWrap = styled.ul`
       line-height: 14px;
       &:first-child {
         font-size: 0.8rem;
-        color: hsl(210, 8%, 60%);
+        color: var(--gray);
         font-weight: 400;
         @media ${props => props.theme.mobile} {
           margin: 0px;
@@ -79,7 +79,7 @@ export const ListWrap = styled.ul`
 export const List = styled.li`
   .title {
     margin-bottom: 3px;
-    color: hsl(210, 8%, 75%);
+    color: var(--gray);
     font-size: 0.85rem;
     font-weight: 700;
     @media ${props => props.theme.mobile} {
@@ -87,9 +87,12 @@ export const List = styled.li`
       margin: 5px 0 0 0;
     }
   }
+
+  a {
+    color: var(--gray);
+  }
   line-height: 18px;
   font-size: 0.8rem;
-  color: hsl(210, 8%, 60%);
   @media ${props => props.theme.mobile} {
     display: inline-block;
     margin-right: 10px;
