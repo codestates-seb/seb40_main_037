@@ -44,3 +44,4 @@ public class MainController {
         return new ResponseEntity<>(new MultiResponseDto<>(response, searchList), HttpStatus.OK);
     }
 }
+

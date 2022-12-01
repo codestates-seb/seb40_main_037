@@ -34,3 +34,4 @@ public class BeerVote {
     @JoinColumn(name = "USER_ID")
     private User user;
 }
+
