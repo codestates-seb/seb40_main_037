@@ -44,8 +44,8 @@ public class User {
     private UserStatus userStatus = UserStatus.USER_ACTIVE;
 
     // 별도의 엔티티 클래스 생성하지 않고 간단하게 매핑 처리
-//    @ElementCollection(fetch = FetchType.EAGER)
-//    private List<String> roles = new ArrayList<>();
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private final List<Beer> beers = new ArrayList<>();

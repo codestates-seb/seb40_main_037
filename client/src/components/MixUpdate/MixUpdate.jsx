@@ -8,8 +8,8 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { fetchMixCreate } from '../../util/fetchMix';
+import { useNavigate, useParams } from 'react-router-dom';
+import { fetchMixCreate, fetchMixDetail, MixUpdate } from '../../util/fetchMix';
 // import {체크로그인 자리} from '페치로그인'
 
 const Wrapper = styled.div`
@@ -35,7 +35,8 @@ const ButtonWrapper = styled.div`
   padding: 20px;
 `;
 
-function MixCreateBox() {
+function MixUpdateBox() {
+  const { id } = useParams();
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -44,7 +45,11 @@ function MixCreateBox() {
     try {
       // 체크로그인자리 : 로그인이 성공한다면
       checkIfLogined().then(() => {
-        console.log('로그인 성공');
+        fetchMixDetail(id).then(res => {
+          setTitle(res.title);
+          setContent(res.content);
+          console.log('로그인 성공');
+        });
       });
     } catch (error) {
       console.log('에러');
@@ -84,6 +89,7 @@ function MixCreateBox() {
               fullWidth
               label="제목을 입력해주세요 *"
               id="fullWidth"
+              value={title}
               onChange={onChangeTitle}
             />
           </Box>
@@ -101,7 +107,7 @@ function MixCreateBox() {
               fullWidth
               multiline
               rows={20}
-              defaultValue=""
+              defaultValue={content}
               id="fullWidth"
               onChange={onChangeContent}
             ></TextField>
@@ -116,7 +122,7 @@ function MixCreateBox() {
         <ButtonWrapper>
           <Stack direction="row" alignItems="center" spacing={2}>
             <Button variant="contained" component="label" color="primary" onClick={onClickSubmit}>
-              등록하기
+              저장하기
               <input hidden />
             </Button>
             <Link to="/MixList">
@@ -132,4 +138,4 @@ function MixCreateBox() {
   );
 }
 
-export default MixCreateBox;
+export default MixUpdateBox;
