@@ -40,8 +40,6 @@ public class BeerDto {
         private int afterTaste;
         @NotBlank
         private int soda;
-        @NotBlank
-        private boolean bookmark;
     }
 
     @NoArgsConstructor
@@ -68,7 +66,6 @@ public class BeerDto {
         private int afterTaste;
         private int sum;
         private int count;
-        private boolean bookmark;
     }
 
     @Getter
