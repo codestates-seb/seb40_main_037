@@ -35,7 +35,7 @@ const Signup = () => {
     retry: 0,
     onSuccess: () => {
       alert('회원가입이 완료되었습니다.');
-      navigate('/members/login');
+      navigate('/login');
     },
   });
 
@@ -62,9 +62,10 @@ const Signup = () => {
       return;
     }
     mutate({
-      name: name,
+      nickname: name,
       email: email,
       password: pw,
+      birthday: `${year}-${month}-${day}`,
     });
   };
 
@@ -100,7 +101,7 @@ const Signup = () => {
         setDay(e.target.value);
       }
     },
-    [name, email, pw, `${year}-${month}-${day}`],
+    [name, email, pw, year, month, day],
   );
 
   return (

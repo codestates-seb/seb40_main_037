@@ -50,7 +50,10 @@ export const Dropbox_item = [
     link: '/join',
   },
   { title: 'My page', detail: 'your account', link: '/mypage' },
-  { title: 'Log out', detail: 'Log off from account', link: '' },
+  {
+    title: 'Log out',
+    detail: 'Log off from account',
+  },
   {
     title: 'Beer',
     detail: 'Beers list',
@@ -71,7 +74,10 @@ export const Underbox_item = [
     link: '/join',
   },
   { title: 'My page', image: '', link: '/mypage' },
-  { title: 'Log out', image: '', link: '' },
+  {
+    title: 'Log out',
+    image: '',
+  },
   { title: 'Home', image: '', link: '/' },
   {
     title: 'Beer',
