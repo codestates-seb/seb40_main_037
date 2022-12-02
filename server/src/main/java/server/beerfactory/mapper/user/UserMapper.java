@@ -7,6 +7,5 @@ import server.beerfactory.entity.user.User;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserMapper {
-    User userPostToUser(UserDto.Post requestBody);
     UserDto.Response userToUserResponseDto(User user);
 }

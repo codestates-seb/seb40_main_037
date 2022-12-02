@@ -8,7 +8,7 @@ const HeaderBottom = ({ isHeaderBottom }) => {
   return isHeaderBottom ? (
     <Wrapper>
       {Underbox_item.map((items, i) => {
-        const { title, image, link } = items;
+        const { title, link } = items;
         return (
           <li key={i}>
             <Link to={link}>

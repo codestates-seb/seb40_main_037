@@ -1,8 +1,8 @@
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 //댓글 리스트 조회
 export const fetchReplyList = async id => {
-  return fetch(
-    `http://ec2-43-201-130-57.ap-northeast-2.compute.amazonaws.com:8080/mixes/${id}/reply`,
-  )
+  return fetch(`${BASE_URL}/mixes/${id}/reply`)
     .then(response => {
       if (!response.ok) {
         throw Error('유효하지 않은 요청입니다.');
@@ -15,17 +15,14 @@ export const fetchReplyList = async id => {
 };
 //댓글 작성(생성)
 export const fetchReplyCreate = async fetchData => {
-  return fetch(
-    `http://ec2-43-201-130-57.ap-northeast-2.compute.amazonaws.com:8080/mixes/${id}/reply`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: sessionStorage.getItem('access_token'),
-      },
-      body: JSON.stringify(fetchData),
+  return fetch(`${BASE_URL}/mixes/${id}/reply`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: sessionStorage.getItem('access_token'),
     },
-  )
+    body: JSON.stringify(fetchData),
+  })
     .then(response => {
       if (!response.ok) {
         throw Error('유효하지 않은 요청입니다.');
@@ -38,15 +35,12 @@ export const fetchReplyCreate = async fetchData => {
 };
 //댓글 삭제
 export const fetchDeleteAnswer = async id => {
-  return fetch(
-    `http://ec2-43-201-130-57.ap-northeast-2.compute.amazonaws.com:8080/mixes/${id}/reply/${id}`,
-    {
-      method: 'DELETE',
-      headers: {
-        authorization: sessionStorage.getItem('access_token'),
-      },
+  return fetch(`${BASE_URL}/mixes/${id}/reply/${id}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: sessionStorage.getItem('access_token'),
     },
-  )
+  })
     .then(response => {
       if (!response.ok) {
         throw Error('유효하지 않은 요청입니다.');

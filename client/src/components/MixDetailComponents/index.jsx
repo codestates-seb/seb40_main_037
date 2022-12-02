@@ -29,7 +29,7 @@ import { fetchMixUpVote, fetchMixDownVote } from '../../util/fetchMixVote';
 import { fetchReplyList } from '../../util/fetchReply';
 
 function MixDetailComponents() {
-  const { id } = useParams;
+  const { id } = useParams();
   const navigate = useNavigate();
   const [info, setInfo] = useState({});
   const [answerList, setAnswerList] = useState([]);
@@ -60,7 +60,7 @@ function MixDetailComponents() {
   };
   const getReply = id => {
     fetchReplyList(id).then(res => {
-      setInfo(res);
+      setAnswerList(res);
     });
   };
   const needUpdate = flag => {
@@ -73,17 +73,21 @@ function MixDetailComponents() {
       if (author !== currUser) return '';
       return (
         <Stack direction="row" alignItems="center" spacing={2}>
-          <Button
-            variant="contained"
-            component="label"
-            color="primary"
-            onClick={() => onClickEdit(info.id)}
-          >
-            수정하기
-          </Button>
-          <Button variant="outlined" component="label" color="primary" onClick={showModalDelete}>
-            삭제하기
-          </Button>
+          <Link to="/Mix/create">
+            <Button
+              variant="contained"
+              component="label"
+              color="primary"
+              onClick={() => onClickEdit(info.id)}
+            >
+              수정하기
+            </Button>
+          </Link>
+          <Link to="/MixList">
+            <Button variant="outlined" component="label" color="primary" onClick={showModalDelete}>
+              삭제하기
+            </Button>
+          </Link>
         </Stack>
       );
     }
@@ -128,43 +132,29 @@ function MixDetailComponents() {
 
   const par = MixdummydataDetail.card[0];
 
-  console.log(info);
+  console.log(info.data);
+  console.log(answerList.data);
 
   return (
     <Wrapper>
       {!isPending && Object.keys(info).length ? (
         <div>
           <HeaderBar>
-            <Title>{info.title}</Title>
-            <UDbutton>
-              <Stack direction="row" alignItems="center" spacing={2}>
-                <Link to="/Mix/create">
-                  <Button variant="contained" component="label" color="primary">
-                    Edit
-                    <input hidden />
-                  </Button>
-                </Link>
-                <Link to="/MixList">
-                  <Button variant="outlined" component="label" color="primary">
-                    Delete
-                    <input hidden />
-                  </Button>
-                </Link>
-              </Stack>
-            </UDbutton>
+            <Title>{info.data.title}</Title>
+            <UDbutton>{info && checkIfAuthor(info)}</UDbutton>
           </HeaderBar>
           <TimeBox>
             {' '}
-            {par.modified !== null ? (
-              <Time>{relTimeFormat(par.modified)} 수정됨</Time>
+            {info.data.modifiedAt !== null ? (
+              <Time>{relTimeFormat(info.data.modifiedAt)} 수정됨</Time>
             ) : (
-              <Time>{relTimeFormat(par.createdAt)} 생성됨 </Time>
+              <Time>{relTimeFormat(info.data.createdAt)} 생성됨 </Time>
             )}
           </TimeBox>
 
           <MixContentBox>
-            <MixDetailImg src={par.cardImg} alt="임시사진입니다." />
-            <MixContent>{par.content}</MixContent>
+            <MixDetailImg src={info.data.Image} alt="임시사진입니다." />
+            <MixContent>{info.data.content}</MixContent>
           </MixContentBox>
         </div>
       ) : (
@@ -190,37 +180,38 @@ function MixDetailComponents() {
       <ReviewsBox>
         <ReviewBox>후기</ReviewBox>
         <ul>
-          {MixdummydataDetail.reviews.map(review => {
-            return (
-              <li className="reviewList" key={review.id}>
-                <div className="profile">
-                  <img src={review.avatar} />
-                  <p className="userName">{review.name}</p>
-                </div>
-                <p>{review.createdAt}</p>
-                <ImageList
-                  sx={{ width: 500, height: 500 }}
-                  cols={5}
-                  rowHeight={'auto'}
-                  gap={10}
-                  className="imageItemBox"
-                >
-                  {review.photo &&
-                    review.photo.map(item => (
-                      <ImageListItem key={item.img}>
-                        <img
-                          src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                          srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                          alt={item.title}
-                          loading="lazy"
-                        />
-                      </ImageListItem>
-                    ))}
-                </ImageList>
-                <div className="commentBox">{review.comment}</div>
-              </li>
-            );
-          })}
+          {answerList.data &&
+            answerList.data.map(data => {
+              return (
+                <li className="reviewList" key={answerList.data.id}>
+                  <div className="profile">
+                    {/* <img src={answerList.avatar} /> */}
+                    <p className="userName">{answerList.data.nickName}</p>
+                  </div>
+                  <p>{answerList.data.createdAt}</p>
+                  <ImageList
+                    sx={{ width: 500, height: 500 }}
+                    cols={5}
+                    rowHeight={'auto'}
+                    gap={10}
+                    className="imageItemBox"
+                  >
+                    {answerList.data.img &&
+                      answerList.data.img.map(item => (
+                        <ImageListItem key={answerList.data.img}>
+                          <img
+                            src={`${answerList.data.img}?w=164&h=164&fit=crop&auto=format`}
+                            srcSet={`${answerList.data.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                            alt={answerList.data.title}
+                            loading="lazy"
+                          />
+                        </ImageListItem>
+                      ))}
+                  </ImageList>
+                  <div className="commentBox">{answerList.data.comment}</div>
+                </li>
+              );
+            })}
         </ul>
       </ReviewsBox>
       <MixDetailReviewForms />

@@ -1,4 +1,4 @@
-package server.beerfactory.dto.user;
+package server.beerfactory.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,9 +6,20 @@ import lombok.Getter;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-public class UserDto {
+public class AuthDto {
     @Getter
-    public static class Post {
+    public static class Login {
+        @NotBlank
+        @Email
+        private String username;
+
+        @NotBlank
+        private String password;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public static class Signup {
         @NotBlank
         @Email
         public String email;

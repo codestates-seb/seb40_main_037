@@ -1,6 +1,8 @@
 // Mix 단일 게시물 조회
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const fetchMixDetail = async id => {
-  return fetch(`http://ec2-43-201-130-57.ap-northeast-2.compute.amazonaws.com:8080/mixes/${id}`)
+  return fetch(`${BASE_URL}/mixes/${id}`)
     .then(response => {
       if (!response.ok) {
         throw Error('유효하지 않은 요청입니다.');
@@ -13,9 +15,7 @@ export const fetchMixDetail = async id => {
 };
 // Mix 리스트 조회
 export const fetchMixList = async page => {
-  return fetch(
-    `http://ec2-43-201-130-57.ap-northeast-2.compute.amazonaws.com:8080/mixes?page=${page}`,
-  )
+  return fetch(`${BASE_URL}/mixes?page=${page}`)
     .then(response => {
       if (!response.ok) {
         throw Error('유효하지 않은 요청입니다.');
@@ -28,7 +28,7 @@ export const fetchMixList = async page => {
 };
 // mix 새로운 글 작성
 export const fetchMixCreate = async fetchData => {
-  return fetch(`http://ec2-43-201-130-57.ap-northeast-2.compute.amazonaws.com:8080/mixes`, {
+  return fetch(`${BASE_URL}/mixes`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
@@ -51,7 +51,7 @@ export const fetchMixCreate = async fetchData => {
 };
 // mix 글 수정
 export const MixUpdate = async (fetchData, id) => {
-  fetch(`http://ec2-43-201-130-57.ap-northeast-2.compute.amazonaws.com:8080/Mixes/${id}`, {
+  fetch(`${BASE_URL}/Mixes/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export const MixUpdate = async (fetchData, id) => {
 };
 // mix 글 삭제
 export const MixDelete = async id => {
-  fetch(`http://ec2-43-201-130-57.ap-northeast-2.compute.amazonaws.com:8080/Mixes/${id}`, {
+  fetch(`${BASE_URL}/Mixes/${id}`, {
     method: 'DELETE',
     headers: {
       authorization: sessionStorage.getItem('access_token'),
