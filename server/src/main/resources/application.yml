@@ -21,6 +21,15 @@ mail:
     admin: admin@gmail.com
 jwt:
 #  key: ${JWT_SECRET_KEY}
-  key: seb40_main_037$654$321$987$456$123$789$321$654$987$456$789$123
+  key: ${JWT_SECRET_KEY}
   access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 420
+cloud:
+  aws:
+    s3:
+      bucket: ${BUCKET}
+    region:
+      static: ap-northeast-2
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY}
+      secretKey: ${G3Do0/G1Sy7xs+wAHHzLRKvewCI4HVXiUgPZEawQ}

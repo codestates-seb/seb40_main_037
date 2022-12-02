@@ -3,6 +3,7 @@ package server.beerfactory.entity.mix;
 
 import lombok.*;
 import server.beerfactory.audit.Auditable;
+import server.beerfactory.entity.beer.BeerReviewVote;
 import server.beerfactory.entity.user.User;
 
 
@@ -35,6 +36,9 @@ public class Mix extends Auditable {
     @Column
     private int likeCount;
 
+    @Column
+    private int disLikeCount;
+
     public void setVoteCount(int likeCount) {
         this.likeCount = likeCount;
     }
@@ -45,6 +49,9 @@ public class Mix extends Auditable {
 
     @OneToMany(mappedBy = "mix")
     private final List<MixReply> mixReplies = new ArrayList<>();
+
+    @OneToMany(mappedBy = "mix", cascade = CascadeType.ALL)
+    private final List<MixVote> mixVotes = new ArrayList<>();
 
     public void addMixReply(MixReply mixReply) {
         this.mixReplies.add(mixReply);
