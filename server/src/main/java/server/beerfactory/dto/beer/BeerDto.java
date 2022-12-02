@@ -19,7 +19,6 @@ public class BeerDto {
         @Size(min = 2, max = 20)
         @NotBlank
         private String name;
-        @NotBlank
         private String image;
         @Size(min = 10, message = "10자 이상 입력해주세요")
         @NotBlank
@@ -29,7 +28,7 @@ public class BeerDto {
         @NotBlank
         private String country;
         @NotBlank
-        private Beer.BeerType type;
+        private Beer.BeerType beerType;
         @NotBlank
         private double alcohol;
         @NotBlank
@@ -40,8 +39,6 @@ public class BeerDto {
         private int afterTaste;
         @NotBlank
         private int soda;
-        @NotBlank
-        private boolean bookmark;
     }
 
     @NoArgsConstructor
@@ -52,7 +49,7 @@ public class BeerDto {
         private Long id;
         private String name;
         private String description;
-        private String type;
+        private Beer.BeerType beerType;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
         private String image;
@@ -68,7 +65,6 @@ public class BeerDto {
         private int afterTaste;
         private int sum;
         private int count;
-        private boolean bookmark;
     }
 
     @Getter
@@ -79,7 +75,7 @@ public class BeerDto {
         private Long id;
         private String name;
         private String description;
-        private String type;
+        private Beer.BeerType beerType;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
         private String image;

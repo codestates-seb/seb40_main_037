@@ -1,9 +1,6 @@
 package server.beerfactory.auth.handler;
 
 import com.google.gson.Gson;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -34,6 +31,4 @@ public class UserAuthenticationFailureHandler implements AuthenticationFailureHa
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
         response.getWriter().write(gson.toJson(errorResponse, ErrorResponse.class));
     }
-
-
 }

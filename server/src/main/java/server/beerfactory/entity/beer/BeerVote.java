@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @Builder
 @Entity
-public class BeerVote {
+public class BeerVote extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BEER_VOTE_ID")

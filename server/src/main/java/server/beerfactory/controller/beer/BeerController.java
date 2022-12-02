@@ -19,6 +19,7 @@ import server.beerfactory.auth.userdetails.CustomUserDetailsService;
 import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.dto.config.MultiResponseDto;
 import server.beerfactory.entity.beer.Beer;
+import server.beerfactory.entity.beer.BeerBookMark;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.image.S3Uploader;
 import server.beerfactory.mapper.beer.BeerMapper;
@@ -45,6 +46,7 @@ public class BeerController {
     @PostMapping
     public String postBeer(@RequestPart(value = "requestBody") BeerDto.Request request,
                            @RequestPart(value = "file", required = false) MultipartFile file) throws IOException{
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Beer beer = beerMapper.beerRequestToBeer(request);
         if (file != null) {
             String imgPath = s3Uploader.upload(file, "image");
@@ -88,9 +90,12 @@ public class BeerController {
         return new ResponseEntity<>(beerId, HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/bookmark/{beer-id}")
+    @PostMapping("/bookMark/{beer-id}")
     public ResponseEntity<?> postBookMark(@PathVariable("beer-id") @Positive Long beerId){
-        beerService.postBookMark(beerId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.findUser(email);
+        beerService.postBookMark(user, beerId);
+        List<BeerBookMark> list = beerService.listBookMark(user);
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 }

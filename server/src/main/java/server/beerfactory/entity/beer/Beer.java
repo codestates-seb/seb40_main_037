@@ -27,6 +27,7 @@ public class Beer extends Auditable {
     @Column
     private String image;
 
+    @Enumerated(value = EnumType.STRING)
     @Column
     private BeerType beerType;
 
@@ -38,9 +39,6 @@ public class Beer extends Auditable {
 
     @Column(nullable = false)
     private String description;
-
-    @Column
-    private boolean bookmark;
 
     @Column
     private int likeCount;
@@ -84,6 +82,9 @@ public class Beer extends Auditable {
 
     @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL)
     private final List<BeerVote> beerVotes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL)
+    private final List<BeerBookMark> beerBookMarks = new ArrayList<>();
 
     public enum BeerType {
         ALE("에일"),
