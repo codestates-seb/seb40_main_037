@@ -1,7 +1,7 @@
-const BASE_URL = 'http://ec2-43-201-130-57.ap-northeast-2.compute.amazonaws.com:8080';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const fetchMixUpVote = async id => {
-  return fetch(`http://ec2-43-201-130-57.ap-northeast-2.compute.amazonaws.com:8080/mixes/${id}/1`, {
+  return fetch(`${BASE_URL}/mixes/${id}/1`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export const fetchMixUpVote = async id => {
 };
 
 export const fetchMixDownVote = async id => {
-  return fetch(`http://ec2-43-201-130-57.ap-northeast-2.compute.amazonaws.com:8080/mixes/${id}/2`, {
+  return fetch(`${BASE_URL}/mixes/${id}/2`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export const fetchMixDownVote = async id => {
 };
 
 export const fetchMixDeleteVote = async id => {
-  return fetch(`http://ec2-43-201-130-57.ap-northeast-2.compute.amazonaws.com:8080/mixes/${id}/3`, {
+  return fetch(`${BASE_URL}/mixes/${id}/3`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

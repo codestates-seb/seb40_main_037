@@ -52,7 +52,7 @@ function MixDetailReviewForms({ replyId, update }) {
 
   return (
     <MyReivewForm>
-      <div className="formBox" onChange={onChangeContent} key={user.name}>
+      <div className="formBox" onChange={onChangeContent}>
         {/* <img src={user.avatar} /> */}
         <UploadButtons onClick={onClickSubmit} />
         <input className="commentBox"></input>
