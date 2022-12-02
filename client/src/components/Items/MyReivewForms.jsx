@@ -75,7 +75,7 @@ export default function MyReviewForms() {
   const [reviews, setReviews] = useState({
     id: '',
     avatar: '',
-    rating: '',
+    value: '',
     comment: '',
     good: 0,
     name: '',
@@ -95,7 +95,7 @@ export default function MyReviewForms() {
       await axios
         .post('http://localhost:3001/reviews', {
           avatar: reviews.avatar,
-          rating: reviews.rating,
+          value: reviews.value,
           comment: reviews.comment,
           good: reviews.good,
           name: reviews.name,
@@ -131,7 +131,7 @@ export default function MyReviewForms() {
                 onChange={onChangeReview}
               />
               <Rating
-                name="rating"
+                name="value"
                 className="rating-star"
                 value={Number(value)}
                 precision={1}

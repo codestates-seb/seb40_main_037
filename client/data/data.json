@@ -129,8 +129,8 @@
     },
     {
       "avatar": "",
-      "rating": "4",
-      "comment": "hi",
+      "rating": "3",
+      "comment": "hh",
       "good": 0,
       "name": "",
       "createdAt": "",
@@ -138,8 +138,8 @@
     },
     {
       "avatar": "",
-      "rating": "5",
-      "comment": "",
+      "value": "2",
+      "comment": "123",
       "good": 0,
       "name": "",
       "createdAt": "",

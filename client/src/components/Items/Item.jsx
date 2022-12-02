@@ -17,7 +17,7 @@ import FiliterButtons from './FilterButtons';
 // 스타일 컴포넌트
 import { CardTime } from '../MixFoodCardList/style';
 import { relTimeFormat } from '../../util/convertor';
-
+// import VITE_API_BASE_URL
 const Wrapper = styled.div`
   width: 100%;
 `;
@@ -113,6 +113,7 @@ function Item() {
                     onChange={() => {
                       setSelected(!selected);
                     }}
+                    e
                   >
                     <FavoriteIcon />
                     <h2>{review.good}</h2>
