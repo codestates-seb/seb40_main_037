@@ -27,6 +27,7 @@ public class Beer extends Auditable {
     @Column
     private String image;
 
+    @Enumerated(value = EnumType.STRING)
     @Column
     private BeerType beerType;
 
