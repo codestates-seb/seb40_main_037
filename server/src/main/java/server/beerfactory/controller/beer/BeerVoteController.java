@@ -3,12 +3,14 @@ package server.beerfactory.controller.beer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import server.beerfactory.entity.beer.BeerReview;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.service.beer.BeerReviewVoteService;
 import server.beerfactory.service.beer.BeerVoteService;
+import server.beerfactory.service.user.UserService;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -22,19 +24,14 @@ import javax.validation.constraints.Positive;
 public class BeerVoteController {
 
     private final BeerVoteService beerVoteService;
-
-//    @PostMapping("/beer_reviews/{beer_review-id}/{flag}")
-//    public BeerReview postBeerReviewIsLike(@PathVariable("beer_review-id") @Positive Long beerReviewId,
-//                                           @Min(1) @Max(3) @PathVariable("flag") int flag,
-//                                           User user){
-//        return beerReviewVoteService.beerReviewIsLike(beerReviewId, user, flag);
-//    }
-
+    private final UserService userService;
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/{beer-id}/{flag}")
     public int postBeerIsLike(@PathVariable("beer-id") @Positive Long beerId,
                                     @Min(1) @Max(2) @PathVariable("flag") int flag){
-        return beerVoteService.beerIsLike(beerId, flag);
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.findUser(email);
+        return beerVoteService.beerIsLike(user, beerId, flag);
     }
 }
 

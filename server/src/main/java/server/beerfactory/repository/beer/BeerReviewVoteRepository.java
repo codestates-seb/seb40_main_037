@@ -14,5 +14,4 @@ public interface BeerReviewVoteRepository extends JpaRepository<BeerReviewVote, 
 
     int countByBeerReviewAndBad(BeerReview beerReview, boolean bad);
 
-    Optional<BeerReviewVote> findByBeerReview(BeerReview beerReview);
 }

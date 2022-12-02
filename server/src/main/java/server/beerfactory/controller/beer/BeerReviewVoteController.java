@@ -29,7 +29,7 @@ public class BeerReviewVoteController {
     public int postBeerReviewIsLike(@PathVariable("beer_review-id") @Positive Long beerReviewId,
                                     @Min(1) @Max(2) @PathVariable("flag") int flag){
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userService.findId(email);
+        User user = userService.findUser(email);
         return beerReviewVoteService.beerReviewIsLike(user, beerReviewId, flag);
     }
 }

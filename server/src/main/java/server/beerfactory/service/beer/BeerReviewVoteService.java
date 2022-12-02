@@ -30,8 +30,7 @@ public class BeerReviewVoteService {
     public int beerReviewIsLike(User user, Long beerReviewId, int flag) {
         BeerReview beerReview = beerReviewRepository.findById(beerReviewId)
                 .orElseThrow(() -> new BusinessLogicException(ExceptionCode.BEER_REVIEW_NOT_FOUND));
-        Optional<User> user2 = userRepository.findById(beerReviewId);
-        Optional<BeerReviewVote> reviewVote = beerReviewVoteRepository.findByBeerReview(beerReview);
+        Optional<BeerReviewVote> reviewVote = beerReviewVoteRepository.findByUserAndBeerReview(user, beerReview);
         switch (flag){
             case 1:
                 if(reviewVote.isPresent()){
