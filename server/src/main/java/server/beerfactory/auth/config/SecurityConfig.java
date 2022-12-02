@@ -44,6 +44,10 @@ public class SecurityConfig {
                 .and()
                 .formLogin().disable()
                 .httpBasic().disable()
+                .logout()
+                .logoutUrl("/auth/logout")
+                .logoutSuccessUrl("/mainpage")
+                .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(new UserAuthenticationEntryPoint())
                 .accessDeniedHandler(new UserAccessDeniedHandler())
@@ -77,6 +81,7 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
+        config.addAllowedHeader("*");
         config.setAllowedOrigins(Arrays.asList("*"));
         config.setAllowedMethods(Arrays.asList("POST", "PATCH", "GET", "DELETE"));
 
