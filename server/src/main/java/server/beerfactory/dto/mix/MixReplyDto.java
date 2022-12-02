@@ -48,7 +48,6 @@ public class MixReplyDto {
     @NoArgsConstructor
     public static class Response {
         private long id;
-        private Long userId;
         private String nickName;
         private String content;
         private LocalDateTime createdAt;

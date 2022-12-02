@@ -27,6 +27,7 @@ dependencies {
 	implementation 'com.google.code.gson:gson'
 	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
 	implementation 'org.projectlombok:lombok:1.18.18'
+	implementation 'io.awspring.cloud:spring-cloud-starter-aws:2.3.1'
 	annotationProcessor 'org.projectlombok:lombok'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 	compileOnly 'org.projectlombok:lombok'
@@ -34,6 +35,7 @@ dependencies {
 	testAnnotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
 	testImplementation 'org.springframework.security:spring-security-test'
 	runtimeOnly 'com.h2database:h2'
+//	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 

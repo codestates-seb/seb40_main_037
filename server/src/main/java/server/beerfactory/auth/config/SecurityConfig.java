@@ -26,8 +26,6 @@ import server.beerfactory.auth.utils.CustomAuthorityUtils;
 
 import java.util.Arrays;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 @RequiredArgsConstructor
 @Configuration
 public class SecurityConfig {
@@ -45,12 +43,17 @@ public class SecurityConfig {
                 .headers().frameOptions().sameOrigin()
                 .and()
                 .csrf().disable()
-//                .cors().configurationSource(corsConfigurationSource())
-                .cors(withDefaults()) // corsConfigurationSource Bean을 이용함
+                .cors().configurationSource(corsConfigurationSource())
+                .and()
+//                .cors(withDefaults()) // corsConfigurationSource Bean을 이용함
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .formLogin().disable()
                 .httpBasic().disable()
+                .logout()
+                .logoutUrl("/auth/logout")
+                .logoutSuccessUrl("/mainpage")
+                .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(new UserAuthenticationEntryPoint())
                 .accessDeniedHandler(new UserAccessDeniedHandler())
@@ -84,6 +87,7 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
+        config.addAllowedHeader("*");
         config.setAllowedOrigins(Arrays.asList("*"));
         config.setAllowedMethods(Arrays.asList("POST", "PATCH", "GET", "DELETE"));
 

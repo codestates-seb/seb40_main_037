@@ -10,6 +10,7 @@ public class MixDto {
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor
+    @Builder
     public static class Post {
 
         private Long userId;

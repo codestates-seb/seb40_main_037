@@ -33,7 +33,18 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User findUser(Long id) {
+    public User findUser(String email) {
+        return findVerifiedUser(email);
+    }
+
+    private User findVerifiedUser(String email) {
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+
+        return optionalUser.orElseThrow(() ->
+                new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+    }
+
+    public User findUserId(Long id) {
         return findVerifiedUser(id);
     }
 
