@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import server.beerfactory.dto.config.MultiResponseDto;
@@ -38,9 +39,13 @@ public class MixReplyController {
 
     @PostMapping
     public ResponseEntity postMixReply(@Valid @RequestBody MixReplyDto.Post requestBody) {
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.findUser(email);
+
         Mix foundMix = mixService.findMix(requestBody.getMixId());
 
         MixReply mixReply = mapper.mixReplyPostDtoToMixReply(requestBody);
+        mixReply.setUser(user);
         mixReply.setMix(foundMix);
 
         MixReply createdMixReply = mixReplyService.createMixReply(mixReply);

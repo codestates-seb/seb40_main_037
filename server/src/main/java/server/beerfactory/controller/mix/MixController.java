@@ -8,6 +8,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -42,11 +43,14 @@ public class MixController {
     @PostMapping
     public ResponseEntity postMix(@RequestPart(value = "requestBody") MixDto.Post requestBody,
                                   @RequestPart(value = "file", required = false) MultipartFile file) throws IOException {
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.findUser(email);
         Mix mix = mixMapper.mixPostDtoToMix(requestBody);
         if (file != null) {
             String imgPath = s3Uploader.upload(file, "image");
             mix.setImage(imgPath);
         }
+        mix.setUser(user);
         Mix createdMix = mixService.createMix(mix);
         MixDto.Response response = mixMapper.mixToMixResponse(createdMix);
         return new ResponseEntity<>(new SingleResponseDto<>(response),
