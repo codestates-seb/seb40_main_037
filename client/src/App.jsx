@@ -18,6 +18,10 @@ import BeerList from './pages/BeerList';
 import Login from './pages/Login';
 import MixUpdate from './pages/MixUpdate';
 
+// redux store
+import { Provider } from 'react-redux ';
+import store from './store/redux/upload';
+// import { store } from './store/redux/upload';
 const queryClient = new QueryClient();
 
 function App() {
@@ -34,28 +38,30 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/intro" element={<Intro />} />
-            <Route path="/" element={<Main />} />
-            <Route path="/items" element={<Items />} />
-            <Route path="/MyPage" element={<Mypage />} />
-            <Route path="/MixList" element={<MixList />} />
-            <Route path="/MixDetail/:id" element={<MixDetail />} />
-            <Route path="/Mix/create" element={<MixCreate />} />
-            <Route path="MixDetail/update/:id" element={<MixUpdate />} />
-            <Route path="/join" element={<Join />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/BeerRequest" element={<BeerRequest />} />
-            <Route path="/BeerList" element={<BeerList />} />
-            <Route path="/*" element={<Error />} />
-          </Routes>
-        </BrowserRouter>
-      </QueryClientProvider>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/intro" element={<Intro />} />
+              <Route path="/" element={<Main />} />
+              <Route path="/items" element={<Items />} />
+              <Route path="/MyPage" element={<Mypage />} />
+              <Route path="/MixList" element={<MixList />} />
+              <Route path="/MixDetail/:id" element={<MixDetail />} />
+              <Route path="/Mix/create" element={<MixCreate />} />
+              <Route path="MixDetail/update/:id" element={<MixUpdate />} />
+              <Route path="/join" element={<Join />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/BeerRequest" element={<BeerRequest />} />
+              <Route path="/BeerList" element={<BeerList />} />
+              <Route path="/*" element={<Error />} />
+            </Routes>
+          </BrowserRouter>
+        </QueryClientProvider>
+      </ThemeProvider>
+    </Provider>
   );
 }
 

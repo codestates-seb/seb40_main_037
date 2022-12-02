@@ -36,7 +36,7 @@ export const blockCenter = css`
 `;
 
 export const container = css`
-  max-width: 1264px;
+  /* max-width: 1264px; */
   width: 100%;
   display: flex;
   margin: 0 auto;
