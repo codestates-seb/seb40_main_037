@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mariadb://beerfactory.cnoi8wfszlm7.ap-northeast-2.rds.amazonaws.com:3306/beerfactory
+    url: ${DB_URL}
     driver-class-name: org.mariadb.jdbc.Driver
-    username: admin
-    password: 12341234
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
   jpa:
     open-in-view: false
     generate-ddl: true
@@ -12,13 +12,13 @@ spring:
       ddl-auto: update
 jwt:
 #  key: ${JWT_SECRET_KEY}
-  key: 12412421421412alkdjgflasdjflj2j4
+  key: ${JWT_SECRET_KEY}
   access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 420
 cloud:
   aws:
     s3:
-      bucket: beertestbucket
+      bucket: ${BUCKET}
     region:
       static: ap-northeast-2
     credentials:
