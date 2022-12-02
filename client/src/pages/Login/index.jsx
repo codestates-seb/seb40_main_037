@@ -33,12 +33,13 @@ const Login = () => {
       alert(error.message);
     },
   });
-  console.log('!', data);
+
   useEffect(() => {
     if (isLogin) {
+      console.log(data);
       localStorage.setItem('isLogin', true);
-      localStorage.setItem('token', JSON.stringify(data.headers.authorization));
-      localStorage.setItem('refreshToken', JSON.stringify(data.headers.refreshtoken));
+      localStorage.setItem('access_token', JSON.stringify(data.headers.Authorization));
+      localStorage.setItem('Refresh', JSON.stringify(data.headers.Refresh));
       localStorage.setItem('memberId', JSON.stringify(data.headers.memberid));
       navigate('/');
     }

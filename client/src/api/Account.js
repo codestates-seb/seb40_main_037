@@ -12,7 +12,7 @@ Api.interceptors.request.use(function (config) {
     return config;
   }
   if (config.headers && accessToken) {
-    config.headers['Authorization'] = accessToken.replace(/\"/gi, ''); // Bearer
+    config.headers['Authorization'] = accessToken.replace(/\"/gi, '');
     return config;
   }
 });
