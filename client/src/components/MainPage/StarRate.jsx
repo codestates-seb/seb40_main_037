@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import dummy from '../../../data/dummy.json';
+import { StarRateWrap } from './style';
 
 function StarRate(props) {
   {
@@ -24,6 +24,7 @@ function StarRate(props) {
   useEffect(() => {
     setRatesResArr(calcStarRates);
   }, []);
+
   return (
     <StarRateWrap>
       {STAR_IDX_ARR.map((item, idx) => {
@@ -54,15 +55,3 @@ function StarRate(props) {
 }
 
 export default StarRate;
-
-const StarRateWrap = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin: 15px 0;
-  justify-content: center;
-  .star_icon {
-    display: inline-flex;
-    margin-right: 5px;
-  }
-`;

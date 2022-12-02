@@ -8,14 +8,16 @@ import { Wrapper, ProgressBarBox, BeerBox, CardBox } from './style';
 
 import StarRate from '../MainPage/StarRate';
 
-export default function BeerCard(props) {
+import dummy from '../../../data/dummy.json';
+
+export default function BeerCard() {
   return (
     <BeerBox>
       <div className="title">Tranding Beer</div>
       <div className="title_info">LOREM IPU DIMAI AMDHAI AMIDIADMID</div>
       <CardBox>
         <Wrapper>
-          {props.dummy.beerlist.map((beerlist, i) => (
+          {dummy.beerlist.map((beerlist, i) => (
             <Card
               key={i}
               sx={{

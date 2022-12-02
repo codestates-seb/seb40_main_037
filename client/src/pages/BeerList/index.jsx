@@ -9,8 +9,6 @@ import Layout from '../../components/Layout';
 import BeerCard from '../../components/BeerCard';
 import Paging from '../../components/Pagenation';
 
-import dummy from '../../../data/dummy.json';
-
 const BeerList = () => {
   return (
     <Layout>
@@ -45,7 +43,7 @@ const BeerList = () => {
               );
             })}
           </Beertagbox>
-          <BeerCard dummy={dummy} />
+          <BeerCard />
         </Beercontainer>
         <Paging />
       </Wrapper>

@@ -85,3 +85,15 @@ export const BeerContent = styled.div`
     color: #c0c0c0;
   }
 `;
+
+export const StarRateWrap = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 15px 0;
+  justify-content: center;
+  .star_icon {
+    display: inline-flex;
+    margin-right: 5px;
+  }
+`;
