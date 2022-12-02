@@ -32,8 +32,6 @@ public class BeerService {
     private final UserRepository userRepository;
     @Transactional
     public Beer createBeer(Beer beer) {
-        log.info("beer = {}", beer);
-
         return beerRepository.save(beer);
     }
 
@@ -46,6 +44,7 @@ public class BeerService {
         if(!Objects.equals(user.getId(), user2.getId())){
             throw new BusinessLogicException(ExceptionCode.USER_DIFFERENT);
         }
+        find.setImage(beer.getImage());
         find.setSum(beer.getSum());
         find.setBeerType(beer.getBeerType());
         find.setDescription(beer.getDescription());
@@ -57,7 +56,7 @@ public class BeerService {
     @Transactional(readOnly = true)
     public Beer findBeer(Long beerId) {
         Optional<Beer> findBeer = beerRepository.findById(beerId);
-        Beer find = findBeer.orElseThrow(() -> new FindException());
+        Beer find = findBeer.orElseThrow(() -> new BusinessLogicException(ExceptionCode.BEER_NOT_FOUND));
         return find;
     }
 

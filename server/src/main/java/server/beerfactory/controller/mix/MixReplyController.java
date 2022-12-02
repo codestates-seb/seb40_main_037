@@ -38,16 +38,13 @@ public class MixReplyController {
 
     @PostMapping
     public ResponseEntity postMixReply(@Valid @RequestBody MixReplyDto.Post requestBody) {
-        User foundUser = userService.findUserId(requestBody.getUserId());
         Mix foundMix = mixService.findMix(requestBody.getMixId());
 
         MixReply mixReply = mapper.mixReplyPostDtoToMixReply(requestBody);
         mixReply.setMix(foundMix);
-        mixReply.setUser(foundUser);
 
         MixReply createdMixReply = mixReplyService.createMixReply(mixReply);
         MixReplyDto.Response response = mapper.mixReplyToMixReplyResponse(createdMixReply);
-        response.setNickName(foundUser.getNickname());
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(response),

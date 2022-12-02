@@ -4,6 +4,8 @@ import lombok.*;
 import server.beerfactory.entity.beer.Beer;
 
 import javax.persistence.Column;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -15,18 +17,30 @@ public class BeerDto {
     @AllArgsConstructor
     public static class Request{
         @Size(min = 2, max = 20)
+        @NotBlank
         private String name;
+        @NotBlank
         private String image;
         @Size(min = 10, message = "10자 이상 입력해주세요")
+        @NotBlank
         private String description;
+        @NotBlank
         private String brand;
+        @NotBlank
         private String country;
-        private String type;
+        @NotBlank
+        private Beer.BeerType type;
+        @NotBlank
         private double alcohol;
+        @NotBlank
         private String aroma;
+        @NotBlank
         private int sweet;
+        @NotBlank
         private int afterTaste;
+        @NotBlank
         private int soda;
+        @NotBlank
         private boolean bookmark;
     }
 
