@@ -29,7 +29,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         return new CustomUserDetails(findUser);
     }
 
-    public class CustomUserDetails extends User implements UserDetails {
+    public final class CustomUserDetails extends User implements UserDetails {
+
         CustomUserDetails(User user) {
             setId(user.getId());
             setEmail(user.getEmail());

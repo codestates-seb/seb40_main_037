@@ -60,4 +60,9 @@ public class UserService {
         if (user.isPresent())
             throw new BusinessLogicException(ExceptionCode.USER_EXISTS);
     }
+
+    public User findId(String email) {
+        Optional<User> find = userRepository.findByEmail(email);
+        return find.orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+    }
 }
