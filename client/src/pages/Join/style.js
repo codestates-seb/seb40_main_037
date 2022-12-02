@@ -26,24 +26,11 @@ export const FormWrap = styled.div`
     margin-top: 10px;
     width: 100%;
   }
-
-  input {
-    ${flexColumnCenter};
-    width: 100%;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    text-align: center;
-  }
 `;
 
 export const Birth = styled.div`
   ${flexCenter}
   gap: 7px;
-
-  input {
-    width: 50px;
-    border-radius: 5px;
-  }
 `;
 
 export const Info = styled.ul`
