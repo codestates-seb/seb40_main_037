@@ -38,7 +38,7 @@ public class MixReplyController {
 
     @PostMapping
     public ResponseEntity postMixReply(@Valid @RequestBody MixReplyDto.Post requestBody) {
-        User foundUser = userService.findUser(requestBody.getUserId());
+        User foundUser = userService.findUserId(requestBody.getUserId());
         Mix foundMix = mixService.findMix(requestBody.getMixId());
 
         MixReply mixReply = mapper.mixReplyPostDtoToMixReply(requestBody);

@@ -44,16 +44,16 @@ public class UserService {
                 new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
     }
 
-//    public User findUser(Long id) {
-//        return findVerifiedUser(id);
-//    }
-//
-//    private User findVerifiedUser(Long id) {
-//        Optional<User> optionalUser = userRepository.findById(id);
-//
-//        return optionalUser.orElseThrow(() ->
-//                new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
-//    }
+    public User findUserId(Long id) {
+        return findVerifiedUser(id);
+    }
+
+    private User findVerifiedUser(Long id) {
+        Optional<User> optionalUser = userRepository.findById(id);
+
+        return optionalUser.orElseThrow(() ->
+                new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+    }
 
     private void verifyExistsEmail(String email) {
         Optional<User> user = userRepository.findByEmail(email);

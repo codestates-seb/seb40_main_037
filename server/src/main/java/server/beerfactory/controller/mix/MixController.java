@@ -42,7 +42,7 @@ public class MixController {
     @PostMapping
     public ResponseEntity postMix(@RequestPart(value = "requestBody") MixDto.Post requestBody,
                                   @RequestPart(value = "file", required = false) MultipartFile file) throws IOException {
-        User foundUser = userService.findUser(requestBody.getUserId());
+        User foundUser = userService.findUserId(requestBody.getUserId());
         Mix mix = mixMapper.mixPostDtoToMix(requestBody);
         if (file != null) {
             String imgPath = s3Uploader.upload(file, "image");
