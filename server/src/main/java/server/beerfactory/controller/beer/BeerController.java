@@ -1,19 +1,26 @@
 package server.beerfactory.controller.beer;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import server.beerfactory.auth.userdetails.CustomUserDetailsService;
 import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.dto.config.MultiResponseDto;
 import server.beerfactory.entity.beer.Beer;
+import server.beerfactory.entity.user.User;
 import server.beerfactory.mapper.beer.BeerMapper;
 import server.beerfactory.service.beer.BeerService;
+import server.beerfactory.service.user.UserService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -23,8 +30,10 @@ import java.util.List;
 @RequiredArgsConstructor
 @Validated
 @RequestMapping("/beers")
+@Slf4j
 public class BeerController {
 
+    private final UserService userService;
     private final BeerService beerService;
     private final BeerMapper beerMapper;
 
@@ -38,8 +47,10 @@ public class BeerController {
     @PatchMapping("/{beer-id}")
     public String patchBeer(@PathVariable("beer-id") @Positive Long beerId,
                             @RequestBody @Valid BeerDto.Request request){
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.findId(email);
         Beer beer = beerMapper.beerRequestToBeer(request);
-        Beer updated = beerService.updateBeer(beerId, beer);
+        Beer updated = beerService.updateBeer(user, beerId, beer);
         return String.valueOf(updated.getId());
     }
 
@@ -60,7 +71,15 @@ public class BeerController {
 
     @DeleteMapping("/{beer-id}")
     public ResponseEntity<?> deleteBeer(@PathVariable("beer-id") @Positive Long beerId){
-        beerService.deleteBeer(beerId);
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.findId(email);
+        beerService.deleteBeer(user, beerId);
         return new ResponseEntity<>(beerId, HttpStatus.NO_CONTENT);
+    }
+
+    @PostMapping("/bookmark/{beer-id}")
+    public ResponseEntity<?> postBookMark(@PathVariable("beer-id") @Positive Long beerId){
+        beerService.postBookMark(beerId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -12,10 +12,10 @@ import javax.persistence.*;
 @Setter
 @Builder
 @Entity
-public class BeerReviewVote {
+public class BeerVote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BEER_REVIEW_VOTE_ID")
+    @Column(name = "BEER_VOTE_ID")
     private Long id;
 
     // 추천 여부
@@ -27,10 +27,11 @@ public class BeerReviewVote {
     private boolean bad;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "BEER_REVIEW_ID")
-    private BeerReview beerReview;
+    @JoinColumn(name = "BEER_ID")
+    private Beer beer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
 }
+
