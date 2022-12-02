@@ -10,6 +10,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+mail:
+  address:
+    admin: ${ADMIN_ADDRESS}
 jwt:
 #  key: ${JWT_SECRET_KEY}
   key: ${JWT_SECRET_KEY}
