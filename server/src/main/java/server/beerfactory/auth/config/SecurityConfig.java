@@ -43,9 +43,9 @@ public class SecurityConfig {
                 .headers().frameOptions().sameOrigin()
                 .and()
                 .csrf().disable()
+//                .cors(withDefaults())
                 .cors().configurationSource(corsConfigurationSource())
                 .and()
-//                .cors(withDefaults()) // corsConfigurationSource Bean을 이용함
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .formLogin().disable()
@@ -87,7 +87,10 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
         config.addAllowedHeader("*");
+        config.addExposedHeader("Authorization");
+        config.addExposedHeader("Refresh");
         config.setAllowedOrigins(Arrays.asList("*"));
         config.setAllowedMethods(Arrays.asList("POST", "PATCH", "GET", "DELETE"));
 

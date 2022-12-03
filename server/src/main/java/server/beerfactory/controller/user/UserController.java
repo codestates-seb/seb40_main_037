@@ -1,6 +1,7 @@
 package server.beerfactory.controller.user;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +14,7 @@ import server.beerfactory.service.user.UserService;
 @RequiredArgsConstructor
 @Validated
 @RestController
+@Slf4j
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
