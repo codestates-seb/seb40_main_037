@@ -35,7 +35,7 @@ public class BeerService {
     private final UserRepository userRepository;
     private final BeerBookMarkRepository beerBookMarkRepository;
     @Transactional
-    public Beer createBeer( Beer beer) {
+    public Beer createBeer(Beer beer) {
         return beerRepository.save(beer);
     }
 
@@ -60,8 +60,7 @@ public class BeerService {
     @Transactional(readOnly = true)
     public Beer findBeer(Long beerId) {
         Optional<Beer> findBeer = beerRepository.findById(beerId);
-        Beer find = findBeer.orElseThrow(() -> new BusinessLogicException(ExceptionCode.BEER_NOT_FOUND));
-        return find;
+        return findBeer.orElseThrow(() -> new BusinessLogicException(ExceptionCode.BEER_NOT_FOUND));
     }
 
     @Transactional(readOnly = true)
@@ -104,20 +103,22 @@ public class BeerService {
     }
 
     @Transactional
-    public void postBookMark(User user, Long beerId) {
+    public int postBookMark(User user, Long beerId) {
         Optional<Beer> find = beerRepository.findById(beerId);
         Beer findBeer = find.orElseThrow(() -> new BusinessLogicException(ExceptionCode.BEER_NOT_FOUND));
-        Optional<BeerBookMark> beer = beerBookMarkRepository.findByUser(user);
+        Optional<BeerBookMark> beer = beerBookMarkRepository.findByUserAndBeer(user, findBeer);
         if(beer.isPresent()){
             BeerBookMark beerBookMark = beer.get();
             if(beerBookMark.isOk())
                 beerBookMarkRepository.delete(beerBookMark);
+            return 0;
         }else{
             beerBookMarkRepository.save(BeerBookMark.builder()
                     .beer(findBeer)
                     .user(user)
                     .isOk(true)
                     .build());
+            return 1;
         }
     }
     @Transactional(readOnly = true)
@@ -127,7 +128,7 @@ public class BeerService {
         if(!user.getId().equals(user2.getId())){
             throw new BusinessLogicException(ExceptionCode.USER_DIFFERENT);
         }
-        return beerBookMarkRepository.findAllByUser(user);
+        return beerBookMarkRepository.findAllByUserAndIsOk(user, true);
     }
 }
 

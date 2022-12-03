@@ -1,7 +1,6 @@
 package server.beerfactory.entity.beer;
 
 import lombok.*;
-import server.beerfactory.audit.Auditable;
 import server.beerfactory.entity.user.User;
 
 import javax.persistence.*;
@@ -12,7 +11,7 @@ import javax.persistence.*;
 @Setter
 @Builder
 @Entity
-public class BeerVote extends Auditable{
+public class BeerVote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BEER_VOTE_ID")

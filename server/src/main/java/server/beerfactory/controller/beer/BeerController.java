@@ -8,10 +8,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,10 +21,10 @@ import server.beerfactory.entity.beer.BeerBookMark;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.image.S3Uploader;
 import server.beerfactory.mapper.beer.BeerMapper;
+import server.beerfactory.mapper.user.UserMapper;
 import server.beerfactory.service.beer.BeerService;
 import server.beerfactory.service.user.UserService;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.io.IOException;
 import java.util.List;
@@ -43,10 +41,14 @@ public class BeerController {
     private final BeerMapper beerMapper;
     private final S3Uploader s3Uploader;
 
+    private UserMapper userMapper;
+
     @PostMapping
     public String postBeer(@RequestPart(value = "requestBody") BeerDto.Request request,
                            @RequestPart(value = "file", required = false) MultipartFile file) throws IOException{
-        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String email = (String)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User findUser = userService.findUser(email);
+        request.setUser(findUser);
         Beer beer = beerMapper.beerRequestToBeer(request);
         if (file != null) {
             String imgPath = s3Uploader.upload(file, "image");
@@ -61,9 +63,14 @@ public class BeerController {
                             @PathVariable("beer-id") @Positive Long beerId,
                             @RequestPart(value = "file", required = false) MultipartFile file) throws IOException{
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userService.findUser(email);
+        User findUser = userService.findUser(email);
+        request.setUser(findUser);
         Beer beer = beerMapper.beerRequestToBeer(request);
-        Beer updated = beerService.updateBeer(user, beerId, beer);
+        if (file != null) {
+            String imgPath = s3Uploader.upload(file, "image");
+            beer.setImage(imgPath);
+        }
+        Beer updated = beerService.updateBeer(findUser, beerId, beer);
         return String.valueOf(updated.getId());
     }
 
@@ -85,17 +92,26 @@ public class BeerController {
     @DeleteMapping("/{beer-id}")
     public ResponseEntity<?> deleteBeer(@PathVariable("beer-id") @Positive Long beerId){
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userService.findUser(email);
-        beerService.deleteBeer(user, beerId);
+        User findUser = userService.findUser(email);
+        beerService.deleteBeer(findUser, beerId);
         return new ResponseEntity<>(beerId, HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/bookMark/{beer-id}")
+    @PostMapping("/bookmark/{beer-id}")
     public ResponseEntity<?> postBookMark(@PathVariable("beer-id") @Positive Long beerId){
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userService.findUser(email);
-        beerService.postBookMark(user, beerId);
-        List<BeerBookMark> list = beerService.listBookMark(user);
-        return new ResponseEntity<>(list, HttpStatus.OK);
+        User findUser = userService.findUser(email);
+        log.info("findUser = {}", findUser.getId());
+        int result = beerService.postBookMark(findUser, beerId);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping("/bookmark")
+    public ResponseEntity<?> bookMarkList() {
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User findUser = userService.findUser(email);
+        log.info("findUser = {}", findUser.getId());
+        List<BeerBookMark> bookMarks = beerService.listBookMark(findUser);
+        return new ResponseEntity<>(bookMarks, HttpStatus.OK);
     }
 }

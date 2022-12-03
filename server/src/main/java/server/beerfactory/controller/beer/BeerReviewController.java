@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.dto.beer.BeerReviewDto;
+import server.beerfactory.dto.user.UserDto;
 import server.beerfactory.entity.beer.Beer;
 import server.beerfactory.entity.beer.BeerReview;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.image.S3Uploader;
 import server.beerfactory.mapper.beer.BeerMapper;
 import server.beerfactory.mapper.beer.BeerReviewMapper;
+import server.beerfactory.mapper.user.UserMapper;
 import server.beerfactory.service.beer.BeerReviewService;
 import server.beerfactory.service.beer.BeerService;
 import server.beerfactory.service.user.UserService;
@@ -42,6 +44,9 @@ public class BeerReviewController {
     public ResponseEntity<?> postBeerReview(@PathVariable("beer-id") @Positive Long beerId,
                                             @RequestPart(value = "requestBody") BeerReviewDto.Request request,
                                             @RequestPart(value = "file", required = false) MultipartFile file) throws IOException {
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User findUser = userService.findUser(email);
+        request.setUser(findUser);
         BeerReview beerReview = beerReviewMapper.beerReviewRequestToBeerReview(request);
         if (file != null) {
             String imgPath = s3Uploader.upload(file, "image");
@@ -57,13 +62,14 @@ public class BeerReviewController {
                                              @RequestPart(value = "requestBody") BeerReviewDto.Request request,
                                              @RequestPart(value = "file", required = false) MultipartFile file) throws IOException{
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userService.findUser(email);
+        User findUser = userService.findUser(email);
+        request.setUser(findUser);
         BeerReview beerReview = beerReviewMapper.beerReviewRequestToBeerReview(request);
         if (file != null) {
             String imgPath = s3Uploader.upload(file, "image");
             beerReview.setImage(imgPath);
         }
-        BeerReview updated = beerReviewService.updateBeerReview(user, beerReviewId, beerReview);
+        BeerReview updated = beerReviewService.updateBeerReview(findUser, beerReviewId, beerReview);
         BeerReviewDto.Response response = beerReviewMapper.beerReviewToBeerReviewResponse(updated);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -71,8 +77,8 @@ public class BeerReviewController {
     @DeleteMapping("/{beer_review-id}")
     public ResponseEntity<?> deleteBeerReview(@PathVariable("beer_review-id") @Positive Long beerReviewId){
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userService.findUser(email);
-        beerReviewService.deleteBeerReview(user, beerReviewId);
+        User findUser = userService.findUser(email);
+        beerReviewService.deleteBeerReview(findUser, beerReviewId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

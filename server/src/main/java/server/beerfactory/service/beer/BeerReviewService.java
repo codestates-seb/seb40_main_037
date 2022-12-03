@@ -46,6 +46,9 @@ public class BeerReviewService {
         if(!Objects.equals(user.getId(), user2.getId())){
             throw new BusinessLogicException(ExceptionCode.USER_DIFFERENT);
         }
+        findBeerReview.setBeer(beerReview.getBeer());
+        findBeerReview.setScore(beerReview.getScore());
+        findBeerReview.setImage(beerReview.getImage());
         findBeerReview.setContent(beerReview.getContent());
         findBeerReview.setTitle(beerReview.getTitle());
         return findBeerReview;
