@@ -7,17 +7,23 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import server.beerfactory.dto.beer.BeerBookMarkDto;
 import server.beerfactory.dto.beer.BeerDto;
+import server.beerfactory.dto.user.UserDto;
 import server.beerfactory.entity.beer.Beer;
+import server.beerfactory.entity.beer.BeerBookMark;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.exception.BusinessLogicException;
 import server.beerfactory.exception.ExceptionCode;
+import server.beerfactory.mapper.beer.BeerBookMarkMapper;
 import server.beerfactory.mapper.beer.BeerMapper;
+import server.beerfactory.repository.beer.BeerBookMarkRepository;
 import server.beerfactory.repository.beer.BeerRepository;
 import server.beerfactory.repository.beer.BeerVoteRepository;
 import server.beerfactory.repository.user.UserRepository;
 
 import java.lang.module.FindException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +36,8 @@ public class BeerService {
     private final BeerMapper beerMapper;
     private final BeerRepository beerRepository;
     private final UserRepository userRepository;
+    private final BeerBookMarkRepository beerBookMarkRepository;
+    private final BeerBookMarkMapper beerBookMarkMapper;
     @Transactional
     public Beer createBeer(Beer beer) {
         return beerRepository.save(beer);
@@ -56,8 +64,7 @@ public class BeerService {
     @Transactional(readOnly = true)
     public Beer findBeer(Long beerId) {
         Optional<Beer> findBeer = beerRepository.findById(beerId);
-        Beer find = findBeer.orElseThrow(() -> new BusinessLogicException(ExceptionCode.BEER_NOT_FOUND));
-        return find;
+        return findBeer.orElseThrow(() -> new BusinessLogicException(ExceptionCode.BEER_NOT_FOUND));
     }
 
     @Transactional(readOnly = true)
@@ -100,15 +107,36 @@ public class BeerService {
     }
 
     @Transactional
-    public void postBookMark(Long beerId) {
+    public int postBookMark(User user, Long beerId) {
         Optional<Beer> find = beerRepository.findById(beerId);
-        Beer beer = find.orElseThrow(() -> new FindException());
-//        boolean isOk = beerRepository.findByUserAndBookMark();
-//        if(isOk){
-//            beerRepository.delete(beer);
-//        }else{
-//            beer.setBookmark(true);
-//        }
+        Beer findBeer = find.orElseThrow(() -> new BusinessLogicException(ExceptionCode.BEER_NOT_FOUND));
+        Optional<BeerBookMark> beer = beerBookMarkRepository.findByUserAndBeer(user, findBeer);
+        if(beer.isPresent()){
+            BeerBookMark beerBookMark = beer.get();
+            if(beerBookMark.isOk())
+                beerBookMarkRepository.delete(beerBookMark);
+            return 0;
+        }else{
+            beerBookMarkRepository.save(BeerBookMark.builder()
+                    .beer(findBeer)
+                    .user(user)
+                    .ok(true)
+                    .build());
+            return 1;
+        }
+    }
+    @Transactional(readOnly = true)
+    public List<BeerBookMarkDto.Dto> listBookMark(User user) {
+        Optional<User> findUser = userRepository.findById(user.getId());
+        User user2 = findUser.orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+        if(!user.getId().equals(user2.getId())){
+            throw new BusinessLogicException(ExceptionCode.USER_DIFFERENT);
+        }
+        List<BeerBookMark> beer = beerBookMarkRepository.findAllByUserAndOk(user, true);
+        List<BeerBookMarkDto.Dto> books = new ArrayList<>();
+        for (BeerBookMark b : beer)
+            books.add(beerBookMarkMapper.beerBookMarkToDtos(b));
+        return books;
     }
 }
 

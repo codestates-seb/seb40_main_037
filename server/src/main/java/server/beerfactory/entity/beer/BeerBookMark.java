@@ -1,6 +1,7 @@
 package server.beerfactory.entity.beer;
 
 import lombok.*;
+import server.beerfactory.audit.Auditable;
 import server.beerfactory.entity.user.User;
 
 import javax.persistence.*;
@@ -9,21 +10,17 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 @Entity
-public class BeerVote {
+@Builder
+public class BeerBookMark {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BEER_VOTE_ID")
+    @Column(name = "BEER_BOOKMARK_ID")
     private Long id;
 
     // 추천 여부
     @Column
-    private boolean good;
-
-    // 비추천 여부
-    @Column
-    private boolean bad;
+    private boolean ok;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BEER_ID")
@@ -33,4 +30,3 @@ public class BeerVote {
     @JoinColumn(name = "USER_ID")
     private User user;
 }
-

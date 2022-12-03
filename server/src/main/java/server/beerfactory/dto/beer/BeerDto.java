@@ -1,13 +1,16 @@
 package server.beerfactory.dto.beer;
 
 import lombok.*;
+import server.beerfactory.dto.user.UserDto;
 import server.beerfactory.entity.beer.Beer;
+import server.beerfactory.entity.user.User;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class BeerDto {
 
@@ -39,7 +42,8 @@ public class BeerDto {
         private int afterTaste;
         @NotBlank
         private int soda;
-        private boolean bookmark;
+        @Setter
+        private User user;
     }
 
     @NoArgsConstructor
@@ -66,7 +70,7 @@ public class BeerDto {
         private int afterTaste;
         private int sum;
         private int count;
-        private boolean bookmark;
+        private UserDto.Response user;
     }
 
     @Getter
@@ -93,6 +97,7 @@ public class BeerDto {
         private int afterTaste;
         private int sum;
         private int count;
+        private List<BeerReviewDto.Response> beerReviews;
     }
 }
 

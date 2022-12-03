@@ -1,7 +1,9 @@
 package server.beerfactory.dto.beer;
 
 import lombok.*;
+import server.beerfactory.dto.user.UserDto;
 import server.beerfactory.entity.beer.Beer;
+import server.beerfactory.entity.user.User;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -26,6 +28,9 @@ public class BeerReviewDto {
 
         @NotNull
         private int score;
+
+        @Setter
+        private User user;
     }
 
     @NoArgsConstructor
@@ -40,5 +45,6 @@ public class BeerReviewDto {
         private int disLikeCount;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
+        private UserDto.Response user;
     }
 }

@@ -34,7 +34,6 @@ public class MixDto {
         @NotBlank(message = "내용을 입력해 주세요.")
         private String content;
         private String image;
-        private int likeCount;
 
         public void setMix(long id) {
             this.id = id;
@@ -53,6 +52,7 @@ public class MixDto {
         private String content;
         private String image;
         private int likeCount;
+        private int disLikeCount;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
 //        private Boolean mix_vote; 좋아요 미설정

@@ -41,9 +41,6 @@ public class Beer extends Auditable {
     private String description;
 
     @Column
-    private boolean bookmark;
-
-    @Column
     private int likeCount;
 
     @Column
@@ -86,6 +83,9 @@ public class Beer extends Auditable {
     @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL)
     private final List<BeerVote> beerVotes = new ArrayList<>();
 
+    @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL)
+    private final List<BeerBookMark> beerBookMarks = new ArrayList<>();
+
     public enum BeerType {
         ALE("에일"),
         WHEAT_ALE("위트 에일"),
@@ -93,8 +93,11 @@ public class Beer extends Auditable {
         IPA("IPA"),
         STOUT("스타우트"),
         BOCK("복"),
-        SOUR("사워");
-
+        VODKA("보드카"),
+        SOUR("사워"),
+        Weizen("바이젠"),
+        DARK_LAGER("다크라거"),
+        CIDER("사이다");
         @Getter
         private final String type;
 

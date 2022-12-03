@@ -42,6 +42,7 @@ public class BeerVoteService {
                 }else{
                     beerVoteRepository.save(BeerVote.builder()
                             .beer(beer)
+                            .user(user)
                             .good(true)
                             .build());
                 }
@@ -55,6 +56,7 @@ public class BeerVoteService {
                 }else{
                     beerVoteRepository.save(BeerVote.builder()
                             .beer(beer)
+                            .user(user)
                             .bad(true)
                             .build());
                 }
