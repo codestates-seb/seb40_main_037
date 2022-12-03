@@ -62,6 +62,8 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests(authorize -> authorize
                         .antMatchers("/users/mypage").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/bookmark/**").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/bookmark").hasRole("USER")
                         .antMatchers(HttpMethod.GET, "/users/**").hasRole("USER")
                         .antMatchers(HttpMethod.POST, "/beers").hasRole("ADMIN")
                         .antMatchers(HttpMethod.PATCH, "/beers/**").hasRole("ADMIN")
