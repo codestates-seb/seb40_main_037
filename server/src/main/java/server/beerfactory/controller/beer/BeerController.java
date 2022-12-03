@@ -97,21 +97,4 @@ public class BeerController {
         return new ResponseEntity<>(beerId, HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/bookmark/{beer-id}")
-    public ResponseEntity<?> postBookMark(@PathVariable("beer-id") @Positive Long beerId){
-        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User findUser = userService.findUser(email);
-        log.info("findUser = {}", findUser.getId());
-        int result = beerService.postBookMark(findUser, beerId);
-        return new ResponseEntity<>(result, HttpStatus.OK);
-    }
-
-    @GetMapping("/bookmark")
-    public ResponseEntity<?> bookMarkList() {
-        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User findUser = userService.findUser(email);
-        log.info("findUser = {}", findUser.getId());
-        List<BeerBookMark> bookMarks = beerService.listBookMark(findUser);
-        return new ResponseEntity<>(bookMarks, HttpStatus.OK);
-    }
 }

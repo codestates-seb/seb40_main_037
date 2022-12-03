@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Builder
-public class BeerBookMark extends Auditable {
+public class BeerBookMark {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BEER_BOOKMARK_ID")
@@ -20,7 +20,7 @@ public class BeerBookMark extends Auditable {
 
     // 추천 여부
     @Column
-    private boolean isOk;
+    private boolean ok;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BEER_ID")
