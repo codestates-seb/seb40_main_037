@@ -10,6 +10,7 @@ import java.util.Optional;
 
 public interface BeerBookMarkRepository extends JpaRepository<BeerBookMark, Long> {
     Optional<BeerBookMark> findByUser(User user);
+    List<BeerBookMark> findAllByUserAndIsOk(User user, boolean b);
 
-    List<BeerBookMark> findAllByUser(User user);
+    Optional<BeerBookMark> findByUserAndBeer(User user, Beer findBeer);
 }

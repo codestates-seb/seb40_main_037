@@ -93,8 +93,11 @@ public class Beer extends Auditable {
         IPA("IPA"),
         STOUT("스타우트"),
         BOCK("복"),
-        SOUR("사워");
-
+        VODKA("보드카"),
+        SOUR("사워"),
+        Weizen("바이젠"),
+        DARK_LAGER("다크라거"),
+        CIDER("사이다");
         @Getter
         private final String type;
 
