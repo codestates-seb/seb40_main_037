@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Wrapper, BeerLiheader, Beercontainer, Beertagbox, Tags, BeerItems } from './style';
 
@@ -10,6 +10,8 @@ import BeerCard from '../../components/BeerCard';
 import Paging from '../../components/Pagenation';
 
 const BeerList = () => {
+  const [page, setPage] = useState(0);
+
   return (
     <Layout>
       <Wrapper>

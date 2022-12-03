@@ -38,8 +38,8 @@ const Login = () => {
     if (isLogin) {
       console.log(data);
       localStorage.setItem('isLogin', true);
-      localStorage.setItem('access_token', JSON.stringify(data.headers.Authorization));
-      localStorage.setItem('Refresh', JSON.stringify(data.headers.Refresh));
+      localStorage.setItem('access_token', JSON.stringify(data.headers.authorization));
+      localStorage.setItem('Refresh', JSON.stringify(data.headers.refresh));
       localStorage.setItem('memberId', JSON.stringify(data.headers.memberid));
       navigate('/');
     }
