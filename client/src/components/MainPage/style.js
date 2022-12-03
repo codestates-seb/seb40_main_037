@@ -48,7 +48,6 @@ export const BeerBox = styled.div`
 
 export const CardBox = styled.div`
   width: 100%;
-  height: 1100px;
   display: flex;
   flex-direction: row;
   margin-bottom: 50px;

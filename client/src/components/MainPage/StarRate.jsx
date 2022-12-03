@@ -1,33 +1,9 @@
-import styled from 'styled-components';
-import { useState, useEffect } from 'react';
 import { StarRateWrap } from './style';
 
 function StarRate(props) {
-  {
-    console.log(props.rate);
-  }
-  const AVR_RATE = props.rate;
-  const STAR_IDX_ARR = ['first', 'second', 'third', 'fourth', 'last'];
-  const [ratesResArr, setRatesResArr] = useState([0, 0, 0, 0, 0]);
-  const calcStarRates = () => {
-    let tempStarRatesArr = [0, 0, 0, 0, 0];
-    let starVerScore = (AVR_RATE * 70) / 100;
-    let idx = 0;
-    while (starVerScore > 14) {
-      tempStarRatesArr[idx] = 14;
-      idx += 1;
-      starVerScore -= 14;
-    }
-    tempStarRatesArr[idx] = starVerScore;
-    return tempStarRatesArr;
-  };
-  useEffect(() => {
-    setRatesResArr(calcStarRates);
-  }, []);
-
   return (
     <StarRateWrap>
-      {STAR_IDX_ARR.map((item, idx) => {
+      {props.STAR_IDX_ARR.map((item, idx) => {
         return (
           <span className="star_icon" key={`${item}_${idx}`}>
             <svg
@@ -38,7 +14,7 @@ function StarRate(props) {
               fill="#cacaca"
             >
               <clipPath id={`${item}StarClip`}>
-                <rect width={`${ratesResArr[idx]}`} height="20" />
+                <rect width={`${props.ratesResArr[idx]}`} height="20" />
               </clipPath>
               <path
                 id={`${item}Star`}

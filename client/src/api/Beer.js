@@ -1,8 +1,8 @@
 import Api from './Account';
 
-export const getBeerList = async (page = 0) => {
-  const result = await Api.get(`/beers?page=${page}`);
-  return result.data;
+export const getBeerList = async page => {
+  const response = await Api.get(`/beers?page=${page}`);
+  return response.data;
 };
 
 export const postBeerOrder = async formData => {

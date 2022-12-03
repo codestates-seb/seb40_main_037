@@ -8,7 +8,9 @@ const Layout = ({ children, isHeader = true }) => {
   return (
     <>
       <Header isHeader={isHeader} />
-      <Container>{children}</Container>
+      <Container className={window.location.href.includes('mypage') ? 'Mypage' : 'Pages'}>
+        {children}
+      </Container>
       <Footer />
       <HeaderBottom isHeaderBottom={isHeader} />
     </>
