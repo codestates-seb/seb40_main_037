@@ -15,10 +15,8 @@ export default function TrandingBeer() {
     <Wrapper>
       {dummy.beerlist.map(beerlist => {
         const AVR_RATE = beerlist.rating;
-        const STAR_IDX_ARR = ['first', 'second', 'third', 'fourth', 'last'];
-        const [ratesResArr, setRatesResArr] = useState([0, 0, 0, 0, 0]);
 
-        const calcStarRates = () => {
+        const calcStarRates = AVR_RATE => {
           let tempStarRatesArr = [0, 0, 0, 0, 0];
           let starVerScore = (AVR_RATE * 70) / 100;
           let idx = 0;
@@ -31,9 +29,9 @@ export default function TrandingBeer() {
           return tempStarRatesArr;
         };
 
-        useEffect(() => {
-          setRatesResArr(calcStarRates);
-        }, []);
+        const ratesResArr = calcStarRates(AVR_RATE);
+
+        console.log(ratesResArr);
 
         return (
           <Card
@@ -54,7 +52,7 @@ export default function TrandingBeer() {
               src={beerlist.img}
               style={{ borderRadius: 125 }}
             />
-            <StarRate STAR_IDX_ARR={STAR_IDX_ARR} ratesResArr={ratesResArr} />
+            <StarRate ratesResArr={ratesResArr} />
             <ProgressBarBox>
               <ProgressBar />
             </ProgressBarBox>
