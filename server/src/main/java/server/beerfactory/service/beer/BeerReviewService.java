@@ -4,16 +4,19 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import server.beerfactory.dto.beer.BeerReviewDto;
 import server.beerfactory.entity.beer.Beer;
 import server.beerfactory.entity.beer.BeerReview;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.exception.BusinessLogicException;
 import server.beerfactory.exception.ExceptionCode;
+import server.beerfactory.mapper.beer.BeerReviewMapper;
 import server.beerfactory.repository.beer.BeerRepository;
 import server.beerfactory.repository.beer.BeerReviewRepository;
 import server.beerfactory.repository.user.UserRepository;
 
 import java.lang.module.FindException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -69,5 +72,15 @@ public class BeerReviewService {
     @Transactional(readOnly = true)
     public List<BeerReview> findBeerReviews(Beer beer) {
         return beerReviewRepository.findAllByBeer(beer);
+    }
+
+    @Transactional(readOnly = true)
+    public List<BeerReview> listBeerReviews(User user) {
+        Optional<User> findUser = userRepository.findById(user.getId());
+        User user2 = findUser.orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+        if(!user.getId().equals(user2.getId())){
+            throw new BusinessLogicException(ExceptionCode.USER_DIFFERENT);
+        }
+        return beerReviewRepository.findAllByUser(user);
     }
 }

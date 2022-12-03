@@ -3,6 +3,8 @@ package server.beerfactory.service.user;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.exception.BusinessLogicException;
@@ -31,6 +33,16 @@ public class UserService {
         user.setRoles(roles);
 
         return userRepository.save(user);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
+    public User updateUser(User user) {
+        User findUser = findVerifiedUser(user.getId());
+
+        findUser.setNickname(user.getNickname());
+        findUser.setImage(user.getImage());
+
+        return userRepository.save(findUser);
     }
 
     public User findUser(String email) {

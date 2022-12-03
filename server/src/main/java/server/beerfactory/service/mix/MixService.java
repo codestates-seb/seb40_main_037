@@ -8,10 +8,13 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import server.beerfactory.entity.mix.Mix;
+import server.beerfactory.entity.user.User;
 import server.beerfactory.exception.BusinessLogicException;
 import server.beerfactory.exception.ExceptionCode;
 import server.beerfactory.repository.mix.MixRepository;
+import server.beerfactory.repository.user.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,6 +22,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class MixService {
     private final MixRepository mixRepository;
+    private final UserRepository userRepository;
 
 
     public Mix createMix(Mix mix) {
@@ -54,5 +58,14 @@ public class MixService {
         Optional<Mix> optionalMix = mixRepository.findById(id);
         return optionalMix.orElseThrow(() ->
                 new BusinessLogicException(ExceptionCode.MIX_NOT_FOUND));
+    }
+
+    public List<Mix> listMixes(User user) {
+        Optional<User> findUser = userRepository.findById(user.getId());
+        User user2 = findUser.orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+        if(!user.getId().equals(user2.getId())){
+            throw new BusinessLogicException(ExceptionCode.USER_DIFFERENT);
+        }
+        return mixRepository.findAllByUser(user);
     }
 }

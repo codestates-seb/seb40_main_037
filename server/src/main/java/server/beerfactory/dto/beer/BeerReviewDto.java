@@ -23,7 +23,7 @@ public class BeerReviewDto {
 
         @NotBlank
         private String title;
-        @NotBlank
+
         private String image;
 
         @NotNull
@@ -39,6 +39,7 @@ public class BeerReviewDto {
     @Builder
     public static class Response{
         private Long id;
+        private String title;
         private String content;
         private int score;
         private int likeCount;
