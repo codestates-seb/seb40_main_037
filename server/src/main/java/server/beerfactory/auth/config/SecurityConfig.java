@@ -43,7 +43,6 @@ public class SecurityConfig {
                 .headers().frameOptions().sameOrigin()
                 .and()
                 .csrf().disable()
-//                .cors(withDefaults())
                 .cors().configurationSource(corsConfigurationSource())
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -93,7 +92,7 @@ public class SecurityConfig {
         config.addAllowedHeader("*");
         config.addExposedHeader("Authorization");
         config.addExposedHeader("Refresh");
-        config.setAllowedOrigins(Arrays.asList("*"));
+        config.addAllowedOriginPattern("*");
         config.setAllowedMethods(Arrays.asList("POST", "PATCH", "GET", "DELETE"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
