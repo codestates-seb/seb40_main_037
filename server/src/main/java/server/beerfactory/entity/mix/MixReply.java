@@ -30,11 +30,5 @@ public class MixReply extends Auditable {
     @JoinColumn(name = "MIX_ID")
     private Mix mix;
 
-    public void addMix(Mix mix) {
-        this.mix = mix;
-        if(!this.mix.getMixReplies().contains(this)) {
-            this.mix.addMixReply(this);
-        }
-    }
 
 }

@@ -34,8 +34,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testAnnotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
 	testImplementation 'org.springframework.security:spring-security-test'
-//	runtimeOnly 'com.h2database:h2'
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	runtimeOnly 'com.h2database:h2'
+//	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 

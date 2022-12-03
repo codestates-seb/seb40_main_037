@@ -17,12 +17,9 @@ public class MixReplyDto {
     @NoArgsConstructor
     public static class Post {
 
-        @Column
         @NotBlank(message = "댓글 내용을 입력해 주세요.")
         private String content;
-        @Column
         private Long mixId;
-        @Column
         private Long userId;
 
     }
@@ -36,9 +33,6 @@ public class MixReplyDto {
         @NotBlank(message = "댓글 내용을 입력해 주세요.")
         private String content;
 
-        public void setMixReplyId(long id) {
-            this.id = id;
-        }
     }
 
 

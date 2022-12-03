@@ -32,24 +32,26 @@ import java.util.List;
 public class MixReplyController {
 
     private final MixReplyService mixReplyService;
+    private final MixReplyMapper mixReplyMapper;
     private final MixService mixService;
     private final MixReplyMapper mapper;
     private final UserService userService;
 
 
     @PostMapping
-    public ResponseEntity postMixReply(@Valid @RequestBody MixReplyDto.Post requestBody) {
+    public ResponseEntity postMixReply(@PathVariable("mix-id") @Positive Long mixId,
+                                       @Valid @RequestBody MixReplyDto.Post requestBody) {
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userService.findUser(email);
-
+        requestBody.setUserId(user.getId());
         Mix foundMix = mixService.findMix(requestBody.getMixId());
 
         MixReply mixReply = mapper.mixReplyPostDtoToMixReply(requestBody);
-        mixReply.setUser(user);
-        mixReply.setMix(foundMix);
 
+        mixReply.setMix(foundMix);
         MixReply createdMixReply = mixReplyService.createMixReply(mixReply);
         MixReplyDto.Response response = mapper.mixReplyToMixReplyResponse(createdMixReply);
+        response.setNickName(user.getNickname());
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(response),
@@ -60,11 +62,17 @@ public class MixReplyController {
     @PatchMapping("/{reply-id}")
     public ResponseEntity patchMixReply(@PathVariable("reply-id") @Positive long id,
                                         @Valid @RequestBody MixReplyDto.Patch requestBody) {
-        requestBody.setMixReplyId(id);
-        MixReply mixReply = mixReplyService.updatedMixReply(mapper.mixReplyPatchDtoToMixReply(requestBody));
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.findUser(email);
+        requestBody.setId(id);
+        MixReply mixReply = mixReplyMapper.mixReplyPatchDtoToMixReply(requestBody);
+        MixReply updatedReply = mixReplyService.updatedMixReply(mixReply);
+        MixReplyDto.Response response = mapper.mixReplyToMixReplyResponse(updatedReply);
+        response.setNickName(user.getNickname());
+        System.out.printf(response.toString());
 
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.mixReplyToMixReplyResponse(mixReply)),
+                new SingleResponseDto<>(response),
                 HttpStatus.OK);
     }
 

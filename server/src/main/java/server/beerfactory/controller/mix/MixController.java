@@ -39,7 +39,6 @@ public class MixController {
     private S3Uploader s3Uploader;
 
 
-    @PreAuthorize("ROLES('USER')")
     @PostMapping
     public ResponseEntity postMix(@RequestPart(value = "requestBody") MixDto.Post requestBody,
                                   @RequestPart(value = "file", required = false) MultipartFile file) throws IOException {
