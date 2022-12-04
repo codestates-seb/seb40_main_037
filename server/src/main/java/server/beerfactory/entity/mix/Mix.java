@@ -53,12 +53,5 @@ public class Mix extends Auditable {
     @OneToMany(mappedBy = "mix", cascade = CascadeType.ALL)
     private final List<MixVote> mixVotes = new ArrayList<>();
 
-    public void addMixReply(MixReply mixReply) {
-        this.mixReplies.add(mixReply);
-        if(mixReply.getMix() != this) {
-            mixReply.addMix(this);
-        }
-    }
-
 
 }

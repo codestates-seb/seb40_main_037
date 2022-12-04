@@ -3,6 +3,8 @@ package server.beerfactory.service.mix;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import server.beerfactory.entity.beer.Beer;
+import server.beerfactory.entity.beer.BeerVote;
 import server.beerfactory.entity.mix.Mix;
 import server.beerfactory.entity.mix.MixVote;
 import server.beerfactory.entity.user.User;
@@ -21,37 +23,39 @@ public class MixVoteService {
     private final MixVoteRepository mixVoteRepository;
 
 
-    public int mixVote(Long mixId, int flag, User user) {
+    @javax.transaction.Transactional
+    public int mixIsLike(User user, Long mixId, int flag) {
         Mix mix = mixRepository.findById(mixId)
-                .orElseThrow(() -> new BusinessLogicException(ExceptionCode.MIX_NOT_FOUND));
-
-        Optional<MixVote> optionalVote = mixVoteRepository.findByUserAndMix(user, mix);
-
-        switch (flag) {
+                .orElseThrow(() -> new BusinessLogicException(ExceptionCode.BEER_REVIEW_NOT_FOUND));
+        Optional<MixVote> Vote = mixVoteRepository.findByUserAndMix(user, mix);
+        switch (flag){
             case 1:
-                if (optionalVote.isPresent()) {
-                    MixVote mixVote = optionalVote.get();
-                    if (!mixVote.isGood()) {
-                        mixVote.setGood(true);
+                if(Vote.isPresent()){
+                    MixVote vote = Vote.get();
+                    if(vote.isGood()){
+                        mixVoteRepository.delete(vote);
                     }
-                } else {
-                    mixVoteRepository.save(
-                            MixVote.builder().user(user).mix(mix).good(true).build());
+                }else{
+                    mixVoteRepository.save(MixVote.builder()
+                            .mix(mix)
+                            .user(user)
+                            .good(true)
+                            .build());
                 }
                 break;
             case 2:
-                if (optionalVote.isPresent()) {
-                    MixVote mixVote = optionalVote.get();
-                    if (mixVote.isBad()) {
-                        mixVote.setBad(true);
+                if(Vote.isPresent()){
+                    MixVote vote = Vote.get();
+                    if(vote.isBad()){
+                        mixVoteRepository.delete(vote);
                     }
-                } else {
-                    mixVoteRepository.save(
-                            MixVote.builder().user(user).mix(mix).bad(true).build());
+                }else{
+                    mixVoteRepository.save(MixVote.builder()
+                            .mix(mix)
+                            .user(user)
+                            .bad(true)
+                            .build());
                 }
-                break;
-            case 3:
-                optionalVote.ifPresent(mixVoteRepository::delete);
                 break;
             default:
                 break;
@@ -60,7 +64,7 @@ public class MixVoteService {
         int bad = mixVoteRepository.countByMixAndBad(mix, true);
         mix.setLikeCount(good);
         mix.setDisLikeCount(bad);
-        return mix.getLikeCount();
+        return flag == 1 ? mix.getLikeCount() : mix.getDisLikeCount();
     }
 }
 
