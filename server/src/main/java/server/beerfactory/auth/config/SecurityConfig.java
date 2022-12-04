@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -25,8 +26,6 @@ import server.beerfactory.auth.utils.CustomAuthorityUtils;
 
 import java.util.Arrays;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 @RequiredArgsConstructor
 @Configuration
 public class SecurityConfig {
@@ -34,17 +33,26 @@ public class SecurityConfig {
     private final CustomAuthorityUtils authorityUtils;
 
     @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
+    }
+
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .headers().frameOptions().sameOrigin()
                 .and()
                 .csrf().disable()
-//                .cors().configurationSource(corsConfigurationSource())
-                .cors(withDefaults()) // corsConfigurationSource Bean을 이용함
+                .cors().configurationSource(corsConfigurationSource())
+                .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .formLogin().disable()
                 .httpBasic().disable()
+                .logout()
+                .logoutUrl("/auth/logout")
+                .logoutSuccessUrl("/mainpage")
+                .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(new UserAuthenticationEntryPoint())
                 .accessDeniedHandler(new UserAccessDeniedHandler())
@@ -53,6 +61,8 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests(authorize -> authorize
                         .antMatchers("/users/mypage").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/bookmark/**").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/bookmark").hasRole("USER")
                         .antMatchers(HttpMethod.GET, "/users/**").hasRole("USER")
                         .antMatchers(HttpMethod.POST, "/beers").hasRole("ADMIN")
                         .antMatchers(HttpMethod.PATCH, "/beers/**").hasRole("ADMIN")
@@ -78,7 +88,11 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList("*"));
+        config.setAllowCredentials(true);
+        config.addAllowedHeader("*");
+        config.addExposedHeader("Authorization");
+        config.addExposedHeader("Refresh");
+        config.addAllowedOriginPattern("*");
         config.setAllowedMethods(Arrays.asList("POST", "PATCH", "GET", "DELETE"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

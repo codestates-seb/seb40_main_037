@@ -36,7 +36,7 @@ public class BeerReview extends Auditable {
     private int likeCount;
 
     @Column
-    private int dislikeCount;
+    private int disLikeCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")

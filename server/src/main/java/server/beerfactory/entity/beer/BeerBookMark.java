@@ -10,25 +10,21 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 @Entity
-public class BeerReviewVote {
+@Builder
+public class BeerBookMark {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BEER_REVIEW_VOTE_ID")
+    @Column(name = "BEER_BOOKMARK_ID")
     private Long id;
 
     // 추천 여부
     @Column
-    private boolean good;
-
-    // 비추천 여부
-    @Column
-    private boolean bad;
+    private boolean ok;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "BEER_REVIEW_ID")
-    private BeerReview beerReview;
+    @JoinColumn(name = "BEER_ID")
+    private Beer beer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")

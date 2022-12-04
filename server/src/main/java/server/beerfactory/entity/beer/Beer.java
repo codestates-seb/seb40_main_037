@@ -27,6 +27,7 @@ public class Beer extends Auditable {
     @Column
     private String image;
 
+    @Enumerated(value = EnumType.STRING)
     @Column
     private BeerType beerType;
 
@@ -40,7 +41,10 @@ public class Beer extends Auditable {
     private String description;
 
     @Column
-    private boolean bookmark;
+    private int likeCount;
+
+    @Column
+    private int disLikeCount;
 
     // 도수
     @Column(nullable = false)
@@ -55,6 +59,9 @@ public class Beer extends Auditable {
     private int count;
 
     @Column
+    private double star;
+
+    @Column
     private String aroma;
 
     @Column
@@ -66,12 +73,18 @@ public class Beer extends Auditable {
     @Column
     private int afterTaste;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne // (fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
 
     @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL)
     private final List<BeerReview> beerReviews = new ArrayList<>();
+
+    @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL)
+    private final List<BeerVote> beerVotes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL)
+    private final List<BeerBookMark> beerBookMarks = new ArrayList<>();
 
     public enum BeerType {
         ALE("에일"),
@@ -80,8 +93,11 @@ public class Beer extends Auditable {
         IPA("IPA"),
         STOUT("스타우트"),
         BOCK("복"),
-        SOUR("사워");
-
+        VODKA("보드카"),
+        SOUR("사워"),
+        Weizen("바이젠"),
+        DARK_LAGER("다크라거"),
+        CIDER("사이다");
         @Getter
         private final String type;
 

@@ -5,9 +5,12 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import server.beerfactory.entity.beer.Beer;
+import server.beerfactory.entity.beer.BeerBookMark;
 import server.beerfactory.entity.beer.BeerReview;
+import server.beerfactory.entity.beer.BeerVote;
 import server.beerfactory.entity.mix.Mix;
 import server.beerfactory.entity.mix.MixReply;
+import server.beerfactory.entity.mix.MixVote;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,8 +18,8 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 @Entity
+@Data
 @Table(name = "USERS")
 public class User {
     @Id
@@ -54,10 +57,19 @@ public class User {
     private final List<BeerReview> beerReviews = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private final List<BeerVote> beerVotes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private final List<BeerBookMark> beerBookMarks = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private final List<Mix> mixes = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private final List<MixReply> mixReplies = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private final List<MixVote> mixVotes = new ArrayList<>();
 
     public enum UserStatus {
         USER_ACTIVE("활동중"),

@@ -3,6 +3,8 @@ package server.beerfactory.service.user;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.exception.BusinessLogicException;
@@ -33,8 +35,25 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User findUser(Long id) {
-        return findVerifiedUser(id);
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
+    public User updateUser(User user) {
+        User findUser = findVerifiedUser(user.getId());
+
+        findUser.setNickname(user.getNickname());
+        findUser.setImage(user.getImage());
+
+        return userRepository.save(findUser);
+    }
+
+    public User findUser(String email) {
+        return findVerifiedUser(email);
+    }
+
+    private User findVerifiedUser(String email) {
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+
+        return optionalUser.orElseThrow(() ->
+                new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
     }
 
     private User findVerifiedUser(Long id) {
@@ -49,4 +68,5 @@ public class UserService {
         if (user.isPresent())
             throw new BusinessLogicException(ExceptionCode.USER_EXISTS);
     }
+
 }

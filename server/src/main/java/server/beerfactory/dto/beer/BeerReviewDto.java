@@ -1,6 +1,9 @@
 package server.beerfactory.dto.beer;
 
 import lombok.*;
+import server.beerfactory.dto.user.UserDto;
+import server.beerfactory.entity.beer.Beer;
+import server.beerfactory.entity.user.User;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -18,6 +21,7 @@ public class BeerReviewDto {
         @Size(min = 10, message = "10자 이상 입력해주세요")
         private String content;
 
+        @NotBlank
         private String title;
 
         private String image;
@@ -25,16 +29,23 @@ public class BeerReviewDto {
         @NotNull
         private int score;
 
+        @Setter
+        private User user;
     }
 
+    @NoArgsConstructor
     @AllArgsConstructor
     @Getter
     @Builder
     public static class Response{
         private Long id;
+        private String title;
         private String content;
         private int score;
+        private int likeCount;
+        private int disLikeCount;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
+        private UserDto.Response user;
     }
 }
