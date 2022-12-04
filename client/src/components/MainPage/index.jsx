@@ -6,6 +6,7 @@ import TrandingBeer from './TrandingBeer';
 import MixFoodCardList from '../MixFoodCardList';
 import styled from 'styled-components';
 import Carousel from 'react-material-ui-carousel';
+import MixCardCarousel from './CardCarousel';
 
 const CarouseBox = styled.div`
   width: 100%;
@@ -35,22 +36,7 @@ const MainPage = () => {
         <BeerContent>
           <div className="title">Recommend Food</div>
           <div className="title_info">Lorem ipu dimai amdhai amidiadmid</div>
-          <CarouseBox>
-            <Carousel
-              animation="slide"
-              duration="1000"
-              swipe="true"
-              navButtonsAlwaysVisible
-              navButtonsProps={{
-                // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
-                style: {
-                  backgroundColor: 'cornflowerblue',
-                },
-              }}
-            >
-              <MixFoodCardList />
-            </Carousel>
-          </CarouseBox>
+          <MixCardCarousel />
         </BeerContent>
       </Container>
     </>

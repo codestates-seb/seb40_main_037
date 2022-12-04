@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Carousel from 'react-material-ui-carousel';
 
 import MixFoodCardList from '../MixFoodCardList';
+import BeerCard from '../BeerCard';
 
 const CarouseBox = styled.div`
   width: 100%;
@@ -10,11 +11,12 @@ const CarouseBox = styled.div`
   margin: 0 auto;
 `;
 
-function BeerCard(props) {  
+function MixCardCarousel() {
   return (
     <CarouseBox>
-      <Carousel sx={{
-        height: 350
+      <Carousel
+        sx={{
+          height: 350,
         }}
         animation="slide"
         duration="2000"
@@ -34,4 +36,4 @@ function BeerCard(props) {
   );
 }
 
-export default BeerCard;
+export default MixCardCarousel;
