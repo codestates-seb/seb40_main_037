@@ -1,9 +1,6 @@
 import { StarRateWrap } from './style';
 
 function StarRate(props) {
-  const STAR_IDX_ARR = ['first', 'second', 'third', 'fourth', 'last'];
-  console.log(props.ratesResArr);
-
   return (
     <StarRateWrap>
       {props.ratesResArr.map((item, idx) => {

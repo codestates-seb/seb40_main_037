@@ -37,6 +37,10 @@ const Signup = () => {
       alert('회원가입이 완료되었습니다.');
       navigate('/login');
     },
+    onError: error => {
+      alert(`${error.code}
+      ${error.message}`);
+    },
   });
 
   const handleSignUp = e => {
