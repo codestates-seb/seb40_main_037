@@ -30,7 +30,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     public final class CustomUserDetails extends User implements UserDetails {
-
         CustomUserDetails(User user) {
             setId(user.getId());
             setEmail(user.getEmail());
