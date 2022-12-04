@@ -1,15 +1,18 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Rating from '@mui/material/Rating';
-
+import dummy from '../../../data/data.json';
+import HeartImg from '../../assets/icon/Heart.png';
+import EmptyHeartImg from '../../assets/icon/EmptyHeart.png';
 const ProductInfoBox = styled.div`
-  width: 60%;
-  margin: 0 auto;
-  border: 1px solid blue;
+  width: 70%;
+  margin: 30px auto;
+  padding: 5px 10px;
+  border-radius: 50px;
+  background-color: #ffe2bc;
 `;
 const ProductionButton = styled.button`
+  /* background-color: gold; */
   background-color: ${props => props.bgColor};
   border: none;
   border-radius: 50px;
@@ -17,26 +20,46 @@ const ProductionButton = styled.button`
   height: 40px;
   vertical-align: top;
   margin: 10px 10px;
-  color: white;
   font-weight: bold;
   font-size: 20px;
 `;
 
+const HeartBuuton = styled.img`
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+`;
+
 export default function ProductInformation() {
-  const [value, setValue] = React.useState(0);
+  const [like, setLike] = React.useState(false);
+
+  // useEffect(async () => {
+  //   const fetchData = async () => {
+  //     const res = await axios.get('http://localhost:3001/users/');
+  //     if (res.data.type === 'liked') setLike(true);
+  //   };
+  //   fetchData();
+  // }, []);
+
+  const toggleLike = async e => {
+    // const res = await axios.post(...) // [POST] 사용자가 좋아요를 누름 -> DB 갱신
+    setLike(!like);
+  };
+
   return (
     <ProductInfoBox>
-      <Rating className="rating-star" value={value} size="large" defaultValue={3} />
-      <ProductionButton bgColor="pink">복숭아향</ProductionButton>
-      <ProductionButton bgColor="red">BITTER</ProductionButton>
-      <ProductionButton bgColor="skyblue">4.5도</ProductionButton>
-      <Rating
-        className="heartIcon"
-        value={value}
-        max={1}
-        icon={<FavoriteIcon fontSize="inherit" />}
-        emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-      />
+      {dummy.items.map(item => {
+        return (
+          <div>
+            <Rating className="rating-star" value={item.rating} size="large" readOnly />
+            {item.tags &&
+              item.tags.map((tag, i) => {
+                return <ProductionButton key={tag[i]}>{tag}</ProductionButton>;
+              })}
+            <HeartBuuton like={like} onClick={toggleLike} src={like ? HeartImg : EmptyHeartImg} />
+          </div>
+        );
+      })}
     </ProductInfoBox>
   );
 }

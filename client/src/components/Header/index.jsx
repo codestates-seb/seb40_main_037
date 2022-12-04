@@ -11,6 +11,8 @@ import Hamburger from '../../assets/Hamburger_icon.png';
 const Header = ({ isHeader }) => {
   const [isMenuHamburger, setIsMenuHamburger] = useState(false);
 
+  const isLogin = localStorage.getItem('isLogin');
+
   const handleToggle = () => {
     setIsMenuHamburger(!isMenuHamburger);
   };
@@ -24,7 +26,7 @@ const Header = ({ isHeader }) => {
           </Link>
         </UserBox>
         <UserBox>
-          <input type="text" placeholder="Search..." />
+          <input type="text" placeholder="Search..." disabled="disabled" />
         </UserBox>
         <UserBox>
           <button className={isMenuHamburger ? 'active' : ''} onClick={() => handleToggle()}>
@@ -35,14 +37,35 @@ const Header = ({ isHeader }) => {
             <UserDropBox>
               {Dropbox_item.map((items, i) => {
                 const { title, detail, link } = items;
-                return (
-                  <li key={i}>
-                    <Link to={link}>
-                      <span>{title}</span>
-                      <span>{detail}</span>
-                    </Link>
-                  </li>
-                );
+                if (isLogin && (title === 'Log in' || title === 'Sign up')) {
+                  return;
+                } else if (!isLogin && (title === 'My page' || title === 'Log out')) {
+                  return;
+                } else if (title === 'Log out') {
+                  return (
+                    <li
+                      key={i}
+                      onClick={() => {
+                        localStorage.clear();
+                        window.location.replace('/');
+                      }}
+                    >
+                      <Link>
+                        <span>{title}</span>
+                        <span>{detail}</span>
+                      </Link>
+                    </li>
+                  );
+                } else {
+                  return (
+                    <li key={i}>
+                      <Link to={link}>
+                        <span>{title}</span>
+                        <span>{detail}</span>
+                      </Link>
+                    </li>
+                  );
+                }
               })}
             </UserDropBox>
           )}

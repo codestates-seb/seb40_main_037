@@ -16,7 +16,6 @@ export const Reqcontainer = styled.div`
 `;
 
 export const InputList = styled.div`
-  gap: 20px;
   ${flexColumn};
   margin-right: 30px;
 

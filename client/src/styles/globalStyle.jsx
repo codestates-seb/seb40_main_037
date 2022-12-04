@@ -57,7 +57,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Source Sans Pro', sans-serif;
     color: #000;
     margin: 0;
-    --bg: white;
+    --bg: #f8f8f8;
     --textNormal: #222;
     --textTitle: #222;
     --textLink: blue;

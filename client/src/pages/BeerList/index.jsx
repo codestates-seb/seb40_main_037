@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Wrapper, BeerLiheader, Beercontainer, Beertagbox, Tags, BeerItems } from './style';
 
 import { Button } from '../../components/button';
 import { Banner } from '../../components/MainPage/style';
 import { Beer_type } from '../../constants/Beer';
-import TrandingBeer from '../../components/MainPage/TrandingBeer';
 import Layout from '../../components/Layout';
+import BeerCard from '../../components/BeerCard';
+import Paging from '../../components/Pagenation';
 
 const BeerList = () => {
+  const [page, setPage] = useState(0);
+
   return (
     <Layout>
       <Wrapper>
@@ -16,7 +19,7 @@ const BeerList = () => {
         <BeerLiheader>
           <span>Beer List</span>
           <Button
-            primary="pagingbutton"
+            primary="Pagingbutton"
             label="Beer Request"
             onClick={() => {
               location = '/BeerRequest';
@@ -42,10 +45,9 @@ const BeerList = () => {
               );
             })}
           </Beertagbox>
-          <BeerItems>
-            <TrandingBeer />
-          </BeerItems>
+          <BeerCard />
         </Beercontainer>
+        <Paging />
       </Wrapper>
     </Layout>
   );

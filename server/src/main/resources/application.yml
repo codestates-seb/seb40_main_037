@@ -10,6 +10,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
 mail:
   address:
     admin: ${ADMIN_ADDRESS}
@@ -26,4 +27,3 @@ cloud:
     credentials:
       accessKey: ${AWS_ACCESS_KEY}
       secretKey: ${AWS_SECRET_KEY}
-

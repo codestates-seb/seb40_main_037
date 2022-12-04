@@ -1,16 +1,14 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { Pagingcontainer, Pagination, Perpage } from './style.js';
 import { Button } from '../Button';
-import { getAQuestion } from '../../api/questions';
-import { AQPage } from '../../store/AQData.js';
+import { getBeerList } from '../../api/Beer';
 
 const Paging = () => {
-  const [page, setPage] = useRecoilState(AQPage);
-
+  const [page, setPage] = useState(0);
   const { isLoading, data } = useQuery(['AllQuestion', { page }], () => {
-    return getAQuestion(page);
+    return getBeerList(page);
   });
 
   if (isLoading) return <div>now loading..</div>;
@@ -85,14 +83,10 @@ const Paging = () => {
           />
         ) : null}
       </Pagination>
-      {window.location.href.includes('users') ? (
-        <></>
-      ) : (
-        <Perpage>
-          <Button primary="Pagingbutton" Selected="Selected" label="10" />
-          per page
-        </Perpage>
-      )}
+      <Perpage>
+        <Button primary="Pagingbutton" Selected="Selected" label="10" />
+        per page
+      </Perpage>
     </Pagingcontainer>
   );
 };

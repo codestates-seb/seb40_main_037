@@ -50,7 +50,10 @@ export const Dropbox_item = [
     link: '/join',
   },
   { title: 'My page', detail: 'your account', link: '/mypage' },
-  { title: 'Log out', detail: 'Log off from account', link: '' },
+  {
+    title: 'Log out',
+    detail: 'Log off from account',
+  },
   {
     title: 'Beer',
     detail: 'Beers list',
@@ -71,7 +74,10 @@ export const Underbox_item = [
     link: '/join',
   },
   { title: 'My page', image: '', link: '/mypage' },
-  { title: 'Log out', image: '', link: '' },
+  {
+    title: 'Log out',
+    image: '',
+  },
   { title: 'Home', image: '', link: '/' },
   {
     title: 'Beer',
@@ -89,6 +95,6 @@ export const SITE_LIST = [
   { name: 'Git', href: 'https://github.com/codestates-seb/seb40_main_037' },
   {
     name: 'Notion',
-    href: 'https://www.notion.so/codestates/d959f0476eed4949aae79545297f90f2',
+    href: 'https://www.notion.so/codestates/40-Team-c7332b8e87124fff938f0eb79cf51ba6',
   },
 ];

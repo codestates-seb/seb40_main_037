@@ -1,26 +1,4 @@
 import styled from 'styled-components';
-import subBanner from '../../assets/subpage/subBanner1.png';
-
-export const Container = styled.div`
-  width: 100%;
-`;
-
-export const Banner = styled.div`
-  width: 100%;
-  height: 500px;
-  background: url(${subBanner});
-  background-size: 100% 100%;
-  margin-top: 10px;
-`;
-
-export const Wrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-`;
 
 export const BeerBox = styled.div`
   width: 100%;
@@ -53,6 +31,15 @@ export const CardBox = styled.div`
   margin-bottom: 50px;
 `;
 
+export const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const ProgressBarBox = styled.div`
   width: 100%;
   display: flex;
@@ -82,17 +69,5 @@ export const BeerContent = styled.div`
     text-align: left;
     margin: 0 auto;
     color: #c0c0c0;
-  }
-`;
-
-export const StarRateWrap = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin: 15px 0;
-  justify-content: center;
-  .star_icon {
-    display: inline-flex;
-    margin-right: 5px;
   }
 `;

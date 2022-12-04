@@ -2,6 +2,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 import UploadButtons from '../Items/UploadButton';
 import dummy from '../../../data/data.json';
+import { useState } from 'react';
+import { fetchReplyCreate } from '../../util/fetchReply';
+// import 체크로그인
 
 const MyReivewForm = styled.form`
   width: 70%;
@@ -29,19 +32,32 @@ const MyReivewForm = styled.form`
     border-radius: 20px;
   }
 `;
-export default function MixDetailReviewForms() {
-  const [value, setValue] = React.useState(0);
+function MixDetailReviewForms({ replyId, update }) {
+  const [content, setContent] = useState('');
+
+  const onChangeContent = content => {
+    setContent(content);
+  };
+  const onClickSubmit = async () => {
+    if (contenet.length < 10) {
+      alert('최소 10글자를 적어야합니다.');
+    } else {
+      checkIfLogined().then(() => {
+        fetchReplyCreate({ replyId, content }).then(() => {
+          update(true);
+        });
+      });
+    }
+  };
+
   return (
     <MyReivewForm>
-      {dummy.users.map(user => {
-        return (
-          <div className="formBox" key={user.name}>
-            <img src={user.avatar} />
-            <UploadButtons />
-            <input className="commentBox"></input>
-          </div>
-        );
-      })}
+      <div className="formBox" onChange={onChangeContent}>
+        {/* <img src={user.avatar} /> */}
+        <UploadButtons onClick={onClickSubmit} />
+        <input className="commentBox"></input>
+      </div>
     </MyReivewForm>
   );
 }
+export default MixDetailReviewForms;

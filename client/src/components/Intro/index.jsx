@@ -12,7 +12,11 @@ const Introitem = () => {
       <AgeQuestion>{Notion.Notice}</AgeQuestion>
       <AgeAnswer>
         <Link to="/">
-          <Button primary="Mypagebutton" label="19세 이상입니다." />
+          <Button
+            primary="Mypagebutton"
+            label="19세 이상입니다."
+            onClick={localStorage.setItem('isadult', true)}
+          />
         </Link>
         <Button
           primary="Mypagebutton"
