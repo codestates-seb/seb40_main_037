@@ -48,6 +48,7 @@ function StarRate(props) {
           );
         }
       })}
+      {props.star}
     </StarRateWrap>
   );
 }

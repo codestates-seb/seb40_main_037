@@ -12,7 +12,6 @@ const Header = ({ isHeader }) => {
   const [isMenuHamburger, setIsMenuHamburger] = useState(false);
 
   const isLogin = localStorage.getItem('isLogin');
-  const [isLogout, setisLogout] = useState(false);
 
   const handleToggle = () => {
     setIsMenuHamburger(!isMenuHamburger);
@@ -48,7 +47,7 @@ const Header = ({ isHeader }) => {
                       key={i}
                       onClick={() => {
                         localStorage.clear();
-                        setisLogout(true);
+                        window.location.replace('/');
                       }}
                     >
                       <Link>

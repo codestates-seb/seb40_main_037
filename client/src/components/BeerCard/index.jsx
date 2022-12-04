@@ -10,6 +10,7 @@ import { Wrapper, ProgressBarBox, BeerBox, CardBox } from './style';
 
 import StarRate from '../MainPage/StarRate';
 import { getBeerList } from '../../api/Beer';
+import { Link } from 'react-router-dom';
 
 export default function BeerCard() {
   const [page, setPage] = useState(0);
@@ -27,7 +28,7 @@ export default function BeerCard() {
       <CardBox>
         <Wrapper>
           {data.data.map((beerlist, i) => {
-            const AVR_RATE = beerlist.rating;
+            const AVR_RATE = beerlist.star;
 
             const calcStarRates = AVR_RATE => {
               let tempStarRatesArr = [0, 0, 0, 0, 0];
@@ -43,50 +44,56 @@ export default function BeerCard() {
             };
 
             const ratesResArr = calcStarRates(AVR_RATE);
+            const BeerID = beerlist.ID;
 
             return (
-              <Card
-                key={i}
-                sx={{
-                  maxWidth: 300,
-                  borderRadius: 10,
-                  marginBottom: 5,
-                  marginRight: 2,
-                  boxShadow: '2px 4px 4px rgba(0, 0, 0, 0.25)',
-                  background: 'linear-gradient(#ffecd2, #fcb69f);',
-                }}
-              >
-                <CardHeader title={beerlist.title} subheader={beerlist.brand} />
-                <CardMedia
-                  component="img"
-                  height="250"
-                  alt="Beer1"
-                  src={beerlist.img}
-                  style={{ borderRadius: 125 }}
-                />
-                <StarRate ratesResArr={ratesResArr} />
-                <ProgressBarBox>
-                  <div>
-                    <ProgressBarBox style={{ width: 180, height: 100 }}>
-                      <CircularProgressbarWithChildren value={beerlist.sweet}>
-                        <div style={{ fontSize: 12 }}>
-                          <strong>단맛</strong>
-                        </div>
-                      </CircularProgressbarWithChildren>
-                      <CircularProgressbarWithChildren value={beerlist.bitter}>
-                        <div style={{ fontSize: 12 }}>
-                          <strong>쓴맛</strong>
-                        </div>
-                      </CircularProgressbarWithChildren>
-                      <CircularProgressbarWithChildren value={beerlist.lv}>
-                        <div style={{ fontSize: 12 }}>
-                          <strong>LV</strong>
-                        </div>
-                      </CircularProgressbarWithChildren>
-                    </ProgressBarBox>
-                  </div>
-                </ProgressBarBox>
-              </Card>
+              <Link to={BeerID}>
+                <Card
+                  key={i}
+                  sx={{
+                    width: 250,
+                    borderRadius: 10,
+                    marginBottom: 5,
+                    marginRight: 2,
+                    boxShadow: '2px 4px 4px rgba(0, 0, 0, 0.25)',
+                    background: 'linear-gradient(#ffecd2, #fcb69f);',
+                  }}
+                >
+                  <CardHeader
+                    title={`${beerlist.name} ${beerlist.alcohol}%`}
+                    subheader={beerlist.brand}
+                  />
+                  <CardMedia
+                    component="img"
+                    height="250"
+                    alt="Beer1"
+                    src={beerlist.image}
+                    style={{ borderRadius: 125 }}
+                  />
+                  <StarRate ratesResArr={ratesResArr} star={beerlist.star} />
+                  <ProgressBarBox>
+                    <div>
+                      <ProgressBarBox style={{ width: 200, height: 100, gap: 5 }}>
+                        <CircularProgressbarWithChildren value={beerlist.soda * 20}>
+                          <div style={{ fontSize: 12 }}>
+                            <strong>soda</strong>
+                          </div>
+                        </CircularProgressbarWithChildren>
+                        <CircularProgressbarWithChildren value={beerlist.sweet * 20}>
+                          <div style={{ fontSize: 12 }}>
+                            <strong>sweet</strong>
+                          </div>
+                        </CircularProgressbarWithChildren>
+                        <CircularProgressbarWithChildren value={beerlist.afterTaste * 20}>
+                          <div style={{ fontSize: 12 }}>
+                            <strong>afterTaste</strong>
+                          </div>
+                        </CircularProgressbarWithChildren>
+                      </ProgressBarBox>
+                    </div>
+                  </ProgressBarBox>
+                </Card>
+              </Link>
             );
           })}
         </Wrapper>

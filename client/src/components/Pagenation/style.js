@@ -5,6 +5,7 @@ const Pagingcontainer = styled.div`
 `;
 
 const Pagination = styled.span`
+  margin-bottom: 50px;
   float: left;
   display: flex;
 `;
