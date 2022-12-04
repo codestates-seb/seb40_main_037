@@ -27,7 +27,7 @@ const Header = ({ isHeader }) => {
           </Link>
         </UserBox>
         <UserBox>
-          <input type="text" placeholder="Search..." />
+          <input type="text" placeholder="Search..." disabled="disabled" />
         </UserBox>
         <UserBox>
           <button className={isMenuHamburger ? 'active' : ''} onClick={() => handleToggle()}>
@@ -39,16 +39,15 @@ const Header = ({ isHeader }) => {
               {Dropbox_item.map((items, i) => {
                 const { title, detail, link } = items;
                 if (isLogin && (title === 'Log in' || title === 'Sign up')) {
-                  return <></>;
+                  return;
                 } else if (!isLogin && (title === 'My page' || title === 'Log out')) {
-                  return <></>;
+                  return;
                 } else if (title === 'Log out') {
                   return (
                     <li
                       key={i}
                       onClick={() => {
                         localStorage.clear();
-                        window.location.replace('/');
                         setisLogout(true);
                       }}
                     >

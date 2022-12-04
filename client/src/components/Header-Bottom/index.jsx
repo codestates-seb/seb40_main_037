@@ -11,18 +11,17 @@ const HeaderBottom = ({ isHeaderBottom }) => {
   return isHeaderBottom ? (
     <Wrapper>
       {Underbox_item.map((items, i) => {
-        const { title, link, func } = items;
+        const { title, link } = items;
         if (isLogin && (title === 'Log in' || title === 'Sign up')) {
-          return <></>;
+          return;
         } else if (!isLogin && (title === 'My page' || title === 'Log out')) {
-          return <></>;
+          return;
         } else if (title === 'Log out') {
           return (
             <li
               key={i}
               onClick={() => {
                 localStorage.clear();
-                window.location.replace('/');
                 setisLogout(true);
               }}
             >

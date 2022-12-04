@@ -7,7 +7,6 @@ import { getBeerList } from '../../api/Beer';
 
 const Paging = () => {
   const [page, setPage] = useState(0);
-
   const { isLoading, data } = useQuery(['AllQuestion', { page }], () => {
     return getBeerList(page);
   });
@@ -84,14 +83,10 @@ const Paging = () => {
           />
         ) : null}
       </Pagination>
-      {window.location.href.includes('users') ? (
-        <></>
-      ) : (
-        <Perpage>
-          <Button primary="Pagingbutton" Selected="Selected" label="10" />
-          per page
-        </Perpage>
-      )}
+      <Perpage>
+        <Button primary="Pagingbutton" Selected="Selected" label="10" />
+        per page
+      </Perpage>
     </Pagingcontainer>
   );
 };
