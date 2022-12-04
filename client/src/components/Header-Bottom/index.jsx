@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Wrapper } from './style';
@@ -6,7 +6,6 @@ import { Underbox_item } from '../../constants/header_footer';
 
 const HeaderBottom = ({ isHeaderBottom }) => {
   const isLogin = localStorage.getItem('isLogin');
-  const [isLogout, setisLogout] = useState(false);
 
   return isHeaderBottom ? (
     <Wrapper>
@@ -22,7 +21,7 @@ const HeaderBottom = ({ isHeaderBottom }) => {
               key={i}
               onClick={() => {
                 localStorage.clear();
-                setisLogout(true);
+                window.location.replace('/');
               }}
             >
               <Link>

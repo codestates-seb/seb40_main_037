@@ -1,12 +1,10 @@
 import React from 'react';
-import { Container, Banner, BeerBox, CardBox, BeerContent } from './style';
+import { Container, Banner, BeerContent } from './style';
 import '../../styles/globalStyle';
 
-import TrandingBeer from './TrandingBeer';
-import MixFoodCardList from '../MixFoodCardList';
 import styled from 'styled-components';
-import Carousel from 'react-material-ui-carousel';
 import MixCardCarousel from './CardCarousel';
+import BeerCard from '../BeerCard';
 
 const CarouseBox = styled.div`
   width: 100%;
@@ -24,13 +22,7 @@ const MainPage = () => {
         <Banner />
 
         {/* 추천 카테고리 */}
-        <BeerBox>
-          <div className="title">Tranding Beer</div>
-          <div className="title_info">LOREM IPU DIMAI AMDHAI AMIDIADMID</div>
-          <CardBox>
-            <TrandingBeer />
-          </CardBox>
-        </BeerBox>
+        <BeerCard />
 
         {/* Content */}
         <BeerContent>
