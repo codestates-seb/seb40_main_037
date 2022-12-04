@@ -31,8 +31,6 @@ export default function TrandingBeer() {
 
         const ratesResArr = calcStarRates(AVR_RATE);
 
-        console.log(ratesResArr);
-
         return (
           <Card
             sx={{

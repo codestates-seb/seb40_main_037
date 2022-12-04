@@ -48,7 +48,6 @@ const Header = ({ isHeader }) => {
                       key={i}
                       onClick={() => {
                         localStorage.clear();
-                        window.location.replace('/');
                         setisLogout(true);
                       }}
                     >

@@ -22,7 +22,6 @@ const HeaderBottom = ({ isHeaderBottom }) => {
               key={i}
               onClick={() => {
                 localStorage.clear();
-                window.location.replace('/');
                 setisLogout(true);
               }}
             >

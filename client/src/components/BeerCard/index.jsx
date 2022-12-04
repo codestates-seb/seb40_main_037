@@ -20,26 +20,6 @@ export default function BeerCard() {
 
   if (isLoading) return <div>now loading..</div>;
 
-  const AVR_RATE = beerlist.rating;
-  const STAR_IDX_ARR = ['first', 'second', 'third', 'fourth', 'last'];
-  const [ratesResArr, setRatesResArr] = useState([0, 0, 0, 0, 0]);
-
-  const calcStarRates = () => {
-    let tempStarRatesArr = [0, 0, 0, 0, 0];
-    let starVerScore = (AVR_RATE * 70) / 100;
-    let idx = 0;
-    while (starVerScore > 14) {
-      tempStarRatesArr[idx] = 14;
-      idx += 1;
-      starVerScore -= 14;
-    }
-    tempStarRatesArr[idx] = starVerScore;
-    return tempStarRatesArr;
-  };
-  useEffect(() => {
-    setRatesResArr(calcStarRates);
-  }, []);
-
   return (
     <BeerBox>
       <div className="title">Beers</div>
@@ -47,6 +27,23 @@ export default function BeerCard() {
       <CardBox>
         <Wrapper>
           {data.data.map((beerlist, i) => {
+            const AVR_RATE = beerlist.rating;
+
+            const calcStarRates = AVR_RATE => {
+              let tempStarRatesArr = [0, 0, 0, 0, 0];
+              let starVerScore = (AVR_RATE * 70) / 100;
+              let idx = 0;
+              while (starVerScore > 14) {
+                tempStarRatesArr[idx] = 14;
+                idx += 1;
+                starVerScore -= 14;
+              }
+              tempStarRatesArr[idx] = starVerScore;
+              return tempStarRatesArr;
+            };
+
+            const ratesResArr = calcStarRates(AVR_RATE);
+
             return (
               <Card
                 key={i}
@@ -67,7 +64,7 @@ export default function BeerCard() {
                   src={beerlist.img}
                   style={{ borderRadius: 125 }}
                 />
-                <StarRate STAR_IDX_ARR={STAR_IDX_ARR} ratesResArr={ratesResArr} />
+                <StarRate ratesResArr={ratesResArr} />
                 <ProgressBarBox>
                   <div>
                     <ProgressBarBox style={{ width: 180, height: 100 }}>
