@@ -14,7 +14,6 @@ mail:
   address:
     admin: ${ADMIN_ADDRESS}
 jwt:
-#  key: ${JWT_SECRET_KEY}
   key: ${JWT_SECRET_KEY}
   access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 420
@@ -27,4 +26,3 @@ cloud:
     credentials:
       accessKey: ${AWS_ACCESS_KEY}
       secretKey: ${AWS_SECRET_KEY}
-
