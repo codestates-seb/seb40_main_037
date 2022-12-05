@@ -42,6 +42,7 @@ public class MainController {
         return new MainResponseDto<>(lists,responses, HttpStatus.OK);
     }
 
+
     @PostMapping("/search")
     public ResponseEntity<?> BeerSearch(String search, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC)Pageable pageable) {
         Page<Beer> searchList = beerService.searchBeers(search, pageable);
