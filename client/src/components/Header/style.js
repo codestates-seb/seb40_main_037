@@ -27,6 +27,11 @@ export const UserBox = styled.div`
   z-index: 1;
   ${flexCenter}
 
+  .logo {
+    height: 55px;
+    margin-bottom: -10px;
+  }
+
   button {
     display: flex;
     padding: 5px;

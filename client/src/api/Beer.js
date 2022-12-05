@@ -1,7 +1,7 @@
 import Api from './Account';
 
 export const getBeerList = async page => {
-  const response = await Api.get(`/beers?page=${page}`);
+  const response = await Api.get(`/beers?page=${page - 1}`);
   return response.data;
 };
 
