@@ -22,7 +22,7 @@ const Header = ({ isHeader }) => {
       <Headerbox>
         <UserBox>
           <Link to="/">
-            <Button primary="Mypagebutton" label="logo" />
+            <img src="../src/assets/Logo.png" alt="" className="logo" />
           </Link>
         </UserBox>
         <UserBox>
