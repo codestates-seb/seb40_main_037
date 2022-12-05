@@ -17,10 +17,8 @@ import server.beerfactory.entity.beer.Beer;
 import server.beerfactory.entity.mix.Mix;
 import server.beerfactory.mapper.beer.BeerMapper;
 import server.beerfactory.mapper.mix.MixMapper;
-import server.beerfactory.mapper.user.UserMapper;
 import server.beerfactory.service.beer.BeerService;
 import server.beerfactory.service.mix.MixService;
-import server.beerfactory.service.user.UserService;
 
 import java.util.List;
 
@@ -38,7 +36,6 @@ public class MainController {
         List<BeerDto.Main> lists = beerService.listUp();
         List<Mix> mixes = mixService.mainMixes();
         List<MixDto.Response> responses = mixMapper.mixesToMixResponseDto(mixes);
-        System.out.println(responses);
         return new MainResponseDto<>(lists,responses, HttpStatus.OK);
     }
 
