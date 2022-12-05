@@ -19,6 +19,7 @@ import { CardTime } from '../MixFoodCardList/style';
 import { relTimeFormat } from '../../util/convertor';
 import { useParams } from 'react-router-dom';
 // BEERLIST
+// import { fetchBeer } from './fetchBeer';
 
 const Wrapper = styled.div`
   width: 100%;

@@ -5,11 +5,7 @@
       "name": "홍길동",
       "avatar": "../src/assets/avatar/0.jpg",
       "comment": "hi",
-      "tags": [
-        "sweet",
-        "bitter",
-        "apple"
-      ],
+      "tags": ["sweet", "bitter", "apple"],
       "items": [
         {
           "id": 1,
@@ -51,11 +47,7 @@
       "id": 1,
       "name": "Hite",
       "rating": 4,
-      "tags": [
-        "복숭아향",
-        "BITTER",
-        "4.5도"
-      ]
+      "tags": ["복숭아향", "BITTER", "4.5도"]
     }
   ],
   "reviews": [
@@ -126,24 +118,6 @@
       "createdAt": "2022-11-25 10:10:10",
       "modified": null,
       "comment": "맛있어요 ~~ 최고입니다"
-    },
-    {
-      "avatar": "../src/assets/avatar/0.jpg",
-      "value": "5",
-      "comment": "맛있어요!!",
-      "good": 0,
-      "name": "",
-      "createdAt": "",
-      "id": 5
-    },
-    {
-      "avatar": "../src/assets/avatar/0.jpg",
-      "value": "2",
-      "comment": "또 먹을꺼에요",
-      "good": 0,
-      "name": "",
-      "createdAt": "",
-      "id": 6
     }
   ]
 }
