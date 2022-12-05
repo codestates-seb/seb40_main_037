@@ -1,13 +1,13 @@
 import React from 'react';
-import Item from '../components/Items/Item';
+import Beer from '../components/Beers/Beer';
 import Layout from '../components/Layout';
 
-const Items = () => {
+const Beers = () => {
   return (
     <Layout>
-      <Item></Item>
+      <Beer></Beer>
     </Layout>
   );
 };
 
-export default Items;
+export default Beers;

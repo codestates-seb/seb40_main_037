@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import UploadButtons from '../Items/UploadButton';
+import UploadButtons from '../Beers/UploadButton';
 import dummy from '../../../data/data.json';
 import { useState } from 'react';
 import { fetchReplyCreate } from '../../util/fetchReply';

@@ -10,14 +10,16 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ToggleButton from '@mui/material/ToggleButton';
 
 // 기능 컴포넌트
-import './itemStyle.css';
+import './beerStyle.css';
 import ProductInformation from './ProductInformation';
 import MyReviewForms from './MyReivewForms';
 import FiliterButtons from './FilterButtons';
 // 스타일 컴포넌트
 import { CardTime } from '../MixFoodCardList/style';
 import { relTimeFormat } from '../../util/convertor';
-// import VITE_API_BASE_URL
+import { useParams } from 'react-router-dom';
+// BEERLIST
+
 const Wrapper = styled.div`
   width: 100%;
 `;
@@ -72,10 +74,10 @@ const LeftBox = styled.div`
 const RightBox = styled.div`
   display: flex;
 `;
-function Item() {
+function Beer() {
   const [selected, setSelected] = React.useState(false);
   const [likes, setLikes] = useState(0);
-
+  const { id } = useParams();
   const onIncrease = () => {
     setLikes(prevLikes => prevLikes + 1);
   };
@@ -85,6 +87,7 @@ function Item() {
       <ProductInformation />
       <FiliterButtons />
       <ReviewsBox>
+        <h1>현재 파라미터는 {id} 입니다</h1>
         <ul>
           {dummy.reviews.map(review => {
             return (
@@ -149,4 +152,4 @@ function Item() {
   );
 }
 
-export default Item;
+export default Beer;
