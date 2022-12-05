@@ -60,20 +60,4 @@ public class MixDto {
         private LocalDateTime modifiedAt;
 //        private Boolean mix_vote; 좋아요 미설정
     }
-
-    @Getter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class Main{
-        private long id;
-        private String title;
-        private String content;
-        private String image;
-        private int likeCount;
-        private int disLikeCount;
-        private LocalDateTime createdAt;
-        private LocalDateTime modifiedAt;
-        private List<MixReplyDto.Response> mixReply;
-    }
 }
