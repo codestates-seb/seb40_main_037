@@ -5,7 +5,7 @@ export const fetchMixUpVote = async id => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      authorization: sessionStorage.getItem('access_token'),
+      Authorization: localStorage.getItem('access_token').replace(/\"/gi, ''),
     },
     body: JSON.stringify({}),
   })
@@ -28,7 +28,7 @@ export const fetchMixDownVote = async id => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      authorization: sessionStorage.getItem('access_token'),
+      Authorization: localStorage.getItem('access_token').replace(/\"/gi, ''),
     },
     body: JSON.stringify({}),
   })
@@ -51,7 +51,7 @@ export const fetchMixDeleteVote = async id => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      authorization: sessionStorage.getItem('access_token'),
+      Authorization: localStorage.getItem('access_token').replace(/\"/gi, ''),
     },
     body: JSON.stringify({}),
   })

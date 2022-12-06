@@ -80,6 +80,7 @@ function MixCreateBox() {
             }}
           >
             <TextField
+              name="title"
               fullWidth
               label="제목을 입력해주세요 *"
               id="fullWidth"
@@ -95,6 +96,7 @@ function MixCreateBox() {
             }}
           >
             <TextField
+              name="content"
               label="내용을 입력해주세요 *"
               variant="outlined"
               fullWidth
