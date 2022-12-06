@@ -73,7 +73,7 @@
 ### 메인 페이지
 <details><summary>랜딩 페이지</summary>
   
-![Main](https://user-images.githubusercontent.com/80693049/205909489-71fade00-729a-46cf-b038-595500974726.gif)
+![main](https://user-images.githubusercontent.com/80693049/205941535-c5e824b8-744c-43b8-8709-212be8df7c86.gif)
   
 </details>
 
