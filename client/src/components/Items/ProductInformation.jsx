@@ -2,8 +2,8 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Rating from '@mui/material/Rating';
 import dummy from '../../../data/data.json';
-import HeartImg from '../../assets/icon/Heart.png';
-import EmptyHeartImg from '../../assets/icon/EmptyHeart.png';
+import HeartImg from '/assets/icon/Heart.png';
+import EmptyHeartImg from '/assets/icon/EmptyHeart.png';
 const ProductInfoBox = styled.div`
   width: 70%;
   margin: 30px auto;

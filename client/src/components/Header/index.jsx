@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Wrapper, Headerbox, UserBox, UserDropBox } from './style';
-import { Button } from '../button';
 import { Dropbox_item } from '../../constants/header_footer';
 
-import Userimg from '../../assets/User.gif';
-import Hamburger from '../../assets/Hamburger_icon.png';
+import Userimg from '/assets/User.gif';
+import Hamburger from '/assets/Hamburger_icon.png';
 
 const Header = ({ isHeader }) => {
   const [isMenuHamburger, setIsMenuHamburger] = useState(false);
@@ -22,7 +21,7 @@ const Header = ({ isHeader }) => {
       <Headerbox>
         <UserBox>
           <Link to="/">
-            <img src="../src/assets/Logo.png" alt="" className="logo" />
+            <img src="/assets/Logo.png" alt="" className="logo" />
           </Link>
         </UserBox>
         <UserBox>

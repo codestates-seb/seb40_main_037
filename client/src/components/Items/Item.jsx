@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import dummy from '../../../data/data.json';
-import subBanner from '../../assets/subpage/subbanner1.png';
+import subBanner from '/assets/subpage/subbanner1.png';
 //  MUI 라이브러리
 import Rating from '@mui/material/Rating';
 import ImageList from '@mui/material/ImageList';

@@ -3,8 +3,8 @@
     {
       "id": 1,
       "nickname": "위험한",
-      "avatar": "../src/assets/avatar/1.jpg",
-      "cardImg": "../src/assets/dummyImg.png",
+      "avatar": "/assets/avatar/1.jpg",
+      "cardImg": "/assets/dummyImg.png",
       "title": "카스와 먹기 좋은 피자",
       "votes": 3,
       "createdAt": "2022-11-20 10:10:10",
@@ -17,21 +17,21 @@
       "id": 1,
       "name": "홍길동",
       "comment": "good",
-      "avatar": "../src/assets/avatar/1.jpg",
+      "avatar": "/assets/avatar/1.jpg",
       "value": 3,
       "Good": 5,
       "createdAt": "2022. 11. 18. AM 10:40",
       "photo": [
         {
-          "img": "../src/assets/food/ramen.jpg",
+          "img": "/assets/food/ramen.jpg",
           "title": "ramen"
         },
         {
-          "img": "../src/assets/food/pizza.jpg",
+          "img": "/assets/food/pizza.jpg",
           "title": "pizza"
         },
         {
-          "img": "../src/assets/food/chicken.jpg",
+          "img": "/assets/food/chicken.jpg",
           "title": "ramen"
         }
       ]
@@ -40,21 +40,21 @@
       "id": 2,
       "name": "고길동",
       "comment": "bad",
-      "avatar": "../src/assets/avatar/1.jpg",
+      "avatar": "/assets/avatar/1.jpg",
       "value": 4,
       "Good": 3,
       "createdAt": "2022. 11. 19. AM 12:40",
       "photo": [
         {
-          "img": "../src/assets/food/ramen.jpg",
+          "img": "/assets/food/ramen.jpg",
           "title": "ramen"
         },
         {
-          "img": "../src/assets/food/pizza.jpg",
+          "img": "/assets/food/pizza.jpg",
           "title": "pizza"
         },
         {
-          "img": "../src/assets/food/chicken.jpg",
+          "img": "/assets/food/chicken.jpg",
           "title": "ramen"
         }
       ]
@@ -62,7 +62,7 @@
     {
       "id": 3,
       "name": "김길동",
-      "avatar": "../src/assets/avatar/1.jpg",
+      "avatar": "/assets/avatar/1.jpg",
       "value": 2,
       "Good": 1,
       "createdAt": "2022. 11. 20. AM 12:34",
