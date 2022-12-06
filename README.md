@@ -2,7 +2,11 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/80693049/205887789-3ce8d58d-3f3b-4a0e-ad7d-f26669815821.png" width="500" height="350"></p>
 
 🔗 배포 링크 : http://beertestbucket.s3-website.ap-northeast-2.amazonaws.com/<br>
+🔗 깃헙 링크 : https://github.com/codestates-seb/seb40_main_037<br>
 🔗 노션 링크 : https://www.notion.so/codestates/d959f0476eed4949aae79545297f90f2<br>
+
+## 📅 개발기간
+#### 2022.11.08 ~ 2022.12.07
 
 ## 💻 프로젝트 소개
 #### ㅇㅇㄴㅇㄴㅇㅇㄴㅇㅇ
@@ -24,6 +28,8 @@
 
 ## 🛠 기술 스택
 #### Front-end
-
+<img src="https://user-images.githubusercontent.com/80693049/205899858-1bd8fda5-6efc-4432-8915-57afd44f43ff.png" width="400"><br>
 #### Back-end
+<img src="https://user-images.githubusercontent.com/80693049/205899985-4b28bbbf-d0c4-4e1c-bccc-d175165e5563.png" width="400">
 
+## ✨ 주요 기능 시연
