@@ -2,6 +2,8 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/80693049/205887789-3ce8d58d-3f3b-4a0e-ad7d-f26669815821.png" width="500" height="400"></p>
 
 🔗 배포 링크 : http://beertestbucket.s3-website.ap-northeast-2.amazonaws.com/<br>
+#### ID(프로젝트 접근용) : guest37@gmail.com
+#### PW(프로젝트 접근용) : team37!@#
 🔗 깃헙 링크 : https://github.com/codestates-seb/seb40_main_037<br>
 🔗 노션 링크 : https://www.notion.so/codestates/d959f0476eed4949aae79545297f90f2<br>
 
