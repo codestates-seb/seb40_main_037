@@ -122,11 +122,6 @@
 
 </details>
 
-<details><summary>맥주 추천 기능</summary>
-  
-시연 GIF
-
-</details>
 
 ### 푸드 페이지
 <details><summary>푸드 리스트</summary>
