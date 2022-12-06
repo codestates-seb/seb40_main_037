@@ -105,7 +105,7 @@
 ### 마이 페이지
 <details><summary>마이 페이지</summary>
   
-시연 GIF
+![맥주상세페이지.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0d7ffc45-a1ec-4e91-9028-3f8bf09a5e1a/%EB%A7%A5%EC%A3%BC%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80.gif)
 
 </details>
 
@@ -118,7 +118,7 @@
 
 <details><summary>맥주 상세 페이지 / 맥주 리뷰 페이지</summary>
   
-시연 GIF
+![맥주상세페이지.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0d7ffc45-a1ec-4e91-9028-3f8bf09a5e1a/%EB%A7%A5%EC%A3%BC%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80.gif)
 
 </details>
 
