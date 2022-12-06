@@ -55,20 +55,20 @@
 
 <details><summary>랜딩 페이지 반응형</summary>
   
-시연 GIF
+![MainReactive](https://user-images.githubusercontent.com/80693049/205912795-94d5be47-d5be-402f-97fe-e61dcb31fef5.gif)
 
 </details>
 
 ### 로그인
 <details><summary>회원가입</summary>
   
-![SignUp](https://user-images.githubusercontent.com/80693049/205909524-80e13c4d-b848-48b5-9254-722e61589ca8.gif)
+![SignUp](https://user-images.githubusercontent.com/80693049/205914082-e0b69f9b-d64c-492e-a328-b813c731d1cb.gif)
 
 </details>
 
 <details><summary>로그인, 로그아웃</summary>
   
-![Login](https://user-images.githubusercontent.com/80693049/205909550-937680d6-34f1-408f-a51a-13c3f84d72f4.gif)
+![Login](https://user-images.githubusercontent.com/80693049/205914117-30469753-b1b0-4919-8248-8203b8e3d682.gif)
 
 </details>
 
@@ -82,7 +82,7 @@
 ### 맥주 페이지
 <details><summary>맥주 리스트</summary>
   
-![BeerList](https://user-images.githubusercontent.com/80693049/205909578-0895e3da-c638-4e61-b123-b65ca7ec8f64.gif)
+![BeerList](https://user-images.githubusercontent.com/80693049/205914047-19f6ce0c-25ac-41a5-b2aa-39ae5fc01a04.gif)
 
 </details>
 
@@ -101,7 +101,7 @@
 ### 푸드 페이지
 <details><summary>푸드 리스트</summary>
   
-시연 GIF
+![Foodlist](https://user-images.githubusercontent.com/80693049/205912239-640e7bd4-31cd-4f75-b375-5b85813eaead.gif)
 
 </details>
 
