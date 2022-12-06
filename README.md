@@ -72,8 +72,8 @@
 ## ✨ 주요 기능 시연
 ### 메인 페이지
 <details><summary>랜딩 페이지</summary>
-  
-![main](https://user-images.githubusercontent.com/80693049/205941535-c5e824b8-744c-43b8-8709-212be8df7c86.gif)
+ 
+![intro](https://user-images.githubusercontent.com/107894669/205945566-25968d12-82f1-42db-8b90-2a7913346490.gif)
   
 </details>
 
