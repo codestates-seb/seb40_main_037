@@ -33,7 +33,7 @@ export const BeerLikeButton = async id => {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
-      authorization: sessionStorage.getItem('access_token'),
+      authorization: localStorage.getItem('access_token'),
     },
     body: JSON.stringify(id),
   })
@@ -52,11 +52,13 @@ export const BeerLikeButton = async id => {
 };
 //  새로운 리뷰 작성
 export const BeerRivewCreate = async (fetchData, id) => {
-  return fetch(`${BASE_URL}/beers/${id}`, {
+  console.log(fetchData);
+  console.log(id);
+  return fetch(`${BASE_URL}/beerReviews/${id}`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
-      authorization: sessionStorage.getItem('access_token'),
+      authorization: localStorage.getItem('access_token'),
     },
     body: JSON.stringify(fetchData),
   })
@@ -67,7 +69,7 @@ export const BeerRivewCreate = async (fetchData, id) => {
       return response.json();
     })
     .then(data => {
-      return data.id;
+      return data.id, data.data;
     })
     .catch(error => {
       throw Error(error.message);
@@ -79,7 +81,7 @@ export const MixUpdate = async (fetchData, id) => {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      authorization: sessionStorage.getItem('access_token'),
+      authorization: localStorage.getItem('access_token'),
     },
     body: JSON.stringify(fetchData),
   })
@@ -101,7 +103,7 @@ export const MixDelete = async id => {
   fetch(`${BASE_URL}/Mixes/${id}`, {
     method: 'DELETE',
     headers: {
-      authorization: sessionStorage.getItem('access_token'),
+      authorization: localStorage.getItem('access_token'),
     },
   })
     .then(response => {

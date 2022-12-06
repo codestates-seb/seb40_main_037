@@ -89,8 +89,8 @@ export default function MyReviewForms() {
   //   setTitle(e.target.value);
   // };
 
-  const onChangeContent = content => {
-    setContent(content);
+  const onChangeContent = e => {
+    setContent(e.target.value);
   };
 
   const onChangeScore = score => {
@@ -102,6 +102,7 @@ export default function MyReviewForms() {
       console.log('hi');
     });
   };
+
   return (
     <MyReivewForm>
       {dummy.users.map(user => {
