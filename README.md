@@ -77,7 +77,7 @@
 
 <details><summary>랜딩 페이지 슬라이드</summary>
   
-시연 GIF
+![MainSlide](https://user-images.githubusercontent.com/80693049/205927720-4d78d46f-2898-46be-b74a-297516585bd8.gif)
 
 </details>
 
