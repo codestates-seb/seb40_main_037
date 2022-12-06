@@ -118,7 +118,7 @@
 
 <details><summary>맥주 상세 페이지 / 맥주 리뷰 페이지</summary>
   
-시연 GIF
+![BeerReview](https://user-images.githubusercontent.com/80693049/205963717-bd857a64-1e85-4ab4-beaa-7e0648f80b1d.gif)
 
 </details>
 
