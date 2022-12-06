@@ -3,7 +3,7 @@ import { container } from '../../styles';
 
 export const Wrapper = styled.footer`
   padding: 32px 12px;
-  background-image: url('src/assets/Footer.png');
+  background-image: url('/assets/Footer.png');
   background-repeat: no-repeat;
   background-size: cover;
 `;

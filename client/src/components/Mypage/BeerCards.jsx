@@ -14,15 +14,15 @@ const CarouseBox = styled.div`
 function BeerCard(props) {
   var items = [
     {
-      img: '../src/assets/food/ramen.jpg',
+      img: '/assets/food/ramen.jpg',
       title: 'ramen',
     },
     {
-      img: '../src/assets/food/pizza.jpg',
+      img: '/assets/food/pizza.jpg',
       title: 'pizza',
     },
     {
-      img: '../src/assets/food/chicken.jpg',
+      img: '/assets/food/chicken.jpg',
       title: 'ramen',
     },
   ];
