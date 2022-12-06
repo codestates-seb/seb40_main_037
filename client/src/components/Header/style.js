@@ -30,6 +30,9 @@ export const UserBox = styled.div`
   .logo {
     height: 55px;
     margin-bottom: -10px;
+    @media ${props => props.theme.mobile} {
+      display: none;
+    }
   }
 
   button {
