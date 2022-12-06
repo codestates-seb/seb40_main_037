@@ -31,10 +31,9 @@
 <img src="https://user-images.githubusercontent.com/80693049/205899985-4b28bbbf-d0c4-4e1c-bccc-d175165e5563.png" width="400">
 
 ## 📁 프로젝트 문서
-#### ㅇㅇㄴㅇㄴㅇㅇㄴㅇㅇ
-#### ㅇㅇㄴㅇㄴㅇㅇㄴㅇㅇ
-#### ㅇㅇㄴㅇㄴㅇㅇㄴㅇㅇ
-#### [ERD](https://www.notion.so/codestates/40-Team-c7332b8e87124fff938f0eb79cf51ba6#5e65e1e62b0d4dd2a8fba4fa3d0db879){:target="_blank"}
+#### [Figma]([https://www.notion.so/codestates/40-Team-c7332b8e87124fff938f0eb79cf51ba6#5e65e1e62b0d4dd2a8fba4fa3d0db879](https://www.figma.com/file/Iqe08JFYfPmyKmCkJJtTSM/Airbnb-x-Figma-(Community)?node-id=0%3A1&t=T2c47Deu3frLhmp4-0))
+#### [UserFlow]([https://www.notion.so/codestates/40-Team-c7332b8e87124fff938f0eb79cf51ba6#5e65e1e62b0d4dd2a8fba4fa3d0db879](https://www.notion.so/codestates/40-Team-c7332b8e87124fff938f0eb79cf51ba6#380be06e75a741cfa18e14bfb2ec6e2e))
+#### [ERD](https://www.notion.so/codestates/40-Team-c7332b8e87124fff938f0eb79cf51ba6#5e65e1e62b0d4dd2a8fba4fa3d0db879)<br><br>
 
 
 ## ✨ 주요 기능 시연
