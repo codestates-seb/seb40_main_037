@@ -9,11 +9,9 @@ import Stack from '@mui/material/Stack';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { uploadActions } from '../../store/redux/upload';
-// 서버 와 연결
-import { BeerRivewCreate } from './fetchBeer';
 
 const MyReivewForm = styled.form`
   width: 70%;
@@ -55,11 +53,7 @@ const PrviewImageBox = styled.div`
 `;
 
 export default function MyReviewForms() {
-  // 리뷰 작성 상태관리
-  const [score, setScore] = React.useState(0);
-  const [content, setContent] = useState('');
-  // const [title, setTitle] = useState('');
-
+  const [value, setValue] = React.useState(0);
   // 프리뷰 이미지
   const [selectedImages, setSelectedImages] = React.useState([]);
   const onSelectFile = event => {
@@ -74,52 +68,74 @@ export default function MyReviewForms() {
     console.log(imagesArray);
   };
 
-  useEffect(() => {
-    try {
-      // 체크로그인자리 : 로그인이 성공한다면
-      checkIfLogined().then(() => {
-        console.log('로그인 성공');
-      });
-    } catch (error) {
-      console.log('에러');
-    }
-  }, []);
+  // 리뷰 작성 상태관리
+  const dispatch = useDispatch();
+  const isUpload = useSelector(state => state.isUpload);
 
-  // const onChangeTitle = e => {
-  //   setTitle(e.target.value);
-  // };
+  const [reviews, setReviews] = useState({
+    id: '',
+    avatar: '../src/assets/avatar/0.jpg',
+    value: '',
+    comment: '',
+    good: 0,
+    name: '',
+    createdAt: '',
+    modified: '',
+  });
 
-  const onChangeContent = content => {
-    setContent(content);
-  };
-
-  const onChangeScore = score => {
-    setScore(score);
-  };
-
-  const onClickSubmit = async () => {
-    await BeerRivewCreate({ score, content }).then(id => {
-      console.log('hi');
+  const onChangeReview = e => {
+    setReviews({
+      ...reviews,
+      [e.target.name]: e.target.value,
     });
   };
+
+  async function getUpload() {
+    try {
+      await axios
+        .post('http://localhost:3001/reviews', {
+          avatar: reviews.avatar,
+          value: reviews.value,
+          comment: reviews.comment,
+          good: reviews.good,
+          name: reviews.name,
+          createdAt: reviews.createdAt,
+          createdAt: reviews.modified,
+        })
+        .then(data => {
+          dispatch(uploadActions.upload());
+          alert('등록 성공');
+        });
+      // 일치하는 유저가 존재 X
+    } catch (error) {
+      if (error.response.status === 401) {
+        alert('이메일 혹은 비밀번호가 일치하지 않습니다.');
+        console.log(error);
+      } else {
+        alert(error.response.status);
+        console.log(error);
+      }
+    }
+  }
+  // console.log('작동 여부', isUpload);
   return (
     <MyReivewForm>
       {dummy.users.map(user => {
         return (
           <div className="formBox" key={user.id} name="name">
             <div className="itemMyProfile">
-              <img src={user.image} value={user.image} name="image" />
+              <img src={user.avatar} value={user.avatar} name="avatar" onChange={onChangeReview} />
               <Rating
                 name="value"
                 className="rating-star"
-                value={Number(score)}
+                value={Number(value)}
                 precision={1}
                 min={1}
                 onChange={(event, newValue) => {
-                  setScore(newValue);
+                  setValue(newValue);
                   console.log(newValue);
                 }}
-                onClick={onChangeScore}
+                onClick={onChangeReview}
               />
             </div>
             {/* 업로드 버튼 코드 시작*/}
@@ -130,7 +146,7 @@ export default function MyReviewForms() {
                 component="label"
                 color="warning"
                 type="submit"
-                onClick={onClickSubmit}
+                onClick={getUpload}
               >
                 Upload
                 {/* <input hidden /> */}
@@ -155,7 +171,12 @@ export default function MyReviewForms() {
                   );
                 })}
             </PrviewImageBox>
-            <input className="commentBox" name="comment" onChange={onChangeContent}></input>
+            <input
+              className="commentBox"
+              value={reviews.comment}
+              name="comment"
+              onChange={onChangeReview}
+            ></input>
           </div>
         );
       })}
