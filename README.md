@@ -27,9 +27,31 @@
 #### ㅇㅇㄴㅇㄴㅇㅇㄴㅇㅇ<br>
 
 ## 🛠 기술 스택
-#### Front-end
+### Front-end
+
 <img src="https://user-images.githubusercontent.com/80693049/205899858-1bd8fda5-6efc-4432-8915-57afd44f43ff.png" width="400"><br>
-#### Back-end
+### Back-end
 <img src="https://user-images.githubusercontent.com/80693049/205899985-4b28bbbf-d0c4-4e1c-bccc-d175165e5563.png" width="400">
 
 ## ✨ 주요 기능 시연
+### 메인 페이지
+<details><summary>랜딩 페이지</summary>시연 GIF</details>
+<details><summary>랜딩 페이지 슬라이드</summary>시연 GIF</details>
+<details><summary>랜딩 페이지 반응형</summary>시연 GIF</details>
+
+### 로그인
+<details><summary>회원가입</summary>시연 GIF</details>
+<details><summary>로그인, 로그아웃</summary>시연 GIF</details>
+
+### 마이 페이지
+<details><summary>마이 페이지</summary>시연 GIF</details>
+
+### 맥주 페이지
+<details><summary>맥주 리스트</summary>시연 GIF</details>
+<details><summary>맥주 상세 페이지 / 맥주 리뷰 페이지</summary>시연 GIF</details>
+<details><summary>맥주 추천 기능</summary>시연 GIF</details>
+
+### 푸드 페이지
+<details><summary>푸드 리스트</summary>시연 GIF</details>
+<details><summary>푸드 상세 페이지</summary>시연 GIF</details>
+<details><summary>푸드 페이지 생성</summary>시연 GIF</details>
