@@ -3,13 +3,9 @@
     {
       "id": 1,
       "name": "홍길동",
-      "avatar": "../src/assets/avatar/1.jpg",
+      "avatar": "/assets/avatar/1.jpg",
       "comment": "hi",
-      "tags": [
-        "sweet",
-        "bitter",
-        "apple"
-      ],
+      "tags": ["sweet", "bitter", "apple"],
       "items": [
         {
           "id": 1,
@@ -51,11 +47,7 @@
       "id": 1,
       "name": "Hite",
       "rating": 4,
-      "tags": [
-        "복숭아향",
-        "BITTER",
-        "4.5도"
-      ]
+      "tags": ["복숭아향", "BITTER", "4.5도"]
     }
   ],
   "reviews": [
@@ -63,7 +55,7 @@
       "id": 1,
       "name": "홍길동",
       "comment": "good",
-      "avatar": "../src/assets/avatar/1.jpg",
+      "avatar": "/assets/avatar/1.jpg",
       "value": 3,
       "good": 5,
       "createdAt": "2022-11-20 10:10:10",
@@ -87,7 +79,7 @@
       "id": 2,
       "name": "고길동",
       "comment": "bad",
-      "avatar": "../src/assets/avatar/1.jpg",
+      "avatar": "/assets/avatar/1.jpg",
       "value": 4,
       "good": 3,
       "createdAt": "2022-11-23 10:10:10",
@@ -110,7 +102,7 @@
     {
       "id": 3,
       "name": "김길동",
-      "avatar": "../src/assets/avatar/1.jpg",
+      "avatar": "/assets/avatar/1.jpg",
       "value": 2,
       "good": 1,
       "createdAt": "2022-11-24 10:10:10",
@@ -120,7 +112,7 @@
     {
       "id": 4,
       "name": "테스트4",
-      "avatar": "../src/assets/avatar/1.jpg",
+      "avatar": "/assets/avatar/1.jpg",
       "value": 4,
       "good": 4,
       "createdAt": "2022-11-25 10:10:10",
