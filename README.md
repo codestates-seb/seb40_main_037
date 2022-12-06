@@ -35,6 +35,8 @@
 #### ㅇㅇㄴㅇㄴㅇㅇㄴㅇㅇ
 #### ㅇㅇㄴㅇㄴㅇㅇㄴㅇㅇ
 #### [ERD](https://www.notion.so/codestates/40-Team-c7332b8e87124fff938f0eb79cf51ba6#5e65e1e62b0d4dd2a8fba4fa3d0db879){:target="_blank"}
+
+
 ## ✨ 주요 기능 시연
 ### 메인 페이지
 <details><summary>랜딩 페이지</summary>
