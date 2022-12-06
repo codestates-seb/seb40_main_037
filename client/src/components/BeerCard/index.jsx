@@ -16,14 +16,14 @@ import { Link } from 'react-router-dom';
 export default function BeerCard() {
   const [page, setPage] = useState(0);
 
-  const { isLoading, data } = useQuery(['BeerList', { page }], () => {
-    return getBeerList(page);
-  });
-
   useEffect(() => {
     if (window.location.href.includes('page')) {
       setPage(window.location.href.split('=')[1]);
     }
+  });
+
+  const { isLoading, data } = useQuery(['BeerList', { page }], () => {
+    return getBeerList(page);
   });
 
   if (isLoading) return <div>now loading..</div>;
