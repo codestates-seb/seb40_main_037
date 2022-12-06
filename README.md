@@ -105,7 +105,7 @@
 ### 마이 페이지
 <details><summary>마이 페이지</summary>
   
-시연 GIF
+![Mypage](https://user-images.githubusercontent.com/80693049/205965855-70730a8e-66d4-4be8-a689-8f45fdfd6ec3.gif)
 
 </details>
 
@@ -118,7 +118,7 @@
 
 <details><summary>맥주 상세 페이지 / 맥주 리뷰 페이지</summary>
   
-![BeerReview](https://user-images.githubusercontent.com/80693049/205963717-bd857a64-1e85-4ab4-beaa-7e0648f80b1d.gif)
+![BeerDetail](https://user-images.githubusercontent.com/80693049/205966244-ed1f3eda-0301-4c19-914a-bff9af06fb8c.gif)
 
 </details>
 
