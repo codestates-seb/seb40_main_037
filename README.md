@@ -33,25 +33,86 @@
 ### Back-end
 <img src="https://user-images.githubusercontent.com/80693049/205899985-4b28bbbf-d0c4-4e1c-bccc-d175165e5563.png" width="400">
 
+## 📁 프로젝트 문서
+#### ㅇㅇㄴㅇㄴㅇㅇㄴㅇㅇ
+#### ㅇㅇㄴㅇㄴㅇㅇㄴㅇㅇ
+#### ㅇㅇㄴㅇㄴㅇㅇㄴㅇㅇ
+#### ㅇㅇㄴㅇㄴㅇㅇㄴㅇㅇ<br>
+
 ## ✨ 주요 기능 시연
 ### 메인 페이지
-<details><summary>랜딩 페이지</summary>시연 GIF</details>
-<details><summary>랜딩 페이지 슬라이드</summary>시연 GIF</details>
-<details><summary>랜딩 페이지 반응형</summary>시연 GIF</details>
+<details><summary>랜딩 페이지</summary>
+  
+![Main](https://user-images.githubusercontent.com/80693049/205909489-71fade00-729a-46cf-b038-595500974726.gif)
+  
+</details>
+
+<details><summary>랜딩 페이지 슬라이드</summary>
+  
+시연 GIF
+
+</details>
+
+<details><summary>랜딩 페이지 반응형</summary>
+  
+시연 GIF
+
+</details>
 
 ### 로그인
-<details><summary>회원가입</summary>시연 GIF</details>
-<details><summary>로그인, 로그아웃</summary>시연 GIF</details>
+<details><summary>회원가입</summary>
+  
+![SignUp](https://user-images.githubusercontent.com/80693049/205909524-80e13c4d-b848-48b5-9254-722e61589ca8.gif)
+
+</details>
+
+<details><summary>로그인, 로그아웃</summary>
+  
+![Login](https://user-images.githubusercontent.com/80693049/205909550-937680d6-34f1-408f-a51a-13c3f84d72f4.gif)
+
+</details>
 
 ### 마이 페이지
-<details><summary>마이 페이지</summary>시연 GIF</details>
+<details><summary>마이 페이지</summary>
+  
+시연 GIF
+
+</details>
 
 ### 맥주 페이지
-<details><summary>맥주 리스트</summary>시연 GIF</details>
-<details><summary>맥주 상세 페이지 / 맥주 리뷰 페이지</summary>시연 GIF</details>
-<details><summary>맥주 추천 기능</summary>시연 GIF</details>
+<details><summary>맥주 리스트</summary>
+  
+![BeerList](https://user-images.githubusercontent.com/80693049/205909578-0895e3da-c638-4e61-b123-b65ca7ec8f64.gif)
+
+</details>
+
+<details><summary>맥주 상세 페이지 / 맥주 리뷰 페이지</summary>
+  
+시연 GIF
+
+</details>
+
+<details><summary>맥주 추천 기능</summary>
+  
+시연 GIF
+
+</details>
 
 ### 푸드 페이지
-<details><summary>푸드 리스트</summary>시연 GIF</details>
-<details><summary>푸드 상세 페이지</summary>시연 GIF</details>
-<details><summary>푸드 페이지 생성</summary>시연 GIF</details>
+<details><summary>푸드 리스트</summary>
+  
+시연 GIF
+
+</details>
+
+<details><summary>푸드 상세 페이지</summary>
+  
+![FoodDetail](https://user-images.githubusercontent.com/80693049/205909611-9e0e55c3-2d64-44d7-a783-997b408f4767.gif)
+
+</details>
+
+<details><summary>푸드 페이지 생성</summary>
+  
+![FoodCreate](https://user-images.githubusercontent.com/80693049/205909628-519e254d-cee8-404b-a510-f706965da9b9.gif)
+
+</details>
