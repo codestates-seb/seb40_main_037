@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import dummy from '../../../data/data.json';
-import subBanner from '../../assets/subpage/subbanner1.png';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 //  MUI 라이브러리
 import Rating from '@mui/material/Rating';
 import ImageList from '@mui/material/ImageList';
@@ -17,9 +18,9 @@ import FiliterButtons from './FilterButtons';
 // 스타일 컴포넌트
 import { CardTime } from '../MixFoodCardList/style';
 import { relTimeFormat } from '../../util/convertor';
-import { useParams } from 'react-router-dom';
+
 // BEERLIST
-// import { fetchBeer } from './fetchBeer';
+import { BeerListDetail } from './fetchBeer';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -27,7 +28,7 @@ const Wrapper = styled.div`
 const Banner = styled.div`
   width: 100%;
   height: 800px;
-  background: url(${subBanner});
+  background: url(${props => props.background}) no-repeat top center;
   background-size: 100% 100%;
 `;
 
@@ -75,20 +76,48 @@ const LeftBox = styled.div`
 const RightBox = styled.div`
   display: flex;
 `;
+
+const DescriptionBox = styled.div`
+  background-color: #fff8cd;
+  color: black;
+  width: 70%;
+  margin: 30px auto;
+  padding: 30px 30px;
+  line-height: 1.5rem;
+  border-radius: 30px;
+`;
 function Beer() {
   const [selected, setSelected] = React.useState(false);
+  const [update, setUpdate] = useState(true);
   const [likes, setLikes] = useState(0);
+  // const onIncrease = () => {
+  //   setLikes(prevLikes => prevLikes + 1);
+  // };
+  // 불러오기
   const { id } = useParams();
-  const onIncrease = () => {
-    setLikes(prevLikes => prevLikes + 1);
+  const [info, setInfo] = useState({});
+  // 렌더링 될때
+
+  const getBeerDetail = id => {
+    BeerListDetail(id).then(res => {
+      setInfo(res);
+    });
   };
+
+  useEffect(() => {
+    if (update) {
+      getBeerDetail(id);
+      setUpdate(false);
+    }
+  }, [update]);
+  // console.log(info);
   return (
     <Wrapper>
-      <Banner />
+      <Banner background={`${info.image}`} />
       <ProductInformation />
+      <DescriptionBox>{info.description}</DescriptionBox>
       <FiliterButtons />
       <ReviewsBox>
-        <h1>현재 파라미터는 {id} 입니다</h1>
         <ul>
           {dummy.reviews.map(review => {
             return (

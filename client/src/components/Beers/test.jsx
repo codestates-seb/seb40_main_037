@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import styled from 'styled-components';
 import Rating from '@mui/material/Rating';
 import dummy from '../../../data/data.json';
@@ -8,6 +7,7 @@ import EmptyHeartImg from '../../assets/icon/EmptyHeart.png';
 
 import { BeerListDetail } from './fetchBeer';
 import { useParams } from 'react-router-dom';
+
 const ProductInfoBox = styled.div`
   width: 70%;
   margin: 30px auto;
@@ -55,26 +55,17 @@ export default function ProductInformation() {
     }
   }, [update]);
 
-  // useEffect(async () => {
-  //   const fetchData = async () => {
-  //     const res = await axios.get('http://localhost:3001/users/');
-  //     if (res.data.type === 'liked') setLike(true);
-  //   };
-  //   fetchData();
-  // }, []);
-
-  const toggleLike = async e => {
-    // const res = await axios.post(...) // [POST] 사용자가 좋아요를 누름 -> DB 갱신
-    setLike(!like);
-  };
+  // const toggleLike = async e => {
+  //   // const res = await axios.post(...) // [POST] 사용자가 좋아요를 누름 -> DB 갱신
+  //   setLike(!like);
+  // };
+  console.log(info);
 
   return (
     <ProductInfoBox>
       <div>
-        <Rating className="rating-star" value={Number(info.soda)} size="large" readOnly />
-        <ProductionButton>{info.name}</ProductionButton>;
-        <ProductionButton>{info.aroma}</ProductionButton>;
-        <ProductionButton>{info.country}</ProductionButton>;
+        <Rating className="rating-star" value={info} size="large" readOnly />
+
         <HeartBuuton like={like} onClick={toggleLike} src={like ? HeartImg : EmptyHeartImg} />
       </div>
     </ProductInfoBox>
