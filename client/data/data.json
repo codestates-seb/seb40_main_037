@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "홍길동",
-      "avatar": "/assets/avatar/1.jpg",
+      "avatar": "../src/assets/avatar/0.jpg",
       "comment": "hi",
       "tags": ["sweet", "bitter", "apple"],
       "items": [
@@ -54,23 +54,23 @@
     {
       "id": 1,
       "name": "홍길동",
-      "comment": "good",
-      "avatar": "/assets/avatar/1.jpg",
+      "comment": "최고에요 ~~ 또 먹을꺼같아요",
+      "avatar": "../src/assets/avatar/1.jpg",
       "value": 3,
       "good": 5,
       "createdAt": "2022-11-20 10:10:10",
       "modified": null,
       "photo": [
         {
-          "img": "../src/assets/food/ramen.jpg",
+          "img": "/assets/food/ramen.jpg",
           "title": "ramen"
         },
         {
-          "img": "../src/assets/food/pizza.jpg",
+          "img": "/assets/food/pizza.jpg",
           "title": "pizza"
         },
         {
-          "img": "../src/assets/food/chicken.jpg",
+          "img": "/assets/food/chicken.jpg",
           "title": "ramen"
         }
       ]
@@ -78,64 +78,46 @@
     {
       "id": 2,
       "name": "고길동",
-      "comment": "bad",
-      "avatar": "/assets/avatar/1.jpg",
+      "comment": "좋았습니다 !! 사진도 남겨봅니다.",
+      "avatar": "../src/assets/avatar/2.jpg",
       "value": 4,
       "good": 3,
       "createdAt": "2022-11-23 10:10:10",
       "modified": null,
       "photo": [
         {
-          "img": "../src/assets/food/ramen.jpg",
+          "img": "../src/assets/food/beer2.jpg",
           "title": "ramen"
         },
         {
-          "img": "../src/assets/food/pizza.jpg",
+          "img": "../src/assets/food/beer1.jpg",
           "title": "pizza"
         },
         {
-          "img": "../src/assets/food/chicken.jpg",
+          "img": "../src/assets/food/chicken2.jpg",
           "title": "ramen"
         }
       ]
     },
     {
       "id": 3,
-      "name": "김길동",
-      "avatar": "/assets/avatar/1.jpg",
+      "name": "CATS_KAA",
+      "avatar": "../src/assets/avatar/3.jpg",
       "value": 2,
       "good": 1,
       "createdAt": "2022-11-24 10:10:10",
       "modified": null,
-      "comment": "SoSo"
+      "comment": "그럭저럭 괜찮았어요 ..."
     },
     {
       "id": 4,
-      "name": "테스트4",
-      "avatar": "/assets/avatar/1.jpg",
+      "name": "BI:BIBI",
+      "avatar": "../src/assets/avatar/4.jpg",
       "value": 4,
       "good": 4,
       "createdAt": "2022-11-25 10:10:10",
       "modified": null,
-      "comment": "TEST"
-    },
-    {
-      "avatar": "",
-      "rating": "3",
-      "comment": "hh",
-      "good": 0,
-      "name": "",
-      "createdAt": "",
-      "id": 5
-    },
-    {
-      "avatar": "",
-      "value": "2",
-      "comment": "123",
-      "good": 0,
-      "name": "",
-      "createdAt": "",
-      "id": 6
+      "comment": "맛있어요 ~~ 최고입니다"
     }
   ]
 }

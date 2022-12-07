@@ -1,9 +1,13 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
+
 import styled from 'styled-components';
 import Rating from '@mui/material/Rating';
 import dummy from '../../../data/data.json';
-import HeartImg from '/assets/icon/Heart.png';
-import EmptyHeartImg from '/assets/icon/EmptyHeart.png';
+import HeartImg from '../../assets/icon/Heart.png';
+import EmptyHeartImg from '../../assets/icon/EmptyHeart.png';
+
+import { BeerListDetail } from './fetchBeer';
+import { useParams } from 'react-router-dom';
 const ProductInfoBox = styled.div`
   width: 70%;
   margin: 30px auto;
@@ -32,6 +36,24 @@ const HeartBuuton = styled.img`
 
 export default function ProductInformation() {
   const [like, setLike] = React.useState(false);
+  // 서버 연결
+  const { id } = useParams();
+  const [update, setUpdate] = useState(true);
+  const [info, setInfo] = useState({});
+  // 렌더링 될때
+
+  const getBeerDetail = id => {
+    BeerListDetail(id).then(res => {
+      setInfo(res);
+    });
+  };
+
+  useEffect(() => {
+    if (update) {
+      getBeerDetail(id);
+      setUpdate(false);
+    }
+  }, [update]);
 
   // useEffect(async () => {
   //   const fetchData = async () => {
@@ -48,18 +70,13 @@ export default function ProductInformation() {
 
   return (
     <ProductInfoBox>
-      {dummy.items.map(item => {
-        return (
-          <div>
-            <Rating className="rating-star" value={item.rating} size="large" readOnly />
-            {item.tags &&
-              item.tags.map((tag, i) => {
-                return <ProductionButton key={tag[i]}>{tag}</ProductionButton>;
-              })}
-            <HeartBuuton like={like} onClick={toggleLike} src={like ? HeartImg : EmptyHeartImg} />
-          </div>
-        );
-      })}
+      <div>
+        <Rating className="rating-star" value={Number(info.soda)} size="large" readOnly />
+        <ProductionButton>{info.name}</ProductionButton>
+        <ProductionButton>{info.aroma}</ProductionButton>
+        <ProductionButton>{info.country}</ProductionButton>
+        <HeartBuuton like={like} onClick={toggleLike} src={like ? HeartImg : EmptyHeartImg} />
+      </div>
     </ProductInfoBox>
   );
 }

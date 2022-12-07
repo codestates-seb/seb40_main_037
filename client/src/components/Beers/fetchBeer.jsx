@@ -1,8 +1,8 @@
 // Mix 단일 게시물 조회
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export const fetchMixDetail = async id => {
-  return fetch(`${BASE_URL}/mixes/${id}`)
+export const BeerListDetail = async id => {
+  return fetch(`${BASE_URL}/beers/${id}`)
     .then(response => {
       if (!response.ok) {
         throw Error('유효하지 않은 요청입니다.');
@@ -13,9 +13,9 @@ export const fetchMixDetail = async id => {
       throw Error(error.message);
     });
 };
-// Mix 리스트 조회
-export const fetchMixList = async page => {
-  return fetch(`${BASE_URL}/mixes?page=${page}`)
+// Beer 리스트 조회
+export const BeerList = async page => {
+  return fetch(`${BASE_URL}/BeerList?page=${page}`)
     .then(response => {
       if (!response.ok) {
         throw Error('유효하지 않은 요청입니다.');
@@ -26,15 +26,16 @@ export const fetchMixList = async page => {
       throw Error(error.message);
     });
 };
-// mix 새로운 글 작성
-export const fetchMixCreate = async fetchData => {
-  return fetch(`${BASE_URL}/mixes`, {
+
+// Beer 좋아요 기능 \
+export const BeerLikeButton = async id => {
+  return fetch(`${BASE_URL}/beers/${id}`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
-      Authorization: localStorage.getItem('access_token').replace(/\"/gi, ''),
+      authorization: localStorage.getItem('access_token'),
     },
-    body: JSON.stringify(fetchData),
+    body: JSON.stringify(id),
   })
     .then(response => {
       if (!response.ok) {
@@ -49,13 +50,38 @@ export const fetchMixCreate = async fetchData => {
       throw Error(error.message);
     });
 };
+//  새로운 리뷰 작성
+export const BeerRivewCreate = async (fetchData, id) => {
+  console.log(fetchData);
+  console.log(id);
+  return fetch(`${BASE_URL}/beerReviews/${id}`, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+      authorization: localStorage.getItem('access_token'),
+    },
+    body: JSON.stringify(fetchData),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw Error('유효하지 않은 요청입니다.');
+      }
+      return response.json();
+    })
+    .then(data => {
+      return data.id, data.data;
+    })
+    .catch(error => {
+      throw Error(error.message);
+    });
+};
 // mix 글 수정
 export const MixUpdate = async (fetchData, id) => {
   fetch(`${BASE_URL}/Mixes/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('access_token').replace(/\"/gi, ''),
+      authorization: localStorage.getItem('access_token'),
     },
     body: JSON.stringify(fetchData),
   })
@@ -77,7 +103,7 @@ export const MixDelete = async id => {
   fetch(`${BASE_URL}/Mixes/${id}`, {
     method: 'DELETE',
     headers: {
-      Authorization: localStorage.getItem('access_token').replace(/\"/gi, ''),
+      authorization: localStorage.getItem('access_token'),
     },
   })
     .then(response => {

@@ -1,7 +1,6 @@
 package server.beerfactory.entity.mix;
 
 import lombok.*;
-import org.hibernate.annotations.DynamicInsert;
 import server.beerfactory.audit.Auditable;
 import server.beerfactory.entity.user.User;
 

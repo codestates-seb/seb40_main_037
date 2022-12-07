@@ -16,7 +16,6 @@ public class MixDto {
     @Builder
     public static class Post {
 
-        private Long userId;
         @NotBlank(message = "제목을 입력해 주세요.")
         private String title;
         @NotBlank(message = "내용을 입력해 주세요.")
