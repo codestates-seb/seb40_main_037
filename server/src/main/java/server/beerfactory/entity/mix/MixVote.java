@@ -1,8 +1,6 @@
 package server.beerfactory.entity.mix;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
-import server.beerfactory.entity.beer.BeerReview;
 import server.beerfactory.entity.user.User;
 
 import javax.persistence.*;
@@ -26,12 +24,10 @@ public class MixVote {
     @Column
     private boolean bad;
 
-    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MIX_ID")
     private Mix mix;
 
-    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
