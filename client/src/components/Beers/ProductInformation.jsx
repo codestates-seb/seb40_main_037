@@ -3,16 +3,11 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Rating from '@mui/material/Rating';
 import dummy from '../../../data/data.json';
-<<<<<<< HEAD:client/src/components/Beers/ProductInformation.jsx
 import HeartImg from '../../assets/icon/Heart.png';
 import EmptyHeartImg from '../../assets/icon/EmptyHeart.png';
 
 import { BeerListDetail } from './fetchBeer';
 import { useParams } from 'react-router-dom';
-=======
-import HeartImg from '/assets/icon/Heart.png';
-import EmptyHeartImg from '/assets/icon/EmptyHeart.png';
->>>>>>> 89ac068f7d29bd222878f977d016c1b6641c5525:client/src/components/Items/ProductInformation.jsx
 const ProductInfoBox = styled.div`
   width: 70%;
   margin: 30px auto;
@@ -77,9 +72,9 @@ export default function ProductInformation() {
     <ProductInfoBox>
       <div>
         <Rating className="rating-star" value={Number(info.soda)} size="large" readOnly />
-        <ProductionButton>{info.name}</ProductionButton>;
-        <ProductionButton>{info.aroma}</ProductionButton>;
-        <ProductionButton>{info.country}</ProductionButton>;
+        <ProductionButton>{info.name}</ProductionButton>
+        <ProductionButton>{info.aroma}</ProductionButton>
+        <ProductionButton>{info.country}</ProductionButton>
         <HeartBuuton like={like} onClick={toggleLike} src={like ? HeartImg : EmptyHeartImg} />
       </div>
     </ProductInfoBox>

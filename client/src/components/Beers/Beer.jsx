@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import dummy from '../../../data/data.json';
-<<<<<<< HEAD:client/src/components/Beers/Beer.jsx
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-=======
-import subBanner from '/assets/subpage/subbanner1.png';
->>>>>>> 89ac068f7d29bd222878f977d016c1b6641c5525:client/src/components/Items/Item.jsx
 //  MUI 라이브러리
 import Rating from '@mui/material/Rating';
 import ImageList from '@mui/material/ImageList';

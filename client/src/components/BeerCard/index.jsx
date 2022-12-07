@@ -54,11 +54,7 @@ export default function BeerCard() {
             // const BeerID = beerlist.ID;
 
             return (
-<<<<<<< HEAD
               <Link to={`/beers/${beerlist.id}`}>
-=======
-              <Link to="/items" key={i}>
->>>>>>> 89ac068f7d29bd222878f977d016c1b6641c5525
                 <Card
                   sx={{
                     width: 250,
