@@ -19,7 +19,7 @@ export const fetchReplyCreate = async fetchData => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      authorization: sessionStorage.getItem('access_token'),
+      Authorization: localStorage.getItem('access_token').replace(/\"/gi, ''),
     },
     body: JSON.stringify(fetchData),
   })
@@ -38,7 +38,7 @@ export const fetchDeleteAnswer = async id => {
   return fetch(`${BASE_URL}/mixes/${id}/reply/${id}`, {
     method: 'DELETE',
     headers: {
-      authorization: sessionStorage.getItem('access_token'),
+      Authorization: localStorage.getItem('access_token').replace(/\"/gi, ''),
     },
   })
     .then(response => {

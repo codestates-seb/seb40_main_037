@@ -4,15 +4,16 @@ export const fetchUserInfo = async () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      Accept: 'application/json',
-      authorization: localStorage.getItem('access_token'),
+      //   'Content-Type': 'application/json;charset=UTF-8',
+      //   Accept: 'application/json',
+      Accept: '*/*',
+      Authorization: localStorage.getItem('access_token').replace(/\"/gi, ''),
     },
   })
     .then(res => {
       if (!res.ok) {
         // error coming back from server
-        throw Error('could not fetch the data for that resource');
+        throw Error('요청에 실패했습니다.');
       }
       return res.json();
     })
@@ -20,7 +21,6 @@ export const fetchUserInfo = async () => {
       console.error(err.message);
     });
 };
-
 export const checkIfLogined = async () => {
   return await fetchUserInfo().then(data => {
     if (!data) {

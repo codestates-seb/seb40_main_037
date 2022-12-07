@@ -32,7 +32,7 @@ export const fetchMixCreate = async fetchData => {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
-      authorization: sessionStorage.getItem('access_token'),
+      Authorization: localStorage.getItem('access_token').replace(/\"/gi, ''),
     },
     body: JSON.stringify(fetchData),
   })
@@ -55,7 +55,7 @@ export const MixUpdate = async (fetchData, id) => {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      authorization: sessionStorage.getItem('access_token'),
+      Authorization: localStorage.getItem('access_token').replace(/\"/gi, ''),
     },
     body: JSON.stringify(fetchData),
   })
@@ -77,7 +77,7 @@ export const MixDelete = async id => {
   fetch(`${BASE_URL}/Mixes/${id}`, {
     method: 'DELETE',
     headers: {
-      authorization: sessionStorage.getItem('access_token'),
+      Authorization: localStorage.getItem('access_token').replace(/\"/gi, ''),
     },
   })
     .then(response => {
