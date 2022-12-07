@@ -8,22 +8,17 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import server.beerfactory.dto.beer.BeerDto;
-import server.beerfactory.dto.config.MultiResponseDto;
-import server.beerfactory.dto.user.UserDto;
+import server.beerfactory.dto.config.MainResponseDto;
+import server.beerfactory.dto.mix.MixDto;
 import server.beerfactory.entity.beer.Beer;
-import server.beerfactory.entity.beer.BeerBookMark;
-import server.beerfactory.entity.user.User;
+import server.beerfactory.entity.mix.Mix;
 import server.beerfactory.mapper.beer.BeerMapper;
-import server.beerfactory.mapper.user.UserMapper;
-import server.beerfactory.repository.beer.BeerRepository;
-import server.beerfactory.repository.mix.MixRepository;
+import server.beerfactory.mapper.mix.MixMapper;
 import server.beerfactory.service.beer.BeerService;
-import server.beerfactory.service.user.UserService;
+import server.beerfactory.service.mix.MixService;
 
 import java.util.List;
 
@@ -34,13 +29,16 @@ import java.util.List;
 public class MainController {
     private final BeerMapper beerMapper;
     private final BeerService beerService;
-    private final UserService userService;
-    private final UserMapper userMapper;
+    private final MixMapper mixMapper;
+    private final MixService mixService;
     @GetMapping("/mainpage")
-    public ResponseEntity<?> load(){
+    public MainResponseDto<?> load(){
         List<BeerDto.Main> lists = beerService.listUp();
-        return new ResponseEntity<>(lists, HttpStatus.OK);
+        List<Mix> mixes = mixService.mainMixes();
+        List<MixDto.Response> responses = mixMapper.mixesToMixResponseDto(mixes);
+        return new MainResponseDto<>(lists,responses, HttpStatus.OK);
     }
+
 
     @PostMapping("/search")
     public ResponseEntity<?> BeerSearch(String search, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC)Pageable pageable) {

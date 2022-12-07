@@ -50,6 +50,9 @@ public class MixService {
         mixRepository.delete(mix);
     }
 
+    public List<Mix> mainMixes() {
+        return mixRepository.findAll();
+    }
     public Page<Mix> findMixes(Pageable pageable) {
         return mixRepository.findAll(pageable);
     }

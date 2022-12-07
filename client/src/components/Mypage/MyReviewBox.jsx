@@ -53,9 +53,9 @@ export default function MyReviewBox() {
                     <ListItemButton onClick={handleClick}>
                       <ListItemIcon>
                         {item.type === 'beer' ? (
-                          <img className="iconImg" src="../../src/assets/icon/beer.png" />
+                          <img className="iconImg" src="/assets/icon/beer.png" />
                         ) : (
-                          <img className="iconImg" src="../../src/assets/icon/chicken.png" />
+                          <img className="iconImg" src="/assets/icon/chicken.png" />
                         )}
                       </ListItemIcon>
                       <ListItemText primary={item.name} />

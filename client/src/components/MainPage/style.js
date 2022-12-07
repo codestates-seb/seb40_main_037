@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import subBanner from '../../assets/subpage/subBanner1.png';
+import subBanner from '/assets/subpage/subbanner1.png';
 
 export const Container = styled.div`
   width: 100%;

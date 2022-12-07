@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchMixCreate } from '../../util/fetchMix';
-// import {체크로그인 자리} from '페치로그인'
+import { checkIfLogined } from '../../util/fetchLogin';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -42,12 +42,11 @@ function MixCreateBox() {
 
   useEffect(() => {
     try {
-      // 체크로그인자리 : 로그인이 성공한다면
       checkIfLogined().then(() => {
-        console.log('로그인 성공');
+        console.log(`✅ 로그인 성공`);
       });
     } catch (error) {
-      console.log('에러');
+      console.log('로그인실패했다고 뜨는 메세지가 맞는지');
     }
   }, []);
 
@@ -81,6 +80,7 @@ function MixCreateBox() {
             }}
           >
             <TextField
+              name="title"
               fullWidth
               label="제목을 입력해주세요 *"
               id="fullWidth"
@@ -96,6 +96,7 @@ function MixCreateBox() {
             }}
           >
             <TextField
+              name="content"
               label="내용을 입력해주세요 *"
               variant="outlined"
               fullWidth

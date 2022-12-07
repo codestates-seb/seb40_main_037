@@ -13,7 +13,6 @@ import {
   TimeBox,
   ReviewBox,
 } from './style';
-import MixdummydataDetail from '../../../data/MixdummydataDetail.json';
 import { relTimeFormat } from '../../util/convertor';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -130,11 +129,6 @@ function MixDetailComponents() {
     );
   }
 
-  const par = MixdummydataDetail.card[0];
-
-  console.log(info.data);
-  console.log(answerList.data);
-
   return (
     <Wrapper>
       {!isPending && Object.keys(info).length ? (
@@ -153,30 +147,28 @@ function MixDetailComponents() {
           </TimeBox>
 
           <MixContentBox>
-            <MixDetailImg src={info.data.Image} alt="임시사진입니다." />
+            <MixDetailImg src={info.data.image} alt="임시사진입니다." />
             <MixContent>{info.data.content}</MixContent>
           </MixContentBox>
+
+          <VoteBox>
+            <Vote>
+              <Button variant="contained" component="label" color="primary">
+                좋아요
+                <input hidden />
+              </Button>
+              <Vote>{info.data.likeCount}</Vote>
+              <Button variant="outlined" component="label" color="primary">
+                싫어요
+                <input hidden />
+              </Button>
+              <Vote>{info.data.disLikeCount}</Vote>
+            </Vote>
+          </VoteBox>
         </div>
       ) : (
         ''
       )}
-
-      <VoteBox>
-        <Vote>
-          <Button variant="contained" component="label" color="primary">
-            좋아요
-            <input hidden />
-            {/* Post 버튼으로 수정 */}
-          </Button>
-          <Vote>{par.votes}</Vote>
-          <Button variant="outlined" component="label" color="primary">
-            싫어요
-            <input hidden />
-            {/* Post 버튼으로 수정 */}
-          </Button>
-          <Vote>{par.votes}</Vote>
-        </Vote>
-      </VoteBox>
       <ReviewsBox>
         <ReviewBox>후기</ReviewBox>
         <ul>

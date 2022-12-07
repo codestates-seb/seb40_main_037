@@ -3,7 +3,11 @@
     {
       "id": 1,
       "name": "홍길동",
+<<<<<<< HEAD
       "avatar": "../src/assets/avatar/0.jpg",
+=======
+      "avatar": "/assets/avatar/1.jpg",
+>>>>>>> 89ac068f7d29bd222878f977d016c1b6641c5525
       "comment": "hi",
       "tags": ["sweet", "bitter", "apple"],
       "items": [
@@ -54,23 +58,28 @@
     {
       "id": 1,
       "name": "홍길동",
+<<<<<<< HEAD
       "comment": "최고에요 ~~ 또 먹을꺼같아요",
       "avatar": "../src/assets/avatar/1.jpg",
+=======
+      "comment": "good",
+      "avatar": "/assets/avatar/1.jpg",
+>>>>>>> 89ac068f7d29bd222878f977d016c1b6641c5525
       "value": 3,
       "good": 5,
       "createdAt": "2022-11-20 10:10:10",
       "modified": null,
       "photo": [
         {
-          "img": "../src/assets/food/ramen.jpg",
+          "img": "/assets/food/ramen.jpg",
           "title": "ramen"
         },
         {
-          "img": "../src/assets/food/pizza.jpg",
+          "img": "/assets/food/pizza.jpg",
           "title": "pizza"
         },
         {
-          "img": "../src/assets/food/chicken.jpg",
+          "img": "/assets/food/chicken.jpg",
           "title": "ramen"
         }
       ]
@@ -78,14 +87,20 @@
     {
       "id": 2,
       "name": "고길동",
+<<<<<<< HEAD
       "comment": "좋았습니다 !! 사진도 남겨봅니다.",
       "avatar": "../src/assets/avatar/2.jpg",
+=======
+      "comment": "bad",
+      "avatar": "/assets/avatar/1.jpg",
+>>>>>>> 89ac068f7d29bd222878f977d016c1b6641c5525
       "value": 4,
       "good": 3,
       "createdAt": "2022-11-23 10:10:10",
       "modified": null,
       "photo": [
         {
+<<<<<<< HEAD
           "img": "../src/assets/food/beer2.jpg",
           "title": "ramen"
         },
@@ -95,14 +110,30 @@
         },
         {
           "img": "../src/assets/food/chicken2.jpg",
+=======
+          "img": "/assets/food/ramen.jpg",
+          "title": "ramen"
+        },
+        {
+          "img": "/assets/food/pizza.jpg",
+          "title": "pizza"
+        },
+        {
+          "img": "/assets/food/chicken.jpg",
+>>>>>>> 89ac068f7d29bd222878f977d016c1b6641c5525
           "title": "ramen"
         }
       ]
     },
     {
       "id": 3,
+<<<<<<< HEAD
       "name": "CATS_KAA",
       "avatar": "../src/assets/avatar/3.jpg",
+=======
+      "name": "김길동",
+      "avatar": "/assets/avatar/1.jpg",
+>>>>>>> 89ac068f7d29bd222878f977d016c1b6641c5525
       "value": 2,
       "good": 1,
       "createdAt": "2022-11-24 10:10:10",
@@ -111,8 +142,13 @@
     },
     {
       "id": 4,
+<<<<<<< HEAD
       "name": "BI:BIBI",
       "avatar": "../src/assets/avatar/4.jpg",
+=======
+      "name": "테스트4",
+      "avatar": "/assets/avatar/1.jpg",
+>>>>>>> 89ac068f7d29bd222878f977d016c1b6641c5525
       "value": 4,
       "good": 4,
       "createdAt": "2022-11-25 10:10:10",

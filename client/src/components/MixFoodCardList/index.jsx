@@ -57,7 +57,7 @@ function MixFoodCardList() {
     }
     setIsUpdate(true);
   };
-  console.log(MixList);
+
   return (
     <Wrapper>
       <div>

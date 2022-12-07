@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 80vh;
   background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
-    url('src/assets/ErrorBackground.jpg');
+    url('/assets/ErrorBackground.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
