@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -39,7 +40,7 @@ public class MixController {
     private S3Uploader s3Uploader;
 
 
-    @PostMapping
+    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity postMix(@RequestPart(value = "requestBody") MixDto.Post requestBody,
                                   @RequestPart(value = "file", required = false) MultipartFile file) throws IOException {
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
