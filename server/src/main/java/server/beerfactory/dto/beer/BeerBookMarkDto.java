@@ -14,8 +14,8 @@ public class BeerBookMarkDto {
     @Getter
     @Builder
     public static class Dto{
-        private Long id;
-        private BeerDto.Response beer;
         private UserDto.Response user;
+        private BeerDto.Response beer;
+        private Long id;
     }
 }

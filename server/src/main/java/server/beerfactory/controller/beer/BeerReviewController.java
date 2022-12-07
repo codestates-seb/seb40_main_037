@@ -44,9 +44,6 @@ public class BeerReviewController {
     public ResponseEntity<?> postBeerReview(@PathVariable("beer-id") @Positive Long beerId,
                                             @RequestPart(value = "requestBody") BeerReviewDto.Request request,
                                             @RequestPart(value = "file", required = false) MultipartFile file) throws IOException {
-        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User findUser = userService.findUser(email);
-        request.setUser(findUser);
         BeerReview beerReview = beerReviewMapper.beerReviewRequestToBeerReview(request);
         if (file != null) {
             String imgPath = s3Uploader.upload(file, "image");
@@ -63,7 +60,6 @@ public class BeerReviewController {
                                              @RequestPart(value = "file", required = false) MultipartFile file) throws IOException{
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User findUser = userService.findUser(email);
-        request.setUser(findUser);
         BeerReview beerReview = beerReviewMapper.beerReviewRequestToBeerReview(request);
         if (file != null) {
             String imgPath = s3Uploader.upload(file, "image");
