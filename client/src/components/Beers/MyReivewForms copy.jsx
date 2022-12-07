@@ -74,7 +74,7 @@ export default function MyReviewForms() {
 
   const [reviews, setReviews] = useState({
     id: '',
-    avatar: '',
+    avatar: '../src/assets/avatar/0.jpg',
     value: '',
     comment: '',
     good: 0,
@@ -124,12 +124,7 @@ export default function MyReviewForms() {
         return (
           <div className="formBox" key={user.id} name="name">
             <div className="itemMyProfile">
-              <img
-                src={user.avatar}
-                value={reviews.avatar}
-                name="avatar"
-                onChange={onChangeReview}
-              />
+              <img src={user.avatar} value={user.avatar} name="avatar" onChange={onChangeReview} />
               <Rating
                 name="value"
                 className="rating-star"

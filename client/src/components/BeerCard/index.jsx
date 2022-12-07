@@ -51,10 +51,10 @@ export default function BeerCard() {
             };
 
             const ratesResArr = calcStarRates(AVR_RATE);
-            const BeerID = beerlist.ID;
+            // const BeerID = beerlist.ID;
 
             return (
-              <Link to="/items" key={i}>
+              <Link to={`/beers/${beerlist.id}`}>
                 <Card
                   sx={{
                     width: 250,
