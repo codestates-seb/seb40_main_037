@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import server.beerfactory.auth.userdetails.CustomUserDetailsService;
 import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.dto.config.MultiResponseDto;
+import server.beerfactory.dto.config.SingleResponseDto;
 import server.beerfactory.entity.beer.Beer;
 import server.beerfactory.entity.beer.BeerBookMark;
 import server.beerfactory.entity.user.User;
@@ -86,7 +87,7 @@ public class BeerController {
         Page<Beer> pageBeers = beerService.findBeers(pageable);
         List<Beer> beers = pageBeers.getContent();
         List<BeerDto.Response> response = beerMapper.beersToBeerResponseDtos(beers);
-        return new ResponseEntity<>(new MultiResponseDto<>(response, pageBeers), HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
     }
 
     @DeleteMapping("/{beer-id}")

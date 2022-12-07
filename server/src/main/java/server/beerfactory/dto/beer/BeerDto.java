@@ -97,7 +97,7 @@ public class BeerDto {
         private int afterTaste;
         private int sum;
         private int count;
-        private List<BeerReviewDto.Response> beerReviews;
+//        private List<BeerReviewDto.Response> beerReviews;
     }
 }
 
