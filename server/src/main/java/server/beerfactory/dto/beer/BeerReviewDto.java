@@ -28,9 +28,6 @@ public class BeerReviewDto {
 
         @NotNull
         private int score;
-
-        @Setter
-        private User user;
     }
 
     @NoArgsConstructor

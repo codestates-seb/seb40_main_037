@@ -13,16 +13,6 @@ public class BeerBookMarkDto {
     @AllArgsConstructor
     @Getter
     @Builder
-    public static class Request{
-        @Setter
-        private User user;
-        @Setter
-        private Beer beer;
-    }
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Getter
-    @Builder
     public static class Dto{
         private Long id;
         private BeerDto.Response beer;
