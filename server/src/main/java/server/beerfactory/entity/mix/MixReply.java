@@ -1,5 +1,6 @@
 package server.beerfactory.entity.mix;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import server.beerfactory.audit.Auditable;
@@ -22,10 +23,12 @@ public class MixReply extends Auditable {
     @Column(nullable = false)
     private String content;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MIX_ID")
     private Mix mix;

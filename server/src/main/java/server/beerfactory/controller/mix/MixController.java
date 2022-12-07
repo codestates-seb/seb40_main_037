@@ -40,7 +40,7 @@ public class MixController {
     private S3Uploader s3Uploader;
 
 
-    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
+    @PostMapping
     public ResponseEntity postMix(@RequestPart(value = "requestBody") MixDto.Post requestBody,
                                   @RequestPart(value = "file", required = false) MultipartFile file) throws IOException {
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
