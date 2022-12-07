@@ -73,7 +73,7 @@ public class Beer extends Auditable {
     @Column
     private int afterTaste;
 
-    @ManyToOne // (fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
 

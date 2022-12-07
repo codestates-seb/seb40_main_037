@@ -47,7 +47,7 @@ public class Mix extends Auditable {
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @OneToMany(mappedBy = "mix")
+    @OneToMany(mappedBy = "mix", cascade = CascadeType.ALL)
     private final List<MixReply> mixReplies = new ArrayList<>();
 
     @OneToMany(mappedBy = "mix", cascade = CascadeType.ALL)
