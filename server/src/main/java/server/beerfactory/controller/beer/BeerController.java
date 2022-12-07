@@ -78,7 +78,7 @@ public class BeerController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/BeerList")
     public ResponseEntity<?> getBeers(@PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC)Pageable pageable){
         Page<Beer> pageBeers = beerService.findBeers(pageable);
         List<Beer> beers = pageBeers.getContent();
