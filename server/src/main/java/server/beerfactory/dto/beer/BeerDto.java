@@ -42,8 +42,6 @@ public class BeerDto {
         private int afterTaste;
         @NotBlank
         private int soda;
-        @Setter
-        private User user;
     }
 
     @NoArgsConstructor
