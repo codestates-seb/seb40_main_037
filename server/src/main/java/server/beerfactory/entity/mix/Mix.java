@@ -1,11 +1,9 @@
 package server.beerfactory.entity.mix;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.*;
 import server.beerfactory.audit.Auditable;
-import server.beerfactory.entity.beer.BeerReviewVote;
 import server.beerfactory.entity.user.User;
 
 
@@ -45,16 +43,15 @@ public class Mix extends Auditable {
         this.likeCount = likeCount;
     }
 
-    @JsonBackReference
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "mix")
     private final List<MixReply> mixReplies = new ArrayList<>();
 
-    @JsonManagedReference
+
     @OneToMany(mappedBy = "mix", cascade = CascadeType.ALL)
     private final List<MixVote> mixVotes = new ArrayList<>();
 
