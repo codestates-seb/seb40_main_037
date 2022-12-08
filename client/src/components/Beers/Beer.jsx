@@ -94,7 +94,6 @@ function Beer() {
       <ProductInformation />
       <DescriptionBox>{info.description}</DescriptionBox>
       <FiliterButtons />
-
       <ReviewsBox>
         <ul>
           {dummy.reviews.map(review => {

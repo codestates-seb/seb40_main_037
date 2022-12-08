@@ -21,7 +21,6 @@ import MixUpdate from './pages/MixUpdate';
 // redux store
 import { Provider } from 'react-redux ';
 import store from './store/redux/upload';
-// import { store } from './store/redux/upload';
 const queryClient = new QueryClient();
 
 function App() {
