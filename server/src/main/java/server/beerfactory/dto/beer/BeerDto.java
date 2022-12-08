@@ -42,6 +42,7 @@ public class BeerDto {
         private int afterTaste;
         @NotBlank
         private int soda;
+        private UserDto.Response user;
     }
 
     @NoArgsConstructor
@@ -68,7 +69,8 @@ public class BeerDto {
         private int afterTaste;
         private int sum;
         private int count;
-        private UserDto.Response user;
+        @Setter
+        private Long UserId;
     }
 
     @Getter

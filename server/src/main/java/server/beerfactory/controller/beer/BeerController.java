@@ -45,15 +45,19 @@ public class BeerController {
     private UserMapper userMapper;
 
     @PostMapping
-    public String postBeer(@RequestPart(value = "requestBody") BeerDto.Request request,
+    public ResponseEntity<?> postBeer(@RequestPart(value = "requestBody") BeerDto.Request request,
                            @RequestPart(value = "file", required = false) MultipartFile file) throws IOException{
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User findUser = userService.findUser(email);
         Beer beer = beerMapper.beerRequestToBeer(request);
         if (file != null) {
             String imgPath = s3Uploader.upload(file, "image");
             beer.setImage(imgPath);
         }
         Beer created = beerService.createBeer(beer);
-        return String.valueOf(created.getId());
+        BeerDto.Response response = beerMapper.beerToBeerResponse(created);
+        response.setUserId(findUser.getId());
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PatchMapping("/{beer-id}")
@@ -78,12 +82,12 @@ public class BeerController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/BeerList")
+    @GetMapping
     public ResponseEntity<?> getBeers(@PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC)Pageable pageable){
         Page<Beer> pageBeers = beerService.findBeers(pageable);
         List<Beer> beers = pageBeers.getContent();
         List<BeerDto.Response> response = beerMapper.beersToBeerResponseDtos(beers);
-        return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
+        return new ResponseEntity<>(new MultiResponseDto<>(response, pageBeers), HttpStatus.OK);
     }
 
     @DeleteMapping("/{beer-id}")
