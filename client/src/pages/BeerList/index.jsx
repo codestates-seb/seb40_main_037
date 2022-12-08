@@ -27,7 +27,7 @@ const BeerList = () => {
           />
         </BeerLiheader>
         <Beercontainer>
-          <Beertagbox>
+          {/* <Beertagbox>
             {Beer_type.map((item, i) => {
               return (
                 <Tags key={i}>
@@ -44,7 +44,7 @@ const BeerList = () => {
                 </Tags>
               );
             })}
-          </Beertagbox>
+          </Beertagbox> */}
           <BeerCard />
         </Beercontainer>
         <Paging />

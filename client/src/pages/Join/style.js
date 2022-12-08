@@ -5,6 +5,7 @@ import { flexCenter, flexColumnCenter } from '../../styles/index';
 export const Wrapper = styled.div`
   width: 100%;
   height: 80vh;
+  min-height: 800px;
   background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
     url('/assets/ErrorBackground.jpg');
   background-repeat: no-repeat;
