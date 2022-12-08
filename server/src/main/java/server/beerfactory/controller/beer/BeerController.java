@@ -8,21 +8,17 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import server.beerfactory.auth.userdetails.CustomUserDetailsService;
 import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.dto.config.MultiResponseDto;
 import server.beerfactory.dto.config.SingleResponseDto;
 import server.beerfactory.entity.beer.Beer;
-import server.beerfactory.entity.beer.BeerBookMark;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.image.S3Uploader;
 import server.beerfactory.mapper.beer.BeerMapper;
-import server.beerfactory.mapper.user.UserMapper;
 import server.beerfactory.service.beer.BeerService;
 import server.beerfactory.service.user.UserService;
 
@@ -41,8 +37,6 @@ public class BeerController {
     private final BeerService beerService;
     private final BeerMapper beerMapper;
     private final S3Uploader s3Uploader;
-
-    private UserMapper userMapper;
 
     @PostMapping
     public ResponseEntity<?> postBeer(@RequestPart(value = "requestBody") BeerDto.Request request,
