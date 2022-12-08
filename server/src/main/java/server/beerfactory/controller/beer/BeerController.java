@@ -42,8 +42,6 @@ public class BeerController {
     private final BeerMapper beerMapper;
     private final S3Uploader s3Uploader;
 
-    private UserMapper userMapper;
-
     @PostMapping
     public ResponseEntity<?> postBeer(@RequestPart(value = "requestBody") BeerDto.Request request,
                            @RequestPart(value = "file", required = false) MultipartFile file) throws IOException{

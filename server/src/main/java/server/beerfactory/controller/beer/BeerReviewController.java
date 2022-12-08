@@ -89,5 +89,4 @@ public class BeerReviewController {
         List<BeerReviewDto.Response> responses = beerReviewMapper.beerReviewToBeerReviewResponseDtos(beerReviews);
         return new ResponseEntity<>(responses, HttpStatus.OK);
     }
-
 }

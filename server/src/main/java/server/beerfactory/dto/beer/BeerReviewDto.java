@@ -11,7 +11,6 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 public class BeerReviewDto {
-
     @Getter
     @Builder
     @NoArgsConstructor

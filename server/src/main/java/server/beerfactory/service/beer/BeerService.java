@@ -32,7 +32,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class BeerService {
-
     private final BeerMapper beerMapper;
     private final BeerRepository beerRepository;
     private final UserRepository userRepository;

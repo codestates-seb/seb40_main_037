@@ -25,7 +25,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class BeerReviewService {
-
     private final BeerReviewRepository beerReviewRepository;
     private final BeerService beerService;
     private final UserRepository userRepository;
