@@ -71,7 +71,7 @@ public class UserController {
     }
 
     // 로그인한 유저가 작성한 맥주 리뷰 조회
-    @GetMapping("/me/beerReviews")
+    @GetMapping("/me/beer/reviews")
     public ResponseEntity<?> getMyBeerReviews() {
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userService.findUser(email);

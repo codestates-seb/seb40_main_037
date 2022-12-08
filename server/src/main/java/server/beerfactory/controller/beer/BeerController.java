@@ -8,21 +8,17 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import server.beerfactory.auth.userdetails.CustomUserDetailsService;
 import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.dto.config.MultiResponseDto;
 import server.beerfactory.dto.config.SingleResponseDto;
 import server.beerfactory.entity.beer.Beer;
-import server.beerfactory.entity.beer.BeerBookMark;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.image.S3Uploader;
 import server.beerfactory.mapper.beer.BeerMapper;
-import server.beerfactory.mapper.user.UserMapper;
 import server.beerfactory.service.beer.BeerService;
 import server.beerfactory.service.user.UserService;
 
@@ -41,8 +37,6 @@ public class BeerController {
     private final BeerService beerService;
     private final BeerMapper beerMapper;
     private final S3Uploader s3Uploader;
-
-    private UserMapper userMapper;
 
     @PostMapping
     public String postBeer(@RequestPart(value = "requestBody") BeerDto.Request request,
@@ -78,12 +72,12 @@ public class BeerController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/BeerList")
+    @GetMapping
     public ResponseEntity<?> getBeers(@PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC)Pageable pageable){
         Page<Beer> pageBeers = beerService.findBeers(pageable);
         List<Beer> beers = pageBeers.getContent();
         List<BeerDto.Response> response = beerMapper.beersToBeerResponseDtos(beers);
-        return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
+        return new ResponseEntity<>(new MultiResponseDto<>(response, pageBeers), HttpStatus.OK);
     }
 
     @DeleteMapping("/{beer-id}")
