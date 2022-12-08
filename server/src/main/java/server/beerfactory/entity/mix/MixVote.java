@@ -1,7 +1,6 @@
 package server.beerfactory.entity.mix;
 
 import lombok.*;
-import server.beerfactory.entity.beer.BeerReview;
 import server.beerfactory.entity.user.User;
 
 import javax.persistence.*;

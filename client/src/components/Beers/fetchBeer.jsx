@@ -14,8 +14,8 @@ export const BeerListDetail = async id => {
     });
 };
 // Beer 리스트 조회
-export const BeerList = async page => {
-  return fetch(`${BASE_URL}/BeerList?page=${page}`)
+export const BeerList = async size => {
+  return fetch(`${BASE_URL}/BeerList?size=${size}`)
     .then(response => {
       if (!response.ok) {
         throw Error('유효하지 않은 요청입니다.');

@@ -31,13 +31,18 @@ public class BeerReviewService {
     private final UserRepository userRepository;
 
     @Transactional
-    public BeerReview createBeerReview(Long beerId, BeerReview beerReview) {
-        Beer beer = beerService.findBeer(beerId);
-        beer.setSum(beer.getSum() + beerReview.getScore());
-        beer.setCount(beer.getCount() + 1);
-        beer.setStar((double)beer.getSum() / beer.getCount());
-        beerReview.setBeer(beer);
-        return beerReviewRepository.save(beerReview);
+    public BeerReview createBeerReview(Long userId, Long beerId, BeerReview beerReview) {
+        Optional<BeerReview> findBeerReview = beerReviewRepository.findById(userId);
+        if(findBeerReview.isEmpty()) {
+            Beer beer = beerService.findBeer(beerId);
+            beer.setSum(beer.getSum() + beerReview.getScore());
+            beer.setCount(beer.getCount() + 1);
+            beer.setStar((double) beer.getSum() / beer.getCount());
+            beerReview.setBeer(beer);
+            return beerReviewRepository.save(beerReview);
+        }else{
+            throw new BusinessLogicException(ExceptionCode.BEER_REVIEW_NOT_FOUND);
+        }
     }
 
     @Transactional

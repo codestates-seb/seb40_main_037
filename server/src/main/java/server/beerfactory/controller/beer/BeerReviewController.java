@@ -1,31 +1,22 @@
 package server.beerfactory.controller.beer;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.dto.beer.BeerReviewDto;
-import server.beerfactory.dto.user.UserDto;
 import server.beerfactory.entity.beer.Beer;
 import server.beerfactory.entity.beer.BeerReview;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.image.S3Uploader;
-import server.beerfactory.mapper.beer.BeerMapper;
 import server.beerfactory.mapper.beer.BeerReviewMapper;
-import server.beerfactory.mapper.user.UserMapper;
 import server.beerfactory.service.beer.BeerReviewService;
 import server.beerfactory.service.beer.BeerService;
 import server.beerfactory.service.user.UserService;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.io.IOException;
 import java.util.List;
@@ -33,27 +24,28 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Validated
-@RequestMapping("/beerReviews")
+@RequestMapping("/beer/reviews")
 public class BeerReviewController {
     private final BeerReviewService beerReviewService;
     private final BeerReviewMapper beerReviewMapper;
     private final BeerService beerService;
     private final UserService userService;
     private final S3Uploader s3Uploader;
+    private final UserMapper userMapper;
     @PostMapping("/{beer-id}")
     public ResponseEntity<?> postBeerReview(@PathVariable("beer-id") @Positive Long beerId,
                                             @RequestPart(value = "requestBody") BeerReviewDto.Request request,
                                             @RequestPart(value = "file", required = false) MultipartFile file) throws IOException {
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User findUser = userService.findUser(email);
-        request.setUser(findUser);
         BeerReview beerReview = beerReviewMapper.beerReviewRequestToBeerReview(request);
         if (file != null) {
             String imgPath = s3Uploader.upload(file, "image");
             beerReview.setImage(imgPath);
         }
-        BeerReview created = beerReviewService.createBeerReview(beerId, beerReview);
+        BeerReview created = beerReviewService.createBeerReview(findUser.getId(), beerId, beerReview);
         BeerReviewDto.Response response = beerReviewMapper.beerReviewToBeerReviewResponse(created);
+        response.setUserId(findUser.getId());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -63,7 +55,6 @@ public class BeerReviewController {
                                              @RequestPart(value = "file", required = false) MultipartFile file) throws IOException{
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User findUser = userService.findUser(email);
-        request.setUser(findUser);
         BeerReview beerReview = beerReviewMapper.beerReviewRequestToBeerReview(request);
         if (file != null) {
             String imgPath = s3Uploader.upload(file, "image");
