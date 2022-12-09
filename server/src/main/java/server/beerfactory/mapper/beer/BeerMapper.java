@@ -16,6 +16,6 @@ public interface BeerMapper {
 
     Beer beerRequestToBeer(BeerDto.Request request);
 
-    List<BeerDto.Main> beerMainToBeers(List<Beer> lists);
+    List<BeerDto.Response> beerResponseToBeers(List<Beer> lists);
 }
 

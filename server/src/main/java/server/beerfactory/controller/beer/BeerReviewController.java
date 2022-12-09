@@ -1,6 +1,7 @@
 package server.beerfactory.controller.beer;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -28,12 +29,14 @@ import server.beerfactory.service.user.UserService;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @Validated
 @RequestMapping("/beer/reviews")
+@Slf4j
 public class BeerReviewController {
     private final BeerReviewService beerReviewService;
     private final BeerReviewMapper beerReviewMapper;
@@ -41,6 +44,7 @@ public class BeerReviewController {
     private final UserService userService;
     private final S3Uploader s3Uploader;
     private final UserMapper userMapper;
+    private final BeerMapper beerMapper;
     @PostMapping("/{beer-id}")
     public ResponseEntity<?> postBeerReview(@PathVariable("beer-id") @Positive Long beerId,
                                             @RequestPart(value = "requestBody") BeerReviewDto.Request request,
@@ -52,9 +56,8 @@ public class BeerReviewController {
             String imgPath = s3Uploader.upload(file, "image");
             beerReview.setImage(imgPath);
         }
-        BeerReview created = beerReviewService.createBeerReview(findUser.getId(), beerId, beerReview);
+        BeerReview created = beerReviewService.createBeerReview(beerId, findUser, beerReview);
         BeerReviewDto.Response response = beerReviewMapper.beerReviewToBeerReviewResponse(created);
-        response.setUserId(findUser.getId());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -84,9 +87,7 @@ public class BeerReviewController {
 
     @GetMapping("{beer-id}")
     public ResponseEntity<?> getBeerReviews(@PathVariable("beer-id") @Positive Long beerId) {
-        Beer beer = beerService.findBeer(beerId);
-        List<BeerReview> beerReviews = beerReviewService.findBeerReviews(beer);
-        List<BeerReviewDto.Response> responses = beerReviewMapper.beerReviewToBeerReviewResponseDtos(beerReviews);
+        List<BeerReviewDto.Response> responses = beerReviewService.findBeerReviews(beerId);
         return new ResponseEntity<>(responses, HttpStatus.OK);
     }
 }

@@ -1,9 +1,10 @@
 package server.beerfactory.dto.beer;
 
 import lombok.*;
+import org.apache.catalina.User;
 import server.beerfactory.dto.user.UserDto;
 import server.beerfactory.entity.beer.Beer;
-import server.beerfactory.entity.user.User;
+import server.beerfactory.entity.beer.BeerReview;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
@@ -42,7 +43,6 @@ public class BeerDto {
         private int afterTaste;
         @NotBlank
         private int soda;
-        private UserDto.Response user;
     }
 
     @NoArgsConstructor
@@ -50,34 +50,6 @@ public class BeerDto {
     @Getter
     @Builder
     public static class Response{
-        private Long id;
-        private String name;
-        private String description;
-        private Beer.BeerType beerType;
-        private LocalDateTime createdAt;
-        private LocalDateTime modifiedAt;
-        private String image;
-        private double alcohol;
-        private double star;
-        private String brand;
-        private String country;
-        private String aroma;
-        private int likeCount;
-        private int disLikeCount;
-        private int soda;
-        private int sweet;
-        private int afterTaste;
-        private int sum;
-        private int count;
-        @Setter
-        private Long UserId;
-    }
-
-    @Getter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class Main{
         private Long id;
         private String name;
         private String description;

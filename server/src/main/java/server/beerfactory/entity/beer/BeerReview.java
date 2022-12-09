@@ -51,4 +51,10 @@ public class BeerReview extends Auditable {
     @OneToMany(mappedBy = "beerReview", cascade = CascadeType.ALL)
     private final List<BeerReviewVote> beerReviewVotes = new ArrayList<>();
 
+//    public void addBeer(Beer beer) {
+//        this.beer = beer;
+//        if(!this.beer.getBeerReviews().contains(this)){
+//            this.beer.addBeerReview(this);
+//        }
+//    }
 }
