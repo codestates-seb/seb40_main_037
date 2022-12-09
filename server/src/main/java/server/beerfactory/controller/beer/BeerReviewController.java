@@ -6,27 +6,23 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.dto.beer.BeerReviewDto;
-import server.beerfactory.dto.user.UserDto;
 import server.beerfactory.entity.beer.Beer;
 import server.beerfactory.entity.beer.BeerReview;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.image.S3Uploader;
-import server.beerfactory.mapper.beer.BeerMapper;
 import server.beerfactory.mapper.beer.BeerReviewMapper;
-import server.beerfactory.mapper.user.UserMapper;
 import server.beerfactory.service.beer.BeerReviewService;
 import server.beerfactory.service.beer.BeerService;
 import server.beerfactory.service.user.UserService;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.io.IOException;
 import java.util.ArrayList;

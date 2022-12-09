@@ -8,7 +8,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import server.beerfactory.dto.beer.BeerBookMarkDto;
 import server.beerfactory.entity.user.User;
-import server.beerfactory.mapper.beer.BeerBookMarkMapper;
 import server.beerfactory.service.beer.BeerService;
 import server.beerfactory.service.user.UserService;
 
@@ -23,7 +22,6 @@ public class BeerBookMarkController {
 
     private final UserService userService;
     private final BeerService beerService;
-    private final BeerBookMarkMapper beerBookMarkMapper;
 
     @PostMapping("/{beer-id}")
     public ResponseEntity<?> postBookMark(@PathVariable("beer-id") @Positive Long beerId){
