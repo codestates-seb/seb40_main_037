@@ -1,4 +1,4 @@
-import MixCreateBox from '../components/MixCreate/MixCreatebox';
+import MixCreateBox from '../../components/MixCreate/index';
 import Layout from '../../components/Layout';
 
 const MixCreate = () => {
