@@ -1,7 +1,7 @@
-import MixFoodCardList from '../components/MixFoodCardList';
+import MixFoodCardList from '../../components/MixFoodCardList';
 import ListdummyImg from '/assets/ListdummyImg.png';
 import styled from 'styled-components';
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout';
 import { Link } from 'react-router-dom';
 const Wrapper = styled.div`
   width: 100%;

@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -10,30 +9,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchMixCreate, fetchMixDetail, MixUpdate } from '../../util/fetchMix';
-// import {체크로그인 자리} from '페치로그인'
-
-const Wrapper = styled.div`
-  width: 100%;
-`;
-const MainBox = styled.div`
-  margin-right: auto;
-  margin-left: auto;
-`;
-const TitleBag = styled.div`
-  padding: 20px;
-`;
-const ContentBag = styled.div`
-  padding: 20px;
-`;
-const CameraBag = styled.div`
-  padding: 20px;
-  float: left;
-`;
-const ButtonWrapper = styled.div`
-  width: 100%;
-  display: inline-block;
-  padding: 20px;
-`;
+import { Wrapper, MainBox, TitleBag, ContentBag, CameraBag, ButtonWrapper } from './style';
 
 function MixUpdateBox() {
   const { id } = useParams();

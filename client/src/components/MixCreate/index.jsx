@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { Wrapper, MainBox, TitleBag, ContentBag, ButtonWrapper, CameraBag } from './style';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -11,29 +11,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchMixCreate } from '../../util/fetchMix';
 import { checkIfLogined } from '../../util/fetchLogin';
-
-const Wrapper = styled.div`
-  width: 100%;
-`;
-const MainBox = styled.div`
-  margin-right: auto;
-  margin-left: auto;
-`;
-const TitleBag = styled.div`
-  padding: 20px;
-`;
-const ContentBag = styled.div`
-  padding: 20px;
-`;
-const CameraBag = styled.div`
-  padding: 20px;
-  float: left;
-`;
-const ButtonWrapper = styled.div`
-  width: 100%;
-  display: inline-block;
-  padding: 20px;
-`;
 
 function MixCreateBox() {
   const navigate = useNavigate();

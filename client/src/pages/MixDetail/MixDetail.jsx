@@ -1,5 +1,5 @@
-import MixDetailComponents from '../components/MixDetailComponents';
-import Layout from '../components/Layout';
+import MixDetailComponents from '../../components/MixDetailComponents';
+import Layout from '../../components/Layout';
 
 const MixDetail = () => {
   return (

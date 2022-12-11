@@ -15,7 +15,7 @@ import { relTimeFormat } from '../../util/convertor';
 import { useState, useEffect } from 'react';
 import Loading from '../Loading/Loading';
 import { fetchMixList } from '../../util/fetchMix';
-import MixPagination from './Pagination';
+import MixPagination from '../MixComponent/Pagination';
 
 function MixFoodCardList() {
   const [MixList, setMixList] = useState([]);

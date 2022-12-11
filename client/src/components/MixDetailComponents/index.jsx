@@ -16,7 +16,7 @@ import {
 import { relTimeFormat } from '../../util/convertor';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import MixDetailReviewForms from './MixDetailReviewForms';
+import MixDetailReviewForms from '../MixComponent/MixDetailReviewForms';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { Link, useNavigate, useParams } from 'react-router-dom';
