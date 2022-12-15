@@ -5,7 +5,7 @@ import Rating from '@mui/material/Rating';
 import HeartImg from '../../assets/icon/Heart.png';
 import EmptyHeartImg from '../../assets/icon/EmptyHeart.png';
 
-import { BeerListDetail } from './fetchBeer';
+import { BeerListDetail } from '../../util/fetchBeer';
 import { useParams } from 'react-router-dom';
 const ProductInfoBox = styled.div`
   width: 70%;

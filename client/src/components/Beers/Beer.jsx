@@ -10,7 +10,7 @@ import MyReviewForms from './MyReivewForms';
 import FiliterButtons from './FilterButtons';
 
 // BEERLIST
-import { BeerListDetail } from './fetchBeer';
+import { BeerListDetail } from '../../util/fetchBeer';
 import ReviewItem from './ReviewItem';
 
 const Wrapper = styled.div`
