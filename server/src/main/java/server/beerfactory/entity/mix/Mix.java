@@ -39,10 +39,6 @@ public class Mix extends Auditable {
     @Column
     private int disLikeCount;
 
-    public void setVoteCount(int likeCount) {
-        this.likeCount = likeCount;
-    }
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
