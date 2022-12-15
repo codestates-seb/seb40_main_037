@@ -1,5 +1,6 @@
 package server.beerfactory.entity.beer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import server.beerfactory.audit.Auditable;
 import server.beerfactory.entity.user.User;
@@ -46,6 +47,7 @@ public class BeerReview extends Auditable {
     @JoinColumn(name = "BEER_ID")
     private Beer beer;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "beerReview", cascade = CascadeType.ALL)
     private final List<BeerReviewVote> beerReviewVotes = new ArrayList<>();
 

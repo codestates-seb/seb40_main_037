@@ -36,11 +36,11 @@ const Login = () => {
 
   useEffect(() => {
     if (isLogin) {
-      console.log(data);
+      console.log(data.data);
       localStorage.setItem('isLogin', true);
       localStorage.setItem('access_token', JSON.stringify(data.headers.authorization));
       localStorage.setItem('Refresh', JSON.stringify(data.headers.refresh));
-      localStorage.setItem('memberId', JSON.stringify(data.headers.memberid));
+      localStorage.setItem('memberId', JSON.stringify(data.data));
       navigate('/');
     }
   }, [isLogin]);

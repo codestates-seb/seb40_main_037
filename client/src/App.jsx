@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, theme } from './styles';
 import Intro from './pages/Intro';
 import Main from './pages/Main';
-import Items from './pages/Items';
+import Beers from './pages/Beers';
 import Mypage from './pages/MyPage';
 import MixList from './pages/MixList';
 import MixDetail from './pages/MixDetail';
@@ -46,7 +46,7 @@ function App() {
             <Routes>
               <Route path="/intro" element={<Intro />} />
               <Route path="/" element={<Main />} />
-              <Route path="/items" element={<Items />} />
+              <Route path="/beers/:id" element={<Beers />} />
               <Route path="/MyPage" element={<Mypage />} />
               <Route path="/MixList" element={<MixList />} />
               <Route path="/MixDetail/:id" element={<MixDetail />} />

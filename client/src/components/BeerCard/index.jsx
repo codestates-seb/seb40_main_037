@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
-import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import { useQuery } from 'react-query';
+import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 import { Wrapper, ProgressBarBox, BeerBox, CardBox } from './style';
 
@@ -14,6 +15,12 @@ import { Link } from 'react-router-dom';
 
 export default function BeerCard() {
   const [page, setPage] = useState(0);
+
+  useEffect(() => {
+    if (window.location.href.includes('page')) {
+      setPage(window.location.href.split('=')[1]);
+    }
+  });
 
   const { isLoading, data } = useQuery(['BeerList', { page }], () => {
     return getBeerList(page);
@@ -44,12 +51,11 @@ export default function BeerCard() {
             };
 
             const ratesResArr = calcStarRates(AVR_RATE);
-            const BeerID = beerlist.ID;
+            // const BeerID = beerlist.ID;
 
             return (
-              <Link to="/items">
+              <Link to={`/beers/${beerlist.id}`}>
                 <Card
-                  key={i}
                   sx={{
                     width: 250,
                     borderRadius: 10,
@@ -74,20 +80,14 @@ export default function BeerCard() {
                   <ProgressBarBox>
                     <div>
                       <ProgressBarBox style={{ width: 200, height: 100, gap: 5 }}>
-                        <CircularProgressbarWithChildren value={beerlist.soda * 20}>
-                          <div style={{ fontSize: 12 }}>
-                            <strong>soda</strong>
-                          </div>
+                        <CircularProgressbarWithChildren value={beerlist.soda} maxValue={5}>
+                          <div style={{ fontSize: 12 }}>soda</div>
                         </CircularProgressbarWithChildren>
-                        <CircularProgressbarWithChildren value={beerlist.sweet * 20}>
-                          <div style={{ fontSize: 12 }}>
-                            <strong>sweet</strong>
-                          </div>
+                        <CircularProgressbarWithChildren value={beerlist.sweet} maxValue={5}>
+                          <div style={{ fontSize: 12 }}>sweet</div>
                         </CircularProgressbarWithChildren>
-                        <CircularProgressbarWithChildren value={beerlist.afterTaste * 20}>
-                          <div style={{ fontSize: 12 }}>
-                            <strong>afterTaste</strong>
-                          </div>
+                        <CircularProgressbarWithChildren value={beerlist.afterTaste} maxValue={5}>
+                          <div style={{ fontSize: 12 }}>afterTaste</div>
                         </CircularProgressbarWithChildren>
                       </ProgressBarBox>
                     </div>

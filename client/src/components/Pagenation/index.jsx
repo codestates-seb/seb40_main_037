@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { Pagingcontainer, Pagination, Perpage } from './style.js';
@@ -6,16 +6,17 @@ import { Button } from '../Button';
 import { getBeerList } from '../../api/Beer';
 
 const Paging = () => {
-  const [page, setPage] = useState(0);
-  const { isLoading, data } = useQuery(['AllQuestion', { page }], () => {
-    return getBeerList(page);
+  const { isLoading, data } = useQuery(['getBeerList', {}], () => {
+    return getBeerList();
   });
 
   if (isLoading) return <div>now loading..</div>;
 
   const pageInfo = data.pageInfo;
   const pages = [];
-  const choosed = pageInfo.page;
+  const choosed = window.location.href.includes('=')
+    ? Number(window.location.href.split('=')[1])
+    : 1;
 
   let upper = 5;
 
@@ -53,7 +54,7 @@ const Paging = () => {
             primary="Pagingbutton"
             label="1"
             onClick={e => {
-              setPage(e.target.value);
+              window.location.replace(`?page=${e.target.value}`);
             }}
           />
         ) : null}
@@ -67,7 +68,7 @@ const Paging = () => {
               Selected={choosed === num ? 'Selected' : null}
               label={`${num}`}
               onClick={e => {
-                setPage(e.target.value);
+                window.location.replace(`?page=${e.target.value}`);
               }}
             />
           );
@@ -78,7 +79,7 @@ const Paging = () => {
             primary="Pagingbutton"
             label={pageInfo.totalPages}
             onClick={e => {
-              setPage(e.target.value);
+              e.target.value;
             }}
           />
         ) : null}

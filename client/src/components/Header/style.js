@@ -27,6 +27,14 @@ export const UserBox = styled.div`
   z-index: 1;
   ${flexCenter}
 
+  .logo {
+    height: 55px;
+    margin-bottom: -10px;
+    @media ${props => props.theme.mobile} {
+      display: none;
+    }
+  }
+
   button {
     display: flex;
     padding: 5px;

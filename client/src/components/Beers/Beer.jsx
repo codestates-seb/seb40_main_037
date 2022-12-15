@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import dummy from '../../../data/data.json';
-import subBanner from '../../assets/subpage/subbanner1.png';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 //  MUI 라이브러리
 import Rating from '@mui/material/Rating';
 import ImageList from '@mui/material/ImageList';
@@ -10,21 +11,24 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ToggleButton from '@mui/material/ToggleButton';
 
 // 기능 컴포넌트
-import './itemStyle.css';
+import './beerStyle.css';
 import ProductInformation from './ProductInformation';
 import MyReviewForms from './MyReivewForms';
 import FiliterButtons from './FilterButtons';
 // 스타일 컴포넌트
 import { CardTime } from '../MixFoodCardList/style';
 import { relTimeFormat } from '../../util/convertor';
-// import VITE_API_BASE_URL
+
+// BEERLIST
+import { BeerListDetail } from './fetchBeer';
+
 const Wrapper = styled.div`
   width: 100%;
 `;
 const Banner = styled.div`
   width: 100%;
   height: 800px;
-  background: url(${subBanner});
+  background: url(${props => props.background}) no-repeat top center;
   background-size: 100% 100%;
 `;
 
@@ -72,17 +76,46 @@ const LeftBox = styled.div`
 const RightBox = styled.div`
   display: flex;
 `;
-function Item() {
-  const [selected, setSelected] = React.useState(false);
-  const [likes, setLikes] = useState(0);
 
-  const onIncrease = () => {
-    setLikes(prevLikes => prevLikes + 1);
+const DescriptionBox = styled.div`
+  background-color: #fff8cd;
+  color: black;
+  width: 70%;
+  margin: 30px auto;
+  padding: 30px 30px;
+  line-height: 1.5rem;
+  border-radius: 30px;
+`;
+function Beer() {
+  const [selected, setSelected] = React.useState(false);
+  const [update, setUpdate] = useState(true);
+  const [likes, setLikes] = useState(0);
+  // const onIncrease = () => {
+  //   setLikes(prevLikes => prevLikes + 1);
+  // };
+  // 불러오기
+  const { id } = useParams();
+  const [info, setInfo] = useState({});
+  // 렌더링 될때
+
+  const getBeerDetail = id => {
+    BeerListDetail(id).then(res => {
+      setInfo(res);
+    });
   };
+
+  useEffect(() => {
+    if (update) {
+      getBeerDetail(id);
+      setUpdate(false);
+    }
+  }, [update]);
+  // console.log(info);
   return (
     <Wrapper>
-      <Banner />
+      <Banner background={`${info.image}`} />
       <ProductInformation />
+      <DescriptionBox>{info.description}</DescriptionBox>
       <FiliterButtons />
       <ReviewsBox>
         <ul>
@@ -149,4 +182,4 @@ function Item() {
   );
 }
 
-export default Item;
+export default Beer;

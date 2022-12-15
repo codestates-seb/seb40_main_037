@@ -14,8 +14,6 @@ const ButtonBox = styled.div`
 `;
 
 const MixPagination = ({ pageInfo, currentPage, onClickPage }) => {
-  console.log(pageInfo.pageInfo.totalPages);
-
   return (
     <Wrapper>
       <ButtonBox>
@@ -23,8 +21,8 @@ const MixPagination = ({ pageInfo, currentPage, onClickPage }) => {
       </ButtonBox>
       {Array.from({ length: +pageInfo.pageInfo.totalPages }).map((el, i) => {
         return (
-          <ButtonBox>
-            <li key={i}>
+          <ButtonBox key={i}>
+            <li>
               <button onClick={() => onClickPage(i)}>{i + 1}</button>
             </li>
           </ButtonBox>
