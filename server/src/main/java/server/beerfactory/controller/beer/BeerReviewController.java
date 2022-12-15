@@ -31,7 +31,6 @@ public class BeerReviewController {
     private final BeerService beerService;
     private final UserService userService;
     private final S3Uploader s3Uploader;
-    private final UserMapper userMapper;
     @PostMapping("/{beer-id}")
     public ResponseEntity<?> postBeerReview(@PathVariable("beer-id") @Positive Long beerId,
                                             @RequestPart(value = "requestBody") BeerReviewDto.Request request,
