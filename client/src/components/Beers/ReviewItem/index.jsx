@@ -14,7 +14,6 @@ export default function ReviewItem({ review }) {
   if (!review) return null;
 
   const [likes, setLikes] = useState(0);
-
   return (
     <li className="reviewList" key={review.id}>
       <LeftBox>

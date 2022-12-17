@@ -54,7 +54,7 @@ export const BeerLikeButton = async id => {
 export const BeerRivewCreate = async (fetchData, id) => {
   console.log(fetchData);
   console.log(id);
-  return fetch(`${BASE_URL}/beers/1`, {
+  return fetch(`${BASE_URL}/beers/${id}`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',

@@ -87,7 +87,6 @@ function Beer() {
       setUpdate(false);
     }
   }, [update]);
-  // console.log(info);
   return (
     <Wrapper>
       <Banner background={`${info.image}`} />
@@ -96,9 +95,10 @@ function Beer() {
       <FiliterButtons />
       <ReviewsBox>
         <ul>
-          {dummy.reviews.map(review => {
-            return <ReviewItem review={review} key={review.id} />;
-          })}
+          {dummy.beers[id].reviews &&
+            dummy.beers[id].reviews.map(review => {
+              return <ReviewItem review={review} key={review.id} />;
+            })}
         </ul>
       </ReviewsBox>
       <MyReviewForms />
