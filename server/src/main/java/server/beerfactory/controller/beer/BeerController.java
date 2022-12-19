@@ -37,12 +37,11 @@ public class BeerController {
     private final BeerService beerService;
     private final BeerMapper beerMapper;
     private final S3Uploader s3Uploader;
+    private final UserMapper userMapper;
 
     @PostMapping
     public ResponseEntity<?> postBeer(@RequestPart(value = "requestBody") BeerDto.Request request,
                            @RequestPart(value = "file", required = false) MultipartFile file) throws IOException{
-        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User findUser = userService.findUser(email);
         Beer beer = beerMapper.beerRequestToBeer(request);
         if (file != null) {
             String imgPath = s3Uploader.upload(file, "image");
@@ -50,7 +49,6 @@ public class BeerController {
         }
         Beer created = beerService.createBeer(beer);
         BeerDto.Response response = beerMapper.beerToBeerResponse(created);
-        response.setUserId(findUser.getId());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

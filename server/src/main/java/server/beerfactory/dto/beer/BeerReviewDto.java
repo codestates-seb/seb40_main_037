@@ -27,6 +27,10 @@ public class BeerReviewDto {
 
         @NotNull
         private int score;
+        @Setter
+        private User user;
+        @Setter
+        private Beer beer;
     }
 
     @NoArgsConstructor
@@ -42,7 +46,6 @@ public class BeerReviewDto {
         private int disLikeCount;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
-        @Setter
-        private Long userId;
+        private UserDto.Response user;
     }
 }
