@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.dto.config.MultiResponseDto;
-import server.beerfactory.dto.config.SingleResponseDto;
 import server.beerfactory.entity.beer.Beer;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.image.S3Uploader;
@@ -37,7 +36,6 @@ public class BeerController {
     private final BeerService beerService;
     private final BeerMapper beerMapper;
     private final S3Uploader s3Uploader;
-    private final UserMapper userMapper;
 
     @PostMapping
     public ResponseEntity<?> postBeer(@RequestPart(value = "requestBody") BeerDto.Request request,
