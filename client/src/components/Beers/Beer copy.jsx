@@ -10,7 +10,7 @@ import MyReviewForms from './MyReivewForms';
 import FiliterButtons from './FilterButtons';
 
 // BEERLIST
-import { BeerListDetail, BeerReviewList } from '../../util/fetchBeer';
+import { BeerListDetail } from '../../util/fetchBeer';
 import ReviewItem from './ReviewItem';
 
 const Wrapper = styled.div`
@@ -74,7 +74,6 @@ function Beer() {
 
   const { id } = useParams();
   const [info, setInfo] = useState({});
-  const [reviews, setReviews] = useState({});
 
   const getBeerDetail = id => {
     BeerListDetail(id).then(res => {
@@ -82,18 +81,9 @@ function Beer() {
     });
   };
 
-  const getBeerReview = id => {
-    BeerReviewList(id).then(res => {
-      setReviews(res);
-      console.log('hi');
-      console.log(res);
-    });
-  };
-
   useEffect(() => {
     if (update) {
       getBeerDetail(id);
-      getBeerReview(id);
       setUpdate(false);
     }
   }, [update]);
@@ -105,8 +95,8 @@ function Beer() {
       <FiliterButtons />
       <ReviewsBox>
         <ul>
-          {reviews &&
-            reviews.map(review => {
+          {dummy.beers[id].reviews &&
+            dummy.beers[id].reviews.map(review => {
               return <ReviewItem review={review} key={review.id} />;
             })}
         </ul>

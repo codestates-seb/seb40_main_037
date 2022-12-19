@@ -21,7 +21,7 @@ export default function ReviewItem({ review }) {
           <img src={review.avatar} />
           <p className="userName">{review.name}</p>
         </div>
-        <Rating className="rating-star" value={review.value} size="large" readOnly />
+        <Rating className="rating-star" value={Number(review.score)} size="large" readOnly />
       </LeftBox>
       <RightBox>
         <CardTime>
@@ -41,7 +41,7 @@ export default function ReviewItem({ review }) {
           e
         >
           <FavoriteIcon />
-          <h2>{review.good}</h2>
+          <h2>{review.likeCount}</h2>
         </ToggleButton>
       </RightBox>
       <ImageList
@@ -63,7 +63,7 @@ export default function ReviewItem({ review }) {
             </ImageListItem>
           ))}
       </ImageList>
-      <div className="commentBox">{review.comment}</div>
+      <div className="commentBox">{review.content}</div>
     </li>
   );
 }

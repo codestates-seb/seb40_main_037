@@ -44,7 +44,7 @@
   ],
   "beers": [
     {
-      "id": 1,
+      "id": 29,
       "name": "Hite",
       "rating": 4,
       "tags": ["복숭아향", "BITTER", "4.5도"],
@@ -120,7 +120,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": 30,
       "name": "CASS",
       "rating": 4,
       "tags": ["복숭아향", "BITTER", "4.5도"],
