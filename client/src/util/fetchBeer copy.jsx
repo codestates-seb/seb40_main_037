@@ -1,17 +1,17 @@
-import axios from 'axios';
-
 // Mix 단일 게시물 조회
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const BeerListDetail = async id => {
-  const response = await axios.get(`${BASE_URL}/beers/${id}`);
-  setInfo(response.data);
-  // .then(response => {
-  //   setInfo(response.data);
-  // })
-  // .catch(error => {
-  //   throw Error(error.message);
-  // });
+  return fetch(`${BASE_URL}/beers/${id}`)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('유효하지 않은 요청입니다.');
+      }
+      return response.json();
+    })
+    .catch(error => {
+      throw Error(error.message);
+    });
 };
 // Beer 리뷰리스트
 export const BeerReviewList = async id => {
