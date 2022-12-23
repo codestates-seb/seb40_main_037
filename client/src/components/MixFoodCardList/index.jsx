@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import { relTimeFormat } from '../../util/convertor';
 import { useState, useEffect } from 'react';
 import Loading from '../Loading/Loading';
-import { axiosMixList } from '../../util/fetchMix';
+import { axiosMixList } from '../../util/axiosMix';
 import MixPagination from '../MixComponent/Pagination';
 
 function MixFoodCardList() {

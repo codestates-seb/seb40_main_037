@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { fetchMixCreate, fetchMixDetail, MixUpdate } from '../../util/fetchMix';
+import { axiosMixCreate, axiosMixDetail, MixUpdate } from '../../util/axiosMix';
 import { Wrapper, MainBox, TitleBag, ContentBag, CameraBag, ButtonWrapper } from './style';
 
 function MixUpdateBox() {
@@ -21,7 +21,7 @@ function MixUpdateBox() {
     try {
       // 체크로그인자리 : 로그인이 성공한다면
       checkIfLogined().then(() => {
-        fetchMixDetail(id).then(res => {
+        axiosMixDetail(id).then(res => {
           setTitle(res.title);
           setContent(res.content);
           console.log('로그인 성공');
@@ -46,7 +46,7 @@ function MixUpdateBox() {
     } else if (content.length < 20) {
       alert('최소 20글자 이상 써주세요');
     } else {
-      await fetchMixCreate({ title, content }).then(id => {
+      await axiosMixCreate({ title, content }).then(id => {
         navigate(`/MixDetail/${id}`);
       });
     }
