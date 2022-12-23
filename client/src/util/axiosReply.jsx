@@ -1,8 +1,9 @@
+import axios from 'axios';
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 //댓글 리스트 조회
-export const fetchReplyList = async id => {
-  return fetch(`${BASE_URL}/mixes/${id}/reply`)
+export const axiosReplyList = async id => {
+  return axios(`${BASE_URL}/mixes/${id}/reply`)
     .then(response => {
       if (!response.ok) {
         throw Error('유효하지 않은 요청입니다.');
@@ -14,8 +15,8 @@ export const fetchReplyList = async id => {
     });
 };
 //댓글 작성(생성)
-export const fetchReplyCreate = async fetchData => {
-  return fetch(`${BASE_URL}/mixes/${id}/reply`, {
+export const axiosReplyCreate = async fetchData => {
+  return axios(`${BASE_URL}/mixes/${id}/reply`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -34,8 +35,8 @@ export const fetchReplyCreate = async fetchData => {
     });
 };
 //댓글 삭제
-export const fetchDeleteAnswer = async id => {
-  return fetch(`${BASE_URL}/mixes/${id}/reply/${id}`, {
+export const axiosDeleteAnswer = async id => {
+  return axios(`${BASE_URL}/mixes/${id}/reply/${id}`, {
     method: 'DELETE',
     headers: {
       Authorization: localStorage.getItem('access_token').replace(/\"/gi, ''),

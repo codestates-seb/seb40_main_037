@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { Wrapper, MainBox, TitleBag, ContentBag, ButtonWrapper, CameraBag } from './style';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -9,31 +9,8 @@ import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchMixCreate } from '../../util/fetchMix';
-import { checkIfLogined } from '../../util/fetchLogin';
-
-const Wrapper = styled.div`
-  width: 100%;
-`;
-const MainBox = styled.div`
-  margin-right: auto;
-  margin-left: auto;
-`;
-const TitleBag = styled.div`
-  padding: 20px;
-`;
-const ContentBag = styled.div`
-  padding: 20px;
-`;
-const CameraBag = styled.div`
-  padding: 20px;
-  float: left;
-`;
-const ButtonWrapper = styled.div`
-  width: 100%;
-  display: inline-block;
-  padding: 20px;
-`;
+import { axiosMixCreate } from '../../util/axiosMix';
+import { checkIfLogined } from '../../util/axiosLogin';
 
 function MixCreateBox() {
   const navigate = useNavigate();
@@ -64,7 +41,7 @@ function MixCreateBox() {
     } else if (content.length < 20) {
       alert('최소 20글자 이상 써주세요');
     } else {
-      await fetchMixCreate({ title, content }).then(id => {
+      await axiosMixCreate({ title, content }).then(id => {
         navigate(`/MixDetail/${id}`);
       });
     }

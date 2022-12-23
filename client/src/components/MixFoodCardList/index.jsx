@@ -14,8 +14,8 @@ import { Link } from 'react-router-dom';
 import { relTimeFormat } from '../../util/convertor';
 import { useState, useEffect } from 'react';
 import Loading from '../Loading/Loading';
-import { fetchMixList } from '../../util/fetchMix';
-import MixPagination from './Pagination';
+import { axiosMixList } from '../../util/axiosMix';
+import MixPagination from '../MixComponent/Pagination';
 
 function MixFoodCardList() {
   const [MixList, setMixList] = useState([]);
@@ -30,7 +30,7 @@ function MixFoodCardList() {
   }
   useEffect(() => {
     if (isUpdate) {
-      fetchMixList(currPage).then(res => {
+      axiosMixList(currPage).then(res => {
         setMixList(res.data);
         setPageInfo(res);
         setIsPending(false);

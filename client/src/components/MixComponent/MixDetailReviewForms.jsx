@@ -1,9 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import UploadButtons from '../Beers/UploadButton';
-import dummy from '../../../data/data.json';
 import { useState } from 'react';
-import { fetchReplyCreate } from '../../util/fetchReply';
+import { axiosReplyCreate } from '../../util/axiosReply';
 // import 체크로그인
 
 const MyReivewForm = styled.form`
@@ -43,7 +42,7 @@ function MixDetailReviewForms({ replyId, update }) {
       alert('최소 10글자를 적어야합니다.');
     } else {
       checkIfLogined().then(() => {
-        fetchReplyCreate({ replyId, content }).then(() => {
+        axiosReplyCreate({ replyId, content }).then(() => {
           update(true);
         });
       });
