@@ -1,6 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import Btn from './style';
+import { Btn } from './style';
 
 export const Button = ({
   primary,
@@ -12,12 +11,20 @@ export const Button = ({
   Choosed,
   link,
   ...props
+}: {
+  primary: string | undefined;
+  backgroundColor: string | undefined;
+  size: string | undefined;
+  label: string | undefined;
+  Selected: string | undefined;
+  color: string | undefined;
+  Choosed: string | undefined;
+  link: string | undefined;
 }) => {
   return (
     <Btn
       type="button"
       className={[`${primary}`, `${size}`, `${Choosed}`, `${Selected}`].join(' ')}
-      style={(backgroundColor && { backgroundColor }, color && { color })}
       {...props}
       value={label}
     >

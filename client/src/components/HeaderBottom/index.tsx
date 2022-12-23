@@ -1,10 +1,9 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Wrapper } from './style';
 import { Underbox_item } from '../../constants/header_footer';
 
-const HeaderBottom = ({ isHeaderBottom }) => {
+const HeaderBottom = ({ isHeaderBottom }: { isHeaderBottom: boolean }) => {
   const isLogin = localStorage.getItem('isLogin');
 
   return isHeaderBottom ? (
@@ -24,9 +23,7 @@ const HeaderBottom = ({ isHeaderBottom }) => {
                 window.location.replace('/');
               }}
             >
-              <Link>
-                <span>{title}</span>
-              </Link>
+              <span>{title}</span>
             </li>
           );
         } else {

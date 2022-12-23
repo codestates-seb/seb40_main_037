@@ -5,7 +5,7 @@ import { Wrapper, FormWrap, Birth, Info } from './style';
 
 import { EMAIL_REGEX, PW_REGEX, BIRTH_YEAR, BIRTH_MD } from '../../constants/regex';
 import { userJoin } from '../../api/Account';
-import { Button } from '../../components/button';
+import { Button } from '../../components/Buttons';
 import Layout from '../../components/Layout';
 import TextInput from '../../components/TextInput';
 

@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Rating from '@mui/material/Rating';
 import dummy from '../../../data/data.json';
-import HeartImg from '../../assets/icon/Heart.png';
-import EmptyHeartImg from '../../assets/icon/EmptyHeart.png';
+import HeartImg from '/assets/icon/Heart.png';
+import EmptyHeartImg from '/assets/icon/EmptyHeart.png';
 
 import { BeerListDetail } from './fetchBeer';
 import { useParams } from 'react-router-dom';

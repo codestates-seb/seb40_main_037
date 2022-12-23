@@ -35,7 +35,7 @@ export default function BeerCard() {
       <CardBox>
         <Wrapper>
           {data.data.map((beerlist, i) => {
-            const AVR_RATE = beerlist.star;
+            const AVR_RATE = beerlist.star * 20;
 
             const calcStarRates = AVR_RATE => {
               let tempStarRatesArr = [0, 0, 0, 0, 0];
@@ -54,7 +54,7 @@ export default function BeerCard() {
             // const BeerID = beerlist.ID;
 
             return (
-              <Link to={`/beers/${beerlist.id}`}>
+              <Link to={`/beers/${beerlist.id}`} key={i}>
                 <Card
                   sx={{
                     width: 250,

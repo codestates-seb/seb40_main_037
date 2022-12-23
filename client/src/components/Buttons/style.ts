@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-const Btn = styled.button`
+export const Btn = styled.button`
   height: 37.8px;
   display: flex;
   justify-content: center;
@@ -112,5 +112,3 @@ const Btn = styled.button`
     }
   }
 `;
-
-export default Btn;

@@ -53,6 +53,7 @@ export const Dropbox_item = [
   {
     title: 'Log out',
     detail: 'Log off from account',
+    link: '',
   },
   {
     title: 'Beer',
@@ -77,6 +78,7 @@ export const Underbox_item = [
   {
     title: 'Log out',
     image: '',
+    link: '',
   },
   { title: 'Home', image: '', link: '/' },
   {

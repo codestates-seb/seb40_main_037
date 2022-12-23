@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Wrapper, BeerLiheader, Beercontainer, Beertagbox, Tags, BeerItems } from './style';
 
-import { Button } from '../../components/button';
-import { Banner } from '../../components/MainPage/style';
+import { Button } from '../../components/Buttons';
+// import { Banner } from '../../components/MainPage/style';
 import { Beer_type } from '../../constants/Beer';
 import Layout from '../../components/Layout';
 import BeerCard from '../../components/BeerCard';
@@ -15,7 +15,7 @@ const BeerList = () => {
   return (
     <Layout>
       <Wrapper>
-        <Banner />
+        {/* <Banner /> */}
         <BeerLiheader>
           <span>Beer List</span>
           <Button

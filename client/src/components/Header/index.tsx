@@ -7,7 +7,7 @@ import { Dropbox_item } from '../../constants/header_footer';
 import Userimg from '/assets/User.gif';
 import Hamburger from '/assets/Hamburger_icon.png';
 
-const Header = ({ isHeader }) => {
+const Header = ({ isHeader }: { isHeader: boolean }) => {
   const [isMenuHamburger, setIsMenuHamburger] = useState(false);
 
   const isLogin = localStorage.getItem('isLogin');
@@ -25,7 +25,7 @@ const Header = ({ isHeader }) => {
           </Link>
         </UserBox>
         <UserBox>
-          <input type="text" placeholder="Search..." disabled="disabled" />
+          <input type="text" placeholder="Search..." disabled={true} />
         </UserBox>
         <UserBox>
           <button className={isMenuHamburger ? 'active' : ''} onClick={() => handleToggle()}>
@@ -49,10 +49,8 @@ const Header = ({ isHeader }) => {
                         window.location.replace('/');
                       }}
                     >
-                      <Link>
-                        <span>{title}</span>
-                        <span>{detail}</span>
-                      </Link>
+                      <span>{title}</span>
+                      <span>{detail}</span>
                     </li>
                   );
                 } else {
