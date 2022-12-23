@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { blockCenter, flexCenter, flexColumnCenter } from '../../styles/index';
+import { blockCenter, flexCenter } from '../../styles/index';
 
 export const Wrapper = styled.section`
   width: 100%;

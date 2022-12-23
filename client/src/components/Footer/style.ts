@@ -18,7 +18,6 @@ export const Container = styled.div`
 
 export const InnerBox = styled.div`
   display: flex;
-  flex-direction: ${props => props.direction};
   .logo span {
     display: block;
     width: 28px;
@@ -39,6 +38,7 @@ export const InnerBox = styled.div`
   }
   &.sns {
     justify-content: space-between;
+    flex-direction: column;
     flex: 1 1;
     @media ${props => props.theme.mobile} {
       flex: 1 1;

@@ -33,7 +33,7 @@ const Footer = () => {
             );
           })}
         </InnerBox>
-        <InnerBox direction="column" className="sns">
+        <InnerBox className="sns">
           <ListWrap className="sns">
             {SITE_LIST.map((site, i) => {
               return (

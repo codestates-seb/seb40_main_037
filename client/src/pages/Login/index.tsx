@@ -6,7 +6,7 @@ import { EMAIL_REGEX, PW_REGEX } from '../../constants/regex';
 import { userLogin } from '../../api/Account';
 import Layout from '../../components/Layout';
 
-import { Button } from '../../components/button';
+import { Button } from '../../components/Buttons';
 
 import { Wrapper, FormWrap, Info } from './style';
 import TextInput from '../../components/TextInput';
