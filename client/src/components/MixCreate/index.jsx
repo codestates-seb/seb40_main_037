@@ -9,8 +9,8 @@ import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchMixCreate } from '../../util/fetchMix';
-import { checkIfLogined } from '../../util/fetchLogin';
+import { axiosMixCreate } from '../../util/axiosMix';
+import { checkIfLogined } from '../../util/axiosLogin';
 
 function MixCreateBox() {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ function MixCreateBox() {
     } else if (content.length < 20) {
       alert('최소 20글자 이상 써주세요');
     } else {
-      await fetchMixCreate({ title, content }).then(id => {
+      await axiosMixCreate({ title, content }).then(id => {
         navigate(`/MixDetail/${id}`);
       });
     }

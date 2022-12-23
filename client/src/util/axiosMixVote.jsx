@@ -1,7 +1,8 @@
+import axios from 'axios';
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export const fetchMixUpVote = async id => {
-  return fetch(`${BASE_URL}/mixes/${id}/1`, {
+export const axiosMixUpVote = async id => {
+  return axios(`${BASE_URL}/mixes/${id}/1`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -23,8 +24,8 @@ export const fetchMixUpVote = async id => {
     });
 };
 
-export const fetchMixDownVote = async id => {
-  return fetch(`${BASE_URL}/mixes/${id}/2`, {
+export const axiosMixDownVote = async id => {
+  return axios(`${BASE_URL}/mixes/${id}/2`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -46,8 +47,8 @@ export const fetchMixDownVote = async id => {
     });
 };
 
-export const fetchMixDeleteVote = async id => {
-  return fetch(`${BASE_URL}/mixes/${id}/3`, {
+export const axiosMixDeleteVote = async id => {
+  return axios(`${BASE_URL}/mixes/${id}/3`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
