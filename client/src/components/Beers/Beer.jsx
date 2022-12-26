@@ -92,8 +92,8 @@ function Beer() {
 
   useEffect(() => {
     if (update) {
-      getBeerDetail(id);
       getBeerReview(id);
+      getBeerDetail(id);
       setUpdate(false);
     }
   }, [update]);

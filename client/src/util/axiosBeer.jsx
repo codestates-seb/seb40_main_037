@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-// Mix 단일 게시물 조회
+// Beer 게시물 조회
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export const BeerListDetail = async id => {
-  return fetch(`${BASE_URL}/beers/${id}`)
+export const axiosBeerDetail = async id => {
+  return axios(`${BASE_URL}/beers/${id}`)
     .then(response => {
       if (!response.ok) {
         throw Error('유효하지 않은 요청입니다.');
@@ -16,8 +16,8 @@ export const BeerListDetail = async id => {
     });
 };
 // Beer 리뷰리스트
-export const BeerReviewList = async id => {
-  return fetch(`${BASE_URL}/beer/reviews/${id}`)
+export const axiosBeerReviewList = async id => {
+  return axios(`${BASE_URL}/beer/reviews/${id}`)
     .then(response => {
       if (!response.ok) {
         throw Error('유효하지 않은 요청입니다.');
