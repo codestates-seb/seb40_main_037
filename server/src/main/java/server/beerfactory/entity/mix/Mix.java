@@ -50,12 +50,12 @@ public class Mix extends Auditable {
     private User user;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "mix", fetch = FetchType.EAGER ,cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "mix", cascade = CascadeType.ALL)
     private final List<MixReply> mixReplies = new ArrayList<>();
 
     @JsonManagedReference
     @JsonIgnore
-    @OneToMany(mappedBy = "mix", fetch = FetchType.EAGER ,cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "mix", cascade = CascadeType.ALL)
     private final List<MixVote> mixVotes = new ArrayList<>();
 
 

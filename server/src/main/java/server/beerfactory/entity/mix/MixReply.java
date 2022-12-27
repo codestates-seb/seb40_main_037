@@ -22,7 +22,6 @@ public class MixReply extends Auditable {
     @Column(nullable = false)
     private String content;
 
-    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
