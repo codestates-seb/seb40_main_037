@@ -74,7 +74,7 @@ function Beer() {
 
   const { id } = useParams();
   const [info, setInfo] = useState({});
-  const [reviews, setReviews] = useState({});
+  const [reviews, setReviews] = useState();
 
   const getBeerDetail = id => {
     BeerListDetail(id).then(res => {
