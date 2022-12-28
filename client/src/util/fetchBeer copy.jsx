@@ -13,9 +13,22 @@ export const BeerListDetail = async id => {
       throw Error(error.message);
     });
 };
-// Beer 리스트 조회
+// Beer 리뷰리스트
+export const BeerReviewList = async id => {
+  return fetch(`${BASE_URL}/beer/reviews/${id}`)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('유효하지 않은 요청입니다.');
+      }
+      return response.json();
+    })
+    .catch(error => {
+      throw Error(error.message);
+    });
+};
+// Beer 리스트 조회 사용하고 있지 않습니다!!!!
 export const BeerList = async size => {
-  return fetch(`${BASE_URL}/BeerList?size=${size}`)
+  return fetch(`${BASE_URL}/beerList?size=${size}`)
     .then(response => {
       if (!response.ok) {
         throw Error('유효하지 않은 요청입니다.');
@@ -27,7 +40,7 @@ export const BeerList = async size => {
     });
 };
 
-// Beer 좋아요 기능 \
+// Beer 좋아요 기능
 export const BeerLikeButton = async id => {
   return fetch(`${BASE_URL}/beers/${id}`, {
     method: 'POST',
@@ -54,7 +67,7 @@ export const BeerLikeButton = async id => {
 export const BeerRivewCreate = async (fetchData, id) => {
   console.log(fetchData);
   console.log(id);
-  return fetch(`${BASE_URL}/beerReviews/${id}`, {
+  return fetch(`${BASE_URL}/beer/reviews/${id}`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',

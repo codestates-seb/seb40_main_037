@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 import Rating from '@mui/material/Rating';
-import dummy from '../../../data/data.json';
-import HeartImg from '/assets/icon/Heart.png';
-import EmptyHeartImg from '/assets/icon/EmptyHeart.png';
+import HeartImg from '../../assets/icon/Heart.png';
+import EmptyHeartImg from '../../assets/icon/EmptyHeart.png';
 
-import { BeerListDetail } from './fetchBeer';
+import { BeerListDetail } from '../../util/fetchBeer';
 import { useParams } from 'react-router-dom';
 const ProductInfoBox = styled.div`
   width: 70%;
@@ -72,6 +71,7 @@ export default function ProductInformation() {
     <ProductInfoBox>
       <div>
         <Rating className="rating-star" value={Number(info.soda)} size="large" readOnly />
+        {/* soda가 아니라 score 로 해야하는데 점수가 0.0 으로 되어있음 */}
         <ProductionButton>{info.name}</ProductionButton>
         <ProductionButton>{info.aroma}</ProductionButton>
         <ProductionButton>{info.country}</ProductionButton>

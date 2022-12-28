@@ -105,6 +105,8 @@ export default function MyReviewForms() {
         .then(data => {
           dispatch(uploadActions.upload());
           alert('등록 성공');
+          setValue(0);
+          input(' ');
         });
       // 일치하는 유저가 존재 X
     } catch (error) {

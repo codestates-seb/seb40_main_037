@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "name": "홍길동",
-      "avatar": "/assets/avatar/0.jpg",
+      "name": "User",
+      "avatar": "../src/assets/avatar/0.jpg",
       "comment": "hi",
       "tags": ["sweet", "bitter", "apple"],
       "items": [
@@ -42,82 +42,158 @@
       ]
     }
   ],
-  "items": [
+  "beers": [
     {
-      "id": 1,
+      "id": 29,
       "name": "Hite",
       "rating": 4,
-      "tags": ["복숭아향", "BITTER", "4.5도"]
-    }
-  ],
-  "reviews": [
-    {
-      "id": 1,
-      "name": "홍길동",
-      "comment": "최고에요 ~~ 또 먹을꺼같아요",
-      "avatar": "/assets/avatar/1.jpg",
-      "value": 3,
-      "good": 5,
-      "createdAt": "2022-11-20 10:10:10",
-      "modified": null,
-      "photo": [
+      "tags": ["복숭아향", "BITTER", "4.5도"],
+      "reviews": [
         {
-          "img": "/assets/food/ramen.jpg",
-          "title": "ramen"
+          "id": 1,
+          "name": "아이디1",
+          "comment": "최고에요 ~~ 또 먹을꺼같아요",
+          "avatar": "../src/assets/avatar/1.jpg",
+          "value": 3,
+          "good": 5,
+          "createdAt": "2022-11-20 10:10:10",
+          "modified": null,
+          "photo": [
+            {
+              "img": "/assets/food/ramen.jpg",
+              "title": "ramen"
+            },
+            {
+              "img": "/assets/food/pizza.jpg",
+              "title": "pizza"
+            },
+            {
+              "img": "/assets/food/chicken.jpg",
+              "title": "ramen"
+            }
+          ]
         },
         {
-          "img": "/assets/food/pizza.jpg",
-          "title": "pizza"
+          "id": 2,
+          "name": "고길동",
+          "comment": "좋았습니다 !! 사진도 남겨봅니다.",
+          "avatar": "../src/assets/avatar/2.jpg",
+          "value": 4,
+          "good": 3,
+          "createdAt": "2022-11-23 10:10:10",
+          "modified": null,
+          "photo": [
+            {
+              "img": "../src/assets/food/beer2.jpg",
+              "title": "ramen"
+            },
+            {
+              "img": "../src/assets/food/beer1.jpg",
+              "title": "pizza"
+            },
+            {
+              "img": "../src/assets/food/chicken2.jpg",
+              "title": "ramen"
+            }
+          ]
         },
         {
-          "img": "/assets/food/chicken.jpg",
-          "title": "ramen"
+          "id": 3,
+          "name": "CATS_KAA",
+          "avatar": "../src/assets/avatar/3.jpg",
+          "value": 2,
+          "good": 1,
+          "createdAt": "2022-11-24 10:10:10",
+          "modified": null,
+          "comment": "그럭저럭 괜찮았어요 ..."
+        },
+        {
+          "id": 4,
+          "name": "BI:BIBI",
+          "avatar": "../src/assets/avatar/4.jpg",
+          "value": 4,
+          "good": 4,
+          "createdAt": "2022-11-25 10:10:10",
+          "modified": null,
+          "comment": "맛있어요 ~~ 최고입니다"
         }
       ]
     },
     {
-      "id": 2,
-      "name": "고길동",
-      "comment": "좋았습니다 !! 사진도 남겨봅니다.",
-      "avatar": "/assets/avatar/2.jpg",
-      "value": 4,
-      "good": 3,
-      "createdAt": "2022-11-23 10:10:10",
-      "modified": null,
-      "photo": [
+      "id": 30,
+      "name": "CASS",
+      "rating": 4,
+      "tags": ["복숭아향", "BITTER", "4.5도"],
+      "reviews": [
         {
-          "img": "/assets/food/beer2.jpg",
-          "title": "ramen"
+          "id": 1,
+          "name": "아이디2",
+          "comment": "최고에요 ~~ 또 먹을꺼같아요",
+          "avatar": "../src/assets/avatar/1.jpg",
+          "value": 3,
+          "good": 5,
+          "createdAt": "2022-11-20 10:10:10",
+          "modified": null,
+          "photo": [
+            {
+              "img": "/assets/food/ramen.jpg",
+              "title": "ramen"
+            },
+            {
+              "img": "/assets/food/pizza.jpg",
+              "title": "pizza"
+            },
+            {
+              "img": "/assets/food/chicken.jpg",
+              "title": "ramen"
+            }
+          ]
         },
         {
-          "img": "/assets/food/beer1.jpg",
-          "title": "pizza"
+          "id": 2,
+          "name": "고길동",
+          "comment": "좋았습니다 !! 사진도 남겨봅니다.",
+          "avatar": "../src/assets/avatar/2.jpg",
+          "value": 4,
+          "good": 3,
+          "createdAt": "2022-11-23 10:10:10",
+          "modified": null,
+          "photo": [
+            {
+              "img": "../src/assets/food/beer2.jpg",
+              "title": "ramen"
+            },
+            {
+              "img": "../src/assets/food/beer1.jpg",
+              "title": "pizza"
+            },
+            {
+              "img": "../src/assets/food/chicken2.jpg",
+              "title": "ramen"
+            }
+          ]
         },
         {
-          "img": "/assets/food/chicken2.jpg",
-          "title": "ramen"
+          "id": 3,
+          "name": "CATS_KAA",
+          "avatar": "../src/assets/avatar/3.jpg",
+          "value": 2,
+          "good": 1,
+          "createdAt": "2022-11-24 10:10:10",
+          "modified": null,
+          "comment": "그럭저럭 괜찮았어요 ..."
+        },
+        {
+          "id": 4,
+          "name": "BI:BIBI",
+          "avatar": "../src/assets/avatar/4.jpg",
+          "value": 4,
+          "good": 4,
+          "createdAt": "2022-11-25 10:10:10",
+          "modified": null,
+          "comment": "맛있어요 ~~ 최고입니다"
         }
       ]
-    },
-    {
-      "id": 3,
-      "name": "CATS_KAA",
-      "avatar": "/assets/avatar/3.jpg",
-      "value": 2,
-      "good": 1,
-      "createdAt": "2022-11-24 10:10:10",
-      "modified": null,
-      "comment": "그럭저럭 괜찮았어요 ..."
-    },
-    {
-      "id": 4,
-      "name": "BI:BIBI",
-      "avatar": "/assets/avatar/4.jpg",
-      "value": 4,
-      "good": 4,
-      "createdAt": "2022-11-25 10:10:10",
-      "modified": null,
-      "comment": "맛있어요 ~~ 최고입니다"
     }
   ]
 }

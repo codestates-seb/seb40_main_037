@@ -13,7 +13,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { uploadActions } from '../../store/redux/upload';
 // 서버 와 연결
-import { BeerRivewCreate } from './fetchBeer';
+import { BeerRivewCreate } from '../../util/fetchBeer';
 
 const MyReivewForm = styled.form`
   width: 70%;
@@ -99,7 +99,7 @@ export default function MyReviewForms() {
 
   const onClickSubmit = async () => {
     await BeerRivewCreate({ score, content }).then(id => {
-      console.log('hi');
+      console.log('id');
     });
   };
 
