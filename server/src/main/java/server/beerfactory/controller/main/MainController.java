@@ -33,7 +33,7 @@ public class MainController {
     private final MixService mixService;
     @GetMapping("/mainpage")
     public MainResponseDto<?> load(){
-        List<BeerDto.Main> lists = beerService.listUp();
+        List<BeerDto.Response> lists = beerService.listUp();
         List<Mix> mixes = mixService.mainMixes();
         List<MixDto.Response> responses = mixMapper.mixesToMixResponseDto(mixes);
         return new MainResponseDto<>(lists,responses, HttpStatus.OK);

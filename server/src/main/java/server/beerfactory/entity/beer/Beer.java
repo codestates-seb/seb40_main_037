@@ -74,11 +74,10 @@ public class Beer extends Auditable {
     @Column
     private int afterTaste;
 
-    @ManyToOne // (fetch = FetchType.LAZY)
+    @ManyToOne //(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL)
     private final List<BeerReview> beerReviews = new ArrayList<>();
 
@@ -89,6 +88,13 @@ public class Beer extends Auditable {
     @JsonIgnore
     @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL)
     private final List<BeerBookMark> beerBookMarks = new ArrayList<>();
+
+//    public void addBeerReview(BeerReview beerReview) {
+//        this.beerReviews.add(beerReview);
+//        if(beerReview.getBeer() != this){
+//            beerReview.addBeer(this);
+//        }
+//    }
 
     public enum BeerType {
         ALE("에일"),

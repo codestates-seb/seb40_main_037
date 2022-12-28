@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import server.beerfactory.dto.beer.BeerDto;
 import server.beerfactory.dto.config.MultiResponseDto;
-import server.beerfactory.dto.config.SingleResponseDto;
 import server.beerfactory.entity.beer.Beer;
 import server.beerfactory.entity.user.User;
 import server.beerfactory.image.S3Uploader;
@@ -41,8 +40,6 @@ public class BeerController {
     @PostMapping
     public ResponseEntity<?> postBeer(@RequestPart(value = "requestBody") BeerDto.Request request,
                            @RequestPart(value = "file", required = false) MultipartFile file) throws IOException{
-        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User findUser = userService.findUser(email);
         Beer beer = beerMapper.beerRequestToBeer(request);
         if (file != null) {
             String imgPath = s3Uploader.upload(file, "image");
@@ -50,7 +47,6 @@ public class BeerController {
         }
         Beer created = beerService.createBeer(beer);
         BeerDto.Response response = beerMapper.beerToBeerResponse(created);
-        response.setUserId(findUser.getId());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

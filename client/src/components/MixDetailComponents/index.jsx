@@ -16,16 +16,16 @@ import {
 import { relTimeFormat } from '../../util/convertor';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import MixDetailReviewForms from './MixDetailReviewForms';
+import MixDetailReviewForms from '../MixComponent/MixDetailReviewForms';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import MixDetailDelete from '../Modal/MixDetailDelete';
+// import MixDetailDelete from '../Modal/MixDetailDelete';
 import Loading from '../Loading/Loading';
-import { fetchMixDetail } from '../../util/fetchMix';
-import { fetchMixUpVote, fetchMixDownVote } from '../../util/fetchMixVote';
-import { fetchReplyList } from '../../util/fetchReply';
+import { axiosMixDetail } from '../../util/axiosMix';
+import { axiosMixUpVote, axiosMixDownVote } from '../../util/axiosMixVote';
+import { axiosReplyList } from '../../util/axiosReply';
 
 function MixDetailComponents() {
   const { id } = useParams();
@@ -53,12 +53,12 @@ function MixDetailComponents() {
     navigate('/Mix/Create');
   };
   const getMixDetail = id => {
-    fetchMixDetail(id).then(res => {
+    axiosMixDetail(id).then(res => {
       setInfo(res);
     });
   };
   const getReply = id => {
-    fetchReplyList(id).then(res => {
+    axiosReplyList(id).then(res => {
       setAnswerList(res);
     });
   };
@@ -97,7 +97,7 @@ function MixDetailComponents() {
       return;
     }
     setIsClickMUpVote(true);
-    fetchMixUpVote(id).then(() => {
+    axiosMixUpVote(id).then(() => {
       setIsClickMUpVote(false);
     });
   };
@@ -107,7 +107,7 @@ function MixDetailComponents() {
       return;
     }
     setIsClickMDownVote(true);
-    fetchMixUpVote(id).then(() => {
+    axiosMixUpVote(id).then(() => {
       setIsClickMDownVote(false);
     });
   };

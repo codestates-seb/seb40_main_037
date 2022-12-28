@@ -12,7 +12,7 @@ public class MainResponseDto<T> {
     private List<T> beerData;
     private List<T> mixData;
 
-    public MainResponseDto(List<BeerDto.Main> lists, List<MixDto.Response> responses, HttpStatus ok) {
+    public MainResponseDto(List<BeerDto.Response> lists, List<MixDto.Response> responses, HttpStatus ok) {
         this.beerData = (List<T>) lists;
         this.mixData = (List<T>) responses;
     }

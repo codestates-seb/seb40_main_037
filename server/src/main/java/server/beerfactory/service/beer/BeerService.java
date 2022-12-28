@@ -84,15 +84,15 @@ public class BeerService {
     }
 
     @Transactional(readOnly = true)
-    public List<BeerDto.Main> listUp() {
+    public List<BeerDto.Response> listUp() {
         Sort sort = Sort.by(
                 Sort.Order.desc("likeCount"),
                 Sort.Order.asc("disLikeCount"),
                 Sort.Order.asc("createdAt")
         );
-        List<BeerDto.Main> beerList = beerMapper.beerMainToBeers(beerRepository.findAll());
+        List<BeerDto.Response> beerList = beerMapper.beerResponseToBeers(beerRepository.findAll());
         if(beerList.size() == 0) throw new FindException();
-        return beerMapper.beerMainToBeers(beerRepository.findTop10By(sort));
+        return beerMapper.beerResponseToBeers(beerRepository.findTop10By(sort));
     }
 
     @Transactional(readOnly = true)

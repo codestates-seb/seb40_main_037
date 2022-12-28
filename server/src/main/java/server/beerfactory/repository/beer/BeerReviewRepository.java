@@ -8,7 +8,7 @@ import server.beerfactory.entity.user.User;
 import java.util.List;
 
 public interface BeerReviewRepository extends JpaRepository<BeerReview, Long> {
-    List<BeerReview> findAllByBeer(Beer beer);
-
     List<BeerReview> findAllByUser(User user);
+
+    List<BeerReview> findAllByBeerId(Long beerId);
 }
