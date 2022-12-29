@@ -69,6 +69,7 @@ export const BeerLikeButton = async id => {
 export const BeerRivewCreate = async (fetchData, id) => {
   console.log(fetchData);
   console.log(id);
+  console.log(fetchData);
   return fetch(`${BASE_URL}/beer/reviews/${id}`, {
     method: 'POST',
     headers: {
@@ -79,7 +80,7 @@ export const BeerRivewCreate = async (fetchData, id) => {
   })
     .then(response => {
       if (!response.ok) {
-        throw Error('유효하지 않은 요청입니다.');
+        throw Error('잘못된 리뷰 등록입니다.');
       }
       return response.json();
     })

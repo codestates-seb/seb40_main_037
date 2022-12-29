@@ -85,8 +85,6 @@ function Beer() {
   const getBeerReview = id => {
     BeerReviewList(id).then(res => {
       setReviews(res);
-      console.log('hi');
-      console.log(res);
     });
   };
 

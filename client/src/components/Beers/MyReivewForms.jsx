@@ -10,7 +10,6 @@ import Stack from '@mui/material/Stack';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { uploadActions } from '../../store/redux/upload';
 // 서버 와 연결
 import { BeerRivewCreate } from '../../util/fetchBeer';
@@ -97,10 +96,19 @@ export default function MyReviewForms() {
     setScore(score);
   };
 
+  // const onClickSubmit = async () => {
+  //   await BeerRivewCreate({ score, content }).then(id => {
+  //     console.log(id);
+  //   });
+  // };
   const onClickSubmit = async () => {
-    await BeerRivewCreate({ score, content }).then(id => {
-      console.log('id');
-    });
+    if (content.length < 10) {
+      alert('최소 10글자를 적어야합니다.');
+    } else {
+      BeerRivewCreate({ score, content }).then(() => {
+        update(true);
+      });
+    }
   };
 
   return (
