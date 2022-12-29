@@ -8,13 +8,13 @@ import Intro from './pages/Intro';
 import Main from './pages/Main';
 import Beers from './pages/Beers';
 import Mypage from './pages/MyPage';
-import MixList from './pages/MixList';
-import MixDetail from './pages/MixDetail';
+import MixList from './pages/MixList/index';
+import MixDetail from './pages/MixDetail/index';
 import Error from './pages/Error';
-import MixCreate from './pages/MixCreate';
+import MixCreate from './pages/MixCreate/index';
 import Join from './pages/Join';
 import BeerRequest from './pages/BeerRequest';
-import BeerList from './pages/BeerList';
+import BeerList from './pages/BeerList/index';
 import Login from './pages/Login';
 import MixUpdate from './pages/MixUpdate';
 

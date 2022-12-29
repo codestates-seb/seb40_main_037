@@ -28,15 +28,17 @@ public class BeerReviewService {
     private final BeerReviewRepository beerReviewRepository;
     private final BeerService beerService;
     private final UserRepository userRepository;
+    private final BeerReviewMapper beerReviewMapper;
 
     @Transactional
-    public BeerReview createBeerReview(Long userId, Long beerId, BeerReview beerReview) {
-        Optional<BeerReview> findBeerReview = beerReviewRepository.findById(userId);
+    public BeerReview createBeerReview(Long beerId, User user, BeerReview beerReview) {
+        Optional<BeerReview> findBeerReview = beerReviewRepository.findById(user.getId());
         if(findBeerReview.isEmpty()) {
             Beer beer = beerService.findBeer(beerId);
             beer.setSum(beer.getSum() + beerReview.getScore());
             beer.setCount(beer.getCount() + 1);
             beer.setStar((double) beer.getSum() / beer.getCount());
+            beerReview.setUser(user);
             beerReview.setBeer(beer);
             return beerReviewRepository.save(beerReview);
         }else{
@@ -74,8 +76,9 @@ public class BeerReviewService {
     }
 
     @Transactional(readOnly = true)
-    public List<BeerReview> findBeerReviews(Beer beer) {
-        return beerReviewRepository.findAllByBeer(beer);
+    public List<BeerReviewDto.Response> findBeerReviews(Long beerId) {
+        List<BeerReview> beerReviews = beerReviewRepository.findAllByBeerId(beerId);
+        return beerReviewMapper.beerReviewToBeerReviewResponseDtos(beerReviews);
     }
 
     @Transactional(readOnly = true)
